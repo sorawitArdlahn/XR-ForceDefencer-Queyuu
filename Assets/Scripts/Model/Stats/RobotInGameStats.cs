@@ -28,6 +28,10 @@ namespace Model.Stats
             maxArmor = robotBaseStats.basedArmor;
             maxFuel = robotBaseStats.baseFuel;
             speed = robotBaseStats.baseSpeed;
+            
+            currentHP = maxHP;
+            currentArmor = maxArmor;
+            currentFuel = maxFuel;
         }
 
         public void SetCurrentHP(int newHP)

@@ -16,12 +16,24 @@ namespace Controller.Stats
 
         public event IDamageable.TakeDamageEvent OnTakeDamage;
         public event IDamageable.DeathEvent OnDeath;
+        
+        [SerializeField] private bool _isCanRefuel = true;
 
         private void Update()
         {
-            if (robotInGameStats.currentFuel < robotInGameStats.MaxFuel) //Fuel must always be replenished.
+
+            if (robotInGameStats.currentFuel < robotInGameStats.MaxFuel && _isCanRefuel)
             {
-                StartCoroutine(Refuel(0.5f, 1f));
+                StartCoroutine(Refuel(1, 1f));
+            }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                TakeDamage(10);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                UseFuel(50);
             }
         }
 
@@ -56,17 +68,30 @@ namespace Controller.Stats
 
         public void UseFuel(int desiredFuel)
         {
-            if (desiredFuel >= robotInGameStats.currentFuel)
+            if (desiredFuel <= robotInGameStats.currentFuel)
             {
+                _isCanRefuel = false;
                 robotInGameStats.setCurrentFuel(robotInGameStats.currentFuel - desiredFuel);
+                _isCanRefuel = true;
             }
         }
 
-        private IEnumerator Refuel(float fillRate, float fillSpeed)
+        private IEnumerator Refuel(int fillRate, float fillSpeed)
         {
-            int addedFuel = (int)Mathf.Lerp(robotInGameStats.currentFuel, robotInGameStats.MaxFuel, fillRate); //Replenish the fuel tank with the needed fuel, at a rate governed by the fill speed.
+            Debug.Log("IEnumerator Refuel wait 2 sec");
+            yield return new WaitForSeconds(2);
+            int addedFuel = robotInGameStats.currentFuel;
+            addedFuel += fillRate;
+            if (addedFuel > robotInGameStats.MaxFuel)
+            {
+                addedFuel = robotInGameStats.MaxFuel;
+            }
+            Debug.Log("wait 0.1 sec to add fuel");
+            yield return new WaitForSeconds(.01f);
             robotInGameStats.setCurrentFuel(addedFuel);
-            yield return new WaitForSeconds(fillSpeed);
+            
         }
+        
+        
     }
 }
