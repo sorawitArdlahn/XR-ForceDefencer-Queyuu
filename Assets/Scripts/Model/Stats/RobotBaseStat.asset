@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0b56987fe42e244bd5b7b5610a2fee, type: 3}
   m_Name: RobotBaseStat
   m_EditorClassIdentifier: 
-  baseHP: 0
-  basedArmor: 0
-  baseFuel: 0
-  baseSpeed: 0
+  baseHP: 1000
+  basedArmor: 1000
+  baseFuel: 1000
+  baseSpeed: 1000

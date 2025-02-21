@@ -64,8 +64,8 @@ namespace Controller
         private void Start()
         {
             // make cursor drag in the middle of the screen and disappear 
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            // Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.visible = false;
 
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;

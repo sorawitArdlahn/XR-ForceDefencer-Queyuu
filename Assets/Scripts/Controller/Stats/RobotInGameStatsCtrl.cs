@@ -10,21 +10,21 @@ namespace Controller.Stats
     public class RobotInGameStatsCtrl : MonoBehaviour, IDamageable
     {
         public RobotInGameStats robotInGameStats;
-        
         public int CurrentHealth => robotInGameStats.currentHP;
         public int CurrentArmor => robotInGameStats.currentArmor;
 
         public event IDamageable.TakeDamageEvent OnTakeDamage;
         public event IDamageable.DeathEvent OnDeath;
         
-        [SerializeField] private bool _isCanRefuel = true;
+        private bool isCanRefuel = true;
+        private bool isRefueling = false; // Used to check if fuel is being refueled.
+        private int activeFuelUsageCount = 0; // Variable counts the number of times UseFuel is called.
 
         private void Update()
         {
-
-            if (robotInGameStats.currentFuel < robotInGameStats.MaxFuel && _isCanRefuel)
+            if ((robotInGameStats.currentFuel < robotInGameStats.MaxFuel) && isCanRefuel && !isRefueling)
             {
-                StartCoroutine(Refuel(1, 1f));
+                StartCoroutine(Refuel(1, 0.1f));
             }
             if (Input.GetKeyDown(KeyCode.H))
             {
@@ -33,7 +33,7 @@ namespace Controller.Stats
             
             if (Input.GetKeyDown(KeyCode.R))
             {
-                UseFuel(50);
+                StartCoroutine(UseFuel(10));
             }
         }
 
@@ -66,31 +66,54 @@ namespace Controller.Stats
 
         }
 
-        public void UseFuel(int desiredFuel)
+        public IEnumerator UseFuel(int desiredFuel)
         {
             if (desiredFuel <= robotInGameStats.currentFuel)
             {
-                _isCanRefuel = false;
+                isCanRefuel = false; // Prevent refueling
+                activeFuelUsageCount++; // Increase usage
+
                 robotInGameStats.setCurrentFuel(robotInGameStats.currentFuel - desiredFuel);
-                _isCanRefuel = true;
+                yield return new WaitForSeconds(2);
+
+                activeFuelUsageCount--; // Reduce the number of uses when finished
+                if (activeFuelUsageCount == 0) // There is no UseFuel pending.
+                {
+                    StopCoroutine("Refuel");
+                    isCanRefuel = true;
+                }
             }
         }
 
+        
+
         private IEnumerator Refuel(int fillRate, float fillSpeed)
         {
-            Debug.Log("IEnumerator Refuel wait 2 sec");
-            yield return new WaitForSeconds(2);
-            int addedFuel = robotInGameStats.currentFuel;
-            addedFuel += fillRate;
-            if (addedFuel > robotInGameStats.MaxFuel)
+            if (!isCanRefuel || isRefueling) yield break; // If you are refueling, stop.
+    
+            isRefueling = true; // Refueling.
+    
+            while (isCanRefuel)
             {
-                addedFuel = robotInGameStats.MaxFuel;
+                yield return new WaitForSeconds(fillSpeed);
+
+                if (!isCanRefuel)
+                {
+                    isRefueling = false; // Finished refueling
+                    yield break; 
+                }
+
+                int addedFuel = robotInGameStats.currentFuel + fillRate;
+                if (addedFuel > robotInGameStats.MaxFuel)
+                {
+                    addedFuel = robotInGameStats.MaxFuel;
+                }
+                robotInGameStats.setCurrentFuel(addedFuel);
             }
-            Debug.Log("wait 0.1 sec to add fuel");
-            yield return new WaitForSeconds(.01f);
-            robotInGameStats.setCurrentFuel(addedFuel);
-            
+
+            isRefueling = false; // Finished refueling
         }
+
         
         
     }

@@ -344,6 +344,8 @@ GameObject:
   - component: {fileID: 234006467}
   - component: {fileID: 234006468}
   - component: {fileID: 234006469}
+  - component: {fileID: 234006471}
+  - component: {fileID: 234006470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -431,6 +433,36 @@ MonoBehaviour:
   ascendSpeed: 5
   airMultiplier: 1
   flyRequiredFuel: 10
+--- !u!114 &234006470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234006466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb333f77a91a0664abd7b7228e42eceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotInGameStats: {fileID: 234006471}
+  _isCanRefuel: 1
+--- !u!114 &234006471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234006466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca115d351500a69418f5a418216e1acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotBaseStats: {fileID: 11400000, guid: ad1201990c3cea144bc34f51e189dc63, type: 2}
+  currentHP: 0
+  currentArmor: 0
+  currentFuel: 0
 --- !u!1 &287227684
 GameObject:
   m_ObjectHideFlags: 0
