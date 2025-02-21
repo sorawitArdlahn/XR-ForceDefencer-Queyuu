@@ -446,7 +446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robotInGameStats: {fileID: 234006471}
-  _isCanRefuel: 1
 --- !u!114 &234006471
 MonoBehaviour:
   m_ObjectHideFlags: 0
