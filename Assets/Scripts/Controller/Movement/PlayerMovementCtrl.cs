@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-namespace Controller
+namespace Controller.Movement
 {
     public class PlayerMovementCtrl : MonoBehaviour
     {

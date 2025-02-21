@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Model.Stats
 {
-    [CreateAssetMenu(fileName = "RobotBaseStat", menuName = "Data Object/Stats/Robot Base Stat")]
+    [CreateAssetMenu(fileName = "RobotBaseStat", menuName = "Our Scriptable Object/Stats/Robot Base Stat", order = 0)]
     public class RobotBaseStats : ScriptableObject
     {
         public int baseHP;
