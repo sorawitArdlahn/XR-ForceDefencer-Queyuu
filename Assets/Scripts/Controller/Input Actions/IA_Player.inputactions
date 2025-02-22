@@ -2,220 +2,6 @@
     "name": "IA_Player",
     "maps": [
         {
-            "name": "AM_Keyboard",
-            "id": "acbad8a5-038b-4b17-a51e-d8f7ba2e795c",
-            "actions": [
-                {
-                    "name": "Movement",
-                    "type": "PassThrough",
-                    "id": "fd2443e3-ff53-4451-a706-145d2ad73784",
-                    "expectedControlType": "Vector3",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "9dc7a326-d729-4474-8e8e-49c588017ce8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "4809cb8f-d3eb-463e-af96-66fc08b0db1d",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Fly",
-                    "type": "Button",
-                    "id": "f998f914-cad6-4fe7-9fcd-d3ec38cf18ca",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "CancelFly",
-                    "type": "Button",
-                    "id": "32916aaa-6b3f-4ba0-ba06-194cad0ae96b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "3773f328-281a-4c81-b024-d244acdfe73f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "9eca4d2c-204e-43f1-ab9c-ac013a8cc3ae",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "3D Vector",
-                    "id": "4955c9c2-7319-4f46-90bc-d2c1f4fce910",
-                    "path": "3DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "05c84092-1fb4-4139-b6d4-dcf6143be10f",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "733b3395-4ef0-4f4d-8042-026efbe50d6c",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "c65e3865-12eb-481d-acde-bc6014529ec7",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "0f8edcb1-77a7-42b8-9bc3-6cad62b5da87",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "forward",
-                    "id": "29be53ad-b367-4f15-8d81-18d854ab1687",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "backward",
-                    "id": "9db9fc98-1ae5-4590-b064-3f80c7cc7778",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "d1032fb1-cfe6-46f6-b769-3759b12fb358",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d0f62c76-3a4f-4aab-8f8e-100d7f4a7ba3",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2c7779c3-1f24-4540-ab60-852432dba9fa",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fly",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7f53880e-4377-4c86-a05d-c031a39ef839",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CancelFly",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "89e5ff83-8270-49ff-acea-828024d4cde5",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "315fd265-2937-43f2-bc26-2a0809fa20f0",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "AM_GamePad",
             "id": "66dda381-add1-4d53-a32a-3ad382404a78",
             "actions": [
@@ -477,6 +263,646 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "AM_VR",
+            "id": "c902e73e-e3fa-4f4f-a036-42c9ef629e8d",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "PassThrough",
+                    "id": "bc9b3902-ae9a-461c-9cca-6aae5ca45350",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "PassThrough",
+                    "id": "af192bd9-6be4-492f-ba80-d172254c7346",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LockOn",
+                    "type": "Button",
+                    "id": "45de4346-2a80-4aa8-8ad9-2a2c72aaa35f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "4bf5bbfc-6e90-45d7-8d76-fd4ca2d84c9a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "e68858f4-16e2-414b-b8fb-8adb1fc9267d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "f6b3263d-bd2d-45fc-8aeb-91481a752f55",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fly",
+                    "type": "Button",
+                    "id": "2aab49e5-b99a-408d-80be-9c80a97da5f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "81e174bc-82b8-41ac-98c8-9b7ac3c9a878",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drive",
+                    "type": "Button",
+                    "id": "6107e274-640d-448e-84f4-45b56d65ac64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f356286-bada-4236-801f-2fe75c28ab1b",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6cb3b716-4ec4-4219-a843-ce6ee1980c76",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "035722ba-a47f-4a64-bb2f-0b39cecba655",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30447bb0-8287-4cb1-bfd5-13c26f90a0f6",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1245e85-a834-4d66-949a-3e762228ba79",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6dc8b16d-5977-4860-a864-18046354f974",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0dec85ce-dca9-486a-a419-edff370ab80a",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fef6e8f4-e862-4ac5-b74c-dfcfe7911cb1",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ac90781-5f32-4626-9aa2-3ae9c59242c3",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2139476f-eaa1-4101-b009-633b4ff689d5",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50459f0d-b0bc-4b4a-8d33-c5457dac93aa",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "Hold",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a1a6dbb-b193-41eb-917e-95a3fd92548b",
+                    "path": "<XInputController>/leftStickPress",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "f22f3058-f14a-474b-991c-4ab47bf6bd27",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "ddf29b78-56cd-478e-9591-5ef508544d2f",
+                    "path": "<OculusTouchController>{LeftHand}/thumbstick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "73f64f61-df48-4170-8e40-5a77a05f2f80",
+                    "path": "<OculusTouchController>{LeftHand}/thumbstick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "78701da7-9020-4b14-b85a-d6e9120cbae0",
+                    "path": "<OculusTouchController>{LeftHand}/thumbstick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "b57e2765-3dd4-47c5-a8f1-658a4c901180",
+                    "path": "<OculusTouchController>{LeftHand}/thumbstick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "88f06189-cabe-4a75-9687-9cf73319555d",
+                    "path": "2DVector(mode=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "a183a601-3333-4cac-a94b-3f8430f61012",
+                    "path": "<OculusTouchController>{RightHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "7369751f-9425-4b55-a6dd-fe1f78bf1c8b",
+                    "path": "<OculusTouchController>{RightHand}/thumbstick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5daf7d77-3692-46d4-948a-4acbde2bcb95",
+                    "path": "<OculusTouchController>{RightHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LockOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "AM_Keyboard",
+            "id": "016f619d-17b2-4686-b37d-08a38532624d",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "PassThrough",
+                    "id": "ab4d7114-e1ea-4649-a501-ff72d3a92f65",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "PassThrough",
+                    "id": "b7d629d9-b563-45cc-b1cd-69d5ad9af093",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LockOn",
+                    "type": "Button",
+                    "id": "29e6bea9-502e-435b-bb09-f974cfa3f8e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "b9f78d4f-17c4-40f1-a23b-ab71f8488d37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "ab9149e0-b98a-48a6-bfe5-e2e66ffaee9d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "a14af3b6-3007-4236-9e8d-2ab3174b4c6e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fly",
+                    "type": "Button",
+                    "id": "9163d89a-4e51-4e83-bb4b-990958bda640",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "f011fe4b-0250-4ff9-a0b1-f937f700f045",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drive",
+                    "type": "Button",
+                    "id": "633bc730-3077-4fe6-b194-783a7901ba18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "09ece0b3-c29e-4f9e-b1cb-b3fd3926d0b4",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "783cc13c-8ae6-4a83-a196-836ae14d0e3f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a4d35bd-d1ae-409d-98f8-4ed642dc94af",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a7153586-74ed-4d0e-83b0-46daedfb07a6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2958e597-793a-47b1-b9fd-3e69bca3a21b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea394862-d8fc-4fdf-b5bd-df81028a6d93",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da6993f5-8727-4f2b-9ff2-6ab3091a00d0",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cfab929-90be-4104-8440-efa87c02ab4c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ac4f334-c801-463a-88a7-15baee9e8c41",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e7ad5bb-fd60-451a-b96b-31805ee39095",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e3f76f3-93bb-47b8-9358-80322899232e",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Hold",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a67d7b62-b3fa-4085-9e44-bbff79b37f4b",
+                    "path": "<XInputController>/leftStickPress",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "24a03c7f-723f-4f94-9542-4591203ace1b",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "d7b5fd22-9667-4876-927c-b8dabcfa45fc",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "135af8f1-0429-4fc8-aa13-8ab56cc400aa",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "6996561d-5b86-4f19-b094-a9bd8da31f4b",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "9c050c69-0354-4547-a66f-51a7a373bd01",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "1d742f1a-104f-45c1-8ed6-15d95c302fc0",
+                    "path": "2DVector(mode=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "7d8abbcf-8d40-4fad-8ce8-245553be0e68",
+                    "path": "<Mouse>/delta/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "c3b70a0d-1455-43fc-b884-61c6e939259a",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4e36bb59-f25c-4e20-9d2c-5c7f4fe32b11",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LockOn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

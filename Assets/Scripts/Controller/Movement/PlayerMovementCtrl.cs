@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Controller.Movement
 {
@@ -15,12 +12,16 @@ namespace Controller.Movement
         public float gravity = 9.81f; // use for config gravity in game
         private bool _isDragToGroundActive; // use for turn on-off DragToGround() 
         private MovementState movementState;
+        private MoveCockpitMode moveCockpitMode;
         private bool _isCanUseFuel; // for delay using fuel, solve frame looping using fuel so much in 1 second
 
         [Header("Ground Check")] public float playerHeight;
         public Transform groundCheck;
         public LayerMask groundLayer;
         private bool isGrounded;
+        
+        [Header("Aim Assistant")]
+        public AimAssistantCtrl AimAssistantCtrl;
 
         [Header("Cockpit Movement")] public Transform cockpitTransform;
         public float sensitivityX;
@@ -64,8 +65,8 @@ namespace Controller.Movement
         private void Start()
         {
             // make cursor drag in the middle of the screen and disappear 
-            // Cursor.lockState = CursorLockMode.Locked;
-            // Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;
@@ -80,6 +81,7 @@ namespace Controller.Movement
             ReceiveInput();
             GroundCheck();
             MovementStateHandler();
+            MoveCockpitModeHandler();
             SpeedControl();
             DragCharacter();
             MoveCockpit();
@@ -143,6 +145,16 @@ namespace Controller.Movement
             }
         }
 
+        private void MoveCockpitModeHandler()
+        {
+            if (playerInputReceiver.IsLockOn)
+            {
+                moveCockpitMode = MoveCockpitMode.Locked;
+            }
+            else
+                moveCockpitMode = MoveCockpitMode.FreeLock;
+        }
+
         private void DragCharacter()
         {
             if (isGrounded) rb.drag = groundDrag;
@@ -151,19 +163,36 @@ namespace Controller.Movement
 
         private void MoveCockpit()
         {
-            cockpitRotationY += lookX;
-            cockpitRotationX -= lookY;
-            // make cockpit have a limit of only 90 degrees of head tilt.
-            cockpitRotationX = Mathf.Clamp(cockpitRotationX, -angleLimit, angleLimit);
+            Debug.Log("Mode: " + moveCockpitMode);
+            if (!playerInputReceiver.IsLockOn)
+            {
+                AimAssistantCtrl.enabled = false;
+                cockpitRotationY += lookX;
+                cockpitRotationX -= lookY;
+                
+                Debug.Log($"look {lookX} Cockpit Rotation Y: {cockpitRotationY}");
+                Debug.Log($"look {lookY} Cockpit Rotation X: {cockpitRotationX}");
+                // make cockpit have a limit of only 90 degrees of head tilt.
+                cockpitRotationX = Mathf.Clamp(cockpitRotationX, -angleLimit, angleLimit);
 
-            cockpitTransform.rotation = Quaternion.Euler(cockpitRotationX, cockpitRotationY, 0);
-            transform.rotation = Quaternion.Euler(0, cockpitRotationY, 0);
+                cockpitTransform.rotation = Quaternion.Euler(cockpitRotationX, cockpitRotationY, 0);
+                transform.rotation = Quaternion.Euler(0, cockpitRotationY, 0);
+            }
+            else
+            {
+                cockpitRotationY = AimAssistantCtrl.GetNewAngles().y;
+                cockpitRotationX = AimAssistantCtrl.GetNewAngles().x;
+                AimAssistantCtrl.enabled = true;
+            }
+            
+            
         }
 
         private void MoveCharacter()
         {
             //calculate movement direction
             moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+            //moveDirection = cockpitTransform.forward * verticalInput + cockpitTransform.right * horizontalInput;
             rb.AddForce(moveDirection.normalized * (moveSpeed * 10f * rb.mass), ForceMode.Force);
         }
 
@@ -240,8 +269,7 @@ namespace Controller.Movement
             return false;
         }
     } 
-}
-public enum MovementState
+    public enum MovementState
     {
         Walking,
         Sprinting,
@@ -249,3 +277,9 @@ public enum MovementState
         AutoDrive,
     }
 
+    public enum MoveCockpitMode
+    {
+        FreeLock,
+        Locked,
+    }
+}
