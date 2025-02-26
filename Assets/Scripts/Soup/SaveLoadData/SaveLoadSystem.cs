@@ -1,11 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameController;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace System.Persistence {
-    [Serializable] public class GameData {
+    [System.Serializable]
+    public class GameData {
+        
         public string Name;
         //TODO : Player Record Data
         public string currentLevelName;
@@ -28,7 +30,7 @@ namespace System.Persistence {
     }
 
     public class SaveLoadSystem : PersistentSingleton<SaveLoadSystem> {
-        [SerializeField] public GameData gameData;
+        public GameData gameData;
 
         IDataService dataService;
 
@@ -40,16 +42,25 @@ namespace System.Persistence {
         //TODO : Rework to fit real Environment, Currently Only Work On One Scene
 
         /*
-        void Start()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
+        TODO : EXAMPLE OF BINDING METHOD
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+            if (scene.name == "Menu") return;
+            
             Bind<Player, PlayerData>(gameData.playerData);
         }
         */
+
+        void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+        void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
+        
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+            //IF GAMEMANAGER DOES NOT HAVE GAMEDATA DO NOT PERFORM BINDING
+            if (!GameManager.Instance || GameManager.Instance.currentGameData == null) return;
+
+            
+            if (scene.name == "PreparationScene") Bind<Player, PlayerData>(GameManager.Instance.currentGameData.playerData);   
+            //if (scene.name == "BattleScene") Bind<LevelManager, LevelData>(gameData.levelData);   
+        }
 
 
 
@@ -79,6 +90,8 @@ namespace System.Persistence {
             
         } 
 
+        /*
+
         public void NewGame() {
             
             
@@ -88,11 +101,20 @@ namespace System.Persistence {
                 currentLevelIndex = 0
             };
 
+            GameManager.Instance.currentGameData = gameData;
+
             SceneManager.LoadScene(gameData.currentLevelName);
             
         }
+        */
 
-        public void SaveGame() => dataService.Save(gameData);
+        public void SaveGame(GameData data) => dataService.Save(data);
+
+        public GameData LoadGame(string saveName) {
+            return dataService.Load(saveName);
+        }
+
+        /*
 
         public void LoadGame(string gameName) {
             gameData = dataService.Load(gameName);
@@ -101,14 +123,22 @@ namespace System.Persistence {
                 gameData.currentLevelName = "Demo";
             }
 
+            GameManager.Instance.currentGameData = gameData;
+
             SceneManager.LoadScene(gameData.currentLevelName);
 
 
         }
+        */
 
         public void ReloadGame() => LoadGame(gameData.Name);
 
         public void DeleteGame(string gameName) => dataService.Delete(gameName);
+
+        public void ClearCache() {
+            UnityEngine.Resources.UnloadUnusedAssets();
+            GC.Collect();
+        }
 
 
 
