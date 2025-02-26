@@ -1,11 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
-
-using System.Text.RegularExpressions;
 
 public class MapPatternV2
 {

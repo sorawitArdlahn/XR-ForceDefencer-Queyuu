@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Gameevent;
 
 public class Robots : MonoBehaviour, IDamagable
 {

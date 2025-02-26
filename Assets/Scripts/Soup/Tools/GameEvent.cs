@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Gameevent {
 [CreateAssetMenu(fileName = "GameEvent")]
 [System.Serializable]
 public class GameEvent : RuntimeScriptableObject
@@ -37,4 +37,5 @@ public class GameEvent : RuntimeScriptableObject
     {
         listeners.Clear();
     }
+}
 }

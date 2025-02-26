@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
+namespace Mapgenerate {
 public class CellV2 : MonoBehaviour
 {
-    public bool collapsed;
+    
+    [System.NonSerialized] public bool collapsed;
     
     public MapPatternV2[] tileOptions;
 
@@ -20,4 +19,5 @@ public class CellV2 : MonoBehaviour
         tileOptions = tiles;
 
     }
+}
 }

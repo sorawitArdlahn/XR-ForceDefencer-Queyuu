@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class CustomGameEvent : UnityEvent<Component, object> { }
-public class GameEventListener : MonoBehaviour
+namespace Gameevent
 {
+    [System.Serializable]
+    public class CustomGameEvent : UnityEvent<Component, object> { }
+    
+    public class GameEventListener : MonoBehaviour
+    {
     public GameEvent Event;
     public CustomGameEvent Response;
 
@@ -25,3 +26,6 @@ public class GameEventListener : MonoBehaviour
         Response.Invoke(sender, data);
     }
 }
+    
+}
+

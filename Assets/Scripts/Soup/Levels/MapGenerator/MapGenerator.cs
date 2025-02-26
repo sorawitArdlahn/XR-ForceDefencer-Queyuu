@@ -1,13 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Unity.AI.Navigation;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using Gameevent;
+using System;
 
+namespace Mapgenerate {
 public class WaveFunctionCollapseV2 : MonoBehaviour
 {
     private LevelManager levelManager;
@@ -20,7 +20,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     public List<MapPatternSet> tileSet;
     List<MapPatternTemplate> templateList;
     private MapPatternV2[] tileObjects = new MapPatternV2[0];
-    public List<CellV2> gridComponent;
+    List<CellV2> gridComponent;
     public CellV2 cellV2Object;
 
     //size of the cellV2 : eg 1 is 1x1
@@ -472,4 +472,5 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     }
     
 
+}
 }
