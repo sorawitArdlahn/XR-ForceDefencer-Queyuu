@@ -45,7 +45,7 @@ public class SpawnerManager : MonoBehaviour
     //Difficulty increase based on number of levels
     private int currentLevel;
 
-    public Player player;
+    //public Player player;
 
 
     [System.Serializable]
