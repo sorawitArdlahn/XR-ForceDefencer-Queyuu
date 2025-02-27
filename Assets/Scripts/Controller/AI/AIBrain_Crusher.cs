@@ -39,7 +39,7 @@ public class AIBrain_Crusher : MonoBehaviour, IDamageable
 
         Sequence actionSeq = new Sequence("Actions");
         Leaf foundPlayer = new Leaf("Found Player?", new FindPlayer(blackboard.SelfTransform,20f));
-        Leaf followPlayer = new Leaf("followPlayer", new FollowPlayer(blackboard.SelfTransform,blackboard.SelfNavMeshAgent,blackboard.SelfAnimator));
+        Leaf followPlayer = new Leaf("followPlayer", new FollowPlayer(blackboard));
         Leaf randomCombat = new Leaf("WhatToDo",new CombatsStrategy(blackboard.SelfTransform,blackboard.SelfAnimator, blackboard.SelfNavMeshAgent, blackboard.SelfAnimationEventReceiver));
         
         actionSeq.AddChild(foundPlayer);

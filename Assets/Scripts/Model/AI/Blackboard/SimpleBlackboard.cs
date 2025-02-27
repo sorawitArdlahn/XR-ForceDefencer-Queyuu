@@ -20,6 +20,7 @@ public class SimpleBlackboard:MonoBehaviour
     public int currentArmor;
     public int maxFuel;
     public int currentFuel;
+    public float Speed;
 
     [Header("Implicated Variables")]
     public GameObject Player;
