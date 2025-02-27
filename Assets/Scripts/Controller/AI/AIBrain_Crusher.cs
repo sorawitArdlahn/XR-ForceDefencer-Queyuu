@@ -13,18 +13,18 @@ public class AIBrain_Crusher : MonoBehaviour, IDamageable
     public SimpleBlackboard blackboard;
     private BehaviourTree behaviourTree;
     
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int health;
     
-    public int CurrentHealth { get => health; private set => health = value; }
+    public int CurrentHealth { get => blackboard.currentHealth; private set => blackboard.currentHealth = value; }
     public int CurrentArmor { get; }
-    public int MaxHealth { get => maxHealth; private set => maxHealth = value; }
+    public int MaxHealth { get => blackboard.maxHealth; private set => blackboard.maxHealth = value; }
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
 
     private void Awake()
     {
-        CurrentHealth = maxHealth;
+        blackboard.currentHealth = blackboard.maxHealth;
+        blackboard.currentArmor = blackboard.maxArmor;
+        blackboard.currentFuel = blackboard.maxFuel;
         
         behaviourTree = new BehaviourTree("AI");
         
