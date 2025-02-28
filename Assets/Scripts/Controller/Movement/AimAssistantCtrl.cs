@@ -27,10 +27,7 @@ namespace Controller.Movement
         private void Awake()
         {
             allEnemies = new List<GameObject>();
-            foreach (var enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                allEnemies.Add(enemyGameObject);
-            }
+            
             aimImage.gameObject.SetActive(false);
             aimImage.transform.SetParent(worldSpaceCanvas.transform);
             enabled = false;
@@ -38,6 +35,11 @@ namespace Controller.Movement
 
         private void OnEnable()
         {
+            foreach (var enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                allEnemies.Add(enemyGameObject);
+            }
+            
             isAimActive = true;
             LockOnText.text =  "ON" ;
             LockOnText.color = Color.green;

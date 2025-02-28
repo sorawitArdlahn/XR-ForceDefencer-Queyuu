@@ -131,6 +131,7 @@ namespace Model.Combat
             {
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
                 {
+                    Debug.LogError("Hit " + hit.collider.name);
                     damageable.TakeDamage(damageConfig.GetDamage());
                 }
             }

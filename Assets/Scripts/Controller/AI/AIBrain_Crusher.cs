@@ -22,6 +22,7 @@ public class AIBrain_Crusher : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        blackboard.Player = GameObject.FindGameObjectWithTag("Player");
         blackboard.currentHealth = blackboard.maxHealth;
         blackboard.currentArmor = blackboard.maxArmor;
         blackboard.currentFuel = blackboard.maxFuel;
@@ -60,6 +61,7 @@ public class AIBrain_Crusher : MonoBehaviour, IDamageable
     
     public void TakeDamage(int Damage)
     {
+        Debug.Log("โอ้ย!");
         int damageTaken = Mathf.Clamp(Damage, 0, CurrentHealth);
         CurrentHealth -= damageTaken;
 

@@ -28,8 +28,7 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
     void Start()
     {
-        //ResetStage();
-      
+        ResetStage();
     }
 
     public int getCurrentLevel()

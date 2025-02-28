@@ -18,7 +18,7 @@ public class FindPlayer : IStrategy
     {
         this.entity = blackboard.SelfTransform;
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        this.minDistance = 100;
+        this.minDistance = 10f;
         this.blackboard = blackboard;
         player = blackboard.Player;
     }

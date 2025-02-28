@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3678438838430288492}
   - component: {fileID: 168861780311013337}
   - component: {fileID: 3407538171817545286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Intersection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.25, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 10, y: 1.25, z: 10}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 96553841965302381}
   - {fileID: 3616748655016732894}
@@ -169,6 +169,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3574741315645918519, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5593716754752493916, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
       propertyPath: m_Name
       value: GreyFloor (3)
@@ -242,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 3574741315645918519, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574741315645918519, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5593716754752493916, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
       propertyPath: m_Name
@@ -317,6 +325,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3574741315645918519, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5593716754752493916, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
       propertyPath: m_Name
       value: GreyFloor (4)
@@ -390,6 +402,10 @@ PrefabInstance:
     - target: {fileID: 3574741315645918519, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574741315645918519, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5593716754752493916, guid: 41358086adf503c40a78c1d03ac40cba, type: 3}
       propertyPath: m_Name

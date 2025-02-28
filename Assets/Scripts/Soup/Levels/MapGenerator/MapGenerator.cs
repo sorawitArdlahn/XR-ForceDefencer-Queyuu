@@ -81,6 +81,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
 
     IEnumerator BuildNavMesh() {
         yield return new WaitForSeconds(0.5f);
+        navMeshSurface.collectObjects = CollectObjects.Children;
         navMeshSurface.BuildNavMesh();
         IsInitialized = true;
         mapGenerated.Raise(this);
