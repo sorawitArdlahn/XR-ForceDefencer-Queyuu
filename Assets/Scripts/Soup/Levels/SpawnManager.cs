@@ -1,16 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Mapgenerate;
-using Spawn;
 
-namespace Spawn {}
-[System.Serializable]
+
+namespace Spawn {
 public class SpawnerManager : MonoBehaviour
 {
-    private LevelManager levelManager;
-
+    
+    //MapGenerator.
     private WaveFunctionCollapseV2 waveFunctionCollapse;
     private bool MapGeneratedFinish = false;
 
@@ -25,7 +24,7 @@ public class SpawnerManager : MonoBehaviour
 
     Wave[] waves;
 
-    public Button inactiveButton;
+    //public Button inactiveButton;
 
     //Wave currentWave;
 
@@ -42,7 +41,7 @@ public class SpawnerManager : MonoBehaviour
     //Difficulty increase based on number of levels
     private int currentLevel;
 
-    //public Player player;
+    public Player player;
 
 
     [System.Serializable]
@@ -74,7 +73,7 @@ public class SpawnerManager : MonoBehaviour
         nextWave = 0;
         waveCountDown = timeBetweenWaves;
         state = SpawnState.COUNTING;
-        inactiveButton.gameObject.SetActive(false);
+        //inactiveButton.gameObject.SetActive(false);
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
@@ -197,7 +196,7 @@ public class SpawnerManager : MonoBehaviour
     void WaveCompleted() {
         Debug.Log("Wave Completed");
         state = SpawnState.COMPLETED;
-        inactiveButton.gameObject.SetActive(true);
+        //inactiveButton.gameObject.SetActive(true);
         
     }
      
@@ -299,4 +298,5 @@ public class SpawnerManager : MonoBehaviour
         Debug.Log("Total Enemies: " + totalEnemies);
     }
 
+}
 }
