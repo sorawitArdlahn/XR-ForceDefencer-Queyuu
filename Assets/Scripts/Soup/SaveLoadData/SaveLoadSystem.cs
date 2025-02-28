@@ -1,11 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GameController;
+using Spawn;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace System.Persistence {
-    [System.Serializable]
+    [Serializable]
     public class GameData {
         
         public string Name;
@@ -15,6 +17,7 @@ namespace System.Persistence {
         public int currentLevelIndex;
         public PlayerData playerData;
         //TODO : Inventory and Upgrade Data
+        public LevelData levelData;
 
 
     }
@@ -54,12 +57,21 @@ namespace System.Persistence {
         void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
         
         void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            //IF GAMEMANAGER DOES NOT HAVE GAMEDATA DO NOT PERFORM BINDING
-            if (!GameManager.Instance || GameManager.Instance.currentGameData == null) return;
+            StartCoroutine(HandleDelayedBinding(scene));
+        }
+
+        IEnumerator HandleDelayedBinding(Scene scene) {
+            yield return new WaitForEndOfFrame();
+            //IF GAMEMANAGER DOES NOT HAVE GAMEDATA DO NOT PERFORM BINDING  
+            if (!GameManager.Instance || GameManager.Instance.currentGameData == null) {
+                yield break;
+            }
 
             
-            if (scene.name == "PreparationScene") Bind<Player, PlayerData>(GameManager.Instance.currentGameData.playerData);   
-            //if (scene.name == "BattleScene") Bind<LevelManager, LevelData>(gameData.levelData);   
+            if (scene.name == "PreparationScene" || scene.name == "InBattleScene") {
+            Bind<Player, PlayerData>(GameManager.Instance.currentGameData.playerData);  
+            Bind<LevelManager, LevelData>(GameManager.Instance.currentGameData.levelData); 
+            } 
         }
 
 
@@ -139,6 +151,7 @@ namespace System.Persistence {
             UnityEngine.Resources.UnloadUnusedAssets();
             GC.Collect();
         }
+        
 
 
 

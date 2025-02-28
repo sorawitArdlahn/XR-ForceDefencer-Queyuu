@@ -1,10 +1,24 @@
+using System;
+using System.Persistence;
 using System.Collections.Generic;
 using UnityEngine;
+using GameController;
 using Gameevent;
 
-public class LevelManager : MonoBehaviour
+namespace Spawn {
+public class LevelManager : MonoBehaviour, IBind<LevelData>
 {
     // Start is called before the first frame update
+    [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
+    [SerializeField] LevelData data;
+
+    public void Bind(LevelData data)
+    {
+        this.data = data;
+        this.data.Id = Id;
+        this.data.currentLevel = data.checkpointLevel;
+    }
+
 
     public GameEvent OnStartLevel;
 
@@ -12,33 +26,32 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
 
-
-    int currentLevel = 0;
-
     void Start()
     {
-        ResetStage();
+        //ResetStage();
       
     }
 
     public int getCurrentLevel()
     {
-        return currentLevel;
+        return data.currentLevel;
     }
 
     public void setCurrentLevel(int level)
     {
-        currentLevel = level;
+        data.currentLevel = level;
     }
 
     void SetLevelDetailBasedOnLevel() {
+
         if (GameObject.FindGameObjectWithTag("SpawnManager") == null)
         {
             Debug.LogWarning("SpawnManager not found, skipping level setup.");
             return;
         }
+        spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManager>();
         //TODO : Modify Enemies based on level
-        spawnerManager.SetEnemies(enemiesList, currentLevel + 15);
+        spawnerManager.SetEnemies(enemiesList, getCurrentLevel() + 15);
         spawnerManager.getTotalEnemies();
         
 
@@ -48,12 +61,46 @@ public class LevelManager : MonoBehaviour
 
     public void ResetStage()
     {
-        currentLevel++;
+        setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnLevel();
         OnStartLevel.Raise(this);
         //Reset Robot Stats
         //Reset Map
         //Reset Spawner
     }
+
+    public void backToPreparation() {
+        calculateCheckpointLevel();
+        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
+    }
+
+    void calculateCheckpointLevel() {
+        //TODO : Calculate Checkpoint Level
+        //if current level does not reach previous record, 
+        if (data.highestLevel > getCurrentLevel()) return;
+
+        data.highestLevel = getCurrentLevel();
+        data.checkpointLevel = getCurrentLevel() - 2;
+    }
+
+    public void GameOver() {
+        //TODO : Game Over
+        GameManager.Instance.DeleteGame();
+        GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
+    }
+
+}
+
+[Serializable]
+public class LevelData : ISaveable
+{
+    [field: SerializeField] public SerializableGuid Id { get; set; }
+    public int currentLevel;
+    public int highestLevel = 0;
+    public int checkpointLevel = 0;
+
+
+
+}
 
 }

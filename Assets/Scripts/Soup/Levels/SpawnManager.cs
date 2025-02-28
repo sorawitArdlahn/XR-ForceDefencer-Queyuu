@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mapgenerate;
+using Spawn;
 
 namespace Spawn {}
 [System.Serializable]

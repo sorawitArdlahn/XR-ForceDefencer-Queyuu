@@ -5,7 +5,7 @@ using System.Linq;
 using Unity.AI.Navigation;
 using UnityEngine;
 using Gameevent;
-using System;
+using Spawn;
 
 namespace Mapgenerate {
 public class WaveFunctionCollapseV2 : MonoBehaviour

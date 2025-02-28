@@ -1,5 +1,6 @@
 using System.Persistence;
 using UnityEngine;
+using System;
 
 
 namespace GameController {
@@ -24,7 +25,9 @@ public class GameManager : MonoBehaviour
         Instance.currentGameData = new GameData{
             Name = "Demo",
             currentLevelName = "PreparationScene",
-            currentLevelIndex = 1
+            currentLevelIndex = 1,
+            playerData = new PlayerData(), //TODO : Important.
+            levelData = new Spawn.LevelData() 
         };
 
     }
@@ -37,6 +40,13 @@ public class GameManager : MonoBehaviour
         if(currentGameData != null) SaveLoadSystem.Instance.SaveGame(currentGameData);
     }
 
+    public void DeleteGame() {
+        SaveLoadSystem.Instance.DeleteGame(currentGameData.Name);
+    }
+
+    void OnReset() {
+        currentGameData = null;
+    }
     // Start is called before the first frame update
 
     //TODO : This is only Placeholder for button commands
@@ -49,9 +59,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadGameButton() {
-        Instance.LoadGame();
-        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
-        Debug.Log("Save Loaded.");
+        try {
+            Instance.LoadGame();
+            GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
+            Debug.Log("Save Loaded.");
+        }
+        catch (ArgumentException) {
+            Debug.LogWarning($"Save not found.");
+        }
     }
 
     public void SaveGameButton() {
@@ -60,12 +75,9 @@ public class GameManager : MonoBehaviour
         GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
     }
 
-    void Update() {
-        Debug.Log("Hello.");
-    }
-
-    void OnReset() {
-        currentGameData = null;
+    public void BattleButton() {
+        Debug.Log("=============== Going To BATTLE. =================");
+        GameStateManager.Instance.SetNextPhase(GameState.InBattle);
     }
 
 }
