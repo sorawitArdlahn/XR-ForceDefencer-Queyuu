@@ -19,8 +19,9 @@ public class chasingPlayerStrategy : IStrategy
     {
         Debug.Log("Chasing Player Running");
         
-        if (Vector3.Distance(blackboard.SelfTransform.position, player.transform.position) < 10f)
+        if (Vector3.Distance(blackboard.SelfTransform.position, player.transform.position) < 30f)
         {
+            blackboard.SelfNavMeshAgent.ResetPath();
             return Node.Status.Success;
         }
         else
