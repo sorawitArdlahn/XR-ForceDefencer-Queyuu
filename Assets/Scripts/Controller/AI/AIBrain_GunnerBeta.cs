@@ -6,18 +6,22 @@ using AI.Basic_Node.Control_Node;
 using BlackboardSystem;
 using UnityEngine;
 
-public class AIBrain_Gunner : MonoBehaviour
+using UnityEngine.Animations.Rigging;
+
+public class AIBrain_GunnerBeta : MonoBehaviour
 {
     public SimpleBlackboard blackboard;
     public GunnerType gunnerType;
     private BehaviourTree behaviourTree;
+    public MultiAimConstraint multiAimConstraint;
     private void Awake()
     {
        behaviourTree = new BehaviourTree("AIGunner");
        Sequence sequence = new Sequence("Start");
-       sequence.AddChild(new Leaf("Found Player?", new FindPlayer(blackboard.SelfTransform, 50f)));
+       sequence.AddChild(new Leaf("Random Movement", new PatrolStrategy(blackboard)));
+       sequence.AddChild(new Leaf("Found Player?", new FindPlayer(blackboard)));
        Parallel parallel = new Parallel("parallel");
-       parallel.AddChild(new Leaf("KeepDistance", new KeepDistance(blackboard, 30f)));
+       parallel.AddChild(new Leaf("KeepDistance", new KeepDistance(blackboard, 50f)));
        parallel.AddChild(new Leaf("Shoot", new ShootIStrategy(blackboard)));
        sequence.AddChild(parallel);
        behaviourTree.AddChild(sequence);

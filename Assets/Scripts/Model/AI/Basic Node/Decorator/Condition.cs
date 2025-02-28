@@ -2,6 +2,7 @@
 using AI.Basic_Node;
 
 public  class Condition : IStrategy
+
 { 
     readonly Func<bool> predicate;
 

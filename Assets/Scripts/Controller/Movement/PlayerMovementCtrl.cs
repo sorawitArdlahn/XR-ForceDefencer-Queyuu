@@ -170,8 +170,6 @@ namespace Controller.Movement
                 cockpitRotationY += lookX;
                 cockpitRotationX -= lookY;
                 
-                Debug.Log($"look {lookX} Cockpit Rotation Y: {cockpitRotationY}");
-                Debug.Log($"look {lookY} Cockpit Rotation X: {cockpitRotationX}");
                 // make cockpit have a limit of only 90 degrees of head tilt.
                 cockpitRotationX = Mathf.Clamp(cockpitRotationX, -angleLimit, angleLimit);
 
