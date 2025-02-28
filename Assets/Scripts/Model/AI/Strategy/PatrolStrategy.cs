@@ -14,18 +14,18 @@ public class PatrolStrategy : IStrategy
         private Vector3 targetPosition;
         private Vector3 result;
         private bool isReset;
-
-        public PatrolStrategy(Transform entity, NavMeshAgent agent ,Animator animator)
+        private SimpleBlackboard blackboard;
+        public PatrolStrategy(SimpleBlackboard blackboard)
         {
-            this.entity = entity;
-            this.agent = agent;
-            this.animator = animator;
-            // targetPosition = new Vector3(Random.Range(0, 100), 0, Random.Range(0,100));
+            this.blackboard = blackboard;
+            this.entity = blackboard.SelfTransform;
+            this.agent = blackboard.SelfNavMeshAgent;
+            this.animator = blackboard.SelfAnimator;
+    
             isPatrolCalculated = true;
             this.animator.Rebind();
             isReset = false;
         }
-
         public Node.Status Process()
         {
             if (isReset)

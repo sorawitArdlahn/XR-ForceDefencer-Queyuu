@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6535d2a73975f524abcc0813b8238cac, type: 3}
-  m_Name: Plasma Gun
+  m_Name: AI Plasma Gun
   m_EditorClassIdentifier: 
   Type: 0
   name: Plasma Gun
@@ -19,4 +19,4 @@ MonoBehaviour:
   spawnRotation: {x: 2.291, y: -166.325, z: -89.422}
   damageConfig: {fileID: 11400000, guid: ab209926c84bd31418bc23a615bc64e0, type: 2}
   shootConfig: {fileID: 11400000, guid: 927954ccf9cfc3648a8beb37786465aa, type: 2}
-  trailConfig: {fileID: 11400000, guid: fb2319cb2276691489c38b9ef2bce961, type: 2}
+  trailConfig: {fileID: 11400000, guid: d8e7c23dc8375824b84dbf60ae050284, type: 2}

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using Model.Combat;
+using System.Collections.Generic;
+using UnityEngine.Animations.Rigging;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(PlayerGunSelector))]
 public class SimpleBlackboard:MonoBehaviour

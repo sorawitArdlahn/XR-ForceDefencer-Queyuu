@@ -32,13 +32,13 @@ public class AIBrain_Crusher : MonoBehaviour, IDamageable
 
         Sequence patrolSeq = new Sequence("Patrol");
         Inverter inverter = new Inverter("inverter");
-        inverter.AddChild(new Leaf("inverter", new FindPlayer(blackboard.SelfTransform,20f)));
-        Leaf patrol = new Leaf("Patrol", new PatrolStrategy(blackboard.SelfTransform, blackboard.SelfNavMeshAgent, blackboard.SelfAnimator));
+        inverter.AddChild(new Leaf("inverter", new FindPlayer(blackboard)));
+        Leaf patrol = new Leaf("Patrol", new PatrolStrategy(blackboard));
         patrolSeq.AddChild(inverter);
         patrolSeq.AddChild(patrol);
 
         Sequence actionSeq = new Sequence("Actions");
-        Leaf foundPlayer = new Leaf("Found Player?", new FindPlayer(blackboard.SelfTransform,20f));
+        Leaf foundPlayer = new Leaf("Found Player?", new FindPlayer(blackboard));
         Leaf followPlayer = new Leaf("followPlayer", new FollowPlayer(blackboard));
         Leaf randomCombat = new Leaf("WhatToDo",new CombatsStrategy(blackboard.SelfTransform,blackboard.SelfAnimator, blackboard.SelfNavMeshAgent, blackboard.SelfAnimationEventReceiver));
         

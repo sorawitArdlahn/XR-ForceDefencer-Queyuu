@@ -15,7 +15,7 @@ public class AIBrain_GunnerAlpha : MonoBehaviour
     {
        behaviourTree = new BehaviourTree("AIGunner");
        Sequence sequence = new Sequence("Start");
-       sequence.AddChild(new Leaf("Found Player?", new FindPlayer(blackboard.SelfTransform, 50f)));
+       sequence.AddChild(new Leaf("Found Player?", new FindPlayer(blackboard)));
        Parallel parallel = new Parallel("parallel");
        parallel.AddChild(new Leaf("Chesing", new chasingPlayerStrategy(blackboard)));
        parallel.AddChild(new Leaf("Shoot", new ShootIStrategy(blackboard)));

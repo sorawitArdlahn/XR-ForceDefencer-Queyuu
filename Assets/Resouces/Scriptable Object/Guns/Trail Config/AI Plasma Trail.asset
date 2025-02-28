@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bd371f03c1b4734d8bb5c740c5e9b3c, type: 3}
-  m_Name: Plasma Trail
+  m_Name: AI Plasma Trail
   m_EditorClassIdentifier: 
   trailMaterial: {fileID: 2100000, guid: cf3eba813c582d543b93dcd627ec97db, type: 2}
   widthCurve:
@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.05
+      value: 0.075
       inSlope: 0.0055364566
       outSlope: 0.0055364566
       tangentMode: 0
@@ -70,4 +70,4 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   missDistance: 100
-  SimulationSpeed: 100
+  SimulationSpeed: 200

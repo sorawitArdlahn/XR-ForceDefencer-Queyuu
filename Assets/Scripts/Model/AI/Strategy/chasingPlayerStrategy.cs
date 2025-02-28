@@ -48,7 +48,7 @@ public class chasingPlayerStrategy : IStrategy
         Quaternion targetRotationSocket = Quaternion.LookRotation(socketLookAt - blackboard.SelfTransform.position);
         
         // slerp rotations and assign
-        blackboard.SelfTransform.rotation = Quaternion.Slerp(blackboard.SelfTransform.rotation, targetRotationSocket, Time.deltaTime);
+        blackboard.SelfTransform.rotation = Quaternion.Slerp(blackboard.SelfTransform.rotation, targetRotationSocket, Time.deltaTime*2);
     }
 
 
