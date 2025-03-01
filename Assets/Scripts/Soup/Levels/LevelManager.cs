@@ -3,7 +3,7 @@ using System.Persistence;
 using System.Collections.Generic;
 using UnityEngine;
 using GameController;
-using Gameevent;
+using EventSystem;
 
 namespace Spawn {
 public class LevelManager : MonoBehaviour, IBind<LevelData>
@@ -58,11 +58,16 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
         
     }
 
+    public void LevelCompleted() {
+        //TODO : Level Completed
+        Debug.Log("Level Completed");
+    }
+
     public void ResetStage()
     {
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnLevel();
-        OnStartLevel.Raise(this);
+        OnStartLevel?.Raise(this);
         //Reset Robot Stats
         //Reset Map
         //Reset Spawner

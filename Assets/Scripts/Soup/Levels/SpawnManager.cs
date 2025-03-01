@@ -1,8 +1,10 @@
-using System;
+using Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mapgenerate;
+using EventSystem;
+using System;
 
 
 namespace Spawn {
@@ -18,7 +20,7 @@ public class SpawnerManager : MonoBehaviour
     public enum SpawnState { SPAWNING, WAITING, COUNTING, COMPLETED };
     public GameObject enemies;
 
-    List<GameObject> enemyList = new List<GameObject>();
+    [NonSerialized] List<GameObject> enemyList = new List<GameObject>();
 
     //[SerializeField] public float minDistanceFromPlayerToSpawn, maxDistanceFromPlayerToSpawn;
 
@@ -28,20 +30,24 @@ public class SpawnerManager : MonoBehaviour
 
     //Wave currentWave;
 
+    List<GameObject> enemiesInWave = new List<GameObject>();
+
+    int numEnemiesInWave = 0;
+    int numEnemiesInWaveRemaining = 0;
+
     public int totalEnemies;
 
     int nextWave = 0;
     public float timeBetweenWaves = 5f;
     float waveCountDown;
 
+    GameEvent allEnemiesDead;
+
     private SpawnState state = SpawnState.COUNTING;
 
     //private float searchCountdown = 2f;
 
     //Difficulty increase based on number of levels
-    private int currentLevel;
-
-    public Player player;
 
 
     [System.Serializable]
@@ -72,6 +78,8 @@ public class SpawnerManager : MonoBehaviour
     public void ResetSpawn() {
         nextWave = 0;
         waveCountDown = timeBetweenWaves;
+        numEnemiesInWave = 0;
+        numEnemiesInWaveRemaining = 0;
         state = SpawnState.COUNTING;
         //inactiveButton.gameObject.SetActive(false);
 
@@ -81,7 +89,7 @@ public class SpawnerManager : MonoBehaviour
             Destroy(enemy);
         }
         
-        setStageDetailBasedOnLevel();
+        setWaveBasedOnLevelData();
         StartCoroutine(WaitForMapInitialization());
     }
 
@@ -94,7 +102,7 @@ public class SpawnerManager : MonoBehaviour
         }
 
         MapGeneratedFinish = true;
-        SpawnTrigger();
+        OnEnemyDeath();
         
     }
 
@@ -130,16 +138,12 @@ public class SpawnerManager : MonoBehaviour
     */
 
     //if all enemy is dead, spawn next wave
-    bool EnemyIsAlive() {
 
-        if (GameObject.FindGameObjectWithTag("Enemy") == null) {
-                return false;
-        }
-        return true;
-    }
 
     IEnumerator SpawnWave(Wave wave) {
         state = SpawnState.SPAWNING;
+
+        numEnemiesInWave = numEnemiesInWaveRemaining = wave.enemyCount;
 
         for (int i = 0; i < wave.subWaves.Count; i++) {
 
@@ -158,6 +162,7 @@ public class SpawnerManager : MonoBehaviour
         yield break;
     }
 
+    
     //Spawn Enemy Logic
     void SpawnEnemy(GameObject _enemy) {
     GameObject[] lowGrounds = GameObject.FindGameObjectsWithTag("LowGround");
@@ -168,49 +173,26 @@ public class SpawnerManager : MonoBehaviour
     GameObject randomGround = lowGrounds[UnityEngine.Random.Range(0, lowGrounds.Length)];
     spawnPosition = randomGround.transform.position;
 
+    GameObject spawnedEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
 
-    //TODO : IMPLEMENT TO SPAWN NOT TOO CLOSE TO THE PLAYER AND HITBOX NOT OVERLAP WITH OTHER ENEMIES
+    if (spawnedEnemy.TryGetComponent(out IDamageable damageable))
+    {
+        damageable.OnDeath += OnEnemyDeath;
+    }
 
-        //if (Vector3.Distance(spawnPosition, player.getLocation()) > 5f) // Ensure it's not too close to the player
-        
-            /*
-            Collider[] colliders = Physics.OverlapSphere(spawnPosition, _enemy.hitboxRadius);
-            validPosition = true;
-
-            foreach (Collider collider in colliders)
-            {
-                if (collider.CompareTag("Enemy"))
-                {
-                    validPosition = false;
-                    break;
-                }
-            }
-            */
-        
-    //Instantiated Object need to be Monobehavior class, or inherited from Monobehavior
-    Instantiate(_enemy, spawnPosition, Quaternion.identity);
-
+    enemiesInWave.Add(spawnedEnemy);
     Debug.Log("Spawning Enemy: " + _enemy.name);
     }
 
-    void WaveCompleted() {
-        Debug.Log("Wave Completed");
+    void StageCleared() {
+        allEnemiesDead?.Raise(this);
         state = SpawnState.COMPLETED;
         //inactiveButton.gameObject.SetActive(true);
         
     }
-     
-
-    public void setCurrentLevel(int level) {
-        currentLevel = level;
-    }
-
-    public int getCurrentLevel() {
-        return currentLevel;
-    }
 
 
-    void setStageDetailBasedOnLevel() {
+    void setWaveBasedOnLevelData() {
 
         //Set Enemy Power based on Level
         /*
@@ -271,14 +253,18 @@ public class SpawnerManager : MonoBehaviour
         Debug.Log("Nice Job");
     }
 
-    int EnemyCount()
-    {
-        return GameObject.FindGameObjectsWithTag("Enemy").Length;
+    void OnEnemyDeath(Vector3 Position = new Vector3()) {
+        numEnemiesInWaveRemaining--;
+        if (numEnemiesInWaveRemaining <= 0 && nextWave >= waves.Length) {
+            StageCleared();
+        }
+        else if (numEnemiesInWaveRemaining <= 0) NewWave();
+
     }
 
-    public void SpawnTrigger() {
+    public void NewWave() {
         //Spawn Enemy
-        if (EnemyIsAlive() || !MapGeneratedFinish) {
+        if (!MapGeneratedFinish) {
             return;
         }
 
@@ -287,6 +273,7 @@ public class SpawnerManager : MonoBehaviour
             Debug.Log("Initiating new wave...");
         }
     }
+
 
     public void SetEnemies(List<GameObject> levelEnemyList, int levelTotalEnemy) {
         enemyList = new List<GameObject>();

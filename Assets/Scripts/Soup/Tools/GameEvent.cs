@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameevent {
+namespace EventSystem {
 [CreateAssetMenu(fileName = "GameEvent")]
 [System.Serializable]
 public class GameEvent : RuntimeScriptableObject
