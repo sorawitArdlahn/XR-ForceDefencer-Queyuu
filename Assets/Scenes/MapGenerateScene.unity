@@ -375,6 +375,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3735505320970624475, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
   m_PrefabInstance: {fileID: 1579265962}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &705165673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
+  m_PrefabInstance: {fileID: 1772853184}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7b939406f83364e974a1d4c35b1c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &941761319
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +551,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
+      propertyPath: MapGenerator
+      value: 
+      objectReference: {fileID: 705165673}
+    - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: enemiesList.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -562,6 +577,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1037010123652569706, guid: 95eae1845f872e1428076724d7614382, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1222541084}
+    - targetCorrespondingSourceObject: {fileID: 1037010123652569706, guid: 95eae1845f872e1428076724d7614382, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1222541087}
   m_SourcePrefab: {fileID: 100100000, guid: 95eae1845f872e1428076724d7614382, type: 3}
 --- !u!1 &1222541083 stripped
 GameObject:
@@ -607,6 +625,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570fb14ad8dae5b48922ac23384f3f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1222541087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222541083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5cc5ce0358eed164297a715a87100d17, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1222541085}
+        m_TargetAssemblyTypeName: Spawn.LevelManager, Assembly-CSharp
+        m_MethodName: setPlayerPositionOnMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1579265962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -637,15 +683,15 @@ PrefabInstance:
       objectReference: {fileID: 1636550128}
     - target: {fileID: 7086034561800508371, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7086034561800508371, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 140.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7086034561800508371, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7086034561800508371, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: m_LocalRotation.w
@@ -777,6 +823,10 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 5cc5ce0358eed164297a715a87100d17, type: 2}
     - target: {fileID: 6904451353420057443, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: m_Name
+      value: MapGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904451353420057443, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
+      propertyPath: m_TagString
       value: MapGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 8779479113591081500, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}

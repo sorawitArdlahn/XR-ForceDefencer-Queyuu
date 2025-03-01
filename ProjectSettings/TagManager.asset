@@ -6,6 +6,9 @@ TagManager:
   tags:
   - HighGround
   - SpawnManager
+  - LowGround
+  - Enemy
+  - MapGenerator
   layers:
   - Default
   - TransparentFX

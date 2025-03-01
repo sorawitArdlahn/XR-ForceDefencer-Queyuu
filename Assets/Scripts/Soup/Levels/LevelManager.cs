@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameController;
 using EventListener;
+using Mapgenerate;
 
 namespace Spawn {
 public class LevelManager : MonoBehaviour, IBind<LevelData>
@@ -22,12 +23,31 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
     public GameEvent OnStartLevel;
 
+    WaveFunctionCollapseV2 mapGenerator;
+
     SpawnerManager spawnerManager;
+
+    GameObject player;
 
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
 
     void Start()
     {
+        if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
+        {
+            spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManager>();
+        }
+
+        if (GameObject.FindGameObjectWithTag("MapGenerator") != null)
+        {
+            mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<WaveFunctionCollapseV2>();
+        }
+
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
         ResetStage();
     }
 
@@ -41,19 +61,10 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
         data.currentLevel = level;
     }
 
-    void SetLevelDetailBasedOnLevel() {
+    void SetLevelDetailBasedOnCurrentLevel() {
 
-        if (GameObject.FindGameObjectWithTag("SpawnManager") == null)
-        {
-            Debug.LogWarning("SpawnManager not found, skipping level setup.");
-            return;
-        }
-        spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManager>();
-        //TODO : Modify Enemies based on level
-        spawnerManager.SetEnemies(enemiesList, getCurrentLevel() + 15);
-        spawnerManager.getTotalEnemies();
-        
-
+        spawnerManager?.SetEnemies(enemiesList, getCurrentLevel() + 15);
+        spawnerManager?.getTotalEnemies();
         //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager
         
     }
@@ -63,19 +74,21 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
         Debug.LogWarning("Level Completed!");
     }
 
+    public void setPlayerPositionOnMap() {
+        Vector3 playerSpawnPosition = mapGenerator.GetRandomPosition();
+        playerSpawnPosition.y += 30;
+        player.transform.position = playerSpawnPosition;
+
+    }
+
     public void ResetStage()
     {
         setCurrentLevel(getCurrentLevel() + 1);
-        SetLevelDetailBasedOnLevel();
+        SetLevelDetailBasedOnCurrentLevel();
         OnStartLevel?.Raise(this);
         //Reset Robot Stats
         //Reset Map
         //Reset Spawner
-    }
-
-    public void backToPreparation() {
-        calculateCheckpointLevel();
-        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
     }
 
     void calculateCheckpointLevel() {
@@ -85,6 +98,13 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
         data.highestLevel = getCurrentLevel();
         data.checkpointLevel = getCurrentLevel() - 2;
+    }
+
+    //TO/do : Turn these below method into UI class or somewhere else
+
+    public void backToPreparation() {
+        calculateCheckpointLevel();
+        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
     }
 
     public void GameOver() {
@@ -102,9 +122,6 @@ public class LevelData : ISaveable
     public int currentLevel;
     public int highestLevel = 0;
     public int checkpointLevel = 0;
-
-
-
 }
 
 }

@@ -10,7 +10,6 @@ using Spawn;
 namespace Mapgenerate {
 public class WaveFunctionCollapseV2 : MonoBehaviour
 {
-    private LevelManager levelManager;
 
     //size of the map : eg 3 is 3x3
     public int dimensions;
@@ -20,7 +19,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     public List<MapPatternSet> tileSet;
     List<MapPatternTemplate> templateList;
     private MapPatternV2[] tileObjects = new MapPatternV2[0];
-    List<CellV2> gridComponent;
+    public List<CellV2> gridComponent;
     public CellV2 cellV2Object;
 
     //size of the cellV2 : eg 1 is 1x1
@@ -45,12 +44,15 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     //[SerializeField]
     private NavMeshSurface navMeshSurface;
 
+    public Vector3 GetRandomPosition() {
+        return gridComponent[Random.Range(0, dimensions)].transform.position;
+    }
 
     public void Awake() {
 
         gridComponent = new List<CellV2>();
         gridParent = new GameObject("GeneratedMap");
-        templateList = tileSet[UnityEngine.Random.Range(0, tileSet.Count)].mapPatternTemplatesInSet;
+        templateList = tileSet[Random.Range(0, tileSet.Count)].mapPatternTemplatesInSet;
 
         navMeshSurface = gridParent.AddComponent<NavMeshSurface>();
 
@@ -75,7 +77,6 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
         //setBorderHeight();
         //CreateBorderWalls();
         StartCoroutine(CheckEntropy());
-
 
     }
 
@@ -139,7 +140,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     }
 
     void CollapseCellV2(List<CellV2> tempGrid) {
-        int randIndex = UnityEngine.Random.Range(0, tempGrid.Count);
+        int randIndex = Random.Range(0, tempGrid.Count);
 
         CellV2 cellV2ToCollapse = tempGrid[randIndex];
 
@@ -152,18 +153,18 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
             string selectedType = SelectTileType(cellV2ToCollapse.tileOptions.ToList());
             cellV2ToCollapse.tileOptions = cellV2ToCollapse.tileOptions.Where(tile => tile.GetThisPatternType().GetTypeName() == selectedType).ToArray();
             
-            MapPatternV2 selectedTile = cellV2ToCollapse.tileOptions[UnityEngine.Random.Range(0, cellV2ToCollapse.tileOptions.Length)];
+            MapPatternV2 selectedTile = cellV2ToCollapse.tileOptions[Random.Range(0, cellV2ToCollapse.tileOptions.Length)];
             cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
         }
         catch {
             MapPatternV2 selectedTile = backupTile;
             cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
-            UnityEngine.Debug.Log("Backup Tile Used Times =" + backupUsedCount);
+            Debug.Log("Backup Tile Used Times =" + backupUsedCount);
             backupUsedCount++;
         }
 
         if (backupUsedCount > dimensions * 0.35) {
-            UnityEngine.Debug.Log("Backup Tile Used More Than " + backupUsedCount + " Times\nResetting Map....");
+            Debug.Log("Backup Tile Used More Than " + backupUsedCount + " Times\nResetting Map....");
             ResetMap();
             return;
         }
@@ -471,6 +472,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
         IsInitialized = false;
         InitializeGrid();
     }
+    
     
 
 }
