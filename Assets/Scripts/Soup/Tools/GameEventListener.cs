@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace EventSystem
+namespace EventListener
 {
     [System.Serializable]
     public class CustomGameEvent : UnityEvent<Component, object> { }

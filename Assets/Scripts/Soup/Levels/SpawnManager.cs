@@ -3,45 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mapgenerate;
-using EventSystem;
+using EventListener;
 using System;
 
 
 namespace Spawn {
+public enum SpawnState { SPAWNING, WAITING, COUNTING, COMPLETED }
 public class SpawnerManager : MonoBehaviour
 {
     
     //MapGenerator.
     private WaveFunctionCollapseV2 waveFunctionCollapse;
     private bool MapGeneratedFinish = false;
-
-    // Start is called before the first frame update
-
-    public enum SpawnState { SPAWNING, WAITING, COUNTING, COMPLETED };
-    public GameObject enemies;
-
+    // Start is called before the first frame update 
     [NonSerialized] List<GameObject> enemyList = new List<GameObject>();
-
     //[SerializeField] public float minDistanceFromPlayerToSpawn, maxDistanceFromPlayerToSpawn;
-
     Wave[] waves;
-
-    //public Button inactiveButton;
-
-    //Wave currentWave;
-
     List<GameObject> enemiesInWave = new List<GameObject>();
 
     int numEnemiesInWave = 0;
     int numEnemiesInWaveRemaining = 0;
 
-    public int totalEnemies;
+    [NonSerialized] public int totalEnemies;
 
     int nextWave = 0;
     public float timeBetweenWaves = 5f;
     float waveCountDown;
 
-    GameEvent allEnemiesDead;
+    [SerializeField] GameEvent allEnemiesDead;
 
     private SpawnState state = SpawnState.COUNTING;
 

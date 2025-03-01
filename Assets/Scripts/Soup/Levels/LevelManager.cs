@@ -3,7 +3,7 @@ using System.Persistence;
 using System.Collections.Generic;
 using UnityEngine;
 using GameController;
-using EventSystem;
+using EventListener;
 
 namespace Spawn {
 public class LevelManager : MonoBehaviour, IBind<LevelData>
@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
     public void LevelCompleted() {
         //TODO : Level Completed
-        Debug.Log("Level Completed");
+        Debug.LogWarning("Level Completed!");
     }
 
     public void ResetStage()

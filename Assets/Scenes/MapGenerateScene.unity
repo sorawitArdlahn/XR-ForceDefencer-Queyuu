@@ -335,10 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf5c8b1fee77ab429e1593ea85826b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: {fileID: 0}
-  totalEnemies: 0
   timeBetweenWaves: 5
-  player: {fileID: 0}
+  allEnemiesDead: {fileID: 11400000, guid: 333b5a8842419ed4fa895b8d9ce5e7ca, type: 2}
 --- !u!114 &312031056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,8 +558,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1037010123652569706, guid: 95eae1845f872e1428076724d7614382, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1222541084}
   m_SourcePrefab: {fileID: 100100000, guid: 95eae1845f872e1428076724d7614382, type: 3}
+--- !u!1 &1222541083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1037010123652569706, guid: 95eae1845f872e1428076724d7614382, type: 3}
+  m_PrefabInstance: {fileID: 1222541082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1222541084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222541083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 333b5a8842419ed4fa895b8d9ce5e7ca, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1222541085}
+        m_TargetAssemblyTypeName: Spawn.LevelManager, Assembly-CSharp
+        m_MethodName: LevelCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1222541085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
+  m_PrefabInstance: {fileID: 1222541082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222541083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570fb14ad8dae5b48922ac23384f3f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1579265962
 PrefabInstance:
   m_ObjectHideFlags: 0
