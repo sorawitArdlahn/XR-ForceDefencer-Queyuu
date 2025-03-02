@@ -75,8 +75,8 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
     }
 
     public void setPlayerPositionOnMap() {
-        Vector3 playerSpawnPosition = mapGenerator.GetRandomPosition();
-        playerSpawnPosition.y += 30;
+        Vector3 playerSpawnPosition = mapGenerator.GetPlayerSpawnPosition();
+        playerSpawnPosition.y += 15;
         player.transform.position = playerSpawnPosition;
 
     }

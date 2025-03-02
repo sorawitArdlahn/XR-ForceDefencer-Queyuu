@@ -23,6 +23,7 @@ public class MapPatternTemplate : ScriptableObject
     [Tooltip("negZ")]
     public List<MapPatternType> rightNeighbors;
 
+    public bool playerSpawnAble;
     public bool isFlipped = false;
     public bool isRotated = false;
 

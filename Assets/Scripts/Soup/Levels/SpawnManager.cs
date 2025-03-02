@@ -13,7 +13,7 @@ public class SpawnerManager : MonoBehaviour
 {
     
     //MapGenerator.
-    private WaveFunctionCollapseV2 waveFunctionCollapse;
+    private WaveFunctionCollapseV2 mapGenerator;
     private bool MapGeneratedFinish = false;
     // Start is called before the first frame update 
     [NonSerialized] List<GameObject> enemyList = new List<GameObject>();
@@ -59,7 +59,7 @@ public class SpawnerManager : MonoBehaviour
 
     //Initialization
     void Awake() {
-        waveFunctionCollapse = FindObjectOfType<WaveFunctionCollapseV2>();
+        mapGenerator = FindObjectOfType<WaveFunctionCollapseV2>();
     }
 
     //Set initial Countdown Time
@@ -85,7 +85,7 @@ public class SpawnerManager : MonoBehaviour
     IEnumerator WaitForMapInitialization()
     {
         // Wait until WaveFunctionCollapseV2 has finished initializing
-        while (!waveFunctionCollapse.IsInitialized)
+        while (!mapGenerator.IsInitialized)
         {
             yield return null;
         }
@@ -154,13 +154,16 @@ public class SpawnerManager : MonoBehaviour
     
     //Spawn Enemy Logic
     void SpawnEnemy(GameObject _enemy) {
-    GameObject[] lowGrounds = GameObject.FindGameObjectsWithTag("LowGround");
-    Vector3 spawnPosition = Vector3.zero;
-    //bool validPosition = false;
 
-    //while (!validPosition)
-    GameObject randomGround = lowGrounds[UnityEngine.Random.Range(0, lowGrounds.Length)];
-    spawnPosition = randomGround.transform.position;
+    CellV2 spawnTile = mapGenerator.gridComponent[UnityEngine.Random.Range(0, mapGenerator.gridComponent.Count)]
+    ;
+
+    float tileHeight = spawnTile.tileOptions[0].originalMapPattern.GetPrefabHeight();
+    
+    Vector3 spawnPosition = Vector3.zero;
+
+    spawnPosition = spawnTile.transform.position;
+    spawnPosition.y += tileHeight + 8;
 
     GameObject spawnedEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
 
@@ -173,22 +176,15 @@ public class SpawnerManager : MonoBehaviour
     Debug.Log("Spawning Enemy: " + _enemy.name);
     }
 
+
     void StageCleared() {
-        allEnemiesDead?.Raise(this);
         state = SpawnState.COMPLETED;
-        //inactiveButton.gameObject.SetActive(true);
-        
+        allEnemiesDead?.Raise(this);
+        //inactiveButton.gameObject.SetActive(true);   
     }
 
 
     void setWaveBasedOnLevelData() {
-
-        //Set Enemy Power based on Level
-        /*
-        for (int i = 0; i < enemies.Count; i++) {
-            enemies[i].setPowerBasedOnLevel(currentLevel);
-        }
-        */
 
         //Set Wave Detail based on Level;
         //Distribution of enemies in waves

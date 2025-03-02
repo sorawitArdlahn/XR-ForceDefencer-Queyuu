@@ -4,7 +4,7 @@ using UnityEngine;
 public class MapPatternV2
 {
     // Start is called before the first frame update
-    MapPatternTemplate originalMapPattern;
+    public MapPatternTemplate originalMapPattern;
 
     string prefabName;
 
@@ -12,6 +12,8 @@ public class MapPatternV2
     public List<MapPatternType> downNeighbors;
     public List<MapPatternType> leftNeighbors;
     public List<MapPatternType> rightNeighbors;
+
+    public bool playerSpawnAble;
 
     private int timeRotated;
 
@@ -24,6 +26,7 @@ public class MapPatternV2
         this.leftNeighbors = originalMapPattern.leftNeighbors;
         this.rightNeighbors = originalMapPattern.rightNeighbors;
         this.timeRotated = originalMapPattern.timeRotated;
+        this.playerSpawnAble = originalMapPattern.playerSpawnAble
         ;
     }
 
@@ -32,7 +35,8 @@ public class MapPatternV2
         List<MapPatternType> upNeighbors,
         List<MapPatternType> downNeighbors,
         List<MapPatternType> leftNeighbors,
-        List<MapPatternType> rightNeighbors)
+        List<MapPatternType> rightNeighbors,
+        bool playerSpawnAble)
     {
         this.originalMapPattern = mapPattern.originalMapPattern;
         this.timeRotated = mapPattern.timeRotated + 1;
@@ -41,6 +45,7 @@ public class MapPatternV2
         this.downNeighbors = downNeighbors;
         this.leftNeighbors = leftNeighbors;
         this.rightNeighbors = rightNeighbors;
+        this.playerSpawnAble = playerSpawnAble;
     }
 
     public string GetPrefabName()

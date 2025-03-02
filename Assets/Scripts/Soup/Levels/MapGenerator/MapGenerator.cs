@@ -5,7 +5,7 @@ using System.Linq;
 using Unity.AI.Navigation;
 using UnityEngine;
 using EventListener;
-using Spawn;
+using System;
 
 namespace Mapgenerate {
 public class WaveFunctionCollapseV2 : MonoBehaviour
@@ -19,7 +19,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     public List<MapPatternSet> tileSet;
     List<MapPatternTemplate> templateList;
     private MapPatternV2[] tileObjects = new MapPatternV2[0];
-    public List<CellV2> gridComponent;
+    [NonSerialized] public List<CellV2> gridComponent;
     public CellV2 cellV2Object;
 
     //size of the cellV2 : eg 1 is 1x1
@@ -44,15 +44,20 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     //[SerializeField]
     private NavMeshSurface navMeshSurface;
 
-    public Vector3 GetRandomPosition() {
-        return gridComponent[Random.Range(0, dimensions)].transform.position;
+    public Vector3 GetPlayerSpawnPosition() {
+        foreach (CellV2 cell in gridComponent) {
+            if (cell.tileOptions[0].playerSpawnAble) {
+                return cell.transform.position;
+            }
+        }
+        return Vector3.zero;
     }
 
     public void Awake() {
 
         gridComponent = new List<CellV2>();
         gridParent = new GameObject("GeneratedMap");
-        templateList = tileSet[Random.Range(0, tileSet.Count)].mapPatternTemplatesInSet;
+        templateList = tileSet[UnityEngine.Random.Range(0, tileSet.Count)].mapPatternTemplatesInSet;
 
         navMeshSurface = gridParent.AddComponent<NavMeshSurface>();
 
@@ -140,7 +145,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
     }
 
     void CollapseCellV2(List<CellV2> tempGrid) {
-        int randIndex = Random.Range(0, tempGrid.Count);
+        int randIndex = UnityEngine.Random.Range(0, tempGrid.Count);
 
         CellV2 cellV2ToCollapse = tempGrid[randIndex];
 
@@ -153,7 +158,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
             string selectedType = SelectTileType(cellV2ToCollapse.tileOptions.ToList());
             cellV2ToCollapse.tileOptions = cellV2ToCollapse.tileOptions.Where(tile => tile.GetThisPatternType().GetTypeName() == selectedType).ToArray();
             
-            MapPatternV2 selectedTile = cellV2ToCollapse.tileOptions[Random.Range(0, cellV2ToCollapse.tileOptions.Length)];
+            MapPatternV2 selectedTile = cellV2ToCollapse.tileOptions[UnityEngine.Random.Range(0, cellV2ToCollapse.tileOptions.Length)];
             cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
         }
         catch {
@@ -377,7 +382,8 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
                         upNeighbors: newTile.leftNeighbors,
                         downNeighbors: newTile.rightNeighbors,
                         leftNeighbors: newTile.downNeighbors,
-                        rightNeighbors: newTile.upNeighbors
+                        rightNeighbors: newTile.upNeighbors,
+                        playerSpawnAble: newTile.playerSpawnAble
                     );
                     newTile = rotatedTile;
                     tileObjects = tileObjects.Concat(new MapPatternV2[] { rotatedTile }).ToArray();
@@ -390,7 +396,8 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
                     upNeighbors: newTile.rightNeighbors,
                     downNeighbors: newTile.leftNeighbors,
                     leftNeighbors: newTile.upNeighbors,
-                    rightNeighbors: newTile.downNeighbors
+                    rightNeighbors: newTile.downNeighbors,
+                    playerSpawnAble: newTile.playerSpawnAble
                 );
                 tileObjects = tileObjects.Concat(new MapPatternV2[] { rotatedTile }).ToArray();
             }
