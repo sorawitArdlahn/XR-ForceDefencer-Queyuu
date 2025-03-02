@@ -31,6 +31,8 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
 
+    [SerializeField] private bool forceDebug;
+
     void Start()
     {
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
@@ -48,7 +50,10 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        ResetStage();
+        if (GameStateManager.Instance?.GetCurrentGameState() == GameState.InBattle || forceDebug)
+        {
+            ResetStage();
+        }
     }
 
     public int getCurrentLevel()

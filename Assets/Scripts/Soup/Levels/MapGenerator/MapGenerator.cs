@@ -46,7 +46,7 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
 
     public Vector3 GetPlayerSpawnPosition() {
         foreach (CellV2 cell in gridComponent) {
-            if (cell.tileOptions[0].playerSpawnAble) {
+            if (cell.tileOptions[0].originalMapPattern.playerSpawnAble) {
                 return cell.transform.position;
             }
         }

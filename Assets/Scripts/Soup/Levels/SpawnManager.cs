@@ -154,26 +154,39 @@ public class SpawnerManager : MonoBehaviour
     
     //Spawn Enemy Logic
     void SpawnEnemy(GameObject _enemy) {
+        GameObject playerPos = GameObject.FindGameObjectWithTag("Player");
+        bool validPosition = false;
+        float minDistanceFromPlayer = 25f;
+        float checkRadius = 1f;
+        Vector3 spawnPosition = Vector3.zero;
 
-    CellV2 spawnTile = mapGenerator.gridComponent[UnityEngine.Random.Range(0, mapGenerator.gridComponent.Count)]
-    ;
+        
+        // Check Validity of Spawn Position
+        while (!validPosition) {
+            CellV2 spawnTile = mapGenerator.gridComponent[UnityEngine.Random.Range(0, mapGenerator.gridComponent.Count)];
+            float tileHeight = spawnTile.tileOptions[0].originalMapPattern.GetPrefabHeight();
+            spawnPosition = spawnTile.transform.position;
+            spawnPosition.y += tileHeight + 8;
 
-    float tileHeight = spawnTile.tileOptions[0].originalMapPattern.GetPrefabHeight();
-    
-    Vector3 spawnPosition = Vector3.zero;
+            // Check if the spawn position is too close to the player
+            if (Vector3.Distance(spawnPosition, playerPos.transform.position) > minDistanceFromPlayer)
+            {
+                Collider[] colliders = Physics.OverlapSphere(spawnPosition, checkRadius);
+                if (colliders.Length == 0)
+                {
+                    validPosition = true;
+                }
+            }
+        }
 
-    spawnPosition = spawnTile.transform.position;
-    spawnPosition.y += tileHeight + 8;
+        GameObject spawnedEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
+        if (spawnedEnemy.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.OnDeath += OnEnemyDeath;
+        }
 
-    GameObject spawnedEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
-
-    if (spawnedEnemy.TryGetComponent(out IDamageable damageable))
-    {
-        damageable.OnDeath += OnEnemyDeath;
-    }
-
-    enemiesInWave.Add(spawnedEnemy);
-    Debug.Log("Spawning Enemy: " + _enemy.name);
+        enemiesInWave.Add(spawnedEnemy);
+        Debug.Log("Spawning Enemy: " + _enemy.name);
     }
 
 
