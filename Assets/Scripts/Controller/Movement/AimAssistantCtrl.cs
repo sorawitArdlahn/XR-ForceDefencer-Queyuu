@@ -19,8 +19,8 @@ namespace Controller.Movement
         public float targetHight;
 
         private Vector3 newAngle;
-    
-    
+
+        public float targetDistance;
         public float setDistance; // for debuging
     
         private bool isAimActive = false;
@@ -52,6 +52,7 @@ namespace Controller.Movement
             LockOnText.text =  "OFF" ;
             LockOnText.color = Color.red;
             isAimActive = false;
+            target = null;
         }
 
         private void Update()
@@ -64,6 +65,7 @@ namespace Controller.Movement
 
         private GameObject FindClosestEnemy()
         {
+            newAngle = Vector3.zero;
             float closestDistance = 999;
             GameObject closestEnemy = null;
             foreach (GameObject enemy in allEnemies)
@@ -76,37 +78,54 @@ namespace Controller.Movement
                 }
             }
 
-            return closestEnemy;
+            
+            targetDistance = Vector3.Distance(playerTransform.position, closestEnemy.transform.position);
+            if (targetDistance < 100)
+            {
+               return closestEnemy;
+            }
+
+            return null;
+            
         }
 
         private void MoveToClosetEnemy()
         {
+            newAngle = Vector3.zero;
             target = FindClosestEnemy();
-            Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + targetHight, target.transform.position.z);
-            transform.position = targetPosition;
-            transform.LookAt(cockpitTransform.position);
-        
-            aimImage.transform.position = pointer.position;
-            aimImage.transform.LookAt(cockpitTransform.position);
-            aimImage.gameObject.SetActive(true);
-
-            if (Vector3.Distance(playerTransform.position, pointer.position) >= setDistance)
+            if (target != null)
             {
-                var rotation = Quaternion.LookRotation(pointer.position - playerTransform.position);
+                Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + targetHight, target.transform.position.z);
+                transform.position = targetPosition;
+                transform.LookAt(cockpitTransform.position);
             
-                rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
-            
-                playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, rotation, Time.deltaTime); 
-            
-                cockpitTransform.LookAt(pointer.position);
-            
-                newAngle = cockpitTransform.rotation.eulerAngles;
+                aimImage.transform.position = pointer.position;
+                aimImage.transform.LookAt(cockpitTransform.position);
+                aimImage.gameObject.SetActive(true);
+
+                if (Vector3.Distance(playerTransform.position, pointer.position) >= setDistance)
+                {
+                    var rotation = Quaternion.LookRotation(pointer.position - playerTransform.position);
+                
+                    rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
+                
+                    playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, rotation, Time.deltaTime); 
+                
+                    cockpitTransform.LookAt(pointer.position);
+                
+                    newAngle = cockpitTransform.rotation.eulerAngles;
+                }
             }
-        
+
         }
 
-        public Vector3 GetNewAngles()
+        public Vector3 GetNewAngles(float cockpitRotation)
         {
+            if(newAngle == Vector3.zero)
+            {
+                return new Vector3(cockpitRotation, cockpitRotation, cockpitRotation);
+            }
+
             return newAngle;
         }
     }

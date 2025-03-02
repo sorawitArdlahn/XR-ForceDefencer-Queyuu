@@ -140,8 +140,10 @@ namespace Model.Combat
             {
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.TakeDamage(damageConfig.GetDamage());
+                    Debug.Log("Hit " + hit.collider.name);
+                    damageable.TakeDamage(damageConfig.GetDamage());  
                 }
+                else Debug.Log("Hit " + hit.collider.name);
             }
             yield return new WaitForSeconds(trailConfig.Duration);
             yield return null;

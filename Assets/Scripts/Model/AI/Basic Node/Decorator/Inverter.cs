@@ -7,7 +7,6 @@ public class Inverter : Node
 
     public override Status Process()
     {
-        Debug.Log("Inverter process");
         switch (children[0].Process())
         {
             case Status.Running:

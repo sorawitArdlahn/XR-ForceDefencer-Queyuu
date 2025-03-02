@@ -1324,7 +1324,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &904028949841277507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,7 +1340,7 @@ MonoBehaviour:
   gun: 0
   gunParent: {fileID: 3349263037547955076}
   guns:
-  - {fileID: 11400000, guid: b3ae54ffc693f294a8282a31b43a4653, type: 2}
+  - {fileID: 0}
   activeGun: {fileID: 0}
 --- !u!114 &8850647861482351253
 MonoBehaviour:

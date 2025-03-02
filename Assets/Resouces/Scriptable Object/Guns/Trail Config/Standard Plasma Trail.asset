@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd371f03c1b4734d8bb5c740c5e9b3c, type: 3}
   m_Name: Standard Plasma Trail
   m_EditorClassIdentifier: 
-  trailMaterial: {fileID: 2100000, guid: cf3eba813c582d543b93dcd627ec97db, type: 2}
+  trailMaterial: {fileID: 2100000, guid: 0f6b2c4b2dfb3e447b80213bee90374a, type: 2}
   widthCurve:
     serializedVersion: 2
     m_Curve:

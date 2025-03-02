@@ -14,9 +14,11 @@ public class AIBrain_Crusher : MonoBehaviour, IDamageable
     private BehaviourTree behaviourTree;
     
     
-    public int CurrentHealth { get => blackboard.currentHealth; private set => blackboard.currentHealth = value; }
-    public int CurrentArmor { get; }
     public int MaxHealth { get => blackboard.maxHealth; private set => blackboard.maxHealth = value; }
+    public int MaxArmor { get => blackboard.maxArmor; private set => blackboard.maxArmor = value; }
+    public int CurrentHealth { get => blackboard.currentHealth; set => blackboard.currentHealth = value; }
+    public int CurrentArmor { get => blackboard.currentArmor; set => blackboard.currentArmor = value; }
+    
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
 
@@ -58,19 +60,31 @@ public class AIBrain_Crusher : MonoBehaviour, IDamageable
     }
 
     
-    public void TakeDamage(int Damage)
+    public void TakeDamage(int damage)
     {
-        int damageTaken = Mathf.Clamp(Damage, 0, CurrentHealth);
-        CurrentHealth -= damageTaken;
-
-        if (damageTaken != 0)
+        int damageTaken = damage;
+            
+        if (CurrentArmor > 0)
         {
-            OnTakeDamage?.Invoke(damageTaken);
+            damageTaken = damage / 2; //Armor can absorb damage and reduce them to half.
         }
-
-        if (CurrentHealth == 0 && damageTaken != 0)
+        
+        int sign = (int)Mathf.Sign(CurrentArmor - damageTaken); //Check if Damage value over armor or not.
+        
+        if (sign >= 0) //if damage still less than armor. 
         {
-            OnDeath?.Invoke(transform.position);
+            CurrentArmor -= damageTaken;
+        }
+        else
+        {
+            damageTaken =  Mathf.Abs(CurrentArmor - damageTaken); //Calculate the remaining damage after armor reduction.
+            CurrentArmor = 0;
+            
+            CurrentHealth -= damageTaken;
+            if (CurrentHealth <= 0) // Death
+            {
+                CurrentHealth= 0;  
+            }
         }
     }
 }

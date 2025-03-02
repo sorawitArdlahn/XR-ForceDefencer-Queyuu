@@ -28,11 +28,9 @@ public class FindPlayer : IStrategy
         if (Vector3.Distance(entity.position, target.position) <= minDistance)
         {
 
-            Debug.Log("Player found");
             LookAtPlayer();
             return Node.Status.Success;
         }
-        Debug.Log("Player not found");
         return Node.Status.Failure;
     }
 
