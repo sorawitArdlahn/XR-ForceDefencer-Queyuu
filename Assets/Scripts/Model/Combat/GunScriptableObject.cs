@@ -18,7 +18,7 @@ namespace Model.Combat
     
         private GameObject model;
         private float lastShotTime;
-        private ParticleSystem shootParticleSystem;
+        private ParticleManager shootParticleSystem;
         private UnityEngine.Pool.ObjectPool<TrailRenderer> trailPool;
         private AudioSource shootingAudioSource;
 
@@ -57,14 +57,14 @@ namespace Model.Combat
             if (shootParticleSystem == null)
             {
                 trailPool = new UnityEngine.Pool.ObjectPool<TrailRenderer>(CreateTrail);
-                shootParticleSystem = GetComponentInChildren<ParticleSystem>();
+                shootParticleSystem = GetComponentInChildren<ParticleManager>();
                 shootingAudioSource = GetComponent<AudioSource>();
             }
 
             if (Time.time > shootConfig.fireRate + lastShotTime)
             {
                 lastShotTime = Time.time;
-                shootParticleSystem.Play();
+                shootParticleSystem.PlayParticles();
                 audioConfig.PlayShootingClip(shootingAudioSource);
                 Vector3 shootDirection = shootParticleSystem.transform.forward +
                                          new Vector3(
