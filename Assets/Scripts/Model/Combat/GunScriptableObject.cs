@@ -3,38 +3,38 @@ using UnityEngine;
 
 namespace Model.Combat
 {
-    [CreateAssetMenu(fileName = "Gun", menuName = "Our Scriptable Object/Guns/Gun", order = 0)]
-    public class GunScriptableObject : ScriptableObject
+    public class GunScriptableObject : MonoBehaviour
     {
         public GunType Type;
         public string name;
-        public GameObject modelPrefab;
-        public Vector3 spawnPosition;
-        public Vector3 spawnRotation;
+        // public GameObject modelPrefab;
+        // public Vector3 spawnPosition;
+        // public Vector3 spawnRotation;
 
         public DamageConfigScriptableObject damageConfig;
         public ShootConfigScriptableObject shootConfig;
         public TrailConfigScriptableObject trailConfig;
+        public AudioConfigScriptableObject audioConfig;
     
-        private MonoBehaviour activeMonoBehaviour;
         private GameObject model;
         private float lastShotTime;
         private ParticleSystem shootParticleSystem;
         private UnityEngine.Pool.ObjectPool<TrailRenderer> trailPool;
+        private AudioSource shootingAudioSource;
 
-        public void Spawn(Transform parent, MonoBehaviour activeMonoBehaviour)
-        {
-            this.activeMonoBehaviour = activeMonoBehaviour;
-            lastShotTime = 0; // in editor this will not br properly reset, in build it's fine 
-            trailPool = new UnityEngine.Pool.ObjectPool<TrailRenderer>(CreateTrail);
+        // public void Spawn(Transform parent, MonoBehaviour activeMonoBehaviour)
+        // {
+            
+        //     // lastShotTime = 0; // in editor this will not br properly reset, in build it's fine 
+        //     // trailPool = new UnityEngine.Pool.ObjectPool<TrailRenderer>(CreateTrail);
         
-            model = Instantiate(modelPrefab);
-            model.transform.SetParent(parent, false);
-            model.transform.localPosition = spawnPosition;
-            model.transform.localRotation = Quaternion.Euler(spawnRotation);
+        //     // model = Instantiate(modelPrefab);
+        //     // model.transform.SetParent(parent, false);
+        //     // model.transform.localPosition = spawnPosition;
+        //     // model.transform.localRotation = Quaternion.Euler(spawnRotation);
 
-            shootParticleSystem = model.GetComponentInChildren<ParticleSystem>();
-        }
+        //     // shootParticleSystem = model.GetComponentInChildren<ParticleSystem>();
+        // }
     
         private TrailRenderer CreateTrail()
         {
@@ -54,10 +54,18 @@ namespace Model.Combat
     
         public void Shoot()
         {
+            if (shootParticleSystem == null)
+            {
+                trailPool = new UnityEngine.Pool.ObjectPool<TrailRenderer>(CreateTrail);
+                shootParticleSystem = GetComponentInChildren<ParticleSystem>();
+                shootingAudioSource = GetComponent<AudioSource>();
+            }
+
             if (Time.time > shootConfig.fireRate + lastShotTime)
             {
                 lastShotTime = Time.time;
                 shootParticleSystem.Play();
+                audioConfig.PlayShootingClip(shootingAudioSource);
                 Vector3 shootDirection = shootParticleSystem.transform.forward +
                                          new Vector3(
                                              Random.Range(
@@ -83,7 +91,7 @@ namespace Model.Combat
                     )
                    )
                 {
-                    activeMonoBehaviour.StartCoroutine(
+                    StartCoroutine(
                         PlayTrail(
                             shootParticleSystem.transform.position,
                             hit.point,
@@ -94,7 +102,7 @@ namespace Model.Combat
 
                 else
                 {
-                    activeMonoBehaviour.StartCoroutine(
+                    StartCoroutine(
                         PlayTrail(
                             shootParticleSystem.transform.position,
                             shootParticleSystem.transform.position + (shootDirection * trailConfig.missDistance),
@@ -107,6 +115,7 @@ namespace Model.Combat
 
         private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
         {
+      
             TrailRenderer instance = trailPool.Get();
             instance.gameObject.SetActive(true);
             instance.transform.position = startPoint;
@@ -139,6 +148,7 @@ namespace Model.Combat
             instance.emitting = false;
             instance.gameObject.SetActive(false);
             trailPool.Release(instance);
+            
         }
     
     

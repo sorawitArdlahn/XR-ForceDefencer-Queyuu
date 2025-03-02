@@ -401,7 +401,6 @@ GameObject:
   - component: {fileID: 6473185220657276095}
   - component: {fileID: 938680729513127178}
   - component: {fileID: 250333168602509436}
-  - component: {fileID: 9032226845729329898}
   m_Layer: 0
   m_Name: AI_Crusher
   m_TagString: Untagged
@@ -465,7 +464,7 @@ MonoBehaviour:
   SelfNavMeshAgent: {fileID: 938680729513127178}
   SelfAnimationEventReceiver: {fileID: 1885470764977127927}
   SelfRigidbody: {fileID: 250333168602509436}
-  SelfGunSelector: {fileID: 9032226845729329898}
+  SelfGunSelector: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   maxArmor: 0
@@ -536,23 +535,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9032226845729329898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380102373405167140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb1e13c9643593b4dbb9a833f901f6b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: 0
-  gunParent: {fileID: 6478722758279050887}
-  guns:
-  - {fileID: 11400000, guid: 622f56b56eb32994d82a88e3d3969fcb, type: 2}
-  activeGun: {fileID: 0}
 --- !u!1 &1797728227138198198
 GameObject:
   m_ObjectHideFlags: 0

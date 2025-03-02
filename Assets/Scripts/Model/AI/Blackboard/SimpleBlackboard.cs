@@ -4,7 +4,7 @@ using Model.Combat;
 using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(PlayerGunSelector))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody))]
 public class SimpleBlackboard:MonoBehaviour
 {
     [Header("AI Components")]
@@ -13,7 +13,7 @@ public class SimpleBlackboard:MonoBehaviour
     public NavMeshAgent SelfNavMeshAgent;
     public AnimationEventReceiver SelfAnimationEventReceiver;
     public Rigidbody SelfRigidbody;
-    public PlayerGunSelector SelfGunSelector;
+    public PlayerGunSelector SelfGunSelector = null;
 
     [Header("AI Stats")] 
     public int maxHealth;
