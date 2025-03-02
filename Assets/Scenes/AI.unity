@@ -270,6 +270,14 @@ PrefabInstance:
       propertyPath: worldSpaceCanvas
       value: 
       objectReference: {fileID: 2049113512}
+    - target: {fileID: 4544830157478713509, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544830157478713509, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8704725184542177487, guid: c7401839a1b4571408ef16a18523037b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -277,6 +285,18 @@ PrefabInstance:
     - target: {fileID: 8704725184542177487, guid: c7401839a1b4571408ef16a18523037b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822003491477010752, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822003491477010752, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822003491477010752, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8822003491477010752, guid: c7401839a1b4571408ef16a18523037b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -317,6 +337,10 @@ PrefabInstance:
     - target: {fileID: 8822003491477010752, guid: c7401839a1b4571408ef16a18523037b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822003491477010752, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -584,15 +608,15 @@ PrefabInstance:
       objectReference: {fileID: 915464082}
     - target: {fileID: 7471498767273744628, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
       propertyPath: maxFuel
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7471498767273744628, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
       propertyPath: maxArmor
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7471498767273744628, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7471498767273744628, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
       propertyPath: currentFuel

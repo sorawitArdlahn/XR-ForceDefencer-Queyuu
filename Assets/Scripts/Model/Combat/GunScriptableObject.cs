@@ -15,6 +15,8 @@ namespace Model.Combat
         public ShootConfigScriptableObject shootConfig;
         public TrailConfigScriptableObject trailConfig;
         public AudioConfigScriptableObject audioConfig;
+
+        public GameObject surfaceEffectPrefab;
     
         private GameObject model;
         private float lastShotTime;
@@ -138,12 +140,13 @@ namespace Model.Combat
 
             if (hit.collider != null)
             {
+                GameObject effect = Instantiate(surfaceEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                effect.gameObject.GetComponent<ParticleManager>().PlayParticles();
+                Destroy(effect, 1f);
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
                 {
-                    Debug.Log("Hit " + hit.collider.name);
                     damageable.TakeDamage(damageConfig.GetDamage());  
                 }
-                else Debug.Log("Hit " + hit.collider.name);
             }
             yield return new WaitForSeconds(trailConfig.Duration);
             yield return null;

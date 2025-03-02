@@ -10,19 +10,21 @@ namespace Presenter.Movement
     public class AimAssistPresenter : MonoBehaviour
     {
         public AimAssistantCtrl aimAssistantCtrl;
-        public Slider HpSlider;
-        public Slider ArmorSlider;
-        
         public int maxTargetHp;
         public int maxTargetArmor;
         public int currentTargetHp;
         public int currentTargetArmor;
         
-        public TextMeshProUGUI distanceText;
+        [Header("UI")]
+        public Slider HpSlider;
+        public Slider ArmorSlider;
+        public TextMeshProUGUI targetDistanceText;
+        public TextMeshProUGUI targetHpText;
+        public TextMeshProUGUI targetArmorText;
         // Update is called once per frame
         void Update()
         {
-            distanceText.text = aimAssistantCtrl.targetDistance.ToString("F1") + "m";
+            targetDistanceText.text = aimAssistantCtrl.targetDistance.ToString("F1") + "m";
             
             if (ReadTargetStats())
             {
@@ -30,6 +32,8 @@ namespace Presenter.Movement
                 ArmorSlider.maxValue = maxTargetArmor;
                 HpSlider.value = currentTargetHp;
                 ArmorSlider.value = currentTargetArmor;
+                targetHpText.text = currentTargetHp.ToString();
+                targetArmorText.text = currentTargetArmor.ToString();
             }
         }
 

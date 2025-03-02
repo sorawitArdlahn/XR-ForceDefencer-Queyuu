@@ -80,12 +80,8 @@ namespace Controller.Movement
 
             
             targetDistance = Vector3.Distance(playerTransform.position, closestEnemy.transform.position);
-            if (targetDistance < 100)
-            {
-               return closestEnemy;
-            }
-
-            return null;
+            
+            return closestEnemy;
             
         }
 
