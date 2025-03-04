@@ -18,9 +18,9 @@ namespace Model.Stats
         public int currentArmor;
         public int currentFuel;
         
-        public event Action<int> onHPChangedEvent; 
-        public event Action<int> onArmorChangedEvent;
-        public event Action<int> onFuelChangedEvent;
+        public event Action<int,int> onHPChangedEvent; 
+        public event Action<int,int> onArmorChangedEvent;
+        public event Action<int,int> onFuelChangedEvent;
 
         private void Awake()
         {
@@ -29,6 +29,8 @@ namespace Model.Stats
             maxFuel = robotBaseStats.baseFuel;
             speed = robotBaseStats.baseSpeed;
             
+            Debug.Log("maxHP: " + maxHP);
+            Debug.Log("basedArmor: " + robotBaseStats.basedArmor);
             currentHP = maxHP;
             currentArmor = maxArmor;
             currentFuel = maxFuel;
@@ -37,19 +39,19 @@ namespace Model.Stats
         public void SetCurrentHP(int newHP)
         {
             currentHP = newHP;
-            onHPChangedEvent?.Invoke(currentHP);
+            onHPChangedEvent?.Invoke(currentHP, maxHP);
         }
 
         public void setCurrentArmor(int newArmor)
         {
             currentArmor = newArmor;
-            onArmorChangedEvent?.Invoke(currentArmor);
+            onArmorChangedEvent?.Invoke(currentArmor, maxArmor);
         }
 
         public void setCurrentFuel(int newFuel)
         {
             currentFuel = newFuel;
-            onFuelChangedEvent?.Invoke(currentFuel);
+            onFuelChangedEvent?.Invoke(currentFuel, maxFuel);
         }
 
         public int MaxFuel => maxFuel;

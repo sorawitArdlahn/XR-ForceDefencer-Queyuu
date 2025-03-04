@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66eb4c833a4b73a488c785a8300b76b9, type: 3}
-  m_Name: Plasma Shoot Config
+  m_Script: {fileID: 11500000, guid: 473940e5abb8988489c6732abf8a338c, type: 3}
+  m_Name: Audio Config
   m_EditorClassIdentifier: 
-  hitLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  Spread: {x: 0.01, y: 0.01, z: 0.01}
-  fireRate: 1
+  Volume: 0.1
+  FireClips:
+  - {fileID: 8300000, guid: 2c0f5d8a5844b79449529b022a25c7bf, type: 3}

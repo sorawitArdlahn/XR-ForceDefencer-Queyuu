@@ -24,7 +24,6 @@ namespace Model.Combat
             }
 
             activeGun = usesGun;
-            usesGun.Spawn(gunParent, this);
         }
     }
 }

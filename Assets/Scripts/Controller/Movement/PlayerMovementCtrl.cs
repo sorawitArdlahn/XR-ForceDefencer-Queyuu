@@ -163,7 +163,6 @@ namespace Controller.Movement
 
         private void MoveCockpit()
         {
-            Debug.Log("Mode: " + moveCockpitMode);
             if (!playerInputReceiver.IsLockOn)
             {
                 AimAssistantCtrl.enabled = false;
@@ -178,8 +177,8 @@ namespace Controller.Movement
             }
             else
             {
-                cockpitRotationY = AimAssistantCtrl.GetNewAngles().y;
-                cockpitRotationX = AimAssistantCtrl.GetNewAngles().x;
+                cockpitRotationY = AimAssistantCtrl.GetNewAngles(cockpitRotationY).y;
+                cockpitRotationX = AimAssistantCtrl.GetNewAngles(cockpitRotationX).x;
                 AimAssistantCtrl.enabled = true;
             }
             

@@ -36,11 +36,9 @@ public class PatrolStrategy : IStrategy
                 isReset = false;
                 return Node.Status.Failure;
             }
-            Debug.Log($"Patrol Strategy Execute {isPatrolCalculated}");
             
             if (isPatrolCalculated)
             {
-                Debug.Log("RegisterDestination");
                 RegisterDestination();
                 isPatrolCalculated = false;
             }
@@ -64,7 +62,6 @@ public class PatrolStrategy : IStrategy
             if (RandomPoint(entity.position, 20, out point))
             {
                 Debug.DrawRay(point, Vector3.up, Color.red, 1f);
-                Debug.Log($"In RegisterDestination() ;Point = {point}");
                 agent.SetDestination(point);
                 animator.SetBool("IsRun",true);
             }
@@ -81,11 +78,11 @@ public class PatrolStrategy : IStrategy
             if (NavMesh.SamplePosition(randomPoint, out hit, 2.0f, NavMesh.AllAreas))
             {
                 result = hit.position;
-                Debug.Log("In RandomPoint ;return True");
+                
                 return true;
             }
             result = Vector3.zero;
-            Debug.Log("In RandomPoint ;return false");
+            
             return false;
         }
 

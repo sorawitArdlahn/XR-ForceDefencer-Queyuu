@@ -62,7 +62,6 @@ public class CombatsStrategy : IStrategy
     private void OnHeavyAttack()
     {
         isAnimationFinished = true;
-        Debug.Log("Animation finished");
     }
     
 }

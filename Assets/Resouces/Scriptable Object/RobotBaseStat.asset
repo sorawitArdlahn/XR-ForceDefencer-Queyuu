@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66eb4c833a4b73a488c785a8300b76b9, type: 3}
-  m_Name: Plasma Shoot Config
+  m_Script: {fileID: 11500000, guid: bc0b56987fe42e244bd5b7b5610a2fee, type: 3}
+  m_Name: RobotBaseStat
   m_EditorClassIdentifier: 
-  hitLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  Spread: {x: 0.01, y: 0.01, z: 0.01}
-  fireRate: 1
+  baseHP: 100
+  basedArmor: 100
+  baseFuel: 100
+  baseSpeed: 0

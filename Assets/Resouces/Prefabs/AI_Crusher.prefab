@@ -401,8 +401,7 @@ GameObject:
   - component: {fileID: 6473185220657276095}
   - component: {fileID: 938680729513127178}
   - component: {fileID: 250333168602509436}
-  - component: {fileID: 9032226845729329898}
-  - component: {fileID: 5183994962973509884}
+  - component: {fileID: 1689994428286295585}
   m_Layer: 0
   m_Name: AI_Crusher
   m_TagString: Enemy
@@ -466,14 +465,14 @@ MonoBehaviour:
   SelfNavMeshAgent: {fileID: 938680729513127178}
   SelfAnimationEventReceiver: {fileID: 1885470764977127927}
   SelfRigidbody: {fileID: 250333168602509436}
-  SelfGunSelector: {fileID: 9032226845729329898}
+  SelfGunSelector: {fileID: 0}
   maxHealth: 1000
   currentHealth: 0
   maxArmor: 1000
   currentArmor: 0
   maxFuel: 1000
   currentFuel: 0
-  Speed: 0
+  Speed: 1
   Player: {fileID: 0}
 --- !u!114 &6473185220657276095
 MonoBehaviour:
@@ -536,25 +535,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &9032226845729329898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380102373405167140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb1e13c9643593b4dbb9a833f901f6b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: 0
-  gunParent: {fileID: 6478722758279050887}
-  guns:
-  - {fileID: 11400000, guid: 622f56b56eb32994d82a88e3d3969fcb, type: 2}
-  activeGun: {fileID: 0}
---- !u!136 &5183994962973509884
+  m_CollisionDetection: 1
+--- !u!136 &1689994428286295585
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

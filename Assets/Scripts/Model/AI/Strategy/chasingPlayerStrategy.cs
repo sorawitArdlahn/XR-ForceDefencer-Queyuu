@@ -17,7 +17,6 @@ public class chasingPlayerStrategy : IStrategy
     }
     public Node.Status Process()
     {
-        Debug.Log("Chasing Player Running");
         
         if (Vector3.Distance(blackboard.SelfTransform.position, player.transform.position) < 30f)
         {
