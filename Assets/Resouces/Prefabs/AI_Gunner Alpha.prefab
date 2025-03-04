@@ -1166,11 +1166,11 @@ MonoBehaviour:
   SelfAnimationEventReceiver: {fileID: 5150546670175852553}
   SelfRigidbody: {fileID: 7225359390411940802}
   SelfGunSelector: {fileID: 5940317575138261766}
-  maxHealth: 0
+  maxHealth: 100
   currentHealth: 0
-  maxArmor: 0
+  maxArmor: 100
   currentArmor: 0
-  maxFuel: 0
+  maxFuel: 100
   currentFuel: 0
   Speed: 0.001
   Player: {fileID: 0}

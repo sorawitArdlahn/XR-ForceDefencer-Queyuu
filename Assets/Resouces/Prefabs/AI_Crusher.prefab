@@ -401,9 +401,10 @@ GameObject:
   - component: {fileID: 6473185220657276095}
   - component: {fileID: 938680729513127178}
   - component: {fileID: 250333168602509436}
+  - component: {fileID: 1689994428286295585}
   m_Layer: 0
   m_Name: AI_Crusher
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,13 +466,13 @@ MonoBehaviour:
   SelfAnimationEventReceiver: {fileID: 1885470764977127927}
   SelfRigidbody: {fileID: 250333168602509436}
   SelfGunSelector: {fileID: 0}
-  maxHealth: 0
+  maxHealth: 1000
   currentHealth: 0
-  maxArmor: 0
+  maxArmor: 1000
   currentArmor: 0
-  maxFuel: 0
+  maxFuel: 1000
   currentFuel: 0
-  Speed: 0
+  Speed: 1
   Player: {fileID: 0}
 --- !u!114 &6473185220657276095
 MonoBehaviour:
@@ -534,7 +535,30 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!136 &1689994428286295585
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380102373405167140}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1797728227138198198
 GameObject:
   m_ObjectHideFlags: 0

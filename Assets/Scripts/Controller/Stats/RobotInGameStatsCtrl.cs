@@ -36,7 +36,6 @@ namespace Controller.Stats
                 StartCoroutine(UseFuel(10));
             }
         }
-
         public void TakeDamage(int damage)
         {
             int damageTaken = damage;
@@ -65,7 +64,6 @@ namespace Controller.Stats
             }
 
         }
-
         public IEnumerator UseFuel(int desiredFuel)
         {
             if (desiredFuel <= robotInGameStats.currentFuel)
@@ -84,9 +82,6 @@ namespace Controller.Stats
                 }
             }
         }
-
-        
-
         private IEnumerator Refuel(int fillRate, float fillSpeed)
         {
             if (!isCanRefuel || isRefueling) yield break; // If you are refueling, stop.

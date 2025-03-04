@@ -117,7 +117,7 @@ namespace Model.Combat
 
         private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
         {
-      
+            
             TrailRenderer instance = trailPool.Get();
             instance.gameObject.SetActive(true);
             instance.transform.position = startPoint;
@@ -135,7 +135,8 @@ namespace Model.Combat
             
                 yield return null;
             }
-        
+            
+            yield return new WaitForSeconds(1f);
             instance.transform.position = endPoint;
 
             if (hit.collider != null)
@@ -153,7 +154,6 @@ namespace Model.Combat
             instance.emitting = false;
             instance.gameObject.SetActive(false);
             trailPool.Release(instance);
-            
         }
     
     
