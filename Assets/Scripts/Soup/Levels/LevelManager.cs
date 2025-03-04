@@ -67,10 +67,14 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
     }
 
     void SetLevelDetailBasedOnCurrentLevel() {
+        //Dynamically Increase Map Size over time
+        int additionalSize = Mathf.FloorToInt(Mathf.Log(getCurrentLevel() + 1, 3));
+        mapGenerator?.setMapSize(additionalSize + 5);
 
+        //Dynamically Increase Enemy Amount over time
+        //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager
         spawnerManager?.SetEnemies(enemiesList, getCurrentLevel() + 15);
         spawnerManager?.getTotalEnemies();
-        //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager
         
     }
 
@@ -124,7 +128,7 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 public class LevelData : ISaveable
 {
     [field: SerializeField] public SerializableGuid Id { get; set; }
-    public int currentLevel;
+    public int currentLevel = 0;
     public int highestLevel = 0;
     public int checkpointLevel = 0;
 }

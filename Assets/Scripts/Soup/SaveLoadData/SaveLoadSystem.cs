@@ -69,7 +69,7 @@ namespace System.Persistence {
 
             
             if (scene.name == "PreparationScene" || scene.name == "InBattleScene") {
-            Bind<Player, PlayerData>(GameManager.Instance.currentGameData.playerData);  
+            //Bind<Player, PlayerData>(GameManager.Instance.currentGameData.playerData);  
             Bind<LevelManager, LevelData>(GameManager.Instance.currentGameData.levelData); 
             } 
         }

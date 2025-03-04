@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             Name = "Demo",
             currentLevelName = "PreparationScene",
             currentLevelIndex = 1,
-            playerData = new PlayerData(), //TODO : Important.
+            //playerData = new PlayerData(), //TODO : Important.
             levelData = new Spawn.LevelData() 
         };
 

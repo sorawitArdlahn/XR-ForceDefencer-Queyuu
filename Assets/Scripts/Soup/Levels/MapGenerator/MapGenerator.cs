@@ -53,6 +53,11 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
         return Vector3.zero;
     }
 
+    public void setMapSize(int size) {
+        //Dimension is the size of the map
+        dimensions = size;
+    }
+
     public void Awake() {
 
         gridComponent = new List<CellV2>();

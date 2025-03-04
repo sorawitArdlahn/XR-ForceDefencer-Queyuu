@@ -72,14 +72,17 @@ public class SpawnerManager : MonoBehaviour
         state = SpawnState.COUNTING;
         //inactiveButton.gameObject.SetActive(false);
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Destroy(enemy);
-        }
         
+        RemoveAllEnemies();
         setWaveBasedOnLevelData();
         StartCoroutine(WaitForMapInitialization());
+    }
+
+    void RemoveAllEnemies() {
+        foreach (GameObject enemy in enemiesInWave) {
+            Destroy(enemy);
+        }
+        enemiesInWave?.Clear();
     }
 
     IEnumerator WaitForMapInitialization()
@@ -94,39 +97,6 @@ public class SpawnerManager : MonoBehaviour
         OnEnemyDeath();
         
     }
-
-    //Countdown, if countdown reach 0, spawn wave. else continue countdown.
-    /*
-    void Update() {
-        //WAIT FOR MAP TO BE GENERATED
-        if (!MapGeneratedFinish)
-        {
-            return; // Skip the update logic until initialization is complete
-        }
-
-
-
-        if (state == SpawnState.WAITING) {
-            if (!EnemyIsAlive() && nextWave == waves.Length) {
-                WaveCompleted();
-            }
-            else if (!EnemyIsAlive()) {
-
-            } else {
-                return;
-            }
-        }
-
-        if (waveCountDown <= 0 && state != SpawnState.SPAWNING && nextWave < waves.Length) {
-            StartCoroutine(SpawnWave(waves[nextWave]));
-            Debug.Log("Initiating new wave...");
-        } else {
-            waveCountDown -= Time.deltaTime;
-        }
-    }
-    */
-
-    //if all enemy is dead, spawn next wave
 
 
     IEnumerator SpawnWave(Wave wave) {
@@ -246,6 +216,7 @@ public class SpawnerManager : MonoBehaviour
 
     }
 
+    //OPTIONAL: Spawn Boss
     void SpawnBoss() {
         //Spawn Boss
         Debug.Log("Nice Job");
