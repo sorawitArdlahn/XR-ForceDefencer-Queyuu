@@ -5,6 +5,8 @@ using GameController;
 using Spawn;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CharacterData;
+using Model.Stats;
 
 namespace System.Persistence {
     [Serializable]
@@ -69,7 +71,7 @@ namespace System.Persistence {
 
             
             if (scene.name == "PreparationScene" || scene.name == "InBattleScene") {
-            Bind<Player, PlayerData>(GameManager.Instance.currentGameData.playerData);  
+            Bind<RobotInGameStats, PlayerData>(GameManager.Instance.currentGameData.playerData);  
             Bind<LevelManager, LevelData>(GameManager.Instance.currentGameData.levelData); 
             } 
         }
