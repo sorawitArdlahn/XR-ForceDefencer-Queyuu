@@ -135,8 +135,6 @@ namespace Model.Combat
             
                 yield return null;
             }
-            
-            yield return new WaitForSeconds(1f);
             instance.transform.position = endPoint;
 
             if (hit.collider != null)

@@ -28,14 +28,23 @@ public class PatrolStrategy : IStrategy
         }
         public Node.Status Process()
         {
-            if (isReset)
-            {
-                agent.ResetPath();
-                animator.SetBool("IsRun", false);
-                isPatrolCalculated = true;
-                isReset = false;
-                return Node.Status.Failure;
-            }
+            // if (Physics.Raycast(entity.position, entity.forward, out RaycastHit hit, 5f))
+            // {
+            //     Debug.DrawRay(entity.position, entity.forward * 3f, Color.red);
+            //     if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            //     {
+            //         agent.ResetPath();
+            //     }
+            // }
+
+            // if (isReset)
+            // {
+            //     agent.ResetPath();
+            //     animator.SetBool("IsRun", false);
+            //     isPatrolCalculated = true;
+            //     isReset = false;
+            //     return Node.Status.Failure;
+            // }
             
             if (isPatrolCalculated)
             {
@@ -65,10 +74,10 @@ public class PatrolStrategy : IStrategy
                 agent.SetDestination(point);
                 animator.SetBool("IsRun",true);
             }
-            else
-            {
-                isReset = true;
-            }
+            // else
+            // {
+            //     isReset = true;
+            // }
         }
 
         private bool RandomPoint(Vector3 center, float range, out Vector3 result)

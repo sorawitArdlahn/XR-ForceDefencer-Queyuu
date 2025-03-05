@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
+using Model.Stats;
 
 namespace Controller.Movement
 {
@@ -22,6 +23,8 @@ namespace Controller.Movement
 
         public float targetDistance;
         public float setDistance; // for debuging
+
+        private bool isEnemyAvailable = true;
     
         private bool isAimActive = false;
         private void Awake()
@@ -43,6 +46,15 @@ namespace Controller.Movement
             isAimActive = true;
             LockOnText.text =  "ON" ;
             LockOnText.color = Color.green;
+
+            if (!isEnemyAvailable)
+            {
+                LockOnText.text =  "No Enemy Available";
+                LockOnText.fontSize = 9;
+                LockOnText.color = Color.red;
+                isAimActive = false;
+                target = null;
+            }
         }
 
         private void OnDisable()
@@ -63,6 +75,12 @@ namespace Controller.Movement
             {
                 MoveToClosetEnemy();
             }
+
+            if (target != null && target.GetComponent<RobotInGameStats>().currentHP <= 0)
+            {
+                allEnemies.Remove(target);
+                target = null;
+            }
         }
 
         private GameObject FindClosestEnemy()
@@ -81,7 +99,14 @@ namespace Controller.Movement
             }
 
             
-            targetDistance = Vector3.Distance(playerTransform.position, closestEnemy.transform.position);
+            try
+            {
+                targetDistance = Vector3.Distance(playerTransform.position, closestEnemy.transform.position);
+            }
+            catch
+            {
+                return null;
+            }
             
             return closestEnemy;
             
@@ -90,6 +115,8 @@ namespace Controller.Movement
         private void MoveToClosetEnemy()
         {
             newAngle = Vector3.zero;
+            
+
             target = FindClosestEnemy();
             if (target != null)
             {
@@ -115,6 +142,10 @@ namespace Controller.Movement
                 }
             }
 
+            else{
+                isEnemyAvailable = false;
+            }
+
         }
 
         public Vector3 GetNewAngles(float cockpitRotation)
@@ -125,6 +156,11 @@ namespace Controller.Movement
             }
 
             return newAngle;
+        }
+
+        public bool IsEnemyAvailable()
+        {
+            return isEnemyAvailable;
         }
     }
 }

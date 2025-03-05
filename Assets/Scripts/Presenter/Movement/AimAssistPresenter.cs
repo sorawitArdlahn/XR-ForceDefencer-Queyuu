@@ -4,6 +4,8 @@ using UnityEngine;
 using Controller.Movement;
 using UnityEngine.UI;
 using TMPro;
+using Model.Stats;
+using Controller.Stats;
 
 namespace Presenter.Movement
 {
@@ -41,10 +43,10 @@ namespace Presenter.Movement
         {
             if (aimAssistantCtrl.target != null)
             {
-                maxTargetHp = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().maxHealth;
-                maxTargetArmor = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().maxArmor;
-                currentTargetHp = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().currentHealth;
-                currentTargetArmor = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().currentArmor;
+                maxTargetHp = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().maxHP;
+                maxTargetArmor = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().maxArmor;
+                currentTargetHp = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().currentHP;
+                currentTargetArmor = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().currentArmor;
                 return true;
             }else{
                 maxTargetHp = 0;

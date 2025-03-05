@@ -815,12 +815,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: dimensions
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: mapGenerated
       value: 
       objectReference: {fileID: 11400000, guid: 5cc5ce0358eed164297a715a87100d17, type: 2}
+    - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
+      propertyPath: tileSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f878f9317876691468d356390936f49e, type: 2}
     - target: {fileID: 6904451353420057443, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: m_Name
       value: MapGenerator
@@ -978,6 +982,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aim Assist
       objectReference: {fileID: 0}
+    - target: {fileID: 940992467851687053, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 940992467851687053, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3130544976422029160, guid: c7401839a1b4571408ef16a18523037b, type: 3}
       propertyPath: pointer
       value: 
@@ -998,6 +1010,14 @@ PrefabInstance:
       propertyPath: worldSpaceCanvas
       value: 
       objectReference: {fileID: 941761322}
+    - target: {fileID: 8704725184542177487, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704725184542177487, guid: c7401839a1b4571408ef16a18523037b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8822003491477010752, guid: c7401839a1b4571408ef16a18523037b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

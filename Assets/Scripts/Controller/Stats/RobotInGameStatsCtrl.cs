@@ -10,6 +10,8 @@ namespace Controller.Stats
     public class RobotInGameStatsCtrl : MonoBehaviour, IDamageable
     {
         public RobotInGameStats robotInGameStats;
+        public GameObject deathEffect;
+
         public int CurrentHealth => robotInGameStats.currentHP;
         public int CurrentArmor => robotInGameStats.currentArmor;
 
@@ -60,10 +62,15 @@ namespace Controller.Stats
                 if (CurrentHealth <= 0) // Death
                 {
                     robotInGameStats.SetCurrentHP(0);
+                    OnDeath?.Invoke();
+                    var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+                    Destroy(effect, 1f);
+                    Destroy(gameObject,5f);
                 }
             }
 
         }
+
         public IEnumerator UseFuel(int desiredFuel)
         {
             if (desiredFuel <= robotInGameStats.currentFuel)
@@ -108,8 +115,5 @@ namespace Controller.Stats
 
             isRefueling = false; // Finished refueling
         }
-
-        
-        
     }
 }

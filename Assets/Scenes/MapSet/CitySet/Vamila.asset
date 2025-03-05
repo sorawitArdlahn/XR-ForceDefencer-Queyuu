@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc0b56987fe42e244bd5b7b5610a2fee, type: 3}
-  m_Name: RobotBaseStat
+  m_Script: {fileID: 11500000, guid: dc2b097145fbceb4caaad19f2cc0107c, type: 3}
+  m_Name: Vamila
   m_EditorClassIdentifier: 
-  baseHP: 10
-  basedArmor: 0
-  baseFuel: 100
-  baseSpeed: 0
+  mapPatternTemplatesInSet:
+  - {fileID: 11400000, guid: d830f51cf6c2bc447a5a9df0a47c99ac, type: 2}
+  - {fileID: 11400000, guid: 82f0861e77f510e4b877f6582358d481, type: 2}

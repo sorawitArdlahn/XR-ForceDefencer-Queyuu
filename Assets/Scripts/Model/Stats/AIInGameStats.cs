@@ -1,17 +1,19 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Model.Stats;
 
 namespace Model.Stats
 {
-    public class RobotInGameStats : MonoBehaviour
+    public class AIInGameStats : MonoBehaviour
     {
-        [FormerlySerializedAs("robotBaseStat")] public RobotBaseStats robotBaseStats;
+        [FormerlySerializedAs("robotBaseStat")] public AIBaseStatsCurve AIBaseStats;
         [Header("Base Stats")]
-        public int maxHP;
-        public int maxArmor;
-        public int maxFuel;
-        public float speed;
+        public int Level;
+        private int maxHP;
+        private int maxArmor;
+        private int maxFuel;
+        private float speed;
         
         [Header("In-game Updatable Stats")]
         public int currentHP;
@@ -24,13 +26,12 @@ namespace Model.Stats
 
         private void Awake()
         {
-            maxHP = robotBaseStats.baseHP;
-            maxArmor = robotBaseStats.basedArmor;
-            maxFuel = robotBaseStats.baseFuel;
-            speed = robotBaseStats.baseSpeed;
+            //Level = LevelManager.Level;
+            maxHP = (int)AIBaseStats.baseHPCurve.Evaluate(Level);
+            maxArmor = (int)AIBaseStats.basedArmorCurve.Evaluate(Level);
+            maxFuel = (int)AIBaseStats.baseFuelCurve.Evaluate(Level);
+            speed = AIBaseStats.baseSpeedCurve.Evaluate(Level);
             
-            Debug.Log("maxHP: " + maxHP);
-            Debug.Log("basedArmor: " + robotBaseStats.basedArmor);
             currentHP = maxHP;
             currentArmor = maxArmor;
             currentFuel = maxFuel;

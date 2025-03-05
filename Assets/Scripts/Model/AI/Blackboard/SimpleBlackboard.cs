@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using Model.Combat;
 using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
+using Controller.Stats;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody))]
 public class SimpleBlackboard:MonoBehaviour
@@ -16,13 +17,7 @@ public class SimpleBlackboard:MonoBehaviour
     public PlayerGunSelector SelfGunSelector = null;
 
     [Header("AI Stats")] 
-    public int maxHealth;
-    public int currentHealth;
-    public int maxArmor;
-    public int currentArmor;
-    public int maxFuel;
-    public int currentFuel;
-    public float Speed;
+    public RobotInGameStatsCtrl SelfStats;
 
     [Header("Implicated Variables")]
     public GameObject Player;

@@ -163,7 +163,8 @@ namespace Controller.Movement
 
         private void MoveCockpit()
         {
-            if (!playerInputReceiver.IsLockOn)
+            Debug.Log("isLockOn: " + AimAssistantCtrl.IsEnemyAvailable());
+            if (!playerInputReceiver.IsLockOn || !AimAssistantCtrl.IsEnemyAvailable())
             {
                 AimAssistantCtrl.enabled = false;
                 cockpitRotationY += lookX;
@@ -174,6 +175,11 @@ namespace Controller.Movement
 
                 cockpitTransform.rotation = Quaternion.Euler(cockpitRotationX, cockpitRotationY, 0);
                 transform.rotation = Quaternion.Euler(0, cockpitRotationY, 0);
+                
+                if (!AimAssistantCtrl.IsEnemyAvailable())
+                {
+                    AimAssistantCtrl.enabled = true;
+                }
             }
             else
             {

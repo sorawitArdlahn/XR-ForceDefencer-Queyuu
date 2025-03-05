@@ -242,7 +242,7 @@ public class SpawnerManager : MonoBehaviour
         Debug.Log("Nice Job");
     }
 
-    void OnEnemyDeath(Vector3 Position = new Vector3()) {
+    void OnEnemyDeath() {
         numEnemiesInWaveRemaining--;
         if (numEnemiesInWaveRemaining <= 0 && nextWave >= waves.Length) {
             StageCleared();

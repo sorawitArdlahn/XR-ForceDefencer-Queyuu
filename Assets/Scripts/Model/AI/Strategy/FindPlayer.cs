@@ -18,7 +18,7 @@ public class FindPlayer : IStrategy
     {
         this.entity = blackboard.SelfTransform;
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        this.minDistance = 10f;
+        this.minDistance = 50f;
         this.blackboard = blackboard;
         player = blackboard.Player;
     }
@@ -27,7 +27,6 @@ public class FindPlayer : IStrategy
     {
         if (Vector3.Distance(entity.position, target.position) <= minDistance)
         {
-
             LookAtPlayer();
             return Node.Status.Success;
         }
