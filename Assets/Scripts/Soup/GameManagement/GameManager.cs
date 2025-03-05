@@ -1,7 +1,7 @@
 using System.Persistence;
 using UnityEngine;
 using System;
-using CharacterData;
+using Model.Stats;
 
 
 namespace GameController {

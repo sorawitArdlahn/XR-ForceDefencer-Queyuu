@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
-using CharacterData;
 using System.Persistence;
 
 namespace Model.Stats
@@ -27,7 +26,7 @@ namespace Model.Stats
 
         //SOUP : Binding Part
         [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
-        PlayerData data;
+        public PlayerData data;
 
         public void Bind(PlayerData data)
         {

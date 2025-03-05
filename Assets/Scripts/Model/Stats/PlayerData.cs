@@ -2,7 +2,7 @@ using System;
 using System.Persistence;
 using UnityEngine;
 
-namespace CharacterData {
+namespace Model.Stats {
 
     [Serializable]
     public class PlayerData : ISaveable 

@@ -5,7 +5,6 @@ using GameController;
 using Spawn;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using CharacterData;
 using Model.Stats;
 
 namespace System.Persistence {
