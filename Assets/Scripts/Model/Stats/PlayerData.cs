@@ -9,10 +9,10 @@ namespace Model.Stats {
     {
         [field: SerializeField] public SerializableGuid Id { get; set; }
 
-        public int HealthPointMultiplier = 1;
-        public int ArmorMultiplier = 1;
-        public int FuelMultiplier = 1;
-        public int MovementSpeedMultiplier = 1;
+        public float HealthPointMultiplier = 1;
+        public float ArmorMultiplier = 1;
+        public float FuelMultiplier = 1;
+        public float MovementSpeedMultiplier = 1;
 
         public int currentResearchPoint;
         public int researchPointRequired = 50;

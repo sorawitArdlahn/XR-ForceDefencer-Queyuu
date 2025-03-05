@@ -18,20 +18,20 @@ namespace Controller.StatMod
             playerInfo = FindObjectOfType<RobotInGameStats>();
         }
 
-        public void UpgradeStat(PlayerUpgradable stat, int Multiplier)
+        public void UpgradeStat(PlayerStatModifier playerStatModifier)
         {
-            switch (stat) {
+            switch (playerStatModifier.stat) {
                 case PlayerUpgradable.HealthPoint:
-                    playerInfo.data.HealthPointMultiplier += Multiplier;
+                    playerInfo.data.HealthPointMultiplier += playerStatModifier.Multiplier;
                     break;
                 case PlayerUpgradable.Armor:
-                    playerInfo.data.ArmorMultiplier += Multiplier;
+                    playerInfo.data.ArmorMultiplier += playerStatModifier.Multiplier;
                     break;
                 case PlayerUpgradable.Fuel:
-                    playerInfo.data.FuelMultiplier += Multiplier;
+                    playerInfo.data.FuelMultiplier += playerStatModifier.Multiplier;
                     break;
                 case PlayerUpgradable.MovementSpeed:
-                    playerInfo.data.MovementSpeedMultiplier += Multiplier;
+                    playerInfo.data.MovementSpeedMultiplier += playerStatModifier.Multiplier;
                     break;
             }
 
