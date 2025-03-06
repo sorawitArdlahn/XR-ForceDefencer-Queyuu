@@ -6,9 +6,10 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using EventListener;
 using System;
+using Model.Level;
 
-namespace Mapgenerate {
-public class WaveFunctionCollapseV2 : MonoBehaviour
+namespace Controller.Level {
+public class MapGeneratorController : MonoBehaviour
 {
 
     //size of the map : eg 3 is 3x3
@@ -51,6 +52,11 @@ public class WaveFunctionCollapseV2 : MonoBehaviour
             }
         }
         return Vector3.zero;
+    }
+
+    public int getMapSize() {
+        //Dimension is the size of the map
+        return dimensions * dimensions;
     }
 
     public void setMapSize(int size) {

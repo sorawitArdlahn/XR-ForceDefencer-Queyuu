@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Model.Level {
 public class MapPatternV2
 {
     // Start is called before the first frame update
@@ -74,3 +75,7 @@ public class MapPatternV2
 
 
 }
+
+
+}
+

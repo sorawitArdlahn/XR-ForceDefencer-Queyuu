@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Mapgenerate {
+namespace Model.Level {
 public class CellV2 : MonoBehaviour
 {
     

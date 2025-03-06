@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MapPatternTemplate", menuName = "WFC/MapPatternTemplate")]
-[System.Serializable]
+namespace Model.Level
+{
+    [CreateAssetMenu(fileName = "MapPatternTemplate", menuName = "WFC/MapPatternTemplate")]
+    [System.Serializable]
 public class MapPatternTemplate : ScriptableObject
 {
     // Start is called before the first frame update
@@ -49,3 +51,6 @@ public class MapPatternTemplate : ScriptableObject
 }
 
 
+    
+    
+}

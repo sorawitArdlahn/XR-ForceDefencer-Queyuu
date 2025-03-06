@@ -1,13 +1,12 @@
-using System;
+using Model.Level;
 using System.Persistence;
 using System.Collections.Generic;
 using UnityEngine;
 using GameController;
 using EventListener;
-using Mapgenerate;
 
-namespace Spawn {
-public class LevelManager : MonoBehaviour, IBind<LevelData>
+namespace Controller.Level {
+public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 {
     // Start is called before the first frame update
     [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
@@ -23,9 +22,9 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
     public GameEvent OnStartLevel;
 
-    WaveFunctionCollapseV2 mapGenerator;
+    MapGeneratorController mapGenerator;
 
-    SpawnerManager spawnerManager;
+    SpawnerManagerController spawnerManager;
 
     GameObject player;
 
@@ -37,12 +36,12 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
     {
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
         {
-            spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManager>();
+            spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManagerController>();
         }
 
         if (GameObject.FindGameObjectWithTag("MapGenerator") != null)
         {
-            mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<WaveFunctionCollapseV2>();
+            mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGeneratorController>();
         }
 
         if (GameObject.FindGameObjectWithTag("Player") != null)
@@ -73,7 +72,11 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
         //Dynamically Increase Enemy Amount over time
         //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager
-        spawnerManager?.SetEnemies(enemiesList, getCurrentLevel() + 15);
+        int enemyCount = Mathf.Min(
+            getCurrentLevel() + 15, 
+            (int)(mapGenerator.getMapSize() * 0.75)
+            );
+        spawnerManager?.SetEnemies(enemiesList, enemyCount);
         spawnerManager?.getTotalEnemies();
         
     }
@@ -95,9 +98,6 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnCurrentLevel();
         OnStartLevel?.Raise(this);
-        //Reset Robot Stats
-        //Reset Map
-        //Reset Spawner
     }
 
     void calculateCheckpointLevel() {
@@ -122,15 +122,6 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
         GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
     }
 
-}
-
-[Serializable]
-public class LevelData : ISaveable
-{
-    [field: SerializeField] public SerializableGuid Id { get; set; }
-    public int currentLevel = 0;
-    public int highestLevel = 0;
-    public int checkpointLevel = 0;
 }
 
 }

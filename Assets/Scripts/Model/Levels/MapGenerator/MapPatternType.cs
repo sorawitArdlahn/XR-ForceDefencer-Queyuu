@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MapPatternType", menuName = "WFC/MapPatternType")]
-[System.Serializable]
+namespace Model.Level {
+    [CreateAssetMenu(fileName = "MapPatternType", menuName = "WFC/MapPatternType")]
+    [System.Serializable]
 public class MapPatternType : ScriptableObject
 {
     public string typeName;
@@ -17,4 +18,5 @@ public class MapPatternType : ScriptableObject
     {
         return connectedTypes;
     }
+}
 }

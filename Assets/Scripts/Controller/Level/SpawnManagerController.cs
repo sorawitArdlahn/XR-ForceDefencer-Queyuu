@@ -2,18 +2,18 @@ using Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mapgenerate;
 using EventListener;
 using System;
+using Model.Level;
 
 
-namespace Spawn {
+namespace Controller.Level {
 public enum SpawnState { SPAWNING, WAITING, COUNTING, COMPLETED }
-public class SpawnerManager : MonoBehaviour
+public class SpawnerManagerController : MonoBehaviour
 {
     
     //MapGenerator.
-    private WaveFunctionCollapseV2 mapGenerator;
+    private MapGeneratorController mapGenerator;
     private bool MapGeneratedFinish = false;
     // Start is called before the first frame update 
     [NonSerialized] List<GameObject> enemyList = new List<GameObject>();
@@ -59,7 +59,7 @@ public class SpawnerManager : MonoBehaviour
 
     //Initialization
     void Awake() {
-        mapGenerator = FindObjectOfType<WaveFunctionCollapseV2>();
+        mapGenerator = FindObjectOfType<MapGeneratorController>();
     }
 
     //Set initial Countdown Time
