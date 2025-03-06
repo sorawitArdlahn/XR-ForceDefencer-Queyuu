@@ -1880,6 +1880,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robotBaseStats: {fileID: 11400000, guid: b347771491c1b5249a25457f1fbe2bf7, type: 2}
+  maxHP: 0
+  maxArmor: 0
+  maxFuel: 0
+  speed: 0
   currentHP: 0
   currentArmor: 0
   currentFuel: 0
@@ -1896,6 +1900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robotInGameStats: {fileID: 6922587469683054965}
+  deathEffect: {fileID: 0}
 --- !u!114 &9187843730565424453
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 using Model.Stats;
+using System.Collections;
 
 namespace Controller.Movement
 {
@@ -40,6 +41,7 @@ namespace Controller.Movement
         {
             foreach (var enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
             {
+                if (allEnemies.Contains(enemyGameObject)) continue;
                 allEnemies.Add(enemyGameObject);
             }
             
@@ -54,6 +56,7 @@ namespace Controller.Movement
                 LockOnText.color = Color.red;
                 isAimActive = false;
                 target = null;
+                allEnemies.Clear();
             }
         }
 
@@ -67,6 +70,7 @@ namespace Controller.Movement
             LockOnText.color = Color.red;
             isAimActive = false;
             target = null;
+            aimImage.transform.position = cockpitTransform.position;
         }
 
         private void Update()
@@ -88,9 +92,18 @@ namespace Controller.Movement
             newAngle = Vector3.zero;
             float closestDistance = 999;
             GameObject closestEnemy = null;
+            float distanceBetweenPlayerAndEnemy;
             foreach (GameObject enemy in allEnemies)
             {
-                float distanceBetweenPlayerAndEnemy = Vector3.Distance(playerTransform.position, enemy.transform.position);
+                try
+                {
+                    distanceBetweenPlayerAndEnemy = Vector3.Distance(playerTransform.position, enemy.transform.position);
+                }
+                catch
+                { 
+                    continue;
+                }
+
                 if (distanceBetweenPlayerAndEnemy < closestDistance)
                 {
                     closestDistance = distanceBetweenPlayerAndEnemy;
@@ -98,7 +111,6 @@ namespace Controller.Movement
                 }
             }
 
-            
             try
             {
                 targetDistance = Vector3.Distance(playerTransform.position, closestEnemy.transform.position);
@@ -123,20 +135,20 @@ namespace Controller.Movement
                 Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + targetHight, target.transform.position.z);
                 transform.position = targetPosition;
                 transform.LookAt(cockpitTransform.position);
-            
-                aimImage.transform.position = pointer.position;
+
+                aimImage.transform.position =  Vector3.Slerp(aimImage.transform.position, pointer.position, Time.deltaTime * 1.5f); ;
                 aimImage.transform.LookAt(cockpitTransform.position);
                 aimImage.gameObject.SetActive(true);
 
-                if (Vector3.Distance(playerTransform.position, pointer.position) >= setDistance)
+                if (Vector3.Distance(playerTransform.position, aimImage.transform.position) >= setDistance)
                 {
-                    var rotation = Quaternion.LookRotation(pointer.position - playerTransform.position);
+                    var rotation = Quaternion.LookRotation(aimImage.transform.position - playerTransform.position);
                 
                     rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
                 
                     playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, rotation, Time.deltaTime); 
                 
-                    cockpitTransform.LookAt(pointer.position);
+                    cockpitTransform.LookAt(aimImage.transform.position);
                 
                     newAngle = cockpitTransform.rotation.eulerAngles;
                 }
