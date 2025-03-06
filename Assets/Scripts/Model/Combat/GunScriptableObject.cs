@@ -139,6 +139,7 @@ namespace Model.Combat
 
             if (hit.collider != null)
             {
+                Debug.Log("Hit: " + hit.collider.name);
                 GameObject effect = Instantiate(surfaceEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 effect.gameObject.GetComponent<ParticleManager>().PlayParticles();
                 Destroy(effect, 1f);
@@ -147,6 +148,7 @@ namespace Model.Combat
                     damageable.TakeDamage(damageConfig.GetDamage());  
                 }
             }
+            
             yield return new WaitForSeconds(trailConfig.Duration);
             yield return null;
             instance.emitting = false;

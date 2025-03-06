@@ -39,12 +39,7 @@ namespace Controller.Movement
 
         private void OnEnable()
         {
-            foreach (var enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                if (allEnemies.Contains(enemyGameObject)) continue;
-                allEnemies.Add(enemyGameObject);
-            }
-            
+            FindEnemy();
             isAimActive = true;
             LockOnText.text =  "ON" ;
             LockOnText.color = Color.green;
@@ -75,15 +70,46 @@ namespace Controller.Movement
 
         private void Update()
         {
+            
             if (isAimActive)
             {
                 MoveToClosetEnemy();
             }
-
+        
             if (target != null && target.GetComponent<RobotInGameStats>().currentHP <= 0)
             {
                 allEnemies.Remove(target);
                 target = null;
+            }
+
+            ClearDeathEnemy();
+        }
+
+        private void FindEnemy()
+        {
+            foreach (var enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                if (allEnemies.Contains(enemyGameObject)) continue;
+                allEnemies.Add(enemyGameObject);
+            }
+
+            if (allEnemies.Count == 0)
+            {
+                isEnemyAvailable = false;
+            }else
+            {
+                isEnemyAvailable = true;
+            }
+        }
+
+        private void ClearDeathEnemy()
+        {
+            foreach (var enemy in allEnemies)
+            {
+                if (enemy == null)
+                {
+                    allEnemies.Remove(enemy);
+                }
             }
         }
 
@@ -172,6 +198,7 @@ namespace Controller.Movement
 
         public bool IsEnemyAvailable()
         {
+            FindEnemy();
             return isEnemyAvailable;
         }
     }
