@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &231943022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 231943024}
+  - component: {fileID: 231943023}
+  m_Layer: 0
+  m_Name: InstantLoadScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &231943023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231943022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7647574898c949e428f145c7c7df21df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: {fileID: 102900000, guid: f3e027087f2c5904e8e97f8d58ce13fd, type: 3}
+--- !u!4 &231943024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231943022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7286901, y: 5.082138, z: 0.5131922}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &658306847
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,8 +225,12 @@ MonoBehaviour:
         Part2: 0
         Part3: 0
         Part4: 0
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 0}
+      HealthPointMultiplier: 1
+      ArmorMultiplier: 1
+      FuelMultiplier: 1
+      MovementSpeedMultiplier: 1
+      currentResearchPoint: 0
+      researchPointRequired: 50
     levelData:
       <Id>k__BackingField:
         Part1: 0
@@ -225,8 +274,12 @@ MonoBehaviour:
         Part2: 0
         Part3: 0
         Part4: 0
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 0}
+      HealthPointMultiplier: 1
+      ArmorMultiplier: 1
+      FuelMultiplier: 1
+      MovementSpeedMultiplier: 1
+      currentResearchPoint: 0
+      researchPointRequired: 50
     levelData:
       <Id>k__BackingField:
         Part1: 0
@@ -241,3 +294,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 658306848}
+  - {fileID: 231943024}

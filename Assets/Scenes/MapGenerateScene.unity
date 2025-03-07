@@ -551,6 +551,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
+      propertyPath: forceDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: MapGenerator
       value: 
       objectReference: {fileID: 705165673}
@@ -809,6 +813,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
+      propertyPath: CreateWall
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: cellV2Size
       value: 50

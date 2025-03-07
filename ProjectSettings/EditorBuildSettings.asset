@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/ProductionScenes/SingletonScene.unity
+    guid: c90f757b9e35f82489de53d51e7e452e
+  - enabled: 1
+    path: Assets/Scenes/ProductionScenes/MainMenuScene.unity
+    guid: f3e027087f2c5904e8e97f8d58ce13fd
+  - enabled: 1
+    path: Assets/Scenes/ProductionScenes/PreparationScene.unity
+    guid: c3058aaf8f7efd6498b93eb0ca51845b
+  - enabled: 1
     path: Assets/Scenes/MapGenerateScene.unity
     guid: e5c2367800f3a5c41bfc79795e1ac513
   m_configObjects:
