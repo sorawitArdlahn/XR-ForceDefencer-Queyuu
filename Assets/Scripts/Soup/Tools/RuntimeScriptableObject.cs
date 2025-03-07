@@ -8,7 +8,6 @@ public abstract class RuntimeScriptableObject : ScriptableObject
     void OnEnable()
     {
         instances.Add(this);
-
     }
 
     void OnDisable()

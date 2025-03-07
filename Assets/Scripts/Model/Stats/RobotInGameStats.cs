@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using System.Persistence;
 
 namespace Model.Stats
 {
-    public class RobotInGameStats : MonoBehaviour
+    public class RobotInGameStats : MonoBehaviour, IBind<PlayerData>
     {
         [FormerlySerializedAs("robotBaseStat")] public RobotBaseStats robotBaseStats;
         [Header("Base Stats")]
@@ -21,6 +22,29 @@ namespace Model.Stats
         public event Action<int,int> onHPChangedEvent; 
         public event Action<int,int> onArmorChangedEvent;
         public event Action<int,int> onFuelChangedEvent;
+
+
+        //SOUP : Binding Part
+        [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
+        public PlayerData data;
+
+        public void Bind(PlayerData data)
+        {
+            this.data = data;
+            this.data.Id = Id;
+
+            //Stats
+            this.data.HealthPointMultiplier = data.HealthPointMultiplier;
+            this.data.ArmorMultiplier = data.ArmorMultiplier;
+            this.data.FuelMultiplier = data.FuelMultiplier;
+            this.data.MovementSpeedMultiplier = data.MovementSpeedMultiplier;
+
+            //ResearchPoint
+            this.data.currentResearchPoint = data.currentResearchPoint;
+            this.data.researchPointRequired = data.researchPointRequired;
+
+        }
+
 
         private void Awake()
         {

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GameController;
+using Spawn;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Model.Level;
-using Controller.Level;
+using Model.Stats;
 
 namespace System.Persistence {
     [Serializable]
@@ -70,8 +70,8 @@ namespace System.Persistence {
 
             
             if (scene.name == "PreparationScene" || scene.name == "InBattleScene") {
-            //Bind<Player, PlayerData>(GameManager.Instance.currentGameData.playerData);  
-            Bind<LevelManagerController, LevelData>(GameManager.Instance.currentGameData.levelData); 
+            Bind<RobotInGameStats, PlayerData>(GameManager.Instance.currentGameData.playerData);  
+            Bind<LevelManager, LevelData>(GameManager.Instance.currentGameData.levelData); 
             } 
         }
 

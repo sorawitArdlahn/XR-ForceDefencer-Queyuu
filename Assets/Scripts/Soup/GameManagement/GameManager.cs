@@ -1,7 +1,7 @@
 using System.Persistence;
 using UnityEngine;
 using System;
-using Model.Level;
+using Model.Stats;
 
 
 namespace GameController {
@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
             Name = "Demo",
             currentLevelName = "PreparationScene",
             currentLevelIndex = 1,
-            //playerData = new PlayerData(), //TODO : Important.
-            levelData = new LevelData() 
+            playerData = new PlayerData(), //TODO : Important.
+            levelData = new Spawn.LevelData() 
         };
 
     }
