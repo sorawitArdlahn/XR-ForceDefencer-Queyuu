@@ -1,13 +1,12 @@
-using System;
+using Model.Level;
 using System.Persistence;
 using System.Collections.Generic;
 using UnityEngine;
 using GameController;
 using EventListener;
-using Mapgenerate;
 
-namespace Spawn {
-public class LevelManager : MonoBehaviour, IBind<LevelData>
+namespace Controller.Level {
+public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 {
     // Start is called before the first frame update
     [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
@@ -23,24 +22,26 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
 
     public GameEvent OnStartLevel;
 
-    WaveFunctionCollapseV2 mapGenerator;
+    MapGeneratorController mapGenerator;
 
-    SpawnerManager spawnerManager;
+    SpawnerManagerController spawnerManager;
 
     GameObject player;
 
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
 
+    [SerializeField] private bool forceDebug;
+
     void Start()
     {
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
         {
-            spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManager>();
+            spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManagerController>();
         }
 
         if (GameObject.FindGameObjectWithTag("MapGenerator") != null)
         {
-            mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<WaveFunctionCollapseV2>();
+            mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGeneratorController>();
         }
 
         if (GameObject.FindGameObjectWithTag("Player") != null)
@@ -48,7 +49,10 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        ResetStage();
+        if (GameStateManager.Instance?.GetCurrentGameState() == GameState.InBattle || forceDebug)
+        {
+            ResetStage();
+        }
     }
 
     public int getCurrentLevel()
@@ -62,10 +66,18 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
     }
 
     void SetLevelDetailBasedOnCurrentLevel() {
+        //Dynamically Increase Map Size over time
+        int additionalSize = Mathf.FloorToInt(Mathf.Log(getCurrentLevel() + 1, 3));
+        mapGenerator?.setMapSize(additionalSize + 5);
 
-        spawnerManager?.SetEnemies(enemiesList, getCurrentLevel() + 15);
-        spawnerManager?.getTotalEnemies();
+        //Dynamically Increase Enemy Amount over time
         //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager
+        int enemyCount = Mathf.Min(
+            getCurrentLevel() + 15, 
+            (int)(mapGenerator.getMapSize() * 0.75)
+            );
+        spawnerManager?.SetEnemies(enemiesList, enemyCount);
+        spawnerManager?.getTotalEnemies();
         
     }
 
@@ -75,8 +87,8 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
     }
 
     public void setPlayerPositionOnMap() {
-        Vector3 playerSpawnPosition = mapGenerator.GetRandomPosition();
-        playerSpawnPosition.y += 30;
+        Vector3 playerSpawnPosition = mapGenerator.GetPlayerSpawnPosition();
+        playerSpawnPosition.y += 15;
         player.transform.position = playerSpawnPosition;
 
     }
@@ -86,9 +98,6 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnCurrentLevel();
         OnStartLevel?.Raise(this);
-        //Reset Robot Stats
-        //Reset Map
-        //Reset Spawner
     }
 
     void calculateCheckpointLevel() {
@@ -113,15 +122,6 @@ public class LevelManager : MonoBehaviour, IBind<LevelData>
         GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
     }
 
-}
-
-[Serializable]
-public class LevelData : ISaveable
-{
-    [field: SerializeField] public SerializableGuid Id { get; set; }
-    public int currentLevel;
-    public int highestLevel = 0;
-    public int checkpointLevel = 0;
 }
 
 }

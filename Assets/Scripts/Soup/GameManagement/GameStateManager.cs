@@ -44,7 +44,10 @@ namespace GameController
             SetNextPhase(GameState.MainMenu);
         }
 
-        // Update is called once per frame
+        public GameState GetCurrentGameState()
+        {
+            return currentGameState;
+        }
 
         public void SetNextPhase(GameState nextState)
         {

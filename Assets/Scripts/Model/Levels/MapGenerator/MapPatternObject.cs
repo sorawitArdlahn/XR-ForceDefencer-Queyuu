@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MapPatternTemplate", menuName = "WFC/MapPatternTemplate")]
-[System.Serializable]
+namespace Model.Level
+{
+    [CreateAssetMenu(fileName = "MapPatternTemplate", menuName = "WFC/MapPatternTemplate")]
+    [System.Serializable]
 public class MapPatternTemplate : ScriptableObject
 {
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class MapPatternTemplate : ScriptableObject
     [Tooltip("negZ")]
     public List<MapPatternType> rightNeighbors;
 
+    public bool playerSpawnAble;
     public bool isFlipped = false;
     public bool isRotated = false;
 
@@ -48,3 +51,6 @@ public class MapPatternTemplate : ScriptableObject
 }
 
 
+    
+    
+}
