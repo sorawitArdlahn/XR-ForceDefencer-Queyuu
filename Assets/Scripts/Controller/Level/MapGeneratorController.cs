@@ -36,6 +36,8 @@ public class MapGeneratorController : MonoBehaviour
 
     public GameObject wallPrefab;
 
+    [SerializeField] private bool CreateWall;
+
     GameObject gridParent;
 
     float borderHeight;
@@ -90,8 +92,10 @@ public class MapGeneratorController : MonoBehaviour
             }
         }
 
-        //setBorderHeight();
-        //CreateBorderWalls();
+        if (CreateWall && wallPrefab != null) {
+            setBorderHeight();
+            CreateBorderWalls();
+        }
         StartCoroutine(CheckEntropy());
 
     }
