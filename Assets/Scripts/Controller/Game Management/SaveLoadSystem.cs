@@ -70,7 +70,8 @@ namespace System.Persistence {
             }
 
             
-            if (scene.name == "PreparationScene" || scene.name == "InBattleScene") {
+            if (GameStateManager.Instance.GetCurrentGameState() == GameState.BattlePreparation 
+            || GameStateManager.Instance.GetCurrentGameState() == GameState.InBattle) {
             Bind<RobotInGameStats, PlayerData>(GameManager.Instance.currentGameData.playerData);  
             Bind<LevelManagerController, LevelData>(GameManager.Instance.currentGameData.levelData); 
             } 

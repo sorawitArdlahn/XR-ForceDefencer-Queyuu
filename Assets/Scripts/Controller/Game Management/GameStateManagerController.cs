@@ -111,7 +111,7 @@ namespace GameController
         private void LoadScene(int sceneNumber) {
 
             if(!SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded)
-                SceneManager.LoadScene(sceneNumber, LoadSceneMode.Additive);
+                SceneManager.LoadScene(sceneNumber);
 
         }
 

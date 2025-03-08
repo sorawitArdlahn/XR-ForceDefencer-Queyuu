@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //This Game only have 1 save slot.
     public void LoadGame() {
         currentGameData = SaveLoadSystem.Instance.LoadGame("Demo");
     }
@@ -47,27 +48,8 @@ public class GameManager : MonoBehaviour
     void OnReset() {
         currentGameData = null;
     }
-    // Start is called before the first frame update
 
     //TODO : This is only Placeholder for button commands
-    public void NewGameButton() {
-        newGame();
-        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
-        Debug.Log("New Game Button Pressed.");
-
-        //DEBUGGING
-    }
-
-    public void LoadGameButton() {
-        try {
-            Instance.LoadGame();
-            GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
-            Debug.Log("Save Loaded.");
-        }
-        catch (ArgumentException) {
-            Debug.LogWarning($"Save not found.");
-        }
-    }
 
     public void SaveGameButton() {
         Instance.SaveGame();
