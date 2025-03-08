@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using GameController;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuUIView : MonoBehaviour
@@ -25,14 +23,21 @@ public class MainMenuUIView : MonoBehaviour
 
     private void OnNewGameButtonClicked()
     {
-        Debug.Log("New Game Button Clicked");
-        SceneManager.LoadScene("PreparationScene");
+        gameManager.newGame();
+        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
+        Debug.Log("New Game Button Pressed.");
     }
 
     private void OnLoadGameButtonClicked()
     {
-        Debug.Log("Load Game Button Clicked");
-        gameManager.LoadGame();
+        try {
+            gameManager.LoadGame();
+            GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
+            Debug.Log("Save Loaded.");
+        }
+        catch (ArgumentException) {
+            Debug.LogWarning($"Save not found.");
+        }
     }
 
     private void OnQuitGameButtonClicked()
