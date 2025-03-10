@@ -3,6 +3,8 @@ using GameController;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace View.MainMenu
+{   
 public class MainMenuUIView : MonoBehaviour
 {
     [Header("Buttons")]
@@ -45,4 +47,6 @@ public class MainMenuUIView : MonoBehaviour
         Debug.Log("Quit Game Button Clicked");
         Application.Quit();
     }
+}
+
 }

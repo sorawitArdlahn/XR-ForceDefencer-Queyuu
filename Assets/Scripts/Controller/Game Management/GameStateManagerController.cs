@@ -39,11 +39,6 @@ namespace GameController
         DontDestroyOnLoad(gameObject);
         }
 
-        void Start()
-        {
-            SetNextPhase(GameState.MainMenu);
-        }
-
         public GameState GetCurrentGameState()
         {
             return currentGameState;
@@ -64,6 +59,7 @@ namespace GameController
                     LoadScene((int)SceneIndexes.MainMenu);
                     //TODO : Unload SingletonScene
                     //TODO : Unload Everything other than MainMenu
+                    UnloadScene((int)SceneIndexes.Singleton);
                     UnloadScene((int)SceneIndexes.BattlePreparation);
                     break;
                 case GameState.BattlePreparation:
@@ -111,6 +107,7 @@ namespace GameController
         private void LoadScene(int sceneNumber) {
 
             if(!SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded)
+                //SceneManager.LoadScene(sceneNumber, LoadSceneMode.Additive);
                 SceneManager.LoadScene(sceneNumber);
 
         }

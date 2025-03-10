@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); }
         
         DontDestroyOnLoad(gameObject);
+
+        GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
     }
 
     public void newGame() {
