@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameController;
 using EventListener;
+using View.Exploration;
 using System;
 
 namespace Controller.Level {
@@ -29,12 +30,16 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     GameObject player;
 
+    GameObject finishExplorationUIView;
+
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
 
     [SerializeField] private bool forceDebug;
 
     void Start()
     {
+        finishExplorationUIView = FindObjectOfType<FinishExplorationUIView>().gameObject;
+
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
         {
             spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManagerController>();
@@ -52,7 +57,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
         if (GameStateManager.Instance?.GetCurrentGameState() == GameState.InBattle || forceDebug)
         {
-            ResetStage();
+            NewStage();
         }
     }
 
@@ -83,7 +88,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     }
 
     public void LevelCompleted() {
-        //TODO : Level Completed
+        finishExplorationUIView.SetActive(true);
         Debug.LogWarning("Level Completed!");
     }
 
@@ -94,14 +99,14 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     }
 
-    public void ResetStage()
+    public void NewStage()
     {
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnCurrentLevel();
         OnStartLevel?.Raise(this);
     }
 
-    void calculateCheckpointLevel() {
+    public void calculateCheckpointLevel() {
         //TODO : Calculate Checkpoint Level
         //if current level does not reach previous record, 
         if (data.highestLevel > getCurrentLevel()) {
@@ -114,11 +119,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     }
 
     //TO/do : Turn these below method into UI class or somewhere else
-
-    public void backToPreparation() {
-        calculateCheckpointLevel();
-        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
-    }
 
     public void GameOver() {
         //TODO : Game Over
