@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameController;
 using EventListener;
+using System;
 
 namespace Controller.Level {
 public class LevelManagerController : MonoBehaviour, IBind<LevelData>
@@ -103,10 +104,13 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     void calculateCheckpointLevel() {
         //TODO : Calculate Checkpoint Level
         //if current level does not reach previous record, 
-        if (data.highestLevel > getCurrentLevel()) return;
-
-        data.highestLevel = getCurrentLevel();
-        data.checkpointLevel = getCurrentLevel() - 2;
+        if (data.highestLevel > getCurrentLevel()) {
+            data.checkpointLevel = Math.Max(data.checkpointLevel - 1, 1);
+        }
+        else {
+            data.highestLevel = getCurrentLevel();
+            data.checkpointLevel = Math.Max(data.highestLevel - 5, 1);
+        }
     }
 
     //TO/do : Turn these below method into UI class or somewhere else

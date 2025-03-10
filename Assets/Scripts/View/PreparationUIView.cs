@@ -9,6 +9,9 @@ namespace View.Preparation {
         public Button ModificationButton;
         public Button MainMenuButton;
 
+        [Header("Modification Screen")]
+        [SerializeField] GameObject ModificationScreen;
+
         void Start()
         {
             InBattleButton.onClick.AddListener(OnInBattleButtonClicked);
@@ -25,6 +28,7 @@ namespace View.Preparation {
         private void OnModificationButtonClicked()
         {
             //TODO : Open Modification UI
+            ModificationScreen.SetActive(true);
             Debug.Log("Modification Button Pressed.");
         }
 

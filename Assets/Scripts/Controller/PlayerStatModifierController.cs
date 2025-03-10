@@ -1,5 +1,6 @@
 using UnityEngine;
 using Model.Stats;
+using GameController;
 
 namespace Controller.StatMod
 {
@@ -11,32 +12,32 @@ namespace Controller.StatMod
     }
     public class PlayerStatModifierController : MonoBehaviour
     {
-        RobotInGameStats playerInfo;
+        PlayerData playerInfo;
 
         void Awake()
         {
-            playerInfo = FindObjectOfType<RobotInGameStats>();
+            playerInfo = GameManager.Instance.currentGameData.playerData;
         }
 
         public void UpgradeStat(PlayerStatModifier playerStatModifier)
         {
             switch (playerStatModifier.stat) {
                 case PlayerUpgradable.HealthPoint:
-                    playerInfo.data.HealthPointMultiplier += playerStatModifier.Multiplier;
+                    playerInfo.HealthPointMultiplier += playerStatModifier.Multiplier;
                     break;
                 case PlayerUpgradable.Armor:
-                    playerInfo.data.ArmorMultiplier += playerStatModifier.Multiplier;
+                    playerInfo.ArmorMultiplier += playerStatModifier.Multiplier;
                     break;
                 case PlayerUpgradable.Fuel:
-                    playerInfo.data.FuelMultiplier += playerStatModifier.Multiplier;
+                    playerInfo.FuelMultiplier += playerStatModifier.Multiplier;
                     break;
                 case PlayerUpgradable.MovementSpeed:
-                    playerInfo.data.MovementSpeedMultiplier += playerStatModifier.Multiplier;
+                    playerInfo.MovementSpeedMultiplier += playerStatModifier.Multiplier;
                     break;
             }
 
-            playerInfo.data.currentResearchPoint -= playerInfo.data.researchPointRequired;
-            playerInfo.data.researchPointRequired += 50;
+            playerInfo.currentResearchPoint -= playerInfo.researchPointRequired;
+            playerInfo.researchPointRequired += 50;
 
             //TODO : Update UI
             //TODO : Call PlayerInfo Update
@@ -55,6 +56,14 @@ namespace Controller.StatMod
             statModifier.Multiplier = Mathf.Round(randomMultiplier * 100f) / 100f;
 
             return statModifier;
+        }
+
+        public int getCurrentResearchPoint() {
+            return playerInfo.currentResearchPoint;
+        }
+
+        public int getResearchPointRequired() {
+            return playerInfo.researchPointRequired;
         }
     }
 
