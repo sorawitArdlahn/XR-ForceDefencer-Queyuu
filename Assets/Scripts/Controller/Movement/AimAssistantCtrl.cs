@@ -82,7 +82,7 @@ namespace Controller.Movement
                 target = null;
             }
 
-            ClearDeathEnemy();
+            
         }
 
         private void FindEnemy()
@@ -104,6 +104,7 @@ namespace Controller.Movement
 
         private void ClearDeathEnemy()
         {
+            if (allEnemies.Count == 0) return;
             foreach (var enemy in allEnemies)
             {
                 if (enemy == null)
@@ -182,6 +183,7 @@ namespace Controller.Movement
 
             else{
                 isEnemyAvailable = false;
+                ClearDeathEnemy();
             }
 
         }
@@ -200,6 +202,11 @@ namespace Controller.Movement
         {
             FindEnemy();
             return isEnemyAvailable;
+        }
+
+        public GameObject GetCurrentTarget()
+        {
+            return target;
         }
     }
 }
