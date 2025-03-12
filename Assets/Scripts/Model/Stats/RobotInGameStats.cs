@@ -43,6 +43,16 @@ namespace Model.Stats
             this.data.currentResearchPoint = data.currentResearchPoint;
             this.data.researchPointRequired = data.researchPointRequired;
 
+            OnResearchUpgraded();
+        }
+
+        public void OnResearchUpgraded() {
+            
+            maxHP = (int)(robotBaseStats.baseHP * data.HealthPointMultiplier);
+            maxArmor = (int)(robotBaseStats.basedArmor * data.ArmorMultiplier);
+            maxFuel = (int)(robotBaseStats.baseFuel * data.FuelMultiplier);
+            speed = robotBaseStats.baseSpeed * data.MovementSpeedMultiplier;
+
         }
 
 

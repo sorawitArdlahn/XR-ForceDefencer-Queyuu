@@ -1,6 +1,7 @@
 using UnityEngine;
 using Model.Stats;
 using GameController;
+using EventListener;
 
 namespace Controller.StatMod
 {
@@ -13,6 +14,9 @@ namespace Controller.StatMod
     public class PlayerStatModifierController : MonoBehaviour
     {
         PlayerData playerInfo;
+        [Header("Events")]
+        [SerializeField] GameEvent OnResearchUpgraded;
+
 
         void Awake()
         {
@@ -38,6 +42,8 @@ namespace Controller.StatMod
 
             playerInfo.currentResearchPoint -= playerInfo.researchPointRequired;
             playerInfo.researchPointRequired += 50;
+
+            OnResearchUpgraded.Raise(this);
 
             //TODO : Update UI
             //TODO : Call PlayerInfo Update
