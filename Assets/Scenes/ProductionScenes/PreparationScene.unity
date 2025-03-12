@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3959735890648095637, guid: 026f343cb94431a409fb87a93b3d3603, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6729624801372127188, guid: 026f343cb94431a409fb87a93b3d3603, type: 3}
       propertyPath: m_LocalPosition.x
@@ -277,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6729624801372127188, guid: 026f343cb94431a409fb87a93b3d3603, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.064508
+      value: 6.91
       objectReference: {fileID: 0}
     - target: {fileID: 6729624801372127188, guid: 026f343cb94431a409fb87a93b3d3603, type: 3}
       propertyPath: m_LocalRotation.w
@@ -417,9 +417,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1524424238092097927, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2067274316098107147, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: m_Name
       value: ==PLAYER==
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826079280926089077, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7086034561800508371, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: m_LocalPosition.x

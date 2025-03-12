@@ -21,6 +21,7 @@ namespace View.Preparation {
 
         private void OnInBattleButtonClicked()
         {
+            GameManager.Instance?.SaveGame();
             GameStateManager.Instance.SetNextPhase(GameState.InBattle);
             Debug.Log("In Battle Button Pressed.");
         }

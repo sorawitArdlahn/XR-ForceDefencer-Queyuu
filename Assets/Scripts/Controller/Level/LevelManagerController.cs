@@ -21,7 +21,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         this.data.currentLevel = data.checkpointLevel;
     }
 
-
+    [Header("Events")]
     public GameEvent OnStartLevel;
 
     MapGeneratorController mapGenerator;
@@ -30,15 +30,20 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     GameObject player;
 
-    GameObject finishExplorationUIView;
+    [Header("UI")]
+    [SerializeField] GameObject finishExplorationUIView;
+    [SerializeField] GameObject gameOverUIView;
+
+    [Header("Enemies")]
 
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
+
+    [Header("Debug")]
 
     [SerializeField] private bool forceDebug;
 
     void Start()
     {
-        finishExplorationUIView = FindObjectOfType<FinishExplorationUIView>().gameObject;
 
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
         {
@@ -87,11 +92,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         
     }
 
-    public void LevelCompleted() {
-        finishExplorationUIView.SetActive(true);
-        Debug.LogWarning("Level Completed!");
-    }
-
     public void setPlayerPositionOnMap() {
         Vector3 playerSpawnPosition = mapGenerator.GetPlayerSpawnPosition();
         playerSpawnPosition.y += 15;
@@ -101,6 +101,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     public void NewStage()
     {
+        finishExplorationUIView.SetActive(false);
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnCurrentLevel();
         OnStartLevel?.Raise(this);
@@ -118,14 +119,16 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         }
     }
 
-    //TO/do : Turn these below method into UI class or somewhere else
-
-    public void GameOver() {
-        //TODO : Game Over
-        GameManager.Instance.DeleteGame();
-        GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
+    //Post Match
+    public void LevelCompleted() {
+        finishExplorationUIView.SetActive(true);
+        Debug.LogWarning("Level Completed!");
     }
 
+    public void GameOver() {
+        gameOverUIView.SetActive(true);
+        Debug.LogWarning("Game Over!");
+    }
 }
 
 }

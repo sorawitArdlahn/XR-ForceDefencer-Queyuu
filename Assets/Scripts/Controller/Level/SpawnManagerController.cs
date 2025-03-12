@@ -21,6 +21,8 @@ public class SpawnerManagerController : MonoBehaviour
     Wave[] waves;
     List<GameObject> enemiesInWave = new List<GameObject>();
 
+
+
     int numEnemiesInWave = 0;
     int numEnemiesInWaveRemaining = 0;
 
@@ -30,34 +32,12 @@ public class SpawnerManagerController : MonoBehaviour
     public float timeBetweenWaves = 5f;
     float waveCountDown;
 
+    [Header("Events")]
+
     [SerializeField] GameEvent allEnemiesDead;
 
     private SpawnState state = SpawnState.COUNTING;
-
-    //private float searchCountdown = 2f;
-
-    //Difficulty increase based on number of levels
-
-
-    [System.Serializable]
-    public class Wave {
-
-    public int enemyCount;
-    //public List<GameObject> enemyInWaves;
-    public float timeBetweenSpawn;
-    public float timeBetweenWaves;
-
-
-    public List<SubWave> subWaves;
     
-    }
-
-    [System.Serializable] public class SubWave{
-        public int enemyCount;
-        public GameObject enemy;
-    }
-
-    //Initialization
     void Awake() {
         mapGenerator = FindObjectOfType<MapGeneratorController>();
     }
@@ -254,5 +234,23 @@ public class SpawnerManagerController : MonoBehaviour
         Debug.Log("Total Enemies: " + totalEnemies);
     }
 
+
 }
+
+
+    [System.Serializable]
+    public class Wave {
+
+    public int enemyCount;
+    //public List<GameObject> enemyInWaves;
+    public float timeBetweenSpawn;
+    public float timeBetweenWaves;
+    public List<SubWave> subWaves;
+    
+    }
+
+    [System.Serializable] public class SubWave{
+        public int enemyCount;
+        public GameObject enemy;
+    }
 }
