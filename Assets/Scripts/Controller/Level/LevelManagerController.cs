@@ -1,10 +1,10 @@
+using Model;
 using Model.Level;
 using System.Persistence;
 using System.Collections.Generic;
 using UnityEngine;
 using GameController;
 using EventListener;
-using View.Exploration;
 using System;
 
 namespace Controller.Level {
@@ -58,6 +58,10 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
+            if (player.TryGetComponent(out IDamageable damageable))
+            {
+            damageable.OnDeath += OnPlayerDeath;
+            }
         }
 
         if (GameStateManager.Instance?.GetCurrentGameState() == GameState.InBattle || forceDebug)
@@ -125,7 +129,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         Debug.LogWarning("Level Completed!");
     }
 
-    public void GameOver() {
+    public void OnPlayerDeath() {
         gameOverUIView.SetActive(true);
         Debug.LogWarning("Game Over!");
     }

@@ -29,6 +29,7 @@ namespace GameController
         // Start is called before the first frame update
         public static GameStateManager Instance = null;
         GameState currentGameState = GameState.Singleton;
+        
         void Awake()
         {
         //Initialize Singleton

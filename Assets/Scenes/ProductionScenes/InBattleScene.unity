@@ -577,9 +577,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1037010123652569706, guid: 95eae1845f872e1428076724d7614382, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1222541089}
-    - targetCorrespondingSourceObject: {fileID: 1037010123652569706, guid: 95eae1845f872e1428076724d7614382, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1222541090}
   m_SourcePrefab: {fileID: 100100000, guid: 95eae1845f872e1428076724d7614382, type: 3}
 --- !u!1 &1222541083 stripped
 GameObject:
@@ -699,35 +696,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1222541085}
         m_TargetAssemblyTypeName: Controller.Level.LevelManagerController, Assembly-CSharp
-        m_MethodName: ResetStage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1222541090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222541083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 1e7ac0ec40806a24c8e4804db65899c7, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1222541085}
-        m_TargetAssemblyTypeName: Controller.Level.LevelManagerController, Assembly-CSharp
-        m_MethodName: GameOver
+        m_MethodName: NewStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
