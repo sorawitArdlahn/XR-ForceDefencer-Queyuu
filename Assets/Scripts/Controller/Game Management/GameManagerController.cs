@@ -19,11 +19,10 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); }
         
         DontDestroyOnLoad(gameObject);
-
         GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
     }
 
-    public void newGame() {
+        public void newGame() {
         Instance.currentGameData = new GameData{
             Name = "Demo",
             currentLevelName = "PreparationScene",
