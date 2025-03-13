@@ -15,6 +15,7 @@ public class PlayerInputReceiver : MonoBehaviour
 
     private void OnMovement(InputValue value)
     {
+        
         _movement = value.Get<Vector3>();
     }
 

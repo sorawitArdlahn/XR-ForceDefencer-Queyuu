@@ -15,11 +15,15 @@ namespace Controller.Stats
         public int CurrentHealth => robotInGameStats.currentHP;
         public int CurrentArmor => robotInGameStats.currentArmor;
 
+        public int CurrentFuel => robotInGameStats.currentFuel;
+
         public event IDamageable.TakeDamageEvent OnTakeDamage;
         public event IDamageable.DeathEvent OnDeath;
         
         private bool isCanRefuel = true;
         private bool isRefueling = false; // Used to check if fuel is being refueled.
+
+        private bool isCanUseFuel = true;
         private int activeFuelUsageCount = 0; // Variable counts the number of times UseFuel is called.
 
         private void Update()
@@ -73,13 +77,15 @@ namespace Controller.Stats
 
         public IEnumerator UseFuel(int desiredFuel)
         {
-            if (desiredFuel <= robotInGameStats.currentFuel)
+            if (desiredFuel <= robotInGameStats.currentFuel && isCanUseFuel)
             {
+                isCanUseFuel = false;
                 isCanRefuel = false; // Prevent refueling
                 activeFuelUsageCount++; // Increase usage
 
                 robotInGameStats.setCurrentFuel(robotInGameStats.currentFuel - desiredFuel);
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(0.5f);
+                isCanUseFuel = true;
 
                 activeFuelUsageCount--; // Reduce the number of uses when finished
                 if (activeFuelUsageCount == 0) // There is no UseFuel pending.
@@ -87,6 +93,7 @@ namespace Controller.Stats
                     StopCoroutine("Refuel");
                     isCanRefuel = true;
                 }
+                
             }
         }
         private IEnumerator Refuel(int fillRate, float fillSpeed)
