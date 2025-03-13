@@ -121,7 +121,7 @@ public class SpawnerManagerController : MonoBehaviour
             GameObject randomGround = lowGrounds[UnityEngine.Random.Range(0, lowGrounds.Length)];
             spawnPosition = randomGround.transform.position;
             //spawnPosition.y += tileHeight + 8;
-            spawnPosition.y += 2;
+            spawnPosition.y += 5;
 
             // Check if the spawn position is too close to the player
             if (Vector3.Distance(spawnPosition, playerPos.transform.position) > minDistanceFromPlayer)
