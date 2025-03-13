@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5412985071193903738}
   - component: {fileID: 3449397755052934279}
   - component: {fileID: 4260328685517712837}
+  - component: {fileID: 4930512261217384468}
   m_Layer: 5
   m_Name: Screen Transition
   m_TagString: Untagged
@@ -102,6 +103,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4930512261217384468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563301518510473686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5270019fb5466b14d9f4d704bc6aaef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionWait: 0.5
 --- !u!1 &6661901958494478973
 GameObject:
   m_ObjectHideFlags: 0

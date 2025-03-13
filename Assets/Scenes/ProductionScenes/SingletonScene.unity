@@ -252,8 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbc4052e29f62640bd2ba39e18e41f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransitionScreen: {fileID: 3563301518510473686, guid: 5ae43c262b14804448274a20e1aaf280, type: 3}
-  transitionWait: 1
+  TransitionScreenObject: {fileID: 3563301518510473686, guid: 5ae43c262b14804448274a20e1aaf280, type: 3}
 --- !u!114 &658306851
 MonoBehaviour:
   m_ObjectHideFlags: 0

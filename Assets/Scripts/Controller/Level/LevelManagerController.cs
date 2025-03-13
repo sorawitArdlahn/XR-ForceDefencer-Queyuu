@@ -101,6 +101,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         playerSpawnPosition.y += 15;
         player.transform.position = playerSpawnPosition;
 
+        StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());
+
     }
 
     public void NewStage()

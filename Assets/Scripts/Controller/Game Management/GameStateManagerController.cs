@@ -32,9 +32,8 @@ namespace GameController
         GameState currentGameState = GameState.Singleton;
 
         [Header("Scene Transition")]
-        [SerializeField] GameObject TransitionScreen;
-        public float transitionWait = 0.5f;
-        private Image TransitionScreenImage;
+        [SerializeField] GameObject TransitionScreenObject;
+        public ScreenTransition TransitionScreen;
 
         void Awake()
         {
@@ -43,9 +42,8 @@ namespace GameController
         if (Instance == null) { Instance = this; }     
         else { Destroy(gameObject); }
 
-        TransitionScreen = Instantiate(TransitionScreen, transform);
-        TransitionScreenImage = TransitionScreen.GetComponentInChildren<Image>();
-        TransitionScreen.SetActive(false);
+        TransitionScreenObject = Instantiate(TransitionScreenObject, transform);
+        TransitionScreen = TransitionScreenObject.GetComponent<ScreenTransition>();
 
         DontDestroyOnLoad(gameObject);
         }
@@ -63,8 +61,8 @@ namespace GameController
 
         IEnumerator SwitchGameState()
         {
-            StartCoroutine(TransitionScreenFadeOut());
-            yield return new WaitForSeconds(transitionWait);
+            StartCoroutine(TransitionScreen.TransitionScreenFadeOut());
+            yield return new WaitForSeconds(TransitionScreen.getTransitionWait());
             
 
             switch (currentGameState)
@@ -100,62 +98,17 @@ namespace GameController
             if(!SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded) {
             yield return SceneManager.LoadSceneAsync(sceneNumber, LoadSceneMode.Additive);
             }
-            yield return TransitionScreenFadeIn();
+
+            if (Instance.GetCurrentGameState() != GameState.InBattle)
+            {
+                yield return TransitionScreen.TransitionScreenFadeIn();
+            }
         }
 
         private void UnloadScene(int sceneNumber) {
 
             if(SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded)
                 SceneManager.UnloadSceneAsync(sceneNumber);
-
-        }
-
-
-        //Transition Screen
-        public IEnumerator TransitionScreenFadeIn() {
-            Color startColor = new Color(TransitionScreenImage.color.r,
-            TransitionScreenImage.color.g,
-            TransitionScreenImage.color.b,
-            1);
-
-            Color endColor = new Color(TransitionScreenImage.color.r,
-            TransitionScreenImage.color.g,
-            TransitionScreenImage.color.b,
-            0);
-
-            yield return StartCoroutine(TransitionScreenFade(startColor, endColor, transitionWait));
-
-            TransitionScreen.SetActive(false);
-        }
-
-        public IEnumerator TransitionScreenFadeOut() {
-            TransitionScreen.SetActive(true);
-
-            Color startColor = new Color(TransitionScreenImage.color.r,
-            TransitionScreenImage.color.g,
-            TransitionScreenImage.color.b,
-            0);
-
-            Color endColor = new Color(TransitionScreenImage.color.r,
-            TransitionScreenImage.color.g,
-            TransitionScreenImage.color.b,
-            1);
-
-            yield return StartCoroutine(TransitionScreenFade(startColor, endColor, transitionWait));
-        }
-
-        private IEnumerator TransitionScreenFade(Color start, Color end, float duration) {
-            float elapsedTime = 0.0f;
-            float elapsedPercentage = 0.0f;
-
-            while (elapsedPercentage < 1.0f) {
-
-                elapsedPercentage = elapsedTime / duration;
-                TransitionScreenImage.color = Color.Lerp(start, end, elapsedPercentage);
-                yield return null;
-
-                elapsedTime += Time.deltaTime;
-            }
 
         }
   
