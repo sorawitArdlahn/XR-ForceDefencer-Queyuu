@@ -122,5 +122,10 @@ namespace Controller.Stats
 
             isRefueling = false; // Finished refueling
         }
+
+        public void researchPointEarned()
+        {
+            robotInGameStats.data.currentResearchPoint += 75;
+        }
     }
 }

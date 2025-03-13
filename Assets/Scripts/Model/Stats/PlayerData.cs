@@ -14,7 +14,7 @@ namespace Model.Stats {
         public float FuelMultiplier = 1;
         public float MovementSpeedMultiplier = 1;
 
-        public int currentResearchPoint;
+        public int currentResearchPoint = 0;
         public int researchPointRequired = 50;
     }
 }

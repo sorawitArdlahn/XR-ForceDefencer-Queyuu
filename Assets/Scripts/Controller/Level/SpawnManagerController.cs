@@ -35,6 +35,7 @@ public class SpawnerManagerController : MonoBehaviour
     [Header("Events")]
 
     [SerializeField] GameEvent allEnemiesDead;
+    [SerializeField] GameEvent researchPointEarned;
 
     private SpawnState state = SpawnState.COUNTING;
     
@@ -204,11 +205,12 @@ public class SpawnerManagerController : MonoBehaviour
 
     void OnEnemyDeath() {
         numEnemiesInWaveRemaining--;
+        researchPointEarned?.Raise(this);
+        
         if (numEnemiesInWaveRemaining <= 0 && nextWave >= waves.Length) {
             StageCleared();
         }
         else if (numEnemiesInWaveRemaining <= 0) NewWave();
-
     }
 
     public void NewWave() {

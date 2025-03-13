@@ -52,16 +52,5 @@ public class GameManager : MonoBehaviour
 
     //TODO : This is only Placeholder for button commands
 
-    public void SaveGameButton() {
-        Instance.SaveGame();
-        Debug.Log("Game Saved.");
-        GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
-    }
-
-    public void BattleButton() {
-        Debug.Log("=============== Going To BATTLE. =================");
-        GameStateManager.Instance.SetNextPhase(GameState.InBattle);
-    }
-
 }
 }
