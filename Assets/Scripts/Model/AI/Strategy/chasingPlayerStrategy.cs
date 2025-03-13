@@ -41,7 +41,8 @@ public class chasingPlayerStrategy : IStrategy
     void LookAtPlayer() {
 	
         // get vector to player but take y coordinate from self to make sure we are not getting any rotation on the wrong axis
-        Vector3 socketLookAt = new Vector3(player.transform.position.x, blackboard.SelfTransform.position.y, player.transform.position.z);
+        // Vector3 socketLookAt = new Vector3(player.transform.position.x, blackboard.SelfTransform.position.y, player.transform.position.z);
+        Vector3 socketLookAt = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         
         // create rotations for socket and gun
         Quaternion targetRotationSocket = Quaternion.LookRotation(socketLookAt - blackboard.SelfTransform.position);

@@ -43,10 +43,10 @@ namespace Presenter.Movement
         {
             if (aimAssistantCtrl.target != null)
             {
-                maxTargetHp = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().maxHP;
-                maxTargetArmor = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().maxArmor;
-                currentTargetHp = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().currentHP;
-                currentTargetArmor = aimAssistantCtrl.target.GetComponent<RobotInGameStats>().currentArmor;
+                maxTargetHp = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().maxHP;
+                maxTargetArmor = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().maxArmor;
+                currentTargetHp = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().currentHP;
+                currentTargetArmor = aimAssistantCtrl.target.GetComponent<SimpleBlackboard>().currentArmor;
                 return true;
             }else{
                 maxTargetHp = 0;

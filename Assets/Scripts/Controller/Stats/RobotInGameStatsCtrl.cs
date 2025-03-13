@@ -3,10 +3,10 @@ using System.Collections;
 using Model;
 using UnityEngine;
 using Model.Stats;
+using UnityEngine.SceneManagement;
 
 namespace Controller.Stats
 {
-    [RequireComponent(typeof(RobotInGameStatsCtrl))]
     public class RobotInGameStatsCtrl : MonoBehaviour, IDamageable
     {
         public RobotInGameStats robotInGameStats;
