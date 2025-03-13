@@ -53,9 +53,6 @@ namespace Model.Stats
             maxFuel = robotBaseStats.baseFuel;
             speed = robotBaseStats.baseSpeed;
             
-            Debug.Log("maxHP: " + maxHP);
-            Debug.Log("basedArmor: " + robotBaseStats.basedArmor);
-            
             currentHP = maxHP;
             currentArmor = maxArmor;
             currentFuel = maxFuel;

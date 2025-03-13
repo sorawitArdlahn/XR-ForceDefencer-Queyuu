@@ -166,7 +166,6 @@ namespace Controller.Movement
 
         private void MoveCockpit()
         {
-            Debug.Log("isLockOn: " + AimAssistantCtrl.IsEnemyAvailable());
             if (!playerInputReceiver.IsLockOn || !AimAssistantCtrl.IsEnemyAvailable())
             {
                 AimAssistantCtrl.enabled = false;

@@ -76,7 +76,7 @@ namespace Controller.Movement
                 MoveToClosetEnemy();
             }
         
-            if (target != null && target.GetComponent<RobotInGameStats>().currentHP <= 0)
+            if (target && target.GetComponent<RobotInGameStats>().currentHP <= 0)
             {
                 allEnemies.Remove(target);
                 target = null;
@@ -107,7 +107,7 @@ namespace Controller.Movement
             if (allEnemies.Count == 0) return;
             foreach (var enemy in allEnemies)
             {
-                if (enemy == null)
+                if (!enemy)
                 {
                     allEnemies.Remove(enemy);
                 }
@@ -157,7 +157,7 @@ namespace Controller.Movement
             
 
             target = FindClosestEnemy();
-            if (target != null)
+            if (target)
             {
                 Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y + targetHight, target.transform.position.z);
                 transform.position = targetPosition;
