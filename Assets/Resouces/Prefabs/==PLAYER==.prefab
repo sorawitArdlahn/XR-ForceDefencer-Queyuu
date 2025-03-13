@@ -1141,6 +1141,7 @@ GameObject:
   - component: {fileID: 6922587469683054965}
   - component: {fileID: 4402496615038515566}
   - component: {fileID: 9187843730565424453}
+  - component: {fileID: -3933524162128555148}
   m_Layer: 0
   m_Name: ==PLAYER==
   m_TagString: Player
@@ -1355,6 +1356,34 @@ MonoBehaviour:
   armorValueText: {fileID: 5259177098455528557}
   fuelSlider: {fileID: 4874939981943930054}
   fuelValueText: {fileID: 2337819351706357677}
+--- !u!114 &-3933524162128555148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067274316098107147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 2835fbbc5c8996f49b91e19a3623b801, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4402496615038515566}
+        m_TargetAssemblyTypeName: Controller.Stats.RobotInGameStatsCtrl, Assembly-CSharp
+        m_MethodName: researchPointEarned
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2133203421588115524
 GameObject:
   m_ObjectHideFlags: 0

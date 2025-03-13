@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     //GameState GameState;
     public static GameManager Instance = null;
 
+    [Header("Game Data Detail")]
     public GameData currentGameData;
 
     //LEVEL MANAGER SECTION

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,9 +32,9 @@ namespace GameController
         public static GameStateManager Instance = null;
         GameState currentGameState = GameState.Singleton;
 
-        [Header("Scene Transition")]
+        [Header("Scene Transition GameObject")]
         [SerializeField] GameObject TransitionScreenObject;
-        public ScreenTransition TransitionScreen;
+        [NonSerialized] public ScreenTransition TransitionScreen;
 
         void Awake()
         {

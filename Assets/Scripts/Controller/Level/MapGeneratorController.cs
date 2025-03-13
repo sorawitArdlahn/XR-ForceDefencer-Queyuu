@@ -13,14 +13,16 @@ public class MapGeneratorController : MonoBehaviour
 {
 
     //size of the map : eg 3 is 3x3
+    [Header("Map Size")]
     public int dimensions;
-
-    public GameEvent mapGenerated;
+    [Header("Map Patterns List")]
 
     public List<MapPatternSet> tileSet;
     List<MapPatternTemplate> templateList;
     private MapPatternV2[] tileObjects = new MapPatternV2[0];
     [NonSerialized] public List<CellV2> gridComponent;
+
+    [Header("Cell Object Prefab")]
     public CellV2 cellV2Object;
 
     //size of the cellV2 : eg 1 is 1x1
@@ -34,6 +36,8 @@ public class MapGeneratorController : MonoBehaviour
     private Dictionary<string, int> tileTypeFrequencies = new Dictionary<string, int>();
     private Dictionary<string, float> tileTypeWeights = new Dictionary<string, float>();
 
+    [Header("Map Wall")]
+
     public GameObject wallPrefab;
 
     [SerializeField] private bool CreateWall;
@@ -46,6 +50,9 @@ public class MapGeneratorController : MonoBehaviour
 
     //[SerializeField]
     private NavMeshSurface navMeshSurface;
+
+    [Header("Events")]
+    public GameEvent mapGenerated;
 
     public Vector3 GetPlayerSpawnPosition() {
         foreach (CellV2 cell in gridComponent) {

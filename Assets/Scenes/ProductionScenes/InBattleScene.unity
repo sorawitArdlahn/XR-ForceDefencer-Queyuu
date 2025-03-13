@@ -332,6 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenWaves: 5
   allEnemiesDead: {fileID: 11400000, guid: 333b5a8842419ed4fa895b8d9ce5e7ca, type: 2}
+  researchPointEarned: {fileID: 11400000, guid: 2835fbbc5c8996f49b91e19a3623b801, type: 2}
 --- !u!114 &312031056
 MonoBehaviour:
   m_ObjectHideFlags: 0
