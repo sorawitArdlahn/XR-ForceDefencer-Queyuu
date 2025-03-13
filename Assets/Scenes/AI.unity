@@ -555,6 +555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AI_Crusher (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1380102373405167140, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6478722758279050887, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -135.2
@@ -637,6 +641,10 @@ PrefabInstance:
     - target: {fileID: 1380102373405167140, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
       propertyPath: m_Name
       value: AI_Crusher (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380102373405167140, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6478722758279050887, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
       propertyPath: m_LocalPosition.x

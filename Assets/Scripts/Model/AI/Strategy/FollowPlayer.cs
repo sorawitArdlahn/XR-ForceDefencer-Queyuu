@@ -20,7 +20,7 @@ public class FollowPlayer : IStrategy
         agent = blackboard.SelfNavMeshAgent;
         player = blackboard.Player;
         this.animator = blackboard.SelfAnimator;
-        distance = 7f;
+        distance = 13f;
     }
 
     public Node.Status Process()
