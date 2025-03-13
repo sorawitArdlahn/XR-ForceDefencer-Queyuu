@@ -200,20 +200,28 @@ public class MapGeneratorController : MonoBehaviour
         
         MapPatternV2 foundtile = cellV2ToCollapse.tileOptions[0];
 
+        Vector3 adjustedPosition = new Vector3(
+            cellV2ToCollapse.transform.position.x, 
+            cellV2ToCollapse.transform.position.y + foundtile.GetPrefab().transform.position.y, 
+            cellV2ToCollapse.transform.position.z);
+
         
         //SOUP : Spawn Object / Tile / PreFab
-        GameObject spawnedObject = Instantiate(foundtile.GetPrefab(),
-        cellV2ToCollapse.transform.position,
+        GameObject spawnedObject = Instantiate(
+        //The object to be spawned
+        foundtile.GetPrefab(),
+        //The position of the object to be spawned
+        adjustedPosition,
+        //The rotation of the object to be spawned
         Quaternion.Euler(
         foundtile.GetPrefabRotation()
         .eulerAngles
         + new Vector3(0, foundtile.getRotatedAngle(), 0))
+
         );
 
+
         spawnedObject.transform.SetParent(cellV2ToCollapse.transform);
-        //cellV2ToCollapse.transform
-        //UnityEngine.Debug.Log("prefab rotation = " + foundtile.prefab.transform.rotation.eulerAngles.y 
-        //+ (foundtile.RotatePrefabClockWise()) + " data type = " + foundtile.prefab.transform.rotation.GetType());
 
         UpdateGeneration();
 
@@ -350,7 +358,6 @@ public class MapGeneratorController : MonoBehaviour
         if (direction == "up") {
         for (int x = optionList.Count - 1; x >= 0; x--) {
             var element = optionList[x];
-            //if (!NeighborList.Contains(element.GetThisPatternType()) || !TypeList.Contains(element.upNeighbors)) {
             if (!NeighborList.Contains(element.GetThisPatternType()) || !element.upNeighbors.Any(TypeList.Contains)) {
                 optionList.RemoveAt(x);
             }
@@ -491,6 +498,7 @@ public class MapGeneratorController : MonoBehaviour
     
     }
 
+    //Initialize the map
     public void ResetMap() {
         foreach (Transform child in gridParent.transform) {
             Destroy(child.gameObject);
