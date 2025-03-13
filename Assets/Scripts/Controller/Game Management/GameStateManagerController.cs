@@ -71,45 +71,32 @@ namespace GameController
                     //TODO : Load MainMenu
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.MainMenu));
 
-                    UnloadScene((int)SceneIndexes.Singleton);
-                    UnloadScene((int)SceneIndexes.BattlePreparation);
                     break;
                 case GameState.BattlePreparation:
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.BattlePreparation));
 
-                    UnloadScene((int)SceneIndexes.MainMenu);
-                    UnloadScene((int)SceneIndexes.InBattle);
                     break;
                 case GameState.InBattle:
                     //TODO : Check if scene is loaded, if not Load InBattleScene
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.InBattle));
                     //TODO : MAKE A LOADING SCREEN TO WAIT FOR MAP AND SPAWNER TO FINISH INITIALIZING
                     //TODO : Unload PreparationScene
-                    UnloadScene((int)SceneIndexes.BattlePreparation);
                     break;
                 case GameState.ContinueBattle:
                     //TODO : Unload VictoryScene
-                    Instance.SetNextPhase(GameState.InBattle);
                     break;
             }
         }
 
         private IEnumerator LoadSceneCoroutine(int sceneNumber) {
             if(!SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded) {
-            yield return SceneManager.LoadSceneAsync(sceneNumber, LoadSceneMode.Additive);
+            yield return SceneManager.LoadSceneAsync(sceneNumber);
             }
 
             if (Instance.GetCurrentGameState() != GameState.InBattle)
             {
                 yield return TransitionScreen.TransitionScreenFadeIn();
             }
-        }
-
-        private void UnloadScene(int sceneNumber) {
-
-            if(SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded)
-                SceneManager.UnloadSceneAsync(sceneNumber);
-
         }
   
     }
