@@ -21,9 +21,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         this.data.currentLevel = data.checkpointLevel;
     }
 
-    [Header("Events")]
-    public GameEvent OnStartLevel;
-
     MapGeneratorController mapGenerator;
 
     SpawnerManagerController spawnerManager;
@@ -37,6 +34,9 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     [Header("Enemies")]
 
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
+
+    [Header("Events")]
+    public GameEvent OnStartLevel;
 
     [Header("Debug")]
 
