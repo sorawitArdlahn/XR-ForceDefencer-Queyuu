@@ -111,13 +111,17 @@ public class SpawnerManagerController : MonoBehaviour
         float checkRadius = 1f;
         Vector3 spawnPosition = Vector3.zero;
 
+        GameObject[] lowGrounds = GameObject.FindGameObjectsWithTag("LowGround");
+
         
         // Check Validity of Spawn Position
         while (!validPosition) {
-            CellV2 spawnTile = mapGenerator.gridComponent[UnityEngine.Random.Range(0, mapGenerator.gridComponent.Count)];
-            float tileHeight = spawnTile.tileOptions[0].originalMapPattern.GetPrefabHeight();
-            spawnPosition = spawnTile.transform.position;
-            spawnPosition.y += tileHeight + 8;
+            //CellV2 spawnTile = mapGenerator.gridComponent[UnityEngine.Random.Range(0, mapGenerator.gridComponent.Count)];
+            //float tileHeight = spawnTile.tileOptions[0].originalMapPattern.GetPrefabHeight();
+            GameObject randomGround = lowGrounds[UnityEngine.Random.Range(0, lowGrounds.Length)];
+            spawnPosition = randomGround.transform.position;
+            //spawnPosition.y += tileHeight + 8;
+            spawnPosition.y += 2;
 
             // Check if the spawn position is too close to the player
             if (Vector3.Distance(spawnPosition, playerPos.transform.position) > minDistanceFromPlayer)
