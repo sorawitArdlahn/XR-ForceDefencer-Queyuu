@@ -1,4 +1,6 @@
 using System.Collections;
+using Controller.Stats;
+using Model.Stats;
 using UnityEngine;
 
 namespace Controller.Movement
@@ -7,7 +9,7 @@ namespace Controller.Movement
     {
         [Header("Input Receiver")] public PlayerInputReceiver playerInputReceiver;
 
-        [Header("Character Info")] public int fuel; //use fuel form robot info class instead
+        [Header("Character Info")] public RobotInGameStatsCtrl robotInGameStatsCtrl; //use fuel form robot info class instead
         [Header("Settings")] 
         public float gravity = 9.81f; // use for config gravity in game
         private bool _isDragToGroundActive; // use for turn on-off DragToGround() 
@@ -73,7 +75,7 @@ namespace Controller.Movement
 
             Physics.gravity = new Vector3(0, -this.gravity, 0);
             _isDragToGroundActive = true;
-            _isCanUseFuel = true;
+            // _isCanUseFuel = true;
         }
 
         private void Update()
@@ -92,7 +94,7 @@ namespace Controller.Movement
             if (isInputDashing && (movementState != MovementState.Sprinting) && CheckFuel(dashRequiredFuel)) Dash();
             if (!isInputFlying && !isInputJumping && !isGrounded) DragToGround();
             if (isInputJumping && isGrounded) Jump();
-            if (isInputFlying && !isGrounded && CheckFuel(flyRequiredFuel)) Fly();
+            if (isInputFlying && !isGrounded) Fly();
             MoveCharacter();
             
         }
@@ -125,7 +127,8 @@ namespace Controller.Movement
             {
                 movementState = MovementState.Sprinting;
                 moveSpeed = sprintSpeed;
-                StartCoroutine(UseFuel(sprintRequiredFuel));
+                // StartCoroutine(UseFuel(sprintRequiredFuel));
+                robotInGameStatsCtrl.StartCoroutine(robotInGameStatsCtrl.UseFuel(sprintRequiredFuel));
             }
 
             // Mode - Walking
@@ -163,7 +166,6 @@ namespace Controller.Movement
 
         private void MoveCockpit()
         {
-            Debug.Log("isLockOn: " + AimAssistantCtrl.IsEnemyAvailable());
             if (!playerInputReceiver.IsLockOn || !AimAssistantCtrl.IsEnemyAvailable())
             {
                 AimAssistantCtrl.enabled = false;
@@ -226,14 +228,25 @@ namespace Controller.Movement
 
         private void Fly()
         {
-            ; // not hold fly and character still stand on ground
-            StartCoroutine(UseFuel(flyRequiredFuel));
-            rb.AddForce(transform.up * (ascendSpeed * rb.mass), ForceMode.Impulse);
+            if (CheckFuel(flyRequiredFuel)){
+
+                robotInGameStatsCtrl.StartCoroutine(robotInGameStatsCtrl.UseFuel(flyRequiredFuel));
+                ; // not hold fly and character still stand on ground
+                // StartCoroutine(UseFuel(flyRequiredFuel));
+                rb.AddForce(transform.up * (ascendSpeed * rb.mass), ForceMode.Impulse);
+            }
+
+            else{
+                
+                DragToGround();
+            }
+            
         }
 
         private void Dash()
         {
-            StartCoroutine(UseFuel(dashRequiredFuel));
+            // StartCoroutine(UseFuel(dashRequiredFuel));
+            robotInGameStatsCtrl.StartCoroutine(robotInGameStatsCtrl.UseFuel(dashRequiredFuel));
             if (moveDirection == new Vector3(0,0,0))
             {
                 moveDirection = transform.forward;
@@ -250,21 +263,21 @@ namespace Controller.Movement
             rb.velocity = new Vector3(rb.velocity.x, tempVelocity * 1, rb.velocity.z);
         }
 
-        private IEnumerator UseFuel(int fuelAmount)
-        {
-            if (_isCanUseFuel)
-            {
-                _isCanUseFuel = false;
-                fuel -= fuelAmount;
-                //place api use fuel here
-                yield return new WaitForSeconds(0.1f);
-                _isCanUseFuel = true;
-            }
-        }
+        // private IEnumerator UseFuel(int fuelAmount)
+        // {
+        //     if (_isCanUseFuel)
+        //     {
+        //         _isCanUseFuel = false;
+        //         fuel -= fuelAmount;
+        //         //place api use fuel here
+        //         yield return new WaitForSeconds(0.1f);
+        //         _isCanUseFuel = true;
+        //     }
+        // }
 
         private bool CheckFuel(int fuelAmount)
         {
-            if (fuel >= fuelAmount)
+            if (robotInGameStatsCtrl.CurrentFuel >= fuelAmount)
             {
                 return true;
             }

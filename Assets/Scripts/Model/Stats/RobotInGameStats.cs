@@ -63,11 +63,13 @@ namespace Model.Stats
             maxFuel = robotBaseStats.baseFuel;
             speed = robotBaseStats.baseSpeed;
             
-            Debug.Log("maxHP: " + maxHP);
-            Debug.Log("basedArmor: " + robotBaseStats.basedArmor);
             currentHP = maxHP;
             currentArmor = maxArmor;
             currentFuel = maxFuel;
+
+            onHPChangedEvent?.Invoke(currentHP, maxHP);
+            onArmorChangedEvent?.Invoke(currentArmor, maxArmor);
+            onFuelChangedEvent?.Invoke(currentFuel, maxFuel);
         }
 
         public void SetCurrentHP(int newHP)
