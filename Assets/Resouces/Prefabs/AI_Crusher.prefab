@@ -720,7 +720,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &1689994428286295585
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca115d351500a69418f5a418216e1acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotBaseStats: {fileID: 11400000, guid: b347771491c1b5249a25457f1fbe2bf7, type: 2}
+  robotBaseStats: {fileID: 11400000, guid: d4722b9be5ba14343ba7176e10de26e6, type: 2}
   maxHP: 0
   maxArmor: 0
   maxFuel: 0

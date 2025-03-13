@@ -17,6 +17,7 @@ namespace View.Exploration {
 
     private void OnMainMenuButtonClicked()
     {
+        UnPauseGame();
         GameManager.Instance?.DeleteGame();
         GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
         Debug.Log("Main Menu Button Pressed.");
@@ -24,12 +25,16 @@ namespace View.Exploration {
 
     private void OnNewGameButtonClicked()
     {
+        UnPauseGame();
         GameManager.Instance?.DeleteGame();
         GameManager.Instance?.newGame();
         GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
         Debug.Log("New Game Button Pressed.");
     }
 
+    private void UnPauseGame(){
+        Time.timeScale = 1;
+    }
     
 }
 

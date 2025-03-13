@@ -13,6 +13,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     // Start is called before the first frame update
     [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
     [SerializeField] LevelData data;
+    [SerializeField] int baseEnemy = 15;
 
     public void Bind(LevelData data)
     {
@@ -88,7 +89,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         //Dynamically Increase Enemy Amount over time
         //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager
         int enemyCount = Mathf.Min(
-            getCurrentLevel() + 15, 
+            getCurrentLevel() + baseEnemy, 
             (int)(mapGenerator.getMapSize() * 0.75)
             );
         spawnerManager?.SetEnemies(enemiesList, enemyCount);
@@ -129,11 +130,16 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     public void LevelCompleted() {
         finishExplorationUIView.SetActive(true);
         Debug.LogWarning("Level Completed!");
+        PauseGame();
     }
 
     public void OnPlayerDeath() {
         gameOverUIView.SetActive(true);
         Debug.LogWarning("Game Over!");
+    }
+
+    private void PauseGame(){
+        Time.timeScale = 0;
     }
 }
 

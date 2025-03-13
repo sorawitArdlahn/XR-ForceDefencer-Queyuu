@@ -21,13 +21,19 @@ public class FinishExplorationUIView : MonoBehaviour
 
     private void OnContinueExplorationButtonClicked()
     {
+        UnPauseGame();
         OnContinueExploration.Raise(this);
     }
 
     private void OnFinishExplorationButtonClicked()
     {
+        UnPauseGame();
         OnFinishExploration.Raise(this);
         GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
+    }
+
+    private void UnPauseGame(){
+        Time.timeScale = 1;
     }
     
 }

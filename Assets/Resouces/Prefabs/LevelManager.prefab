@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1996555387208142891}
   - component: {fileID: 5421614883767171524}
+  - component: {fileID: 8726006924519224094}
+  - component: {fileID: 6406068087568001761}
+  - component: {fileID: 3410484676473108105}
+  - component: {fileID: 754695827169208215}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -44,5 +48,136 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570fb14ad8dae5b48922ac23384f3f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Id>k__BackingField:
+    Part1: 4233341740
+    Part2: 1254809534
+    Part3: 2638630528
+    Part4: 3517083139
+  data:
+    <Id>k__BackingField:
+      Part1: 0
+      Part2: 0
+      Part3: 0
+      Part4: 0
+    currentLevel: 0
+    highestLevel: 0
+    checkpointLevel: 0
+  baseEnemy: 5
+  finishExplorationUIView: {fileID: 0}
+  gameOverUIView: {fileID: 0}
+  enemiesList:
+  - {fileID: 1380102373405167140, guid: 9c2d30726f4815c499b8e624d873ead5, type: 3}
   OnStartLevel: {fileID: 11400000, guid: 1118257862b417943a8e810099775993, type: 2}
-  enemiesList: []
+  forceDebug: 1
+--- !u!114 &8726006924519224094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037010123652569706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5cc5ce0358eed164297a715a87100d17, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5421614883767171524}
+        m_TargetAssemblyTypeName: Spawn.LevelManager, Assembly-CSharp
+        m_MethodName: setPlayerPositionOnMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6406068087568001761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037010123652569706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 333b5a8842419ed4fa895b8d9ce5e7ca, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5421614883767171524}
+        m_TargetAssemblyTypeName: Spawn.LevelManager, Assembly-CSharp
+        m_MethodName: LevelCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3410484676473108105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037010123652569706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 688823969a9af2742b12b3b9f78e58b6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5421614883767171524}
+        m_TargetAssemblyTypeName: Controller.Level.LevelManagerController, Assembly-CSharp
+        m_MethodName: calculateCheckpointLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &754695827169208215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037010123652569706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f819ba542608da46aeb56ec4977990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: abf08cb478080fc4f832dd93988fb1b2, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5421614883767171524}
+        m_TargetAssemblyTypeName: Controller.Level.LevelManagerController, Assembly-CSharp
+        m_MethodName: NewStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
