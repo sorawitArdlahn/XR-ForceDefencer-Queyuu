@@ -791,7 +791,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: CreateWall
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: cellV2Size
@@ -801,6 +801,10 @@ PrefabInstance:
       propertyPath: dimensions
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
+      propertyPath: wallPrefab
+      value: 
+      objectReference: {fileID: 3845070690837726840, guid: 4ff0838e6051e494db53a04b85ba49eb, type: 3}
     - target: {fileID: 2685169884894211664, guid: 20f1c6a90f9fc0544b6a9ece3f2bec8c, type: 3}
       propertyPath: mapGenerated
       value: 
