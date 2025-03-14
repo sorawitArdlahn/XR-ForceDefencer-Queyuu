@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349604cbef5a72f45a039e980918abfc, type: 3}
   m_Name: TowerIntersect_WFC
   m_EditorClassIdentifier: 
-  prefabName: RedTower
+  prefabName: MedHeightBuilding
   patternType: {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
-  prefab: {fileID: 5593716754752493916, guid: 665d9077abd27564d9466096616ed33c, type: 3}
+  prefab: {fileID: 8000753274857307116, guid: 563125d87c6281b4f95d2efbe37ae1d8, type: 3}
   upNeighbors:
   - {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
   - {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}

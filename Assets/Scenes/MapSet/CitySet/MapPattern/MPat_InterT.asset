@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 349604cbef5a72f45a039e980918abfc, type: 3}
-  m_Name: RoadT_WFC
+  m_Name: MPat_InterT
   m_EditorClassIdentifier: 
-  prefabName: RoadThreeTurn
+  prefabName: City_Intersect_T
   patternType: {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}
   prefab: {fileID: 6375001850957057613, guid: 4b325cb0524c80c44ac21f226ae546d0, type: 3}
   upNeighbors:
