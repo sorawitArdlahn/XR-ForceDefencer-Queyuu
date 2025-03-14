@@ -197,8 +197,9 @@ public class MapGeneratorController : MonoBehaviour
 
         Vector3 adjustedPosition = new Vector3(
             cellV2ToCollapse.transform.position.x, 
-            cellV2ToCollapse.transform.position.y + foundtile.GetPrefab().transform.position.y, 
-            cellV2ToCollapse.transform.position.z);
+            cellV2ToCollapse.transform.position.y, 
+            cellV2ToCollapse.transform.position.z
+            );
 
         
         //SOUP : Spawn Object / Tile / PreFab

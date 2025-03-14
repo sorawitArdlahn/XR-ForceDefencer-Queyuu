@@ -41,6 +41,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     [Header("Debug")]
 
     [SerializeField] private bool forceDebug;
+    [SerializeField] private int baseMapSize = 5;
 
     void Start()
     {
@@ -83,7 +84,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     void SetLevelDetailBasedOnCurrentLevel() {
         //Dynamically Increase Map Size over time
         int additionalSize = Mathf.FloorToInt(Mathf.Log(getCurrentLevel() + 1, 3));
-        mapGenerator?.setMapSize(additionalSize + 5);
+        mapGenerator?.setMapSize(additionalSize + baseMapSize);
 
         //Dynamically Increase Enemy Amount over time
         //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager

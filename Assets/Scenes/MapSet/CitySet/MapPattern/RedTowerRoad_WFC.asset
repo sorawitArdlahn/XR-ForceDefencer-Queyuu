@@ -20,10 +20,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}
   downNeighbors:
   - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
   leftNeighbors:
   - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
   rightNeighbors:
   - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
+  playerSpawnAble: 0
   isFlipped: 0
   isRotated: 1
   timeRotated: 1
