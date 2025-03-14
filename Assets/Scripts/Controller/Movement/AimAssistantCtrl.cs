@@ -76,7 +76,7 @@ namespace Controller.Movement
                 MoveToClosetEnemy();
             }
         
-            if (target && target.GetComponent<RobotInGameStats>().currentHP <= 0)
+            if (target && target.GetComponent<SimpleBlackboard>().currentHP <= 0)
             {
                 allEnemies.Remove(target);
                 target = null;

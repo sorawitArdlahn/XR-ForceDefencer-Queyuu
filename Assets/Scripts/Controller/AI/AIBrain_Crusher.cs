@@ -7,19 +7,22 @@ using UnityEngine;
 using UnityEngine.AI;
 using Model;
 
-public class AIBrain_Crusher : MonoBehaviour
+public class AIBrain_Crusher : MonoBehaviour, IDamageable
 {
     public SimpleBlackboard blackboard;
     private BehaviourTree behaviourTree;
-    
-    
+
+    public int CurrentHealth => blackboard.currentHP;
+
+    public int CurrentArmor => blackboard.currentArmor;
+
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
 
-    private void Awake()
-    {
+    public GameObject deathEffect;
 
-        blackboard.Player = GameObject.FindGameObjectWithTag("Player");
+    private void Start()
+    {
         
         behaviourTree = new BehaviourTree("AI");
         
@@ -52,5 +55,35 @@ public class AIBrain_Crusher : MonoBehaviour
         behaviourTree.Process();
     }
 
-    
+    public void TakeDamage(int damage)
+    {
+        int damageTaken = damage;
+            
+            if (CurrentArmor > 0)
+            {
+                damageTaken = damage / 2; //Armor can absorb damage and reduce them to half.
+            }
+           
+            int sign = (int)Mathf.Sign(blackboard.currentArmor - damageTaken); //Check if Damage value over armor or not.
+            
+            if (sign >= 0) //if damage still less than armor. 
+            {
+                blackboard.currentHP = blackboard.currentArmor - damageTaken;
+            }
+            else
+            {
+                int damageRemainder =  Mathf.Abs(CurrentArmor - damageTaken); //Calculate the remaining damage after armor reduction.
+                blackboard.currentArmor = 0;
+                
+                blackboard.currentHP -= damageRemainder;
+                if (CurrentHealth <= 0) // Death
+                {
+                    blackboard.currentHP = 0;
+                    OnDeath?.Invoke();
+                    var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+                    Destroy(effect, 1f);
+                    Destroy(gameObject,5f);
+                }
+            }
+    }
 }
