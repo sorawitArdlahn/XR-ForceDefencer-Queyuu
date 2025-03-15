@@ -129,13 +129,13 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     //Post Match
     public void LevelCompleted() {
         finishExplorationUIView.SetActive(true);
-        Debug.LogWarning("Level Completed!");
+        Debug.Log("Level Completed!");
         PauseGame();
     }
 
     public void OnPlayerDeath() {
         gameOverUIView.SetActive(true);
-        Debug.LogWarning("Game Over!");
+        Debug.Log("Game Over!");
     }
 
     private void PauseGame(){

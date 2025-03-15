@@ -14,7 +14,7 @@ public class AIBrain_GunnerAlpha : MonoBehaviour
 
     private void Awake()
     {
-
+        blackboard.Player = GameObject.FindGameObjectWithTag("Player");
         behaviourTree = new BehaviourTree("AIGunner");
         Sequence sequence = new Sequence("Start");
         sequence.AddChild(new Leaf("Found Player?", new FindPlayer(blackboard)));

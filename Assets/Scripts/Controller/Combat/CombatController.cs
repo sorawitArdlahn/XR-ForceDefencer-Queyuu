@@ -11,7 +11,7 @@ namespace Controller.Combat
 
       [SerializeField] private AimAssistantCtrl aimAssistantCtrl;
 
-      [SerializeField] private GameObject missilePrefab;
+      [SerializeField] private MissileLauncherController missileLauncherCtrl;
 
       private void Update()
       {
@@ -22,11 +22,8 @@ namespace Controller.Combat
 
          if (Input.GetKeyDown(KeyCode.M))
          {
-            var go = Instantiate(missilePrefab, transform.position, transform.rotation); 
-            go.GetComponent<HomingMissileController>().AssignTarget(aimAssistantCtrl.GetCurrentTarget());
+            missileLauncherCtrl.LaunchMissile(); 
          }
       }
-
-      
    }  
 }

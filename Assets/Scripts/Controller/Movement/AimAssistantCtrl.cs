@@ -70,7 +70,6 @@ namespace Controller.Movement
 
         private void Update()
         {
-            
             if (isAimActive)
             {
                 MoveToClosetEnemy();
@@ -92,7 +91,7 @@ namespace Controller.Movement
                 if (allEnemies.Contains(enemyGameObject)) continue;
                 allEnemies.Add(enemyGameObject);
             }
-
+            
             if (allEnemies.Count == 0)
             {
                 isEnemyAvailable = false;
