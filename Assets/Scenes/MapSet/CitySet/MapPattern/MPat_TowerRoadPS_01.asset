@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 349604cbef5a72f45a039e980918abfc, type: 3}
-  m_Name: MPat_TowerRoadPS
+  m_Name: MPat_TowerRoadPS_01
   m_EditorClassIdentifier: 
-  prefabName: RedTowerRoad
+  prefabName: PawnShopRoad
   patternType: {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
-  prefab: {fileID: 4018092480474868960, guid: 111b30b5e2fe2a24db4998f1b5d4cefa, type: 3}
+  prefab: {fileID: 4490807509610187448, guid: 20dbf68e83a12174499095659f4d1790, type: 3}
   upNeighbors:
   - {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
   - {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}

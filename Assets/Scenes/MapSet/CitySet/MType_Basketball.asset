@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb46fab4a6bc3a543b4477166178d71b, type: 3}
   m_Name: MType_Basketball
   m_EditorClassIdentifier: 
-  typeName: Basketball
+  typeName: Tower
   connectedTypes:
   - {fileID: 11400000}
