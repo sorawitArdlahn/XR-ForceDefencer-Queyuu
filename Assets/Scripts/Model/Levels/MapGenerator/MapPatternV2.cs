@@ -61,12 +61,17 @@ public class MapPatternV2
 
     public GameObject GetPrefab()
     {
-        return originalMapPattern.prefab;
+        return originalMapPattern.prefabList[Random.Range(0, originalMapPattern.prefabList.Count)];
     }
 
     public Quaternion GetPrefabRotation()
     {
-        return originalMapPattern.prefab.transform.rotation;
+        GameObject prefab = GetPrefab();
+        if (prefab != null)
+        {
+            return prefab.transform.rotation;
+        }
+        return Quaternion.identity;;
     }
 
     public int getRotatedAngle() {

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabName: Intersect
   patternType: {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}
-  prefab: {fileID: 445299191916487391, guid: ada2b5993149b334eab6175f00f2d292, type: 3}
+  prefabList:
+  - {fileID: 445299191916487391, guid: ada2b5993149b334eab6175f00f2d292, type: 3}
   upNeighbors:
   - {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
   downNeighbors:

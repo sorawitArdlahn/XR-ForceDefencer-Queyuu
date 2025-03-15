@@ -10,7 +10,7 @@ public class MapPatternTemplate : ScriptableObject
     // Start is called before the first frame update
     public string prefabName;
     public MapPatternType patternType;
-    public GameObject prefab;
+    public List<GameObject> prefabList;
  
     //posX
     [Tooltip("posX")]
@@ -33,20 +33,25 @@ public class MapPatternTemplate : ScriptableObject
 
     public float GetPrefabHeight()
     {
-        if (prefab == null)
+        if (prefabList == null)
         {
             Debug.LogError("Prefab is not assigned.");
             return 0f;
         }
 
-        Renderer renderer = prefab.GetComponent<Renderer>();
-        if (renderer == null)
+        float maxHeight = 0f;
+        foreach (GameObject prefab in prefabList)
         {
+            Renderer renderer = prefab.GetComponent<Renderer>();
+            if (renderer == null)
+            {
             Debug.LogError("Prefab does not have a Renderer component.");
-            return 0f;
+            continue;
+            }
+            maxHeight = Mathf.Max(maxHeight, renderer.bounds.size.y);
         }
 
-        return renderer.bounds.size.y;
+        return maxHeight;
     }
 }
 
