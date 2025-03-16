@@ -150,12 +150,22 @@ public class MapGeneratorController : MonoBehaviour
     IEnumerator CheckEntropy() {
         List<CellV2> tempGrid = new List<CellV2>(gridComponent);
 
-        tempGrid.RemoveAll(c => c.collapsed);
-        tempGrid.Sort((a, b) => a.tileOptions.Length - b.tileOptions.Length);
-        tempGrid.RemoveAll(a => a.tileOptions.Length != tempGrid[0].tileOptions.Length);
+        int minEntropy = int.MaxValue;
+        foreach(CellV2 c in tempGrid)
+        {
+        if(c.collapsed) continue;
+        if(c.tileOptions.Length < minEntropy) 
+            minEntropy = c.tileOptions.Length;
+        }
+
+        for(int i = tempGrid.Count-1; i >= 0; i--)
+        {
+        if(tempGrid[i].collapsed || tempGrid[i].tileOptions.Length != minEntropy)
+            tempGrid.RemoveAt(i);
+        }
 
 
-        yield return new WaitForSeconds(0.025f);
+        yield return null;
         AdjustWeightsBasedOnTypeFrequencies();
         CollapseCellV2(tempGrid);
 
@@ -168,21 +178,18 @@ public class MapGeneratorController : MonoBehaviour
 
         cellV2ToCollapse.collapsed = true;
 
-        
-        try {
-            //work correctly.
-            
+        if (cellV2ToCollapse.tileOptions.Length == 0) {
+            MapPatternV2 selectedTile = backupTile;
+            cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
+            Debug.Log("Backup Tile Used Times =" + backupUsedCount);
+            backupUsedCount++;
+        }
+        else {
             string selectedType = SelectTileType(cellV2ToCollapse.tileOptions.ToList());
             cellV2ToCollapse.tileOptions = cellV2ToCollapse.tileOptions.Where(tile => tile.GetThisPatternType().GetTypeName() == selectedType).ToArray();
             
             MapPatternV2 selectedTile = cellV2ToCollapse.tileOptions[UnityEngine.Random.Range(0, cellV2ToCollapse.tileOptions.Length)];
             cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
-        }
-        catch {
-            MapPatternV2 selectedTile = backupTile;
-            cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
-            Debug.Log("Backup Tile Used Times =" + backupUsedCount);
-            backupUsedCount++;
         }
 
         if (backupUsedCount > dimensions * 0.35) {
