@@ -10,8 +10,10 @@ public class MapPatternTemplate : ScriptableObject
     // Start is called before the first frame update
     public string prefabName;
     public MapPatternType patternType;
+    [Header("Prefabs")]
     public List<GameObject> prefabList;
  
+    [Header("Neighbors")]
     //posX
     [Tooltip("posX")]
     public List<MapPatternType> upNeighbors;
@@ -25,6 +27,7 @@ public class MapPatternTemplate : ScriptableObject
     [Tooltip("negZ")]
     public List<MapPatternType> rightNeighbors;
 
+    [Header("Rotations")]
     public bool playerSpawnAble;
     public bool isFlipped = false;
     public bool isRotated = false;

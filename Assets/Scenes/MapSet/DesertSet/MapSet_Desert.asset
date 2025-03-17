@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2b097145fbceb4caaad19f2cc0107c, type: 3}
+  m_Name: MapSet_Desert
+  m_EditorClassIdentifier: 
+  mapPatternTemplatesInSet:
+  - {fileID: 11400000, guid: a766313e96a041d44a3457055ddf4d9f, type: 2}
+  - {fileID: 11400000, guid: 640495ec354b40543970eb8f4be4874a, type: 2}
+  - {fileID: 11400000, guid: b891f1648799f5a49b39ff26a135d389, type: 2}
+  - {fileID: 11400000, guid: dfa6a924347e6694bbc974c350fac8f5, type: 2}
+  - {fileID: 11400000, guid: b2919d3b536ec2d49bb62016b13aa25b, type: 2}
+  - {fileID: 11400000, guid: e1eddb2da524afa4fa060da12d70be21, type: 2}
