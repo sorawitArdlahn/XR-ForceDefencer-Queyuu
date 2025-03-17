@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3bbfa61da5f81d4d88749bfdcf80b2f, type: 3}
       propertyPath: m_Name
-      value: Desert_Oasis
+      value: Desert_Oasis_mesh
       objectReference: {fileID: 0}
     - target: {fileID: 1342820693083921753, guid: b3bbfa61da5f81d4d88749bfdcf80b2f, type: 3}
       propertyPath: m_Enabled
