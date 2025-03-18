@@ -2,6 +2,7 @@ using System;
 using Controller.StatMod;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace View.Preparation {
@@ -14,6 +15,11 @@ namespace View.Preparation {
     [SerializeField] Button ModificationButton01;
     [SerializeField] Button ModificationButton02;
     [SerializeField] Button ModificationButton03;
+
+    [Header("Buttons link to other screen")]
+    [SerializeField] Button ModificationScreenButton;
+
+    [Header("This Modification Screen")]
 
     [SerializeField] PlayerStatModifierController playerStatModifierController;
 
@@ -28,6 +34,9 @@ namespace View.Preparation {
 
     [SerializeField] TextMeshProUGUI RequiredResearchPointText;
     [SerializeField] TextMeshProUGUI CurrentResearchPointText;
+
+    [Header("Event System")]
+    public EventSystem eventSystem;
 
     //Modification Randomed
     PlayerStatModifier Modification01;
@@ -48,6 +57,9 @@ namespace View.Preparation {
 
     private void OnCloseButtonClicked()
     {
+        eventSystem.SetSelectedGameObject(
+            ModificationScreenButton.gameObject
+        );
         gameObject.SetActive(false);
     }
 
@@ -68,6 +80,10 @@ namespace View.Preparation {
         ModificationText02.text = Modification02.stat.ToString() + "\n" + Modification02.Multiplier.ToString();
         ModificationText03.text = Modification03.stat.ToString() + "\n" + Modification03.Multiplier.ToString();
 
+        eventSystem.SetSelectedGameObject(
+            ModificationButton01.gameObject
+        );
+
     }
 
     void ResetModificationButtons()
@@ -80,6 +96,11 @@ namespace View.Preparation {
         ModificationButton01.interactable = false;
         ModificationButton02.interactable = false;
         ModificationButton03.interactable = false;
+
+        eventSystem.SetSelectedGameObject(
+            BuyModificationButton.gameObject
+        );
+
         UpdateResearchPoint();
     }
 

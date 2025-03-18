@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabName: Road
   patternType: {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
-  prefab: {fileID: 7450260545476566705, guid: e58c7e90d0a586b4893b2462f1061678, type: 3}
+  prefabList:
+  - {fileID: 6228762439374349504, guid: 9ddb99f658e3689479488888a485e423, type: 3}
   upNeighbors:
   - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
   downNeighbors:
   - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
   leftNeighbors:
   - {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
   - {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}

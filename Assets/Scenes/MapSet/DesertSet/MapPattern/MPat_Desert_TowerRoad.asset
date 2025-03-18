@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349604cbef5a72f45a039e980918abfc, type: 3}
+  m_Name: MPat_Desert_TowerRoad
+  m_EditorClassIdentifier: 
+  prefabName: PawnShopRoad
+  patternType: {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  prefabList:
+  - {fileID: 1349810255721260404, guid: 4549d22f19b434946b5ce2d86bd1fd9b, type: 3}
+  - {fileID: 3508617988136370590, guid: a1cfc2fbd4d5bc443be03c10d1b21360, type: 3}
+  - {fileID: 3954826877987755617, guid: f27b75146512f184898f7700f688a9cb, type: 3}
+  - {fileID: 4237429149073797207, guid: ca0d47ae439e56d4f9b40f8adee6b5ed, type: 3}
+  upNeighbors:
+  - {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
+  - {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}
+  downNeighbors:
+  - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
+  leftNeighbors:
+  - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
+  rightNeighbors:
+  - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  - {fileID: 11400000, guid: 2c8f2a9fac2d738428ebf12d978d01e2, type: 2}
+  playerSpawnAble: 0
+  isFlipped: 0
+  isRotated: 1
+  timeRotated: 1

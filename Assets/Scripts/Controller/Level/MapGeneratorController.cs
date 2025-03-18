@@ -33,6 +33,8 @@ public class MapGeneratorController : MonoBehaviour
 
     private int backupUsedCount = 0;
 
+    protected GameObject gridParent;
+
     private Dictionary<string, int> tileTypeFrequencies = new Dictionary<string, int>();
     private Dictionary<string, float> tileTypeWeights = new Dictionary<string, float>();
 
@@ -42,17 +44,18 @@ public class MapGeneratorController : MonoBehaviour
 
     [SerializeField] private bool CreateWall;
 
-    GameObject gridParent;
+    protected float borderHeight;
 
-    float borderHeight;
+    private GameObject wallParent;
 
-    public bool IsInitialized { get; private set; }
 
     //[SerializeField]
+    //NavMeshSurfaceComponent
     private NavMeshSurface navMeshSurface;
 
     [Header("Events")]
     public GameEvent mapGenerated;
+    public bool IsInitialized { get; private set; }
 
     public Vector3 GetPlayerSpawnPosition() {
         foreach (CellV2 cell in gridComponent) {
@@ -76,14 +79,15 @@ public class MapGeneratorController : MonoBehaviour
     public void Awake() {
 
         gridComponent = new List<CellV2>();
+
         gridParent = new GameObject("GeneratedMap");
-        templateList = tileSet[UnityEngine.Random.Range(0, tileSet.Count)].mapPatternTemplatesInSet;
 
+        //Set NavMeshSurface
         navMeshSurface = gridParent.AddComponent<NavMeshSurface>();
+        navMeshSurface.useGeometry = UnityEngine.AI.NavMeshCollectGeometry.PhysicsColliders;
 
-        InitializeTileObjects();
-        InitializeTileTypeFrequencies();
-
+        //Set Wall Parent
+        wallParent = new GameObject("GeneratedWalls");
     }
 
     void InitializeGrid() {
@@ -122,45 +126,46 @@ public class MapGeneratorController : MonoBehaviour
     
     void CreateBorderWalls() {
     // Bottom border
-    GameObject bottomWall = Instantiate(wallPrefab, new Vector3((dimensions - 1) * cellV2Size / 2, borderHeight / 2, -1 * cellV2Size / 2), Quaternion.identity, gridParent.transform);
+    GameObject bottomWall = Instantiate(wallPrefab, new Vector3((dimensions - 1) * cellV2Size / 2, borderHeight / 2, -1 * cellV2Size / 2), Quaternion.identity, wallParent.transform);
     bottomWall.transform.localScale = new Vector3(dimensions * cellV2Size, borderHeight, bottomWall.transform.localScale.z);
 
     // Top border
-    GameObject topWall = Instantiate(wallPrefab, new Vector3((dimensions - 1) * cellV2Size / 2, borderHeight / 2, dimensions * cellV2Size - cellV2Size / 2), Quaternion.identity, gridParent.transform);
+    GameObject topWall = Instantiate(wallPrefab, new Vector3((dimensions - 1) * cellV2Size / 2, borderHeight / 2, dimensions * cellV2Size - cellV2Size / 2), Quaternion.identity, wallParent.transform);
     topWall.transform.localScale = new Vector3(dimensions * cellV2Size, borderHeight, topWall.transform.localScale.z);
 
     // Left border
-    GameObject leftWall = Instantiate(wallPrefab, new Vector3(-1 * cellV2Size / 2, borderHeight / 2, (dimensions - 1) * cellV2Size / 2), Quaternion.identity, gridParent.transform);
+    GameObject leftWall = Instantiate(wallPrefab, new Vector3(-1 * cellV2Size / 2, borderHeight / 2, (dimensions - 1) * cellV2Size / 2), Quaternion.identity, wallParent.transform);
     leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, borderHeight, dimensions * cellV2Size);
 
     // Right border
-    GameObject rightWall = Instantiate(wallPrefab, new Vector3(dimensions * cellV2Size - cellV2Size / 2, borderHeight / 2, (dimensions - 1) * cellV2Size / 2), Quaternion.identity, gridParent.transform);
+    GameObject rightWall = Instantiate(wallPrefab, new Vector3(dimensions * cellV2Size - cellV2Size / 2, borderHeight / 2, (dimensions - 1) * cellV2Size / 2), Quaternion.identity, wallParent.transform);
     rightWall.transform.localScale = new Vector3(rightWall.transform.localScale.x, borderHeight, dimensions * cellV2Size);
 
     // Top cover
-    GameObject topCover = Instantiate(wallPrefab, new Vector3((dimensions - 1) * cellV2Size / 2, borderHeight, (dimensions - 1) * cellV2Size / 2), Quaternion.Euler(90, 0, 0), gridParent.transform);
+    GameObject topCover = Instantiate(wallPrefab, new Vector3((dimensions - 1) * cellV2Size / 2, borderHeight, (dimensions - 1) * cellV2Size / 2), Quaternion.Euler(90, 0, 0), wallParent.transform);
     topCover.transform.localScale = new Vector3(dimensions * cellV2Size, dimensions * cellV2Size, topCover.transform.localScale.z);
     }
-
-    /*
-    private void UpdateTiles() {
-        foreach (MapPattern tile in tileObjects)
-        {
-            tile.updateNeighbors();
-        }
-    }
-    */
 
     //check for item with the least varations
     IEnumerator CheckEntropy() {
         List<CellV2> tempGrid = new List<CellV2>(gridComponent);
 
-        tempGrid.RemoveAll(c => c.collapsed);
-        tempGrid.Sort((a, b) => a.tileOptions.Length - b.tileOptions.Length);
-        tempGrid.RemoveAll(a => a.tileOptions.Length != tempGrid[0].tileOptions.Length);
+        int minEntropy = int.MaxValue;
+        foreach(CellV2 c in tempGrid)
+        {
+        if(c.collapsed) continue;
+        if(c.tileOptions.Length < minEntropy) 
+            minEntropy = c.tileOptions.Length;
+        }
+
+        for(int i = tempGrid.Count-1; i >= 0; i--)
+        {
+        if(tempGrid[i].collapsed || tempGrid[i].tileOptions.Length != minEntropy)
+            tempGrid.RemoveAt(i);
+        }
 
 
-        yield return new WaitForSeconds(0.025f);
+        yield return null;
         AdjustWeightsBasedOnTypeFrequencies();
         CollapseCellV2(tempGrid);
 
@@ -173,21 +178,18 @@ public class MapGeneratorController : MonoBehaviour
 
         cellV2ToCollapse.collapsed = true;
 
-        
-        try {
-            //work correctly.
-            
+        if (cellV2ToCollapse.tileOptions.Length == 0) {
+            MapPatternV2 selectedTile = backupTile;
+            cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
+            Debug.Log("Backup Tile Used Times =" + backupUsedCount);
+            backupUsedCount++;
+        }
+        else {
             string selectedType = SelectTileType(cellV2ToCollapse.tileOptions.ToList());
             cellV2ToCollapse.tileOptions = cellV2ToCollapse.tileOptions.Where(tile => tile.GetThisPatternType().GetTypeName() == selectedType).ToArray();
             
             MapPatternV2 selectedTile = cellV2ToCollapse.tileOptions[UnityEngine.Random.Range(0, cellV2ToCollapse.tileOptions.Length)];
             cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
-        }
-        catch {
-            MapPatternV2 selectedTile = backupTile;
-            cellV2ToCollapse.tileOptions = new MapPatternV2[] { selectedTile };
-            Debug.Log("Backup Tile Used Times =" + backupUsedCount);
-            backupUsedCount++;
         }
 
         if (backupUsedCount > dimensions * 0.35) {
@@ -200,20 +202,29 @@ public class MapGeneratorController : MonoBehaviour
         
         MapPatternV2 foundtile = cellV2ToCollapse.tileOptions[0];
 
+        Vector3 adjustedPosition = new Vector3(
+            cellV2ToCollapse.transform.position.x, 
+            cellV2ToCollapse.transform.position.y, 
+            cellV2ToCollapse.transform.position.z
+            );
+
         
         //SOUP : Spawn Object / Tile / PreFab
-        GameObject spawnedObject = Instantiate(foundtile.GetPrefab(),
-        cellV2ToCollapse.transform.position,
+        GameObject spawnedObject = Instantiate(
+        //The object to be spawned
+        foundtile.GetPrefab(),
+        //The position of the object to be spawned
+        adjustedPosition,
+        //The rotation of the object to be spawned
         Quaternion.Euler(
         foundtile.GetPrefabRotation()
         .eulerAngles
         + new Vector3(0, foundtile.getRotatedAngle(), 0))
+
         );
 
+
         spawnedObject.transform.SetParent(cellV2ToCollapse.transform);
-        //cellV2ToCollapse.transform
-        //UnityEngine.Debug.Log("prefab rotation = " + foundtile.prefab.transform.rotation.eulerAngles.y 
-        //+ (foundtile.RotatePrefabClockWise()) + " data type = " + foundtile.prefab.transform.rotation.GetType());
 
         UpdateGeneration();
 
@@ -350,7 +361,6 @@ public class MapGeneratorController : MonoBehaviour
         if (direction == "up") {
         for (int x = optionList.Count - 1; x >= 0; x--) {
             var element = optionList[x];
-            //if (!NeighborList.Contains(element.GetThisPatternType()) || !TypeList.Contains(element.upNeighbors)) {
             if (!NeighborList.Contains(element.GetThisPatternType()) || !element.upNeighbors.Any(TypeList.Contains)) {
                 optionList.RemoveAt(x);
             }
@@ -491,10 +501,26 @@ public class MapGeneratorController : MonoBehaviour
     
     }
 
+    //Initialize the map
     public void ResetMap() {
+
+
         foreach (Transform child in gridParent.transform) {
             Destroy(child.gameObject);
         }
+
+        foreach (Transform child in wallParent.transform) {
+            Destroy(child.gameObject);
+        }
+
+        //Select MapSet Prefab
+        templateList = tileSet[UnityEngine.Random.Range(0, tileSet.Count)].mapPatternTemplatesInSet;
+
+        InitializeTileObjects();
+        InitializeTileTypeFrequencies();
+
+        navMeshSurface.RemoveData();
+
         gridComponent.Clear();
         iteration = 0;
         backupUsedCount = 0;

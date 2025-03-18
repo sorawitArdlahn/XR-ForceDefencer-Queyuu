@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349604cbef5a72f45a039e980918abfc, type: 3}
+  m_Name: MPat_InterTwo
+  m_EditorClassIdentifier: 
+  prefabName: Desert_Intersect_Two
+  patternType: {fileID: 11400000, guid: 7b0202f806fd2c54091aed8d359d71dd, type: 2}
+  prefabList:
+  - {fileID: 6721086801490181100, guid: 9682b6676d12fe2428a0c05b4c1c1dfc, type: 3}
+  upNeighbors:
+  - {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
+  downNeighbors:
+  - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  leftNeighbors:
+  - {fileID: 11400000, guid: 147fe1c1f9524634fac7a12ad0d7b1df, type: 2}
+  rightNeighbors:
+  - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
+  playerSpawnAble: 1
+  isFlipped: 0
+  isRotated: 1
+  timeRotated: 1
