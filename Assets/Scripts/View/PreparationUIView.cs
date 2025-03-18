@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using GameController;
+using UnityEngine.EventSystems;
 
 namespace View.Preparation {
     public class PreparationUIView : MonoBehaviour {
@@ -8,9 +9,13 @@ namespace View.Preparation {
         public Button InBattleButton;
         public Button ModificationButton;
         public Button MainMenuButton;
+        public Button BuyResearchButton;
 
         [Header("Modification Screen")]
         [SerializeField] GameObject ModificationScreen;
+
+        [Header("Event System")]
+        public EventSystem eventSystem;
 
         void Start()
         {
@@ -28,7 +33,10 @@ namespace View.Preparation {
 
         private void OnModificationButtonClicked()
         {
-            //TODO : Open Modification UI
+            //TODO : Open Modification UI;
+            eventSystem.SetSelectedGameObject(
+                BuyResearchButton.gameObject
+            );
             ModificationScreen.SetActive(true);
             Debug.Log("Modification Button Pressed.");
         }

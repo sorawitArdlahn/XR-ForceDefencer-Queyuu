@@ -83,7 +83,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     void SetLevelDetailBasedOnCurrentLevel() {
         //Dynamically Increase Map Size over time
-        int additionalSize = Mathf.FloorToInt(Mathf.Log(getCurrentLevel() + 1, 3));
+        int additionalSize = Mathf.FloorToInt(Mathf.Log(getCurrentLevel() + 1, 2));
         mapGenerator?.setMapSize(additionalSize + baseMapSize);
 
         //Dynamically Increase Enemy Amount over time
@@ -102,7 +102,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         playerSpawnPosition.y += 15;
         player.transform.position = playerSpawnPosition;
 
-        StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());
+        if (GameStateManager.Instance != null) 
+        {StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());}
 
     }
 
