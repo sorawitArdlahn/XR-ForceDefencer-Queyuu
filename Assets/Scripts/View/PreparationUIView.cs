@@ -12,7 +12,7 @@ namespace View.Preparation {
         public Button BuyResearchButton;
 
         [Header("Modification Screen")]
-        [SerializeField] GameObject ModificationScreen;
+        [SerializeField] ModificationUIView ModificationScreen;
 
         [Header("Event System")]
         public EventSystem eventSystem;
@@ -37,7 +37,7 @@ namespace View.Preparation {
             eventSystem.SetSelectedGameObject(
                 BuyResearchButton.gameObject
             );
-            ModificationScreen.SetActive(true);
+            ModificationScreen.animationController.SetTrigger("ModificationOpen");
             Debug.Log("Modification Button Pressed.");
         }
 

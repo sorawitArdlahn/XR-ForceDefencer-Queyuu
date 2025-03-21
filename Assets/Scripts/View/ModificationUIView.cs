@@ -43,6 +43,10 @@ namespace View.Preparation {
     PlayerStatModifier Modification02;
     PlayerStatModifier Modification03;
 
+    //Animation Controller;
+    [Header("Animation Controller")]
+    public Animator animationController;
+
     void Start()
     {
 
@@ -60,7 +64,7 @@ namespace View.Preparation {
         eventSystem.SetSelectedGameObject(
             ModificationScreenButton.gameObject
         );
-        gameObject.SetActive(false);
+        animationController.SetTrigger("ModificationClose");
     }
 
     private void OnBuyModificationButtonClicked()
