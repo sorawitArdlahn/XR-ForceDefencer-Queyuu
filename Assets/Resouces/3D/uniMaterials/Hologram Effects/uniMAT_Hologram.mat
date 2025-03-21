@@ -48,9 +48,10 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
+    - _Holo_Transparency: 0.34
     - _Scroll_Speed: 0.05
     m_Colors:
-    - _Base_Colour: {r: 1, g: 0.25497416, b: 0.035848916, a: 1}
+    - _Base_Colour: {r: 0.035294116, g: 0.82671285, b: 1, a: 1}
     - _Hologram_Texture_Tiling: {r: 1, g: 0.5, b: 0, a: 0}
-    - _Secondary_Colour: {r: 205.5116, g: 45.285416, b: 0, a: 1}
+    - _Secondary_Colour: {r: 0.08735749, g: 0.01924962, b: 0, a: 1}
   m_BuildTextureStacks: []
