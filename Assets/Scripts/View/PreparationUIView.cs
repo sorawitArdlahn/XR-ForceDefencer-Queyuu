@@ -9,9 +9,12 @@ namespace View.Preparation {
         public Button InBattleButton;
         public Button ModificationButton;
         public Button MainMenuButton;
-        public Button BuyResearchButton;
 
-        [Header("Modification Screen")]
+        [Header("Buttons link to other screen")]
+        public Button BuyResearchButton;
+        public Button CloseResearchButton;
+
+        [Header("Buttons link to other screen")]
         [SerializeField] ModificationUIView ModificationScreen;
 
         [Header("Event System")]
@@ -34,9 +37,17 @@ namespace View.Preparation {
         private void OnModificationButtonClicked()
         {
             //TODO : Open Modification UI;
-            eventSystem.SetSelectedGameObject(
-                BuyResearchButton.gameObject
+
+            if (BuyResearchButton.interactable == false)
+            {
+                eventSystem.SetSelectedGameObject(
+                CloseResearchButton.gameObject
             );
+            }
+            else {eventSystem.SetSelectedGameObject(
+                BuyResearchButton.gameObject
+            );}
+
             ModificationScreen.animationController.SetTrigger("ModificationOpen");
             Debug.Log("Modification Button Pressed.");
         }
