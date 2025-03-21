@@ -4,6 +4,7 @@ using UnityEngine;
 using Image = UnityEngine.UI.Image;
 using Model.Stats;
 using System.Collections;
+using Controller.Combat;
 
 namespace Controller.Movement
 {
@@ -28,6 +29,8 @@ namespace Controller.Movement
         private bool isEnemyAvailable = true;
     
         private bool isAimActive = false;
+        
+        public MissileLauncherController missileLauncherController;
         private void Awake()
         {
             allEnemies = new List<GameObject>();
@@ -143,9 +146,11 @@ namespace Controller.Movement
             }
             catch
             {
+                missileLauncherController.AssignTarget(null);
                 return null;
             }
             
+            missileLauncherController.AssignTarget(closestEnemy);
             return closestEnemy;
             
         }

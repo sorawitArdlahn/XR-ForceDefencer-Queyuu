@@ -7,13 +7,20 @@ namespace Controller.Combat
     {
         public List<Transform> firePoints;
         public GameObject missilePrefab;
+        private GameObject target;
 
         public void LaunchMissile()
         {
             foreach (var point in firePoints)
             {
-                Instantiate(missilePrefab, point.position, point.rotation);
+                var missile = Instantiate(missilePrefab, point.position, point.rotation);
+                missile.GetComponent<HomingMissileController>().AssignTarget(target);
             }
+        }
+
+        public void AssignTarget(GameObject target)
+        {
+            this.target = target;
         }
     }
 }
