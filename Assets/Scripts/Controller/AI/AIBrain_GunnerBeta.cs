@@ -10,7 +10,6 @@ using UnityEngine.Animations.Rigging;
 public class AIBrain_GunnerBeta : MonoBehaviour
 {
     public SimpleBlackboard blackboard;
-    public GunnerType gunnerType;
     private BehaviourTree behaviourTree;
     public MultiAimConstraint multiAimConstraint;
     private void Awake()
@@ -30,19 +29,4 @@ public class AIBrain_GunnerBeta : MonoBehaviour
     {
         behaviourTree.Process();
     }
-
-    private void AlphaGunnerSetup()
-    {
-        
-    }
-    
-    private void BetaGunnerSetup()
-    {
-        
-    }
-}
-
-public enum GunnerType
-{
-    Alpha, Beta
 }

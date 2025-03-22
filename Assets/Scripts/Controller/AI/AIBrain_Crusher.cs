@@ -35,7 +35,7 @@ public class AIBrain_Crusher : MonoBehaviour
         Sequence actionSeq = new Sequence("Actions");
         Leaf foundPlayer = new Leaf("Found Player?", new FindPlayer(blackboard));
         Leaf followPlayer = new Leaf("followPlayer", new FollowPlayer(blackboard));
-        Leaf randomCombat = new Leaf("WhatToDo",new CombatsStrategy(blackboard.SelfTransform,blackboard.SelfAnimator, blackboard.SelfNavMeshAgent, blackboard.SelfAnimationEventReceiver));
+        Leaf randomCombat = new Leaf("WhatToDo",new CombatsStrategy(blackboard));
         
         actionSeq.AddChild(foundPlayer);
         actionSeq.AddChild(followPlayer);
@@ -52,5 +52,4 @@ public class AIBrain_Crusher : MonoBehaviour
         behaviourTree.Process();
     }
 
-    
 }

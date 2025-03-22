@@ -9,7 +9,6 @@ using UnityEngine;
 public class AIBrain_GunnerAlpha : MonoBehaviour
 {
     public SimpleBlackboard blackboard;
-    public GunnerType gunnerType;
     private BehaviourTree behaviourTree;
 
     private void Awake()
