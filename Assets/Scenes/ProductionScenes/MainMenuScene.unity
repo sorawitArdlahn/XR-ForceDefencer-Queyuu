@@ -4154,7 +4154,7 @@ GameObject:
   - component: {fileID: 4553914812546258755}
   - component: {fileID: 2945677203779755828}
   m_Layer: 0
-  m_Name: Image
+  m_Name: MainMenuHologram
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4479,7 +4479,7 @@ GameObject:
   - component: {fileID: 6033376568032624481}
   - component: {fileID: 6953811479525047836}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Main_Menu_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,8 +15,6 @@ namespace System.Persistence {
         [Header("Game Data Structure")]
         public string Name;
         //TODO : Player Record Data
-        public string currentLevelName;
-        public int currentLevelIndex;
         public PlayerData playerData;
         //TODO : Inventory and Upgrade Data
         public LevelData levelData;

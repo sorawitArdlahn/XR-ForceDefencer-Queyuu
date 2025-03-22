@@ -1,6 +1,7 @@
 using GameController;
 using UnityEngine;
 using UnityEngine.UI;
+using Audio;
 
 namespace View.Exploration {
     public class GameOverUIView : MonoBehaviour
@@ -8,6 +9,9 @@ namespace View.Exploration {
         [Header("Buttons")]
         [SerializeField] Button MainMenuButton;
         [SerializeField] Button NewGameButton;
+
+        [Header("Animation Controller")]
+        public Animator animationController;
     
 
     void Start(){
@@ -19,6 +23,7 @@ namespace View.Exploration {
     {
         UnPauseGame();
         GameManager.Instance?.DeleteGame();
+        AudioManagerController.Instance.PlaySFX("ButtonPressed");
         GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
         Debug.Log("Main Menu Button Pressed.");
     }
@@ -28,6 +33,7 @@ namespace View.Exploration {
         UnPauseGame();
         GameManager.Instance?.DeleteGame();
         GameManager.Instance?.newGame();
+        AudioManagerController.Instance.PlaySFX("ButtonPressed");
         GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
         Debug.Log("New Game Button Pressed.");
     }

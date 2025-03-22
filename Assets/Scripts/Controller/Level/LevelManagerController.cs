@@ -6,14 +6,18 @@ using UnityEngine;
 using GameController;
 using EventListener;
 using System;
+using Audio;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Controller.Level {
 public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 {
     // Start is called before the first frame update
     [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
+
+    [Header("==== Level Data ====")]
     [SerializeField] LevelData data;
-    [SerializeField] int baseEnemy = 15;
 
     public void Bind(LevelData data)
     {
@@ -22,30 +26,44 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         this.data.currentLevel = data.checkpointLevel;
     }
 
+    [Header("==== Map & Spawn Manager ====")]
+
     MapGeneratorController mapGenerator;
 
     SpawnerManagerController spawnerManager;
 
     GameObject player;
 
-    [Header("UI")]
+    [Header("==== UI ====")]
     [SerializeField] GameObject finishExplorationUIView;
     [SerializeField] GameObject gameOverUIView;
 
-    [Header("Enemies")]
+    [Header("==== Button Link to Other Screen ====")]
+    public Button ContinueExplorationButton;
+    public Button GameOverButton;
+
+    [Header("==== Enemies List ====")]
 
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
 
-    [Header("Events")]
+    [Header("==== Event Listener ====")]
     public GameEvent OnStartLevel;
 
-    [Header("Debug")]
+    [Header("==== Event System ====")]
+    public EventSystem eventSystem;
+
+    [Header("==== Debug ====")]
 
     [SerializeField] private bool forceDebug;
     [SerializeField] private int baseMapSize = 5;
+    [SerializeField] int baseEnemy = 15;
+
+    [NonSerialized] public LevelManagerController instance = null;
 
     void Start()
     {
+        if (instance == null) { instance = this; }
+        else { Destroy(gameObject); }
 
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
         {
@@ -105,6 +123,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
         if (GameStateManager.Instance != null) 
         {StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());}
+        AudioManagerController.Instance.PlaySFX("TransitionScreenIn");
 
     }
 

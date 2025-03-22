@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
         public void newGame() {
         Instance.currentGameData = new GameData{
             Name = "Demo",
-            currentLevelName = "PreparationScene",
-            currentLevelIndex = 1,
             playerData = new Model.Stats.PlayerData(), //TODO : Important.
             levelData = new Model.Level.LevelData() 
         };

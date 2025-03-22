@@ -2,6 +2,7 @@ using System;
 using GameController;
 using UnityEngine;
 using UnityEngine.UI;
+using Audio;
 
 namespace View.MainMenu
 {   
@@ -26,24 +27,28 @@ public class MainMenuUIView : MonoBehaviour
     private void OnNewGameButtonClicked()
     {
         gameManager.newGame();
+        AudioManagerController.Instance.PlaySFX("ButtonPressed");
         GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
         Debug.Log("New Game Button Pressed.");
     }
 
     private void OnLoadGameButtonClicked()
     {
+        AudioManagerController.Instance.PlaySFX("ButtonPressed");
         try {
             gameManager.LoadGame();
             GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
             Debug.Log("Save Loaded.");
         }
         catch (ArgumentException) {
+            gameManager.newGame();
             Debug.LogWarning($"Save not found.");
         }
     }
 
     private void OnQuitGameButtonClicked()
     {
+        AudioManagerController.Instance.PlaySFX("ButtonPressed");
         Debug.Log("Quit Game Button Clicked");
         Application.Quit();
     }

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using Audio;
 
 namespace GameController
 {
@@ -62,8 +62,12 @@ namespace GameController
 
         IEnumerator SwitchGameState()
         {
+
             StartCoroutine(TransitionScreen.TransitionScreenFadeOut());
             yield return new WaitForSeconds(TransitionScreen.getTransitionWait());
+            
+
+
             
 
             switch (currentGameState)
@@ -96,6 +100,7 @@ namespace GameController
 
             if (Instance.GetCurrentGameState() != GameState.InBattle)
             {
+                AudioManagerController.Instance.PlaySFX("TransitionScreenIn");
                 yield return TransitionScreen.TransitionScreenFadeIn();
             }
         }

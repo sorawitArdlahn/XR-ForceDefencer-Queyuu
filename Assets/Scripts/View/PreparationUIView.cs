@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using GameController;
 using UnityEngine.EventSystems;
+using Audio;
 
 namespace View.Preparation {
     public class PreparationUIView : MonoBehaviour {
@@ -9,6 +10,9 @@ namespace View.Preparation {
         public Button InBattleButton;
         public Button ModificationButton;
         public Button MainMenuButton;
+
+        [Header("Initialize Button")]
+        public Button FirstButton;
 
         [Header("Buttons link to other screen")]
         public Button BuyResearchButton;
@@ -22,14 +26,18 @@ namespace View.Preparation {
 
         void Start()
         {
+
             InBattleButton.onClick.AddListener(OnInBattleButtonClicked);
             ModificationButton.onClick.AddListener(OnModificationButtonClicked);
             MainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
+
+            eventSystem.SetSelectedGameObject(FirstButton.gameObject);
         }
 
         private void OnInBattleButtonClicked()
         {
             GameManager.Instance?.SaveGame();
+            AudioManagerController.Instance.PlaySFX("TransitionScreenOut");
             GameStateManager.Instance.SetNextPhase(GameState.InBattle);
             Debug.Log("In Battle Button Pressed.");
         }
@@ -49,6 +57,7 @@ namespace View.Preparation {
             );}
 
             ModificationScreen.animationController.SetTrigger("ModificationOpen");
+            AudioManagerController.Instance.PlaySFX("ModificationBuyOpen");
             Debug.Log("Modification Button Pressed.");
         }
 

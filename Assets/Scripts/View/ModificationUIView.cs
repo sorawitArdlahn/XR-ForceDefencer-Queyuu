@@ -1,4 +1,4 @@
-using System;
+using Audio;
 using Controller.StatMod;
 using TMPro;
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace View.Preparation {
     public class ModificationUIView : MonoBehaviour
 {
-    [Header("Buttons")]
+    [Header("==== This UI Buttons ====")]
     [SerializeField] Button CloseButton;
     [SerializeField] Button BuyModificationButton;
 
@@ -16,26 +16,32 @@ namespace View.Preparation {
     [SerializeField] Button ModificationButton02;
     [SerializeField] Button ModificationButton03;
 
-    [Header("Buttons link to other screen")]
+    [Header("==== Buttons link to other screen ====")]
     [SerializeField] Button ModificationScreenButton;
 
-    [Header("This Modification Screen")]
+    [Header("==== This Modification Screen ====")]
 
     [SerializeField] PlayerStatModifierController playerStatModifierController;
+    [SerializeField] CanvasGroup modificationCanvasGroup;
 
-    [Header("Modification Texts")]
+    [Header("==== Modification Images ====")]
+    [SerializeField] Image ModificationImage01;
+    [SerializeField] Image ModificationImage02;
+    [SerializeField] Image ModificationImage03;
+
+    [Header("==== Modification Texts ====")]
 
     //Description of the Stat Modification
     [SerializeField] TextMeshProUGUI ModificationText01;
     [SerializeField] TextMeshProUGUI ModificationText02;
     [SerializeField] TextMeshProUGUI ModificationText03;
 
-    [Header("Research Points Texts")]
+    [Header("==== Research Points Texts ====")]
 
     [SerializeField] TextMeshProUGUI RequiredResearchPointText;
     [SerializeField] TextMeshProUGUI CurrentResearchPointText;
 
-    [Header("Event System")]
+    [Header("==== Event System ====")]
     public EventSystem eventSystem;
 
     //Modification Randomed
@@ -44,8 +50,11 @@ namespace View.Preparation {
     PlayerStatModifier Modification03;
 
     //Animation Controller;
-    [Header("Animation Controller")]
+    [Header("==== Animation Controller ====")]
     public Animator animationController;
+
+    [Header("==== UI Mask ====")]
+    public Sprite UIMask;
 
     void Start()
     {
@@ -64,6 +73,7 @@ namespace View.Preparation {
         eventSystem.SetSelectedGameObject(
             ModificationScreenButton.gameObject
         );
+        AudioManagerController.Instance.PlaySFX("ModificationClose");
         animationController.SetTrigger("ModificationClose");
     }
 
@@ -80,10 +90,15 @@ namespace View.Preparation {
 
         BuyModificationButton.interactable = false;
 
-        ModificationText01.text = Modification01.stat.ToString() + "\n" + Modification01.Multiplier.ToString();
-        ModificationText02.text = Modification02.stat.ToString() + "\n" + Modification02.Multiplier.ToString();
-        ModificationText03.text = Modification03.stat.ToString() + "\n" + Modification03.Multiplier.ToString();
+        ModificationImage01.sprite = Modification01.Icon;
+        ModificationImage02.sprite = Modification02.Icon;
+        ModificationImage03.sprite = Modification03.Icon;
 
+        ModificationText01.text = ((int)(Modification01.Multiplier * 100)).ToString() + "%";
+        ModificationText02.text = ((int)(Modification02.Multiplier * 100)).ToString() + "%";
+        ModificationText03.text = ((int)(Modification03.Multiplier * 100)).ToString() + "%";
+
+        AudioManagerController.Instance.PlaySFX("ModificationRandom");
         eventSystem.SetSelectedGameObject(
             ModificationButton01.gameObject
         );
@@ -93,17 +108,32 @@ namespace View.Preparation {
     void ResetModificationButtons()
     {
 
-        ModificationText01.text = "";
-        ModificationText02.text = "";
-        ModificationText03.text = "";
+        ModificationText01.text = "Mod_01";
+        ModificationText02.text = "Mod_02";
+        ModificationText03.text = "Mod_03";
+
+        ModificationImage01.sprite = UIMask;
+        ModificationImage02.sprite = UIMask;
+        ModificationImage03.sprite = UIMask;
 
         ModificationButton01.interactable = false;
         ModificationButton02.interactable = false;
         ModificationButton03.interactable = false;
 
-        eventSystem.SetSelectedGameObject(
+        BuyModificationButton.interactable = false;
+
+        if (modificationCanvasGroup.interactable) {
+            if (BuyModificationButton.interactable == false) {
+            eventSystem.SetSelectedGameObject(
+            CloseButton.gameObject
+            );
+            }
+            else {
+            eventSystem.SetSelectedGameObject(
             BuyModificationButton.gameObject
-        );
+            );
+            }
+        }
 
         UpdateResearchPoint();
     }
@@ -112,6 +142,7 @@ namespace View.Preparation {
 
     private void OnModificationButton03Clicked()
     {
+        AudioManagerController.Instance.PlaySFX("ModificationBuy");
         playerStatModifierController.UpgradeStat(Modification03);
         ResetModificationButtons();
         
@@ -119,12 +150,14 @@ namespace View.Preparation {
 
     private void OnModificationButton02Clicked()
     {
+        AudioManagerController.Instance.PlaySFX("ModificationBuy");
         playerStatModifierController.UpgradeStat(Modification02);
         ResetModificationButtons();
     }
 
     private void OnModificationButton01Clicked()
     {
+        AudioManagerController.Instance.PlaySFX("ModificationBuy");
         playerStatModifierController.UpgradeStat(Modification01);
         ResetModificationButtons();
     }

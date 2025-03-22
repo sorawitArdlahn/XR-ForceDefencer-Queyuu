@@ -2,6 +2,7 @@ using UnityEngine;
 using Model.Stats;
 using GameController;
 using EventListener;
+using System.Collections.Generic;
 
 namespace Controller.StatMod
 {
@@ -17,10 +18,26 @@ namespace Controller.StatMod
         [Header("Events")]
         [SerializeField] GameEvent OnResearchUpgraded;
 
+        [Header("==== Stat Icons ====")]
+        [SerializeField] private Sprite healthPointIcon;
+        [SerializeField] private Sprite armorIcon;
+        [SerializeField] private Sprite fuelIcon;
+        [SerializeField] private Sprite movementSpeedIcon;
+
+        private Dictionary<PlayerUpgradable, Sprite> statIcons;
+
 
         void Awake()
         {
-            playerInfo = GameManager.Instance.currentGameData.playerData;
+            playerInfo = GameManager.Instance?.currentGameData.playerData;
+
+            statIcons = new Dictionary<PlayerUpgradable, Sprite>
+            {
+            { PlayerUpgradable.HealthPoint, healthPointIcon },
+            { PlayerUpgradable.Armor, armorIcon },
+            { PlayerUpgradable.Fuel, fuelIcon },
+            { PlayerUpgradable.MovementSpeed, movementSpeedIcon }
+            };
         }
 
         public void UpgradeStat(PlayerStatModifier playerStatModifier)
@@ -57,9 +74,11 @@ namespace Controller.StatMod
             statModifier.stat = (PlayerUpgradable)Random.Range(0, PlayerUpgradable.GetValues(typeof(PlayerUpgradable)).Length);
 
             //how much the stat would be upgraded
-            float randomMultiplier = Random.Range(0.1f, 0.4f); // Adjust the range as needed
+            float randomMultiplier = Random.Range(0.1f, 0.35f); // Adjust the range as needed
             //only 2 decimal points
             statModifier.Multiplier = Mathf.Round(randomMultiplier * 100f) / 100f;
+
+            statModifier.Icon = statIcons[statModifier.stat];
 
             return statModifier;
         }
@@ -77,6 +96,7 @@ namespace Controller.StatMod
     {
         public PlayerUpgradable stat;
         public float Multiplier;
+        public Sprite Icon;
     }
     
 }
