@@ -26,13 +26,13 @@ public class FollowPlayer : IStrategy
     public Node.Status Process()
     {
         agent.isStopped = false;
-        agent.speed = 100;
+        agent.velocity = agent.desiredVelocity.normalized * Mathf.Clamp(agent.speed, 20, 100);
         if (Vector3.Distance(entity.position, player.transform.position) <= distance) {
             Reset();
             animator.SetBool("IsRun", false);
             agent.isStopped = true;
             agent.ResetPath();
-            agent.speed = 0;
+            agent.velocity = Vector3.zero;
             return Node.Status.Success;
         }
         

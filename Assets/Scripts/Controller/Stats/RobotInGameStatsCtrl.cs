@@ -9,6 +9,7 @@ namespace Controller.Stats
     [RequireComponent(typeof(RobotInGameStatsCtrl))]
     public class RobotInGameStatsCtrl : MonoBehaviour, IDamageable
     {
+        public CharacterType characterType;
         public RobotInGameStats robotInGameStats;
         public GameObject deathEffect;
 
@@ -42,6 +43,7 @@ namespace Controller.Stats
                 StartCoroutine(UseFuel(10));
             }
         }
+
         public void TakeDamage(int damage)
         {
             int damageTaken = damage;
@@ -67,6 +69,8 @@ namespace Controller.Stats
                 {
                     robotInGameStats.SetCurrentHP(0);
                     OnDeath?.Invoke();
+
+                    //death
                     var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
                     Destroy(effect, 1f);
                     Destroy(gameObject,5f);
@@ -129,3 +133,4 @@ namespace Controller.Stats
         }
     }
 }
+

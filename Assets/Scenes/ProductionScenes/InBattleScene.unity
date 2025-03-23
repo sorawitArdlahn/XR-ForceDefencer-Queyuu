@@ -839,6 +839,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2067274316098107147, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
+      propertyPath: m_Name
+      value: ==PLAYER==
+      objectReference: {fileID: 0}
     - target: {fileID: 3218207811540796259, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: playerInputReceiver
       value: 
@@ -863,38 +867,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7192340196467201402, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
-      propertyPath: worldSpaceCanvas
+    - target: {fileID: 6922587469683054965, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
+      propertyPath: PlayerBaseStats
       value: 
-      objectReference: {fileID: 941761322}
-    - target: {fileID: 2067274316098107147, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
-      propertyPath: m_Name
-      value: ==PLAYER==
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218207811540796259, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
-      propertyPath: playerInputReceiver
-      value: 
-      objectReference: {fileID: 1636550128}
-    - target: {fileID: 3489401524981623517, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489401524981623517, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826079280926089077, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
-      propertyPath: playerInputReceiver
-      value: 
-      objectReference: {fileID: 1636550128}
-    - target: {fileID: 5021143003963205279, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5021143003963205279, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: b347771491c1b5249a25457f1fbe2bf7, type: 2}
     - target: {fileID: 7086034561800508371, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -933,6 +909,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7086034561800508371, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192340196467201402, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 941761322}
+    - target: {fileID: 3218207811540796259, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: playerInputReceiver
+      value: 
+      objectReference: {fileID: 1636550128}
+    - target: {fileID: 3489401524981623517, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489401524981623517, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826079280926089077, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: playerInputReceiver
+      value: 
+      objectReference: {fileID: 1636550128}
+    - target: {fileID: 5021143003963205279, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021143003963205279, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7192340196467201402, guid: 240f119f84550524fa8a847bc8672f19, type: 3}

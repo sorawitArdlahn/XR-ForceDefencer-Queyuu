@@ -2,12 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 using System.Persistence;
+using Controller.Level;
 
 namespace Model.Stats
 {
     public class RobotInGameStats : MonoBehaviour, IBind<PlayerData>
     {
-        [FormerlySerializedAs("robotBaseStat")] public RobotBaseStats robotBaseStats;
+        public CharacterType characterType;
+        public RobotBaseStats PlayerBaseStats = null;
+        public AIBaseStatsCurve aIBaseStatsCurve = null;
+        public int currentLevel = 0;
+
         [Header("Base Stats")]
         public int maxHP;
         public int maxArmor;
@@ -27,6 +32,11 @@ namespace Model.Stats
         //SOUP : Binding Part
         [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
         public PlayerData data;
+
+        void Start()
+        {
+            
+        }
 
         public void Bind(PlayerData data)
         {
@@ -48,20 +58,33 @@ namespace Model.Stats
 
         public void OnResearchUpgraded() {
             
-            maxHP = (int)(robotBaseStats.baseHP * data.HealthPointMultiplier);
-            maxArmor = (int)(robotBaseStats.basedArmor * data.ArmorMultiplier);
-            maxFuel = (int)(robotBaseStats.baseFuel * data.FuelMultiplier);
-            speed = robotBaseStats.baseSpeed * data.MovementSpeedMultiplier;
+            maxHP = (int)(PlayerBaseStats.baseHP * data.HealthPointMultiplier);
+            maxArmor = (int)(PlayerBaseStats.basedArmor * data.ArmorMultiplier);
+            maxFuel = (int)(PlayerBaseStats.baseFuel * data.FuelMultiplier);
+            speed = PlayerBaseStats.baseSpeed * data.MovementSpeedMultiplier;
 
         }
 
 
         private void Awake()
         {
-            maxHP = robotBaseStats.baseHP;
-            maxArmor = robotBaseStats.basedArmor;
-            maxFuel = robotBaseStats.baseFuel;
-            speed = robotBaseStats.baseSpeed;
+            currentLevel = FindObjectOfType<LevelManagerController>().getCurrentLevel();
+
+            if (characterType == CharacterType.player && PlayerBaseStats){
+                maxHP = PlayerBaseStats.baseHP;
+                maxArmor = PlayerBaseStats.basedArmor;
+                maxFuel = PlayerBaseStats.baseFuel;
+                speed = PlayerBaseStats.baseSpeed;
+            }
+            else if (characterType == CharacterType.AI && aIBaseStatsCurve){
+                maxHP = (int)aIBaseStatsCurve.baseHPCurve.Evaluate(currentLevel);
+                maxArmor = (int)aIBaseStatsCurve.basedArmorCurve.Evaluate(currentLevel);
+                maxFuel = (int)aIBaseStatsCurve.baseFuelCurve.Evaluate(currentLevel);
+                speed = (int)aIBaseStatsCurve.baseSpeedCurve.Evaluate(currentLevel);
+            }
+            else{
+                Debug.LogError("From <RobotInGameStats> PlayerBaseStats or AIBaseStatsCurve is null");
+            }
             
             currentHP = maxHP;
             currentArmor = maxArmor;
@@ -92,4 +115,8 @@ namespace Model.Stats
 
         public int MaxFuel => maxFuel;
     }
+}
+
+public enum CharacterType{
+player, AI
 }

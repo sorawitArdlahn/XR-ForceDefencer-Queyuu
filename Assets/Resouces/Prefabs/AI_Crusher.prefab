@@ -684,7 +684,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 100
+  m_Speed: 10
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 3000
@@ -758,7 +758,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca115d351500a69418f5a418216e1acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotBaseStats: {fileID: 11400000, guid: d4722b9be5ba14343ba7176e10de26e6, type: 2}
+  characterType: 1
+  PlayerBaseStats: {fileID: 0}
+  aIBaseStatsCurve: {fileID: 11400000, guid: 965a0f28291b1b543a50f4facfda932b, type: 2}
+  currentLevel: 0
   maxHP: 0
   maxArmor: 0
   maxFuel: 0
@@ -795,6 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb333f77a91a0664abd7b7228e42eceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterType: 0
   robotInGameStats: {fileID: 1809608513146524126}
   deathEffect: {fileID: 3510688921982660790, guid: c5a2bba30579c3c4cbde3bfe37782238, type: 3}
 --- !u!114 &3546816875797644370
