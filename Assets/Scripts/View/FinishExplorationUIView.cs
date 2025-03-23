@@ -35,7 +35,7 @@ public class FinishExplorationUIView : MonoBehaviour
         FinishExplorationButton.onClick.AddListener(OnFinishExplorationButtonClicked);
     }
 
-    void UpdateText() {
+    public void UpdateText() {
         CurrentLevelText.text = levelData.getCurrentLevel().ToString();
         EnemyDefeatedText.text = levelData.getTotalEnemies().ToString();
         ResearchPointText.text = (levelData.getTotalEnemies() * 75).ToString();

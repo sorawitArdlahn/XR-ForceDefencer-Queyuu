@@ -11,6 +11,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using View.Exploration;
 using System.Collections;
+using Unity.VisualScripting;
 
 namespace Controller.Level {
 public class LevelManagerController : MonoBehaviour, IBind<LevelData>
@@ -40,7 +41,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     [Header("==== UI ====")]
     [SerializeField] FinishExplorationUIView finishExplorationScreen;
-    [SerializeField] GameObject gameOverUIView;
+    [SerializeField] GameOverUIView gameOverScreen;
 
     [Header("==== Button Link to Other Screen ====")]
     public Button ContinueExplorationButton;
@@ -61,6 +62,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     [SerializeField] private bool forceDebug;
     [SerializeField] private int baseMapSize = 5;
     [SerializeField] int baseEnemy = 15;
+
+    [SerializeField] int baseIncreaseMapSize = 5;
 
     //[NonSerialized] public static LevelManagerController Instance = null;
 
@@ -92,19 +95,33 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         }
     }
 
-    void SetLevelDetailBasedOnCurrentLevel() {
-        //Dynamically Increase Map Size over time
-        int additionalSize = Mathf.FloorToInt(Mathf.Log(getCurrentLevel() + 1, 2));
+    void SetLevelDetailBasedOnCurrentLevel()
+    {
+        // Calculate additional size based on the current level
+        int additionalSize = CalculateAdditionalSize(getCurrentLevel());
         mapGenerator?.setMapSize(additionalSize + baseMapSize);
 
-        //Dynamically Increase Enemy Amount over time
-        //TODO : Sent Enemies Data and Enemies Amount to SpawnerManager
+        // Dynamically Increase Enemy Amount over time
         int enemyCount = Mathf.Min(
-            getCurrentLevel() + baseEnemy, 
+            getCurrentLevel() + baseEnemy,
             (int)(mapGenerator.getMapSize() * 0.75)
-            );
+        );
         spawnerManager?.SetEnemies(enemiesList, enemyCount);
-        
+    }
+
+    int CalculateAdditionalSize(int currentLevel)
+    {
+        int additionalSize = 0;
+        int stagesToClear = baseIncreaseMapSize; // Initial stages to clear to increase map size
+
+        while (currentLevel >= stagesToClear)
+        {
+            additionalSize++;
+            currentLevel -= stagesToClear;
+            stagesToClear++; // Increase the number of stages required for the next increment
+        }
+
+        return additionalSize;
     }
 
     public void setPlayerPositionOnMap() {
@@ -138,6 +155,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     }
 
     //Post Match
+
+    //LEVEL COMPLETE
     public void LevelCompleted()
     {
         StartCoroutine(LevelCompletedCoroutine());
@@ -145,20 +164,31 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     private IEnumerator LevelCompletedCoroutine()
     {
-        yield return StartCoroutine(AnimationUtils.WaitForAnimation(finishExplorationScreen.animationController, "FinishExplorationClose"));
+        yield return StartCoroutine(AnimationUtils.WaitForAnimation(finishExplorationScreen.animationController, "FinishExplorationOpen"));
         Debug.LogWarning("Level Completed!");
         PauseGame();
+        eventSystem.SetSelectedGameObject(ContinueExplorationButton.gameObject);
     }
 
+    //GAME OVER
     public void OnPlayerDeath() {
-        gameOverUIView.SetActive(true);
+        StartCoroutine(GameOverCoroutine());
         Debug.LogWarning("Game Over!");
+    }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        yield return StartCoroutine(AnimationUtils.WaitForAnimation(gameOverScreen.animationController, "GameOverOpen"));
+        Debug.LogWarning("Game Over!");
+        PauseGame();
+        eventSystem.SetSelectedGameObject(GameOverButton.gameObject);
     }
 
     private void PauseGame(){
         Time.timeScale = 0;
     }
 
+    //Getter Setter
     public int getHighestLevel() {
         return data.highestLevel;
     }

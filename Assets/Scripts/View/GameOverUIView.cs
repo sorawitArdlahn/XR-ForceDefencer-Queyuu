@@ -2,21 +2,33 @@ using GameController;
 using UnityEngine;
 using UnityEngine.UI;
 using Audio;
+using TMPro;
+using Controller.Level;
 
 namespace View.Exploration {
     public class GameOverUIView : MonoBehaviour
     {
-        [Header("Buttons")]
+        [Header("==== Result Texts ====")]
+        [SerializeField] TextMeshProUGUI HighestLevelText;
+
+        [Header("==== Buttons ====")]
         [SerializeField] Button MainMenuButton;
         [SerializeField] Button NewGameButton;
 
-        [Header("Animation Controller")]
+        [Header("==== Level Data ====")]
+        [SerializeField] LevelManagerController levelData;
+
+        [Header("==== Animation Controller ====")]
         public Animator animationController;
     
 
     void Start(){
             MainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
             NewGameButton.onClick.AddListener(OnNewGameButtonClicked);
+    }
+
+    public void UpdateText() {
+        HighestLevelText.text = levelData.getHighestLevel().ToString();
     }
 
     private void OnMainMenuButtonClicked()
