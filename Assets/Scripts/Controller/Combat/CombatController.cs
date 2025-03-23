@@ -7,6 +7,7 @@ namespace Controller.Combat
    public class CombatController : MonoBehaviour
    {
       [SerializeField] private PlayerGunSelector gunSelector;
+      
       [SerializeField] private PlayerInputReceiver playerInputReceiver;
 
       [SerializeField] private AimAssistantCtrl aimAssistantCtrl;
@@ -15,9 +16,10 @@ namespace Controller.Combat
 
       private void Update()
       {
-         if (playerInputReceiver.IsFire && gunSelector.activeGun)
+         if (playerInputReceiver.IsFire && gunSelector)
          {
-            gunSelector.activeGun.Shoot();
+            gunSelector.guns[0].Shoot();
+            gunSelector.guns[1].Shoot();
          }
 
          if (Input.GetKeyDown(KeyCode.M))
