@@ -9,6 +9,8 @@ using System;
 using Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using View.Exploration;
+using System.Collections;
 
 namespace Controller.Level {
 public class LevelManagerController : MonoBehaviour, IBind<LevelData>
@@ -18,6 +20,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     [Header("==== Level Data ====")]
     [SerializeField] LevelData data;
+
+
 
     public void Bind(LevelData data)
     {
@@ -35,7 +39,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     GameObject player;
 
     [Header("==== UI ====")]
-    [SerializeField] GameObject finishExplorationUIView;
+    [SerializeField] FinishExplorationUIView finishExplorationScreen;
     [SerializeField] GameObject gameOverUIView;
 
     [Header("==== Button Link to Other Screen ====")]
@@ -58,12 +62,10 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     [SerializeField] private int baseMapSize = 5;
     [SerializeField] int baseEnemy = 15;
 
-    [NonSerialized] public LevelManagerController instance = null;
+    //[NonSerialized] public static LevelManagerController Instance = null;
 
     void Start()
     {
-        if (instance == null) { instance = this; }
-        else { Destroy(gameObject); }
 
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
         {
@@ -90,16 +92,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         }
     }
 
-    public int getCurrentLevel()
-    {
-        return data.currentLevel;
-    }
-
-    public void setCurrentLevel(int level)
-    {
-        data.currentLevel = level;
-    }
-
     void SetLevelDetailBasedOnCurrentLevel() {
         //Dynamically Increase Map Size over time
         int additionalSize = Mathf.FloorToInt(Mathf.Log(getCurrentLevel() + 1, 2));
@@ -112,7 +104,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
             (int)(mapGenerator.getMapSize() * 0.75)
             );
         spawnerManager?.SetEnemies(enemiesList, enemyCount);
-        spawnerManager?.getTotalEnemies();
         
     }
 
@@ -129,7 +120,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     public void NewStage()
     {
-        finishExplorationUIView.SetActive(false);
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnCurrentLevel();
         OnStartLevel?.Raise(this);
@@ -148,8 +138,14 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     }
 
     //Post Match
-    public void LevelCompleted() {
-        finishExplorationUIView.SetActive(true);
+    public void LevelCompleted()
+    {
+        StartCoroutine(LevelCompletedCoroutine());
+    }
+
+    private IEnumerator LevelCompletedCoroutine()
+    {
+        yield return StartCoroutine(AnimationUtils.WaitForAnimation(finishExplorationScreen.animationController, "FinishExplorationClose"));
         Debug.LogWarning("Level Completed!");
         PauseGame();
     }
@@ -162,6 +158,24 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     private void PauseGame(){
         Time.timeScale = 0;
     }
-}
 
+    public int getHighestLevel() {
+        return data.highestLevel;
+    }
+
+    public int getTotalEnemies() {
+        return spawnerManager.getTotalEnemies();
+    }
+
+    public int getCurrentLevel()
+    {
+        return data.currentLevel;
+    }
+
+    public void setCurrentLevel(int level)
+    {
+        data.currentLevel = level;
+    }
+
+}
 }

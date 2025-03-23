@@ -3,14 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using GameController;
 using Audio;
+using Controller.Level;
+using TMPro;
 
 namespace View.Exploration
 {
 public class FinishExplorationUIView : MonoBehaviour
 {
     [Header("==== Texts ====")]
-    [SerializeField] Text ExplorationResultText;
-    [SerializeField] Text ResearchPointText;
+    [SerializeField] TextMeshProUGUI CurrentLevelText;
+    [SerializeField] TextMeshProUGUI EnemyDefeatedText;
+    [SerializeField] TextMeshProUGUI ResearchPointText;
     [Header("==== Buttons ====")]
     [SerializeField] Button ContinueExplorationButton;
     [SerializeField] Button FinishExplorationButton;
@@ -18,6 +21,10 @@ public class FinishExplorationUIView : MonoBehaviour
     [Header("==== Game Events ====")]
     [SerializeField] GameEvent OnContinueExploration;
     [SerializeField] GameEvent OnFinishExploration;
+
+    [Header("==== Level Data ====")]
+    //SOUP : Change to LevelData type
+    [SerializeField] LevelManagerController levelData;
 
     [Header("==== Animation Controller ====")]
     public Animator animationController;
@@ -28,10 +35,20 @@ public class FinishExplorationUIView : MonoBehaviour
         FinishExplorationButton.onClick.AddListener(OnFinishExplorationButtonClicked);
     }
 
+    void UpdateText() {
+        CurrentLevelText.text = levelData.getCurrentLevel().ToString();
+        EnemyDefeatedText.text = levelData.getTotalEnemies().ToString();
+        ResearchPointText.text = (levelData.getTotalEnemies() * 75).ToString();
+    }
+
     private void OnContinueExplorationButtonClicked()
     {
         UnPauseGame();
         AudioManagerController.Instance.PlaySFX("ButtonPressed");
+        animationController.SetTrigger("FinishExplorationClose");
+
+        if (GameStateManager.Instance != null) 
+        {StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());}
         OnContinueExploration.Raise(this);
     }
 

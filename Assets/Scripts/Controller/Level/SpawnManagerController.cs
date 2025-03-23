@@ -236,8 +236,8 @@ public class SpawnerManagerController : MonoBehaviour
         totalEnemies = levelTotalEnemy;
     }
 
-    public void getTotalEnemies() {
-        Debug.Log("Total Enemies: " + totalEnemies);
+    public int getTotalEnemies() {
+        return totalEnemies;
     }
 
 

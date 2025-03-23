@@ -120,7 +120,7 @@ public class MapGeneratorController : MonoBehaviour
     }
 
     void setBorderHeight() {
-        borderHeight = templateList.Max(template => template.GetPrefabHeight()) + 3;
+        borderHeight = templateList.Max(template => template.GetPrefabHeight()) * 1.5f;
     }
 
     
