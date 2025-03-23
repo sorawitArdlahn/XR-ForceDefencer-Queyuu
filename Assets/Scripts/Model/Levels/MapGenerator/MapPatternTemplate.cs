@@ -38,7 +38,7 @@ public class MapPatternTemplate : ScriptableObject
     {
         if (prefabList == null)
         {
-            Debug.LogError("Prefab is not assigned.");
+            Debug.LogError("Prefab list is not assigned.");
             return 0f;
         }
 
@@ -48,10 +48,35 @@ public class MapPatternTemplate : ScriptableObject
             Renderer renderer = prefab.GetComponent<Renderer>();
             if (renderer == null)
             {
-            Debug.LogError("Prefab does not have a Renderer component.");
-            continue;
+                // Try to get Renderer from children
+                renderer = prefab.GetComponentInChildren<Renderer>();
             }
-            maxHeight = Mathf.Max(maxHeight, renderer.bounds.size.y);
+
+            if (renderer != null)
+            {
+                maxHeight = Mathf.Max(maxHeight, renderer.bounds.size.y);
+            }
+            else
+            {
+                // Try to get BoxCollider or MeshCollider from children
+                BoxCollider boxCollider = prefab.GetComponentInChildren<BoxCollider>();
+                if (boxCollider != null)
+                {
+                    maxHeight = Mathf.Max(maxHeight, boxCollider.bounds.extents.y * 2);
+                }
+                else
+                {
+                    MeshCollider meshCollider = prefab.GetComponentInChildren<MeshCollider>();
+                    if (meshCollider != null)
+                    {
+                        maxHeight = Mathf.Max(maxHeight, meshCollider.bounds.extents.y * 2);
+                    }
+                    else
+                    {
+                        Debug.LogError("Prefab does not have a Renderer, BoxCollider, or MeshCollider component.");
+                    }
+                }
+            }
         }
 
         return maxHeight;

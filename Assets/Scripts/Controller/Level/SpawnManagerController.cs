@@ -159,7 +159,7 @@ public class SpawnerManagerController : MonoBehaviour
 
         // number of waves in this round
         int subWavePerWave;
-        int wavesPerRound = UnityEngine.Random.Range(3, 5);
+        int wavesPerRound = UnityEngine.Random.Range(3, 4);
 
 
         waves = new Wave[wavesPerRound];
@@ -177,7 +177,7 @@ public class SpawnerManagerController : MonoBehaviour
             wave.enemyCount = totalEnemies / wavesPerRound;
             }
 
-            subWavePerWave = UnityEngine.Random.Range(2,3);
+            subWavePerWave = UnityEngine.Random.Range(1,3);
 
             wave.subWaves = new List<SubWave>(subWavePerWave);
 

@@ -64,6 +64,7 @@ namespace View.Preparation {
         private void OnMainMenuButtonClicked()
         {
             GameManager.Instance?.SaveGame();
+            AudioManagerController.Instance.PlaySFX("TransitionScreenOut");
             GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
             Debug.Log("Main Menu Button Pressed.");
         }
