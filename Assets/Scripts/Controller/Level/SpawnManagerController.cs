@@ -167,7 +167,7 @@ public class SpawnerManagerController : MonoBehaviour
         for (int i = 0; i < wavesPerRound; i++) {
             Wave wave = new Wave();
 
-            wave.timeBetweenWaves = UnityEngine.Random.Range(4f, 9f);
+            wave.timeBetweenWaves = UnityEngine.Random.Range(2f, 4.5f);
             wave.timeBetweenSpawn = UnityEngine.Random.Range(0.025f, 0.04f);
 
 

@@ -42,20 +42,19 @@ namespace Controller.Movement
 
         private void OnEnable()
         {
-            FindEnemy();
             isAimActive = true;
             LockOnText.text =  "ON" ;
             LockOnText.color = Color.green;
 
-            if (!isEnemyAvailable)
-            {
-                LockOnText.text =  "No Enemy Available";
-                LockOnText.fontSize = 9;
-                LockOnText.color = Color.red;
-                isAimActive = false;
-                target = null;
-                allEnemies.Clear();
-            }
+            // if (!isEnemyAvailable)
+            // {
+            //     LockOnText.text =  "No Enemy Available";
+            //     LockOnText.fontSize = 9;
+            //     LockOnText.color = Color.red;
+            //     isAimActive = false;
+            //     target = null;
+            //     allEnemies.Clear();
+            // }
         }
 
         private void OnDisable()
@@ -73,8 +72,20 @@ namespace Controller.Movement
 
         private void Update()
         {
+            ClearDeathEnemy();
             if (isAimActive)
             {
+                FindEnemy();
+                if (!isEnemyAvailable)
+                {
+                    LockOnText.text =  "No Enemy Available";
+                    LockOnText.fontSize = 9;
+                    LockOnText.color = Color.red;
+                    isAimActive = false;
+                    target = null;
+                    allEnemies.Clear();
+                }
+                
                 MoveToClosetEnemy();
             }
         
@@ -91,6 +102,7 @@ namespace Controller.Movement
         {
             foreach (var enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
             {
+                if (enemyGameObject.GetComponent<RobotInGameStats>().currentHP <= 0) continue;
                 if (allEnemies.Contains(enemyGameObject)) continue;
                 allEnemies.Add(enemyGameObject);
             }
@@ -158,8 +170,6 @@ namespace Controller.Movement
         private void MoveToClosetEnemy()
         {
             newAngle = Vector3.zero;
-            
-
             target = FindClosestEnemy();
             if (target)
             {
@@ -187,7 +197,7 @@ namespace Controller.Movement
 
             else{
                 isEnemyAvailable = false;
-                ClearDeathEnemy();
+                //ClearDeathEnemy();
             }
 
         }

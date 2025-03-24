@@ -9,7 +9,6 @@ namespace Controller.Stats
     [RequireComponent(typeof(RobotInGameStatsCtrl))]
     public class RobotInGameStatsCtrl : MonoBehaviour, IDamageable
     {
-        public CharacterType characterType;
         public RobotInGameStats robotInGameStats;
         public GameObject deathEffect;
 
@@ -125,6 +124,13 @@ namespace Controller.Stats
             }
 
             isRefueling = false; // Finished refueling
+        }
+
+        public void RegenerateArmor()
+        {
+            var newArmor = CurrentArmor + (robotInGameStats.maxArmor * 0.5);
+            newArmor = Mathf.Clamp((float)newArmor, 0, robotInGameStats.maxArmor);
+            robotInGameStats.setCurrentArmor((int)newArmor);
         }
 
         public void researchPointEarned()

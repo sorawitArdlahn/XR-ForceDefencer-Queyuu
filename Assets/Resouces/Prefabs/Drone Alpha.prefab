@@ -5134,12 +5134,13 @@ GameObject:
   - component: {fileID: 1691218305658977968}
   - component: {fileID: 425602282020029562}
   - component: {fileID: 3918697194860705982}
+  - component: {fileID: 5338385622591819960}
   - component: {fileID: 7784593619939013320}
   - component: {fileID: 4317390235724174400}
   - component: {fileID: 5928549189239972449}
-  - component: {fileID: 4794761866811506886}
   - component: {fileID: 1286225554861426012}
   - component: {fileID: 9108337087746058985}
+  - component: {fileID: 1465330427609650536}
   m_Layer: 0
   m_Name: Drone Alpha
   m_TagString: Enemy
@@ -5233,6 +5234,27 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!135 &5338385622591819960
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906941267733275642}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7784593619939013320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5249,7 +5271,6 @@ MonoBehaviour:
   gunParent: {fileID: 1957249922264286365}
   guns:
   - {fileID: 1214414559460479083}
-  activeGun: {fileID: 0}
 --- !u!114 &4317390235724174400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5283,28 +5304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackboard: {fileID: 4317390235724174400}
-  gunnerType: 0
---- !u!65 &4794761866811506886
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2906941267733275642}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &1286225554861426012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5331,7 +5330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca115d351500a69418f5a418216e1acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotBaseStats: {fileID: 11400000, guid: d4722b9be5ba14343ba7176e10de26e6, type: 2}
+  characterType: 1
+  PlayerBaseStats: {fileID: 0}
+  aIBaseStatsCurve: {fileID: 11400000, guid: 965a0f28291b1b543a50f4facfda932b, type: 2}
+  currentLevel: 0
   maxHP: 0
   maxArmor: 0
   maxFuel: 0
@@ -5356,6 +5358,22 @@ MonoBehaviour:
     MovementSpeedMultiplier: 1
     currentResearchPoint: 0
     researchPointRequired: 50
+--- !u!114 &1465330427609650536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906941267733275642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb7446fc8357aa4baf2fd4629c3a850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotInGameStatsCtrl: {fileID: 1286225554861426012}
+  navMeshAgent: {fileID: 425602282020029562}
+  rigidbody: {fileID: 3918697194860705982}
+  scriptAIBehavior: {fileID: 5928549189239972449}
 --- !u!1 &4485696378113780670
 GameObject:
   m_ObjectHideFlags: 0

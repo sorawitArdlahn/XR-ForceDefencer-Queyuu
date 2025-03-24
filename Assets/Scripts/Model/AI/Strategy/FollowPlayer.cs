@@ -26,7 +26,7 @@ public class FollowPlayer : IStrategy
     public Node.Status Process()
     {
         agent.isStopped = false;
-        agent.velocity = agent.desiredVelocity.normalized * Mathf.Clamp(agent.speed, 20, 100);
+        agent.velocity = agent.desiredVelocity.normalized * Mathf.Clamp(agent.speed, 30, 100);
         if (Vector3.Distance(entity.position, player.transform.position) <= distance) {
             Reset();
             animator.SetBool("IsRun", false);
