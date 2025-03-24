@@ -42,9 +42,10 @@ namespace Controller.Movement
 
         private void OnEnable()
         {
+            LockOnText.gameObject.SetActive(true);
             isAimActive = true;
-            LockOnText.text =  "ON" ;
-            LockOnText.color = Color.green;
+            LockOnText.text =  "-LOCKED-" ;
+            // LockOnText.color = Color.green;
 
             // if (!isEnemyAvailable)
             // {
@@ -63,8 +64,8 @@ namespace Controller.Movement
             {
                 aimImage.gameObject.SetActive(false);
             }
-            LockOnText.text =  "OFF" ;
-            LockOnText.color = Color.red;
+            LockOnText.gameObject.SetActive(false);
+            // LockOnText.color = Color.red;
             isAimActive = false;
             target = null;
             aimImage.transform.position = cockpitTransform.position;
@@ -78,9 +79,9 @@ namespace Controller.Movement
                 FindEnemy();
                 if (!isEnemyAvailable)
                 {
-                    LockOnText.text =  "No Enemy Available";
+                    LockOnText.text =  "-ENEMY-NOT-FOUND-";
                     LockOnText.fontSize = 9;
-                    LockOnText.color = Color.red;
+                    // LockOnText.color = Color.red;
                     isAimActive = false;
                     target = null;
                     allEnemies.Clear();
