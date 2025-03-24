@@ -444,7 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.size
-      value: 8
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: musicSound.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[0].Clip
@@ -505,10 +509,30 @@ PrefabInstance:
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[7].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: eda15f78ce1526b4c97dc916591f0f71, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[7].Name
-      value: ModificationClose
+      value: EnemySpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[8].Clip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[8].Name
+      value: PlayerDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[9].Name
+      value: PlayerDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: musicSound.Array.data[0].Name
+      value: BattleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: musicSound.Array.data[1].Name
+      value: PreparationMusic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
