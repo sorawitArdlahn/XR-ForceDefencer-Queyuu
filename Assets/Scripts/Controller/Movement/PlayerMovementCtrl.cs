@@ -80,6 +80,10 @@ namespace Controller.Movement
 
         private void Update()
         {
+            if (Input.GetKey(KeyCode.Escape)){
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
             ReceiveInput();
             GroundCheck();
             MovementStateHandler();

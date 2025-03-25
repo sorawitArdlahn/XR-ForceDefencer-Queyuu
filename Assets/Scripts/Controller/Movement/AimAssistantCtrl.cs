@@ -18,7 +18,7 @@ namespace Controller.Movement
         public Transform playerTransform;
         public Transform cockpitTransform;
         public Transform pointer;
-        public GameObject target;
+        public GameObject target = null;
         public float targetHight;
 
         private Vector3 newAngle;
@@ -63,12 +63,12 @@ namespace Controller.Movement
             if (aimImage != null)
             {
                 aimImage.gameObject.SetActive(false);
+                aimImage.transform.position = cockpitTransform.position;
             }
             LockOnText.gameObject.SetActive(false);
             // LockOnText.color = Color.red;
             isAimActive = false;
             target = null;
-            aimImage.transform.position = cockpitTransform.position;
         }
 
         private void Update()
