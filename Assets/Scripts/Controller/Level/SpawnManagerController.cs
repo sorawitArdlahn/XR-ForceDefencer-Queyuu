@@ -104,7 +104,8 @@ public class SpawnerManagerController : MonoBehaviour
 
     
     //Spawn Enemy Logic
-    void SpawnEnemy(GameObject _enemy) {
+    void SpawnEnemy(GameObject _enemy)
+    {
         GameObject playerPos = GameObject.FindGameObjectWithTag("Player");
         bool validPosition = false;
         float minDistanceFromPlayer = 25f;
@@ -113,14 +114,14 @@ public class SpawnerManagerController : MonoBehaviour
 
         GameObject[] lowGrounds = GameObject.FindGameObjectsWithTag("LowGround");
 
-        
+        // Maximum number of attempts to find a valid position
+        int maxAttempts = 100;
+
         // Check Validity of Spawn Position
-        while (!validPosition) {
-            //CellV2 spawnTile = mapGenerator.gridComponent[UnityEngine.Random.Range(0, mapGenerator.gridComponent.Count)];
-            //float tileHeight = spawnTile.tileOptions[0].originalMapPattern.GetPrefabHeight();
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
+        {
             GameObject randomGround = lowGrounds[UnityEngine.Random.Range(0, lowGrounds.Length)];
             spawnPosition = randomGround.transform.position;
-            //spawnPosition.y += tileHeight + 8;
             spawnPosition.y += 5;
 
             // Check if the spawn position is too close to the player
@@ -130,18 +131,27 @@ public class SpawnerManagerController : MonoBehaviour
                 if (colliders.Length == 0)
                 {
                     validPosition = true;
+                    break;
                 }
             }
         }
 
-        GameObject spawnedEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
-        if (spawnedEnemy.TryGetComponent(out IDamageable damageable))
+        if (validPosition)
         {
-            damageable.OnDeath += OnEnemyDeath;
-        }
+            GameObject spawnedEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
+            if (spawnedEnemy.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.OnDeath += OnEnemyDeath;
+            }
 
-        enemiesInWave.Add(spawnedEnemy);
-        Debug.Log("Spawning Enemy: " + _enemy.name);
+            enemiesInWave.Add(spawnedEnemy);
+            Debug.Log("Spawning Enemy: " + _enemy.name);
+        }
+        else
+        {
+            Debug.LogWarning("Failed to find a valid spawn position after " + maxAttempts + " attempts.");
+            numEnemiesInWaveRemaining--;
+        }
     }
 
 
