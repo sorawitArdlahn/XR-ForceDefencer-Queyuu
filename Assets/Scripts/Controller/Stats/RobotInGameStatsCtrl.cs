@@ -45,6 +45,10 @@ namespace Controller.Stats
 
         public void TakeDamage(int damage)
         {
+            if (CurrentHealth <= 0) {
+            Debug.Log("Robot is already dead");
+            return;}
+
             int damageTaken = damage;
             
             if (CurrentArmor > 0)
