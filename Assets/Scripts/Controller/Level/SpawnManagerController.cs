@@ -113,14 +113,17 @@ public class SpawnerManagerController : MonoBehaviour
         Vector3 spawnPosition = Vector3.zero;
 
         GameObject[] lowGrounds = GameObject.FindGameObjectsWithTag("LowGround");
-
+        
+        Debug.Log("LGLength : " + lowGrounds.Length);
         // Maximum number of attempts to find a valid position
         int maxAttempts = 100;
 
         // Check Validity of Spawn Position
         for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            GameObject randomGround = lowGrounds[UnityEngine.Random.Range(0, lowGrounds.Length)];
+            int randomIndex = UnityEngine.Random.Range(0, lowGrounds.Length);
+            Debug.Log("Random Number = : " + randomIndex);
+            GameObject randomGround = lowGrounds[randomIndex];
             spawnPosition = randomGround.transform.position;
             spawnPosition.y += 5;
 
@@ -139,18 +142,19 @@ public class SpawnerManagerController : MonoBehaviour
         if (validPosition)
         {
             GameObject spawnedEnemy = Instantiate(_enemy, spawnPosition, Quaternion.identity);
+            Debug.Log("Spawning Enemy: " + _enemy.name);
             if (spawnedEnemy.TryGetComponent(out IDamageable damageable))
             {
                 damageable.OnDeath += OnEnemyDeath;
             }
 
             enemiesInWave.Add(spawnedEnemy);
-            Debug.Log("Spawning Enemy: " + _enemy.name);
+            
         }
         else
         {
-            Debug.LogWarning("Failed to find a valid spawn position after " + maxAttempts + " attempts.");
-            numEnemiesInWaveRemaining--;
+            Debug.Log("Failed to find a valid spawn position after " + maxAttempts + " attempts.");
+            OnEnemyDeath();
         }
     }
 
@@ -221,7 +225,13 @@ public class SpawnerManagerController : MonoBehaviour
         numEnemiesInWaveRemaining--;
         researchPointEarned?.Raise(this);
         
-        if (numEnemiesInWaveRemaining <= 0 && nextWave >= waves.Length) {
+        Debug.Log("########|Wave Length: " + waves.Length + " Wave Number: " + nextWave + " Enemies Remaining: " + numEnemiesInWaveRemaining);
+        
+        if (numEnemiesInWaveRemaining <= 0 && nextWave >= waves.Length)
+        {
+            // Debug.Log("Wave Length : " + waves.Length);
+            // Debug.Log("Wave Number : " + nextWave);
+            Debug.Log("--Cleared Stage--");
             StageCleared();
         }
         else if (numEnemiesInWaveRemaining <= 0) NewWave();

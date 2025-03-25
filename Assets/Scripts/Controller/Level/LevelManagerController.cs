@@ -44,7 +44,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     [SerializeField] GameOverUIView gameOverScreen;
 
     [Header("==== Button Link to Other Screen ====")]
-    public Button ContinueExplorationButton;
+    public Button FinishExplorationButton;
     public Button GameOverButton;
 
     [Header("==== Enemies List ====")]
@@ -53,6 +53,11 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     [Header("==== Event Listener ====")]
     public GameEvent OnStartLevel;
+    
+    [Header("==== Animation Receivers ====")]
+    public AnimationEventReceiver FEreceiver;
+    public AnimationEventReceiver GOreceiver;
+    
 
     [Header("==== Event System ====")]
     public EventSystem eventSystem;
@@ -91,6 +96,19 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
         if (GameStateManager.Instance?.GetCurrentGameState() == GameState.InBattle || forceDebug)
         {
+            //Finish Exploration Animation Receiver
+            AnimationEvent FEanimationEvent = new AnimationEvent();
+            FEanimationEvent.eventName = "FinishExploration";
+            FEanimationEvent.OnAnimationEvent += LevelCompleteAnimationFinished;
+            FEreceiver.AddAnimationEvent(FEanimationEvent);
+            
+            
+            //Game Over Animation Receiver
+            AnimationEvent GOanimationEvent = new AnimationEvent();
+            GOanimationEvent.eventName = "GameOver";
+            GOanimationEvent.OnAnimationEvent += GameOverAnimationFinished;
+            GOreceiver.AddAnimationEvent(GOanimationEvent);
+            
             NewStage();
         }
     }
@@ -160,31 +178,30 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     public void LevelCompleted()
     {
         AudioManagerController.Instance.PlaySFX("LevelComplete");
-        StartCoroutine(LevelCompletedCoroutine());
+        finishExplorationScreen.animationController.SetTrigger("FinishExplorationOpen");
     }
 
-    private IEnumerator LevelCompletedCoroutine()
+    public void LevelCompleteAnimationFinished()
     {
-        yield return StartCoroutine(AnimationUtils.WaitForAnimation(finishExplorationScreen.animationController, "FinishExplorationOpen"));
-        Debug.LogWarning("Level Completed!");
+        Debug.Log("******* CALL! LevelCompleteAnimationFinished()");
+        eventSystem.SetSelectedGameObject(FinishExplorationButton.gameObject);
         PauseGame();
-        eventSystem.SetSelectedGameObject(ContinueExplorationButton.gameObject);
     }
 
     //GAME OVER
     public void OnPlayerDeath() {
         AudioManagerController.Instance.PlaySFX("GameOver");
-        StartCoroutine(GameOverCoroutine());
+        gameOverScreen.animationController.SetTrigger("GameOverOpen");
         Debug.LogWarning("Game Over!");
     }
 
-    private IEnumerator GameOverCoroutine()
+    public void GameOverAnimationFinished()
     {
-        yield return StartCoroutine(AnimationUtils.WaitForAnimation(gameOverScreen.animationController, "GameOverOpen"));
-        Debug.LogWarning("Game Over!");
-        PauseGame();
         eventSystem.SetSelectedGameObject(GameOverButton.gameObject);
+        PauseGame();
     }
+    
+    
 
     private void PauseGame(){
         Time.timeScale = 0;

@@ -2095,7 +2095,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca115d351500a69418f5a418216e1acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotBaseStats: {fileID: 11400000, guid: ad1201990c3cea144bc34f51e189dc63, type: 2}
+  characterType: 0
+  PlayerBaseStats: {fileID: 11400000, guid: b347771491c1b5249a25457f1fbe2bf7, type: 2}
+  aIBaseStatsCurve: {fileID: 0}
+  currentLevel: 0
   maxHP: 0
   maxArmor: 0
   maxFuel: 0
@@ -2120,6 +2123,7 @@ MonoBehaviour:
     MovementSpeedMultiplier: 1
     currentResearchPoint: 0
     researchPointRequired: 50
+    accumulatedResearchPoint: 0
 --- !u!1 &1464979543
 GameObject:
   m_ObjectHideFlags: 0

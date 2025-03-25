@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2703157674816462879}
   - component: {fileID: 8185664146115175606}
   - component: {fileID: 7367400789067729339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KoreanBuilding_Mesh_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 153598926289073645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MapSet_City_KoreanBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,12 +199,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8494353125341743884, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8494353125341743884, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: -3431324317682053603, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3431324317682053603, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -1347618827546070907, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -1347618827546070907, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -215,8 +227,16 @@ PrefabInstance:
       value: KoreanBuilding_Mesh
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561605157417941263, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2561605157417941263, guid: 19fc8216ede33704c800ad2056fa2e36, type: 3}
       propertyPath: m_StaticEditorFlags

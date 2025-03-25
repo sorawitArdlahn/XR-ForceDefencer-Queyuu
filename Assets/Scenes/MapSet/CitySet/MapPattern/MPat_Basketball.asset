@@ -24,7 +24,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
   rightNeighbors:
   - {fileID: 11400000, guid: 602950a74de2bcf458294bfb03a3c47c, type: 2}
-  playerSpawnAble: 1
+  playerSpawnAble: 0
   isFlipped: 1
   isRotated: 0
   timeRotated: 1

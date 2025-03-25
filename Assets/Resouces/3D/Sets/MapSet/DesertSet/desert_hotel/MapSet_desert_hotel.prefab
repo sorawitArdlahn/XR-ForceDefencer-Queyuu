@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3573454147844085933}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MapSet_desert_hotel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6425868530109391227}
   - component: {fileID: 4072359273927096848}
   - component: {fileID: 4829106997026622936}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desert_hotel_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7547691311412533852}
   - component: {fileID: 294306841616115818}
   - component: {fileID: 4869744001259939146}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desert_hotel_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 5131420287440829346}
   - component: {fileID: 7744708031954054224}
   - component: {fileID: 667111641195498913}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desert_hotel_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 4030141796302310241}
   - component: {fileID: 2857356424177475409}
   - component: {fileID: 4320687781316507769}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desert_hotel_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8569662958884864142}
   - component: {fileID: 6273616882509885753}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desert_hotel_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 8610902956729817225}
   - component: {fileID: 5981154391498410011}
   - component: {fileID: 3739182842780340633}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desert_hotel_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,6 +550,10 @@ PrefabInstance:
     - target: {fileID: 4381598415342011207, guid: 1b6c6fcf7ec0107479360cc4f429f15b, type: 3}
       propertyPath: m_Name
       value: Desert_Base_Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381598415342011207, guid: 1b6c6fcf7ec0107479360cc4f429f15b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4381598415342011207, guid: 1b6c6fcf7ec0107479360cc4f429f15b, type: 3}
       propertyPath: m_StaticEditorFlags

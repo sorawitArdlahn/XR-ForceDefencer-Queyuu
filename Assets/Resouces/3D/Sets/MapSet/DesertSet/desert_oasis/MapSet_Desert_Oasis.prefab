@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8914028380335593971}
   - component: {fileID: 7916187440874712801}
   - component: {fileID: 908859721782729883}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base_Ground_Oasis_Custom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2472922960256449799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MapSet_Desert_Oasis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7818845405508649293}
   - component: {fileID: 2429180263682702434}
   - component: {fileID: 8597539383791222302}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oasis_Copy_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 3868175831187942907}
   - component: {fileID: 4919493903944864231}
   - component: {fileID: 5879322199531328235}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oasis_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 4449496730470659057}
   - component: {fileID: 3236942472436583656}
   - component: {fileID: 1874167402575278997}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oasis_Copy_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5867518062653582165}
   - component: {fileID: 1672950090889239588}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desert_Oasis_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 4100285816640230553}
   - component: {fileID: 1389760387789872233}
   - component: {fileID: 7515910197770542360}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oasis_Copy_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 1953284919397169807}
   - component: {fileID: 4145651381058769929}
   - component: {fileID: 4126790052361886275}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oasis_Copy_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5637153736028858422}
   - component: {fileID: 7119232410027216314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desHouse02_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4858446636224957832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MapSet_Desert_House02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 2414295127819786139}
   - component: {fileID: 2083666174550131189}
   - component: {fileID: 4558060122323171508}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dhouse02_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 1211358762897669427}
   - component: {fileID: 7882275279214729189}
   - component: {fileID: 6570595675186230343}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dhouse02_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 8932118786007678870}
   - component: {fileID: 2583449085552146425}
   - component: {fileID: 4473666839452043282}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dhouse02_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 594953552438238526}
   - component: {fileID: 1148740819737669448}
   - component: {fileID: 8550325095657054553}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dhouse02_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 2231882551923667508}
   - component: {fileID: 5424059193517122936}
   - component: {fileID: 7566984218508253128}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dhouse02_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,6 +550,10 @@ PrefabInstance:
     - target: {fileID: 4381598415342011207, guid: 1b6c6fcf7ec0107479360cc4f429f15b, type: 3}
       propertyPath: m_Name
       value: Desert_Base_Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381598415342011207, guid: 1b6c6fcf7ec0107479360cc4f429f15b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4381598415342011207, guid: 1b6c6fcf7ec0107479360cc4f429f15b, type: 3}
       propertyPath: m_StaticEditorFlags

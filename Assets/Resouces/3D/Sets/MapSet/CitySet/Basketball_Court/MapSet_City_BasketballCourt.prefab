@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5846902570282528639}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MapSet_City_BasketballCourt
-  m_TagString: LowGround
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 904018947393902571}
   - component: {fileID: 3482376750542460645}
   - component: {fileID: 1671088767724582627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Basketball_Mesh_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5012157107889529932}
   - component: {fileID: 7907910938078857969}
   - component: {fileID: 1743501900642330867}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MapSet_City_Basketball_Mesh
   m_TagString: LowGround
   m_Icon: {fileID: 0}

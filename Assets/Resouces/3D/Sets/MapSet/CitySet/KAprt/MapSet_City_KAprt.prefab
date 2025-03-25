@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6477417097763556056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MapSet_City_KAprt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4831080705639166883}
   - component: {fileID: 7497850844376561647}
   - component: {fileID: 426978978238895275}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KAprt_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,12 +199,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8425116737310508417, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8425116737310508417, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: -7956230519995999828, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7956230519995999828, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -6517175138649442206, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -6517175138649442206, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -215,8 +227,16 @@ PrefabInstance:
       value: KAprt_mesh
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740134940520513983, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3740134940520513983, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9152219067380360718}
   - component: {fileID: 7616428318416379277}
   - component: {fileID: 6790453478411298729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: City_Road_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,9 +114,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6467325782065970233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: City_Road_Straight
-  m_TagString: Untagged
+  m_TagString: LowGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
