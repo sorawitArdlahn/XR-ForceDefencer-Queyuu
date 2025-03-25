@@ -1,6 +1,5 @@
 using Model;
-using TMPro;
-using UnityEditor.UIElements;
+
 using UnityEngine;
 
 public class SimpleDamageCauseController : MonoBehaviour
