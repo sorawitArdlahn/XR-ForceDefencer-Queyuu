@@ -27,7 +27,6 @@ public class chasingPlayerStrategy : IStrategy
         {
             blackboard.SelfNavMeshAgent.SetDestination(player.transform.position);
             LookAtPlayer();
-
             if (blackboard.SelfTransform.position.y != player.transform.position.y)
             {
                 
@@ -47,7 +46,7 @@ public class chasingPlayerStrategy : IStrategy
         Quaternion targetRotationSocket = Quaternion.LookRotation(socketLookAt - blackboard.SelfTransform.position);
         
         // slerp rotations and assign
-        blackboard.SelfTransform.rotation = Quaternion.Slerp(blackboard.SelfTransform.rotation, targetRotationSocket, Time.deltaTime*2);
+        blackboard.SelfTransform.rotation = Quaternion.Slerp(blackboard.SelfTransform.rotation, targetRotationSocket, Time.deltaTime);
     }
 
 

@@ -27,19 +27,19 @@ namespace Presenter.Stats
         private void UpdateHealth(int currentHP, int maxHP)
         {
             healthSlider.fillAmount = (float)currentHP / maxHP;
-            healthValueText.text = $"{currentHP}/{maxHP}";
+            healthValueText.text = $"{currentHP}";
         }
 
         private void UpdateArmor(int currentArmor, int maxArmor)
         {
             armorSlider.fillAmount = (float)currentArmor / maxArmor;
-            armorValueText.text = $"{currentArmor}/{maxArmor}";
+            armorValueText.text = $"{currentArmor}";
         }
 
         private void UpdateFuel(int currentFuel, int maxFuel)
         {
             fuelSlider.fillAmount = (float)currentFuel / maxFuel;
-             fuelValueText.text = $"{currentFuel}/{maxFuel}";
+             fuelValueText.text = $"{currentFuel}";
 
         }
     }

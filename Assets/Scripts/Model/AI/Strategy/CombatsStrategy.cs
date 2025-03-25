@@ -13,16 +13,18 @@ public class CombatsStrategy : IStrategy
     private Transform entity;
     private Transform target;
 
-    public CombatsStrategy(Transform entity,Animator animator, NavMeshAgent agent, AnimationEventReceiver animationEventReceiver)
+    private Vector3 velocity;
+    public CombatsStrategy(SimpleBlackboard blackboard)
     {
-        this.entity = entity;
-        this.animator = animator;
-        this.agent = agent;
+        this.entity = blackboard.SelfTransform;
+        this.animator = blackboard.SelfAnimator;
+        this.agent = blackboard.SelfNavMeshAgent;
         isBusy = false;
         isAnimationFinished = false;
-        this.receiver = animationEventReceiver;
+        this.receiver = blackboard.SelfAnimationEventReceiver;
         RegisterEvent();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        velocity = agent.velocity;
     }
 
     public Node.Status Process()
@@ -32,6 +34,7 @@ public class CombatsStrategy : IStrategy
             isAnimationFinished = false;
             isBusy = false;
             agent.isStopped = false;
+            agent.velocity = velocity;
             Debug.Log("combats strategy success");
             return Node.Status.Success;
         }
@@ -40,6 +43,8 @@ public class CombatsStrategy : IStrategy
         {
             isBusy = true;
             agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            agent.velocity = Vector3.zero;
             animator.SetTrigger("HeavyAttack");
         }
         

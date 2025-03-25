@@ -4,6 +4,7 @@ using UnityEngine;
 using Image = UnityEngine.UI.Image;
 using Model.Stats;
 using System.Collections;
+using Controller.Combat;
 
 namespace Controller.Movement
 {
@@ -28,6 +29,8 @@ namespace Controller.Movement
         private bool isEnemyAvailable = true;
     
         private bool isAimActive = false;
+        
+        public MissileLauncherController missileLauncherController;
         private void Awake()
         {
             allEnemies = new List<GameObject>();
@@ -39,20 +42,20 @@ namespace Controller.Movement
 
         private void OnEnable()
         {
-            FindEnemy();
+            LockOnText.gameObject.SetActive(true);
             isAimActive = true;
-            LockOnText.text =  "ON" ;
-            LockOnText.color = Color.green;
+            LockOnText.text =  "-LOCKED-" ;
+            // LockOnText.color = Color.green;
 
-            if (!isEnemyAvailable)
-            {
-                LockOnText.text =  "No Enemy Available";
-                LockOnText.fontSize = 9;
-                LockOnText.color = Color.red;
-                isAimActive = false;
-                target = null;
-                allEnemies.Clear();
-            }
+            // if (!isEnemyAvailable)
+            // {
+            //     LockOnText.text =  "No Enemy Available";
+            //     LockOnText.fontSize = 9;
+            //     LockOnText.color = Color.red;
+            //     isAimActive = false;
+            //     target = null;
+            //     allEnemies.Clear();
+            // }
         }
 
         private void OnDisable()
@@ -61,8 +64,8 @@ namespace Controller.Movement
             {
                 aimImage.gameObject.SetActive(false);
             }
-            LockOnText.text =  "OFF" ;
-            LockOnText.color = Color.red;
+            LockOnText.gameObject.SetActive(false);
+            // LockOnText.color = Color.red;
             isAimActive = false;
             target = null;
             aimImage.transform.position = cockpitTransform.position;
@@ -70,9 +73,20 @@ namespace Controller.Movement
 
         private void Update()
         {
-            
+            ClearDeathEnemy();
             if (isAimActive)
             {
+                FindEnemy();
+                if (!isEnemyAvailable)
+                {
+                    LockOnText.text =  "-ENEMY-NOT-FOUND-";
+                    LockOnText.fontSize = 9;
+                    // LockOnText.color = Color.red;
+                    isAimActive = false;
+                    target = null;
+                    allEnemies.Clear();
+                }
+                
                 MoveToClosetEnemy();
             }
         
@@ -89,10 +103,11 @@ namespace Controller.Movement
         {
             foreach (var enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
             {
+                if (enemyGameObject.GetComponent<RobotInGameStats>().currentHP <= 0) continue;
                 if (allEnemies.Contains(enemyGameObject)) continue;
                 allEnemies.Add(enemyGameObject);
             }
-
+            
             if (allEnemies.Count == 0)
             {
                 isEnemyAvailable = false;
@@ -144,9 +159,11 @@ namespace Controller.Movement
             }
             catch
             {
+                missileLauncherController.AssignTarget(null);
                 return null;
             }
             
+            missileLauncherController.AssignTarget(closestEnemy);
             return closestEnemy;
             
         }
@@ -154,8 +171,6 @@ namespace Controller.Movement
         private void MoveToClosetEnemy()
         {
             newAngle = Vector3.zero;
-            
-
             target = FindClosestEnemy();
             if (target)
             {
@@ -183,7 +198,7 @@ namespace Controller.Movement
 
             else{
                 isEnemyAvailable = false;
-                ClearDeathEnemy();
+                //ClearDeathEnemy();
             }
 
         }

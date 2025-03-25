@@ -20,7 +20,7 @@ public class ShootIStrategy : IStrategy
         {
             isCanShoot = false;
             blackboard.SelfTransform.LookAt(playerTransform);
-            blackboard.SelfGunSelector.activeGun.Shoot();
+            blackboard.SelfGunSelector.guns[0].Shoot();
             isCanShoot = true;
             return Node.Status.Success;
         }

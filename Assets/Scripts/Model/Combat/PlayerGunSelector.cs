@@ -8,22 +8,22 @@ namespace Model.Combat
     {
         [SerializeField] private GunType gun;
         [SerializeField] private Transform gunParent;
-        [SerializeField] private List<GunScriptableObject> guns; 
+        public List<GunScriptableObject> guns; 
         //[SerializeField] private PlayerIK inverseKinematic; <- for model thing
-        [Space] 
-        [Header("Runtime Filled")] 
-        public GunScriptableObject activeGun;
+        // [Space] 
+        // [Header("Runtime Filled")] 
+        // public GunScriptableObject activeGun;
 
         private void Start()
         {
-            GunScriptableObject usesGun = guns.Find(usedGun => usedGun.Type == gun);
-            if (usesGun == null)
-            {
-                Debug.LogError($"No GunScriptableObject found for Guntype: {usesGun}");
-                return;
-            }
+            // GunScriptableObject usesGun = guns.Find(usedGun => usedGun.Type == gun);
+            // if (usesGun == null)
+            // {
+            //     Debug.LogError($"No GunScriptableObject found for Guntype: {usesGun}");
+            //     return;
+            // }
 
-            activeGun = usesGun;
+            // activeGun = usesGun;
         }
     }
 }

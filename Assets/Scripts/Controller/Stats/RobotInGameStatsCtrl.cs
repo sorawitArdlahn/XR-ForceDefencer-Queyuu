@@ -42,6 +42,7 @@ namespace Controller.Stats
                 StartCoroutine(UseFuel(10));
             }
         }
+
         public void TakeDamage(int damage)
         {
             int damageTaken = damage;
@@ -67,6 +68,8 @@ namespace Controller.Stats
                 {
                     robotInGameStats.SetCurrentHP(0);
                     OnDeath?.Invoke();
+
+                    //death
                     var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
                     Destroy(effect, 1f);
                     Destroy(gameObject,5f);
@@ -123,6 +126,13 @@ namespace Controller.Stats
             isRefueling = false; // Finished refueling
         }
 
+        public void RegenerateArmor()
+        {
+            var newArmor = CurrentArmor + (robotInGameStats.maxArmor * 0.5);
+            newArmor = Mathf.Clamp((float)newArmor, 0, robotInGameStats.maxArmor);
+            robotInGameStats.setCurrentArmor((int)newArmor);
+        }
+
         public void researchPointEarned()
         {
             robotInGameStats.data.currentResearchPoint += 75;
@@ -130,3 +140,4 @@ namespace Controller.Stats
         }
     }
 }
+

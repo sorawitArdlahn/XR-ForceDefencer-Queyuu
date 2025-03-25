@@ -20,17 +20,19 @@ public class FollowPlayer : IStrategy
         agent = blackboard.SelfNavMeshAgent;
         player = blackboard.Player;
         this.animator = blackboard.SelfAnimator;
-        distance = 13f;
+        distance = 5f;
     }
 
     public Node.Status Process()
     {
         agent.isStopped = false;
+        agent.velocity = agent.desiredVelocity.normalized * Mathf.Clamp(agent.speed, 30, 100);
         if (Vector3.Distance(entity.position, player.transform.position) <= distance) {
             Reset();
             animator.SetBool("IsRun", false);
             agent.isStopped = true;
             agent.ResetPath();
+            agent.velocity = Vector3.zero;
             return Node.Status.Success;
         }
         

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Model;
 
@@ -45,6 +46,15 @@ namespace Controller.Combat
                 damageable.TakeDamage(50);  
             }
             
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (!other.gameObject.CompareTag("Player"))
+            {
+                destroyEffect.PlayParticles();
+                Destroy(gameObject,0.2f);
+            }
         }
 
         void FixedUpdate()

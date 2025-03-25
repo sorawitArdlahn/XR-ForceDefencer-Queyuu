@@ -132,6 +132,7 @@ MonoBehaviour:
   targetHight: 4
   targetDistance: 0
   setDistance: 0
+  missileLauncherController: {fileID: 0}
 --- !u!114 &1759134478868693488
 MonoBehaviour:
   m_ObjectHideFlags: 0
