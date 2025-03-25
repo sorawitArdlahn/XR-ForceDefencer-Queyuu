@@ -126,6 +126,7 @@ namespace Controller.Stats
         public void researchPointEarned()
         {
             robotInGameStats.data.currentResearchPoint += 75;
+            robotInGameStats.data.accumulatedResearchPoint += 75;
         }
     }
 }

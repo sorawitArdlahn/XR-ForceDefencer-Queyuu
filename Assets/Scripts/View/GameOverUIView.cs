@@ -10,6 +10,7 @@ namespace View.Exploration {
     {
         [Header("==== Result Texts ====")]
         [SerializeField] TextMeshProUGUI HighestLevelText;
+        [SerializeField] TextMeshProUGUI AccumulatedResearchPointText;
 
         [Header("==== Buttons ====")]
         [SerializeField] Button MainMenuButton;
@@ -29,6 +30,7 @@ namespace View.Exploration {
 
     public void UpdateText() {
         HighestLevelText.text = levelData.getHighestLevel().ToString();
+        AccumulatedResearchPointText.text = levelData.getAccumulatedResearchPoint().ToString();
     }
 
     private void OnMainMenuButtonClicked()

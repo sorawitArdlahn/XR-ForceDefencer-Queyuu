@@ -16,5 +16,7 @@ namespace Model.Stats {
 
         public int currentResearchPoint = 0;
         public int researchPointRequired = 50;
+
+        public int accumulatedResearchPoint = 0;
     }
 }

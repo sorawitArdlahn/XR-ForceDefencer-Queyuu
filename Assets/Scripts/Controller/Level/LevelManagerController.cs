@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using View.Exploration;
 using System.Collections;
-using Unity.VisualScripting;
+using Model.Stats;
 
 namespace Controller.Level {
 public class LevelManagerController : MonoBehaviour, IBind<LevelData>
@@ -159,6 +159,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     //LEVEL COMPLETE
     public void LevelCompleted()
     {
+        AudioManagerController.Instance.PlaySFX("LevelComplete");
         StartCoroutine(LevelCompletedCoroutine());
     }
 
@@ -172,6 +173,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     //GAME OVER
     public void OnPlayerDeath() {
+        AudioManagerController.Instance.PlaySFX("GameOver");
         StartCoroutine(GameOverCoroutine());
         Debug.LogWarning("Game Over!");
     }
@@ -200,6 +202,12 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     public int getCurrentLevel()
     {
         return data.currentLevel;
+    }
+
+    public int getAccumulatedResearchPoint()
+    {
+        RobotInGameStats robotInGameStats = player.GetComponent<RobotInGameStats>();
+        return robotInGameStats.data.accumulatedResearchPoint;
     }
 
     public void setCurrentLevel(int level)

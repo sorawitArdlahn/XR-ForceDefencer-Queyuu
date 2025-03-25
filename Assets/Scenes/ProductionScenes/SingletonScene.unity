@@ -230,6 +230,7 @@ MonoBehaviour:
       MovementSpeedMultiplier: 1
       currentResearchPoint: 0
       researchPointRequired: 50
+      accumulatedResearchPoint: 0
     levelData:
       <Id>k__BackingField:
         Part1: 0
@@ -278,6 +279,7 @@ MonoBehaviour:
       MovementSpeedMultiplier: 1
       currentResearchPoint: 0
       researchPointRequired: 50
+      accumulatedResearchPoint: 0
     levelData:
       <Id>k__BackingField:
         Part1: 0
@@ -444,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.size
@@ -523,8 +525,20 @@ PrefabInstance:
       value: PlayerDamage
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[9].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3339723e6df14cd4090580ba2c257601, type: 3}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[9].Name
-      value: PlayerDamage
+      value: LevelCompleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[10].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5cbb42c716bc2bd4382d4cbad8747ceb, type: 3}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[10].Name
+      value: GameOver
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.data[0].Name
