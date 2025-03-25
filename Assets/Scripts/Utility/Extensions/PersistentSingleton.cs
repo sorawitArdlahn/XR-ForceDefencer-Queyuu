@@ -26,25 +26,18 @@ using UnityEngine;
             }
         }
 
-        protected virtual void Awake() => InitializeSingleton();
-
-        protected virtual void InitializeSingleton() {
-            if (!Application.isPlaying) {
-                return;
-            }
-
-            if (UnparentOnAwake) {
-                transform.SetParent(null);
-            }
-
-            if (instance == null) {
-                instance = this as T;
-                DontDestroyOnLoad(transform.gameObject);
-                enabled = true;
-            } else {
-                if (this != instance) {
-                    Destroy(this.gameObject);
-                }
-            }
+    protected virtual void Awake() {
+        if (instance == null) {
+            instance = this as T;
+            DontDestroyOnLoad(gameObject);
+            InitializeSingleton();
+        } else if (instance != this) {
+            Destroy(gameObject);
         }
+    }
+
+    // Separate initialization logic
+    protected virtual void InitializeSingleton() {
+        if (UnparentOnAwake) transform.SetParent(null);
+    }
     }

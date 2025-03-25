@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 using Model.Stats;
 using Model.Level;
 using Controller.Level;
+using System;
 
-namespace System.Persistence {
+namespace Utils.Persistence {
     [Serializable]
 
     public class GameData {
@@ -22,21 +23,25 @@ namespace System.Persistence {
 
 
     public interface ISaveable {
-        SerializableGuid Id { get; set; }
+        string Id { get; set; }
     }
 
     public interface IBind<TData> where TData : ISaveable {
-        SerializableGuid Id { get; set; }
+        string Id { get; }
         void Bind(TData data);
     }
 
-    public class SaveLoadSystem : PersistentSingleton<SaveLoadSystem> {
+    public class SaveLoadSystem : MonoBehaviour {
         public GameData gameData;
+
+        public static SaveLoadSystem Instance;
 
         IDataService dataService;
 
-        protected override void Awake() {
-            base.Awake();
+        void Awake() {
+            if (Instance == null) { Instance = this; }     
+            else { Destroy(gameObject); }
+            
             dataService = new FileDataService(new JsonSerializer());
         }
 
@@ -60,6 +65,9 @@ namespace System.Persistence {
 
         IEnumerator HandleDelayedBinding(Scene scene) {
             yield return new WaitForEndOfFrame();
+            
+            yield return null;
+            yield return null;
             //IF GAMEMANAGER DOES NOT HAVE GAMEDATA DO NOT PERFORM BINDING  
             if (!GameManager.Instance || GameManager.Instance.currentGameData == null) {
                 yield break;
@@ -68,7 +76,9 @@ namespace System.Persistence {
             
             if (GameStateManager.Instance.GetCurrentGameState() == GameState.BattlePreparation 
             || GameStateManager.Instance.GetCurrentGameState() == GameState.InBattle
-            || GameStateManager.Instance.GetCurrentGameState() == GameState.MainMenu) {
+            //|| GameStateManager.Instance.GetCurrentGameState() == GameState.MainMenu
+            ) 
+            {
             Bind<RobotInGameStats, PlayerData>(GameManager.Instance.currentGameData.playerData);  
             Bind<LevelManagerController, LevelData>(GameManager.Instance.currentGameData.levelData); 
             } 

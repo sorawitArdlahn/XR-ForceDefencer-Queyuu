@@ -1,5 +1,5 @@
 using System;
-using System.Persistence;
+using Utils.Persistence;
 using UnityEngine;
 
 namespace Model.Stats {
@@ -7,7 +7,7 @@ namespace Model.Stats {
     [Serializable]
     public class PlayerData : ISaveable 
     {
-        [field: SerializeField] public SerializableGuid Id { get; set; }
+        [field: SerializeField] public string Id { get; set; }
 
         public float HealthPointMultiplier = 1;
         public float ArmorMultiplier = 1;

@@ -1,12 +1,11 @@
-using System.Persistence;
+using Utils.Persistence;
 using UnityEngine;
-using System;
+using System.Collections;
 
 
 namespace GameController {
 public class GameManager : MonoBehaviour
 {
-    //GameState GameState;
     public static GameManager Instance = null;
 
     [Header("Game Data Detail")]
@@ -18,12 +17,23 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) { Instance = this; }     
         else { Destroy(gameObject); }
-        
+
         DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
+        StartCoroutine(DelayedSetNextPhase());
+    }
+
+    private IEnumerator DelayedSetNextPhase()
+    {
+        yield return new WaitForSeconds(3f); // Wait for 4 seconds
         GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
     }
 
-        public void newGame() {
+
+    public void newGame() {
         Instance.currentGameData = new GameData{
             Name = "Demo",
             playerData = new Model.Stats.PlayerData(), //TODO : Important.

@@ -123,51 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &231943022
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 231943024}
-  - component: {fileID: 231943023}
-  m_Layer: 0
-  m_Name: InstantLoadScene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &231943023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231943022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7647574898c949e428f145c7c7df21df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Scene: {fileID: 102900000, guid: f3e027087f2c5904e8e97f8d58ce13fd, type: 3}
---- !u!4 &231943024
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231943022}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7286901, y: 5.082138, z: 0.5131922}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &658306847
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,60 +506,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1736587648188863497, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1650097248243109272}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
---- !u!1 &1650097248243109270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1736587648188863497, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
-  m_PrefabInstance: {fileID: 1650097248243109269}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1650097248243109271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
-  m_PrefabInstance: {fileID: 1650097248243109269}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650097248243109270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55cdd68da909fd64ebcaaafb9c6fdb83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1650097248243109272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650097248243109270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 10
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1650097248243109271}
-          m_TargetAssemblyTypeName: Audio.AudioManagerController, Assembly-CSharp
-          m_MethodName: PlayNormalButtonSwitchSFX
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 658306848}
-  - {fileID: 231943024}
   - {fileID: 1167712847}

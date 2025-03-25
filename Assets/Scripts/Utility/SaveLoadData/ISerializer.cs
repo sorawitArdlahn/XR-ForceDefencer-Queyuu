@@ -1,4 +1,4 @@
-namespace System.Persistence
+namespace Utils.Persistence
 {
     public interface ISerializer
     {

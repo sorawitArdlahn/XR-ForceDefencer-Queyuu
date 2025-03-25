@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace System.Persistence
+namespace Utils.Persistence
 {
     public interface IDataService
     {

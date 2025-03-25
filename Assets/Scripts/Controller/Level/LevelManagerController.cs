@@ -1,6 +1,5 @@
 using Model;
 using Model.Level;
-using System.Persistence;
 using System.Collections.Generic;
 using UnityEngine;
 using GameController;
@@ -10,17 +9,18 @@ using Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using View.Exploration;
-using System.Collections;
+using Utils.Persistence;
 using Model.Stats;
 
 namespace Controller.Level {
 public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 {
     // Start is called before the first frame update
-    [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
+    [SerializeField] private PersistentId _persistentId;
 
     [Header("==== Level Data ====")]
     [SerializeField] LevelData data;
+    public string Id => _persistentId.Id;
 
 
 
@@ -70,9 +70,14 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     [SerializeField] int baseIncreaseMapSize = 5;
 
-    //[NonSerialized] public static LevelManagerController Instance = null;
+        //[NonSerialized] public static LevelManagerController Instance = null;
+    void Awake()
+    {
+        if(_persistentId == null)
+            _persistentId = gameObject.AddComponent<PersistentId>();
+    }
 
-    void Start()
+        void Start()
     {
 
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)

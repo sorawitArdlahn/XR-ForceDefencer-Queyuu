@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Persistence;
+using Utils.Persistence;
 using Controller.Level;
 
 namespace Model.Stats
@@ -30,13 +30,10 @@ namespace Model.Stats
 
 
         //SOUP : Binding Part
-        [field: SerializeField] public SerializableGuid Id { get; set; } = SerializableGuid.NewGuid();
+        [SerializeField] private PersistentId _persistentId;
+        public string Id => _persistentId.Id;
         public PlayerData data;
 
-        void Start()
-        {
-            
-        }
 
         public void Bind(PlayerData data)
         {
@@ -68,6 +65,9 @@ namespace Model.Stats
 
         private void Awake()
         {
+            if(_persistentId == null)
+            _persistentId = gameObject.AddComponent<PersistentId>();
+
             currentLevel = FindObjectOfType<LevelManagerController>().getCurrentLevel();
 
             if (characterType == CharacterType.player && PlayerBaseStats){

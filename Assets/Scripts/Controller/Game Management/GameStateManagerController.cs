@@ -46,7 +46,6 @@ namespace GameController
         TransitionScreenObject = Instantiate(TransitionScreenObject, transform);
         TransitionScreen = TransitionScreenObject.GetComponent<ScreenTransition>();
 
-        DontDestroyOnLoad(gameObject);
         }
 
         public GameState GetCurrentGameState()

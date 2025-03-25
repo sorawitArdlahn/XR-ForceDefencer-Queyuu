@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using JetBrains.Annotations;
 using UnityEngine;
 
-namespace System.Persistence {
+namespace Utils.Persistence {
     public class FileDataService : IDataService {
         ISerializer serializer;
 
@@ -15,6 +13,7 @@ namespace System.Persistence {
             this.serializer = serializer;
             this.dataPath = Application.persistentDataPath;
             this.fileExtension = "json";
+            Debug.Log($"Saving to: {dataPath}");
         }
 
         string GetPathToFile(string name) {
@@ -22,6 +21,9 @@ namespace System.Persistence {
         }
 
         public void Save(GameData data, bool overwrite=true) {
+            string testJson = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+            Debug.Log($"Serialized JSON:\n{testJson}");
+
             string fileLocation = GetPathToFile(data.Name);
             if (!overwrite && !File.Exists(fileLocation)) {
                 throw new IOException($"File '{fileLocation}.{fileExtension}' already exists and could not be overwritten.");
@@ -32,7 +34,7 @@ namespace System.Persistence {
         public GameData Load(string name) {
             string fileLocation = GetPathToFile(name);
             if (!File.Exists(fileLocation)) {
-                throw new ArgumentException($"No persisted GameData with name '{name}' found.");
+                throw new System.ArgumentException($"No persisted GameData with name '{name}' found.");
             }
             return serializer.Deserialize<GameData>(File.ReadAllText(fileLocation));
         }
