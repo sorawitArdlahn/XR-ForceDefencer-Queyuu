@@ -1979,26 +1979,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570fb14ad8dae5b48922ac23384f3f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Id>k__BackingField:
-    Part1: 1722320453
-    Part2: 1197032888
-    Part3: 903818899
-    Part4: 2217166063
+  _persistentId: {fileID: 0}
   data:
-    <Id>k__BackingField:
-      Part1: 0
-      Part2: 0
-      Part3: 0
-      Part4: 0
+    <Id>k__BackingField: 
     currentLevel: 0
     highestLevel: 0
     checkpointLevel: 0
   finishExplorationScreen: {fileID: 0}
   gameOverScreen: {fileID: 0}
-  ContinueExplorationButton: {fileID: 0}
+  FinishExplorationButton: {fileID: 0}
   GameOverButton: {fileID: 0}
   enemiesList: []
   OnStartLevel: {fileID: 0}
+  FEreceiver: {fileID: 0}
+  GOreceiver: {fileID: 0}
   eventSystem: {fileID: 0}
   forceDebug: 0
   baseMapSize: 5
@@ -2106,17 +2100,9 @@ MonoBehaviour:
   currentHP: 0
   currentArmor: 0
   currentFuel: 0
-  <Id>k__BackingField:
-    Part1: 4183759451
-    Part2: 1150940034
-    Part3: 2610822574
-    Part4: 1693456431
+  _persistentId: {fileID: 0}
   data:
-    <Id>k__BackingField:
-      Part1: 0
-      Part2: 0
-      Part3: 0
-      Part4: 0
+    <Id>k__BackingField: 
     HealthPointMultiplier: 1
     ArmorMultiplier: 1
     FuelMultiplier: 1
@@ -4466,6 +4452,14 @@ PrefabInstance:
     - target: {fileID: 6352110675931226283, guid: 026f343cb94431a409fb87a93b3d3603, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865000119027517434, guid: 026f343cb94431a409fb87a93b3d3603, type: 3}
+      propertyPath: m_Name
+      value: Save Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632770580830688388, guid: 026f343cb94431a409fb87a93b3d3603, type: 3}
+      propertyPath: m_text
+      value: Leave & Save
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

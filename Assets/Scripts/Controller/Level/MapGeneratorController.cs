@@ -82,12 +82,15 @@ public class MapGeneratorController : MonoBehaviour
 
         gridParent = new GameObject("GeneratedMap");
 
-        //Set NavMeshSurface
-        navMeshSurface = gridParent.AddComponent<NavMeshSurface>();
-        navMeshSurface.useGeometry = UnityEngine.AI.NavMeshCollectGeometry.PhysicsColliders;
 
         //Set Wall Parent
         wallParent = new GameObject("GeneratedWalls");
+    }
+
+    public void Start()
+    {
+        navMeshSurface = gridParent.AddComponent<NavMeshSurface>();
+        navMeshSurface.useGeometry = UnityEngine.AI.NavMeshCollectGeometry.PhysicsColliders;      
     }
 
     void InitializeGrid() {

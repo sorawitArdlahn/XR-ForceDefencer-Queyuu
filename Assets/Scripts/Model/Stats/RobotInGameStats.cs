@@ -60,6 +60,13 @@ namespace Model.Stats
             maxFuel = (int)(PlayerBaseStats.baseFuel * data.FuelMultiplier);
             speed = PlayerBaseStats.baseSpeed * data.MovementSpeedMultiplier;
 
+            currentHP = maxHP;
+            currentArmor = maxArmor;
+            currentFuel = maxFuel;
+            
+            onHPChangedEvent?.Invoke(currentHP, maxHP);
+            onArmorChangedEvent?.Invoke(currentArmor, maxArmor);
+            onFuelChangedEvent?.Invoke(currentFuel, maxFuel);
         }
 
 

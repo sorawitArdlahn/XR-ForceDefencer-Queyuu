@@ -38,12 +38,12 @@ public class SpawnerManagerController : MonoBehaviour
     [SerializeField] GameEvent researchPointEarned;
 
     private SpawnState state = SpawnState.COUNTING;
-    
-    void Awake() {
-        mapGenerator = FindObjectOfType<MapGeneratorController>();
+
+    void Start() {
+        mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGeneratorController>();        
     }
 
-    //Set initial Countdown Time
+        //Set initial Countdown Time
 
     public void ResetSpawn() {
         nextWave = 0;
@@ -51,7 +51,7 @@ public class SpawnerManagerController : MonoBehaviour
         numEnemiesInWave = 0;
         numEnemiesInWaveRemaining = 0;
         state = SpawnState.COUNTING;
-        //inactiveButton.gameObject.SetActive(false);
+        
 
         
         RemoveAllEnemies();
@@ -75,7 +75,7 @@ public class SpawnerManagerController : MonoBehaviour
         }
 
         MapGeneratedFinish = true;
-        OnEnemyDeath();
+        NewWave();
         
     }
 

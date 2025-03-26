@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using View.Exploration;
 using Utils.Persistence;
 using Model.Stats;
+using System.Collections;
 
 namespace Controller.Level {
 public class LevelManagerController : MonoBehaviour, IBind<LevelData>
@@ -22,8 +23,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     [SerializeField] LevelData data;
     public string Id => _persistentId.Id;
 
-
-
     public void Bind(LevelData data)
     {
         this.data = data;
@@ -32,11 +31,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     }
 
     [Header("==== Map & Spawn Manager ====")]
-
     MapGeneratorController mapGenerator;
-
     SpawnerManagerController spawnerManager;
-
     GameObject player;
 
     [Header("==== UI ====")]
@@ -48,7 +44,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     public Button GameOverButton;
 
     [Header("==== Enemies List ====")]
-
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
 
     [Header("==== Event Listener ====")]
@@ -58,28 +53,23 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     public AnimationEventReceiver FEreceiver;
     public AnimationEventReceiver GOreceiver;
     
-
     [Header("==== Event System ====")]
     public EventSystem eventSystem;
 
     [Header("==== Debug ====")]
-
     [SerializeField] private bool forceDebug;
     [SerializeField] private int baseMapSize = 5;
     [SerializeField] int baseEnemy = 15;
-
     [SerializeField] int baseIncreaseMapSize = 5;
 
-        //[NonSerialized] public static LevelManagerController Instance = null;
     void Awake()
     {
         if(_persistentId == null)
             _persistentId = gameObject.AddComponent<PersistentId>();
     }
 
-        void Start()
+    void Start()
     {
-
         if (GameObject.FindGameObjectWithTag("SpawnManager") != null)
         {
             spawnerManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManagerController>();
@@ -95,7 +85,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
             player = GameObject.FindGameObjectWithTag("Player");
             if (player.TryGetComponent(out IDamageable damageable))
             {
-            damageable.OnDeath += OnPlayerDeath;
+                damageable.OnDeath += OnPlayerDeath;
             }
         }
 
@@ -106,7 +96,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
             FEanimationEvent.eventName = "FinishExploration";
             FEanimationEvent.OnAnimationEvent += LevelCompleteAnimationFinished;
             FEreceiver.AddAnimationEvent(FEanimationEvent);
-            
             
             //Game Over Animation Receiver
             AnimationEvent GOanimationEvent = new AnimationEvent();
@@ -153,9 +142,10 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         player.transform.position = playerSpawnPosition;
 
         if (GameStateManager.Instance != null) 
-        {StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());}
+        {
+            StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());
+        }
         AudioManagerController.Instance.PlaySFX("TransitionScreenIn");
-
     }
 
     public void NewStage()
@@ -184,6 +174,16 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     {
         AudioManagerController.Instance.PlaySFX("LevelComplete");
         finishExplorationScreen.animationController.SetTrigger("FinishExplorationOpen");
+        StartCoroutine(WaitForFrames(1500, LevelCompleteAnimationFinished));
+    }
+
+    private IEnumerator WaitForFrames(int frameCount, Action callback)
+    {
+        for (int i = 0; i < frameCount; i++)
+        {
+            yield return null;
+        }
+        callback();
     }
 
     public void LevelCompleteAnimationFinished()
@@ -206,8 +206,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         PauseGame();
     }
     
-    
-
     private void PauseGame(){
         Time.timeScale = 0;
     }
@@ -236,6 +234,5 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     {
         data.currentLevel = level;
     }
-
 }
 }
