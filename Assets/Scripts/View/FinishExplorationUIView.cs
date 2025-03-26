@@ -48,7 +48,7 @@ public class FinishExplorationUIView : MonoBehaviour
         animationController.SetTrigger("FinishExplorationClose");
 
         if (GameStateManager.Instance != null) 
-        {StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());}
+        {StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeOut());}
         OnContinueExploration.Raise(this);
     }
 

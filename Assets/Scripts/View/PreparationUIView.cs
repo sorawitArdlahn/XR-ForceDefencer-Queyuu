@@ -20,6 +20,7 @@ namespace View.Preparation {
 
         [Header("Buttons link to other screen")]
         [SerializeField] ModificationUIView ModificationScreen;
+        [SerializeField] StatShowUIView StatShowScreen;
 
         [Header("Event System")]
         public EventSystem eventSystem;
@@ -56,6 +57,7 @@ namespace View.Preparation {
                 BuyResearchButton.gameObject
             );}
 
+            StatShowScreen.UpdateText();
             ModificationScreen.animationController.SetTrigger("ModificationOpen");
             AudioManagerController.Instance.PlaySFX("ModificationBuyOpen");
             Debug.Log("Modification Button Pressed.");
