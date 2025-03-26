@@ -92,17 +92,6 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
         if (GameStateManager.Instance?.GetCurrentGameState() == GameState.InBattle || forceDebug)
         {
-            //Finish Exploration Animation Receiver
-            AnimationEvent FEanimationEvent = new AnimationEvent();
-            FEanimationEvent.eventName = "FinishExploration";
-            FEanimationEvent.OnAnimationEvent += LevelCompleteAnimationFinished;
-            FEreceiver.AddAnimationEvent(FEanimationEvent);
-            
-            //Game Over Animation Receiver
-            AnimationEvent GOanimationEvent = new AnimationEvent();
-            GOanimationEvent.eventName = "GameOver";
-            GOanimationEvent.OnAnimationEvent += GameOverAnimationFinished;
-            GOreceiver.AddAnimationEvent(GOanimationEvent);
             
             NewStage();
         }
@@ -154,7 +143,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     {
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnCurrentLevel();
-        StartCoroutine(WaitForFrames(300, callOnStartLevel));
+        StartCoroutine(WaitForFrames(150, callOnStartLevel));
     }
 
     void callOnStartLevel()
@@ -182,9 +171,9 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         CrossHairHUD.SetActive(false);
         AudioManagerController.Instance.PlaySFX("LevelCompleted");
         finishExplorationScreen.animationController.SetTrigger("FinishExplorationOpen");
-        StartCoroutine(WaitForFrames(1500, LevelCompleteAnimationFinished));
     }
 
+    
     private IEnumerator WaitForFrames(int frameCount, Action callback)
     {
         for (int i = 0; i < frameCount; i++)
@@ -194,26 +183,13 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         callback();
     }
 
-    public void LevelCompleteAnimationFinished()
-    {
-        Debug.Log("******* CALL! LevelCompleteAnimationFinished()");
-        eventSystem.SetSelectedGameObject(FinishExplorationButton.gameObject);
-        PauseGame();
-    }
-
     //GAME OVER
     public void OnPlayerDeath() {
         CrossHairHUD.SetActive(false);
         AudioManagerController.Instance.PlaySFX("GameOver");
+        gameOverScreen.UpdateText();
         gameOverScreen.animationController.SetTrigger("GameOverOpen");
-        StartCoroutine(WaitForFrames(250, GameOverAnimationFinished));
         Debug.LogWarning("Game Over!");
-    }
-
-    public void GameOverAnimationFinished()
-    {
-        eventSystem.SetSelectedGameObject(GameOverButton.gameObject);
-        PauseGame();
     }
     
     private void PauseGame(){
@@ -244,5 +220,23 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     {
         data.currentLevel = level;
     }
+
+    private float GetAnimationLength(Animator animator, string animationName)
+{
+    // Wait for the next frame to ensure the animation state is updated
+    animator.Update(0);
+
+    // Get the current animator state info
+    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+    // Check if the current animation state matches the specified animation name
+    if (stateInfo.IsName(animationName))
+    {
+        return stateInfo.length;
+    }
+
+    // If the animation state does not match, return a default value (e.g., 0)
+    return 0f;
+}
 }
 }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Audio;
 using TMPro;
 using Controller.Level;
+using UnityEngine.EventSystems;
 
 namespace View.Exploration {
     public class GameOverUIView : MonoBehaviour
@@ -21,6 +22,9 @@ namespace View.Exploration {
 
         [Header("==== Animation Controller ====")]
         public Animator animationController;
+
+        [Header("==== Event System ====")]
+        public EventSystem eventSystem;
     
 
     void Start(){
@@ -52,10 +56,20 @@ namespace View.Exploration {
         Debug.Log("New Game Button Pressed.");
     }
 
+    public void GameOverUIAnimationFinish() {
+        EventSystem.current.SetSelectedGameObject(MainMenuButton.gameObject);
+        PauseGame();
+    }
+
     private void UnPauseGame(){
         Time.timeScale = 1;
     }
+
+    private void PauseGame(){
+        Time.timeScale = 0;
     
+}
+
 }
 
 }

@@ -11,7 +11,7 @@ AnimatorController:
   m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: SpinningText
     m_StateMachine: {fileID: 6947385543002368252}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -55,7 +55,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: SpinningText
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1704025178878969041}

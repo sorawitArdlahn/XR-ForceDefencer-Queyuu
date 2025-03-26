@@ -5,6 +5,7 @@ using GameController;
 using Audio;
 using Controller.Level;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace View.Exploration
 {
@@ -28,6 +29,9 @@ public class FinishExplorationUIView : MonoBehaviour
 
     [Header("==== Animation Controller ====")]
     public Animator animationController;
+
+    [Header("==== Event System ====")]
+    public EventSystem eventSystem;
 
     void Start()
     {
@@ -62,6 +66,15 @@ public class FinishExplorationUIView : MonoBehaviour
 
     private void UnPauseGame(){
         Time.timeScale = 1;
+    }
+
+    public void AnimationFinishExplorationOpenFinish(){
+        eventSystem.SetSelectedGameObject(ContinueExplorationButton.gameObject);
+        PauseGame();
+    }
+
+    private void PauseGame(){
+        Time.timeScale = 0;
     }
     
 }

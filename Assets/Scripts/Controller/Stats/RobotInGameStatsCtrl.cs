@@ -85,6 +85,7 @@ namespace Controller.Stats
                     {
                         Destroy(effect, 1f);
                         Destroy(gameObject,5f);   
+                        Debug.Log("Enemy Destroyed!");
                     }
                 }
             }

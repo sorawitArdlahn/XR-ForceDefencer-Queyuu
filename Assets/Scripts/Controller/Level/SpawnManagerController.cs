@@ -246,7 +246,10 @@ public class SpawnerManagerController : MonoBehaviour
 
         if (state != SpawnState.SPAWNING && nextWave < waves.Length) {
             StartCoroutine(SpawnWave(waves[nextWave]));
+            if (nextWave > 0) {
             AudioManagerController.Instance.PlaySFX("EnemySpawn");
+            }
+            
             Debug.Log("Initiating new wave...");
         }
     }

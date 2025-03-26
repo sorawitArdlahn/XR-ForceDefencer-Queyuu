@@ -125,6 +125,7 @@ namespace View.Preparation {
         BuyModificationButton.interactable = false;
 
         if (modificationCanvasGroup.interactable) {
+            statShowScreen.UpdateText();
             if (BuyModificationButton.interactable == false) {
             eventSystem.SetSelectedGameObject(
             CloseButton.gameObject
@@ -138,7 +139,6 @@ namespace View.Preparation {
         }
 
         UpdateResearchPoint();
-        statShowScreen.UpdateText();
     }
 
 

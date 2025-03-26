@@ -4190,6 +4190,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -6.43
       objectReference: {fileID: 0}
+    - target: {fileID: 8216875011740623208, guid: a092bffaf89f1d846bbf62aae10cd633, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 8278313290869673045}
     - target: {fileID: 8618369785885810068, guid: a092bffaf89f1d846bbf62aae10cd633, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
