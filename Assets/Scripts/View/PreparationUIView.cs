@@ -20,10 +20,15 @@ namespace View.Preparation {
 
         [Header("Buttons link to other screen")]
         [SerializeField] ModificationUIView ModificationScreen;
+
+        [Header("==== Other UI Screen ====")]
         [SerializeField] StatShowUIView StatShowScreen;
 
         [Header("Event System")]
         public EventSystem eventSystem;
+
+        [Header("==== Animation Controller ====")]
+        public Animator animationController;
 
         void Start()
         {

@@ -206,7 +206,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         CrossHairHUD.SetActive(false);
         AudioManagerController.Instance.PlaySFX("GameOver");
         gameOverScreen.animationController.SetTrigger("GameOverOpen");
-        StartCoroutine(WaitForFrames(200, LevelCompleteAnimationFinished));
+        StartCoroutine(WaitForFrames(250, GameOverAnimationFinished));
         Debug.LogWarning("Game Over!");
     }
 

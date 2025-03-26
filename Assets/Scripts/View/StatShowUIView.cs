@@ -17,8 +17,7 @@ namespace View.Preparation {
 
     void Start()
     {
-        playerStats = gameObject.GetComponent<RobotInGameStats>();
-        UpdateText();         
+        playerStats = gameObject.GetComponent<RobotInGameStats>();         
     }
 
     public void UpdateText() {

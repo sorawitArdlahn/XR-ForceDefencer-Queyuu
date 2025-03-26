@@ -170,15 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e20b5aaeaebbb44bcb36c0fa3fd1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnparentOnAwake: 1
   gameData:
     Name: 
     playerData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       HealthPointMultiplier: 1
       ArmorMultiplier: 1
       FuelMultiplier: 1
@@ -187,11 +182,7 @@ MonoBehaviour:
       researchPointRequired: 50
       accumulatedResearchPoint: 0
     levelData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       currentLevel: 0
       highestLevel: 0
       checkpointLevel: 0
@@ -223,11 +214,7 @@ MonoBehaviour:
   currentGameData:
     Name: 
     playerData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       HealthPointMultiplier: 1
       ArmorMultiplier: 1
       FuelMultiplier: 1
@@ -236,11 +223,7 @@ MonoBehaviour:
       researchPointRequired: 50
       accumulatedResearchPoint: 0
     levelData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       currentLevel: 0
       highestLevel: 0
       checkpointLevel: 0
@@ -466,7 +449,7 @@ PrefabInstance:
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[7].Clip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 5ed65b47d614c2c4c97dc2cde63b677c, type: 3}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[7].Name
       value: EnemySpawn
@@ -474,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[8].Clip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 4f9a4755659f560418d618923144121b, type: 3}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[8].Name
       value: PlayerDamage

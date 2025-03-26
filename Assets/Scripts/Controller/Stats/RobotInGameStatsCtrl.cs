@@ -3,6 +3,7 @@ using System.Collections;
 using Model;
 using UnityEngine;
 using Model.Stats;
+using Audio;
 
 namespace Controller.Stats
 {
@@ -49,6 +50,11 @@ namespace Controller.Stats
             Debug.Log("Robot is already dead");
             return;}
 
+            if (gameObject.CompareTag("Player"))
+            {
+                AudioManagerController.Instance.PlaySFX("PlayerDamage");
+            }
+
             int damageTaken = damage;
             
             if (CurrentArmor > 0)
@@ -75,8 +81,11 @@ namespace Controller.Stats
 
                     //death
                     var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-                    Destroy(effect, 1f);
-                    Destroy(gameObject,5f);
+                    if (!gameObject.CompareTag("Player"))
+                    {
+                        Destroy(effect, 1f);
+                        Destroy(gameObject,5f);   
+                    }
                 }
             }
 
