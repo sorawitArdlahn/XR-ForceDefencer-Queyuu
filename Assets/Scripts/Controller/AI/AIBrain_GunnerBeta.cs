@@ -12,7 +12,7 @@ public class AIBrain_GunnerBeta : MonoBehaviour
     public SimpleBlackboard blackboard;
     private BehaviourTree behaviourTree;
     public MultiAimConstraint multiAimConstraint;
-    private void Awake()
+    private void Start()
     {
        behaviourTree = new BehaviourTree("AIGunner");
        Sequence sequence = new Sequence("Start");

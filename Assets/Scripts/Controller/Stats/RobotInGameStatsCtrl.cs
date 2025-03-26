@@ -46,8 +46,10 @@ namespace Controller.Stats
         public void TakeDamage(int damage)
         {
             if (CurrentHealth <= 0) {
-            Debug.Log("Robot is already dead");
-            return;}
+                Debug.Log("Robot is already dead");
+            return;
+            
+            }
 
             int damageTaken = damage;
             
@@ -75,8 +77,11 @@ namespace Controller.Stats
 
                     //death
                     var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-                    Destroy(effect, 1f);
-                    Destroy(gameObject,5f);
+                    if (!gameObject.CompareTag("Player"))
+                    {
+                        Destroy(effect, 1f);
+                        Destroy(gameObject,5f);
+                    }
                 }
             }
 

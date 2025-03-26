@@ -11,7 +11,7 @@ public class AIBrain_GunnerAlpha : MonoBehaviour
     public SimpleBlackboard blackboard;
     private BehaviourTree behaviourTree;
 
-    private void Awake()
+    private void Start()
     {
         blackboard.Player = GameObject.FindGameObjectWithTag("Player");
         behaviourTree = new BehaviourTree("AIGunner");

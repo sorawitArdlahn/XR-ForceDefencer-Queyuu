@@ -70,10 +70,9 @@ namespace Model.Stats
         }
 
 
-        private void Awake()
+        private void Start()
         {
-            if(_persistentId == null)
-            _persistentId = gameObject.AddComponent<PersistentId>();
+            if(_persistentId == null) _persistentId = gameObject.AddComponent<PersistentId>();
 
             currentLevel = FindObjectOfType<LevelManagerController>().getCurrentLevel();
 

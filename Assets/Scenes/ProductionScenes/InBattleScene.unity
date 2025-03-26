@@ -371,6 +371,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!82 &629201167 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+  m_PrefabInstance: {fileID: 2019349717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &941761319
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +870,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 851113069763632116, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: fadeDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851113069763632116, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: announcingCombatModeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 753bb80a91dcf3e4b8f8e6bcbf780629, type: 3}
+    - target: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740325264617555888, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1747017634197650493, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: m_Alpha
       value: 0
@@ -873,6 +910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ==PLAYER==
       objectReference: {fileID: 0}
+    - target: {fileID: 3218207811540796259, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 629201167}
     - target: {fileID: 3218207811540796259, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: playerInputReceiver
       value: 
@@ -885,6 +926,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3826079280926089077, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: walkingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28f2c22c1053abb4d9b87e8686a2a9a1, type: 3}
     - target: {fileID: 3826079280926089077, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: playerInputReceiver
       value: 

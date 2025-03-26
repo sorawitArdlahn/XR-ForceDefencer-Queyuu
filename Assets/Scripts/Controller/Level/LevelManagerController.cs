@@ -145,7 +145,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         {
             StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());
         }
-        AudioManagerController.Instance.PlaySFX("TransitionScreenIn");
+        AudioManagerController.Instance.PlaySFX("AnnouncingCombatMode");
     }
 
     public void NewStage()

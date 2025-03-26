@@ -16,7 +16,7 @@ public class AIBrain_Crusher : MonoBehaviour
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
 
-    private void Awake()
+    private void Start()
     {
 
         blackboard.Player = GameObject.FindGameObjectWithTag("Player");

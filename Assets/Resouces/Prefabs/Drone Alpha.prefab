@@ -4953,7 +4953,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5341,23 +5341,16 @@ MonoBehaviour:
   currentHP: 0
   currentArmor: 0
   currentFuel: 0
-  <Id>k__BackingField:
-    Part1: 1405763174
-    Part2: 1198143916
-    Part3: 1069579945
-    Part4: 3851438137
+  _persistentId: {fileID: 0}
   data:
-    <Id>k__BackingField:
-      Part1: 0
-      Part2: 0
-      Part3: 0
-      Part4: 0
+    <Id>k__BackingField: 
     HealthPointMultiplier: 1
     ArmorMultiplier: 1
     FuelMultiplier: 1
     MovementSpeedMultiplier: 1
     currentResearchPoint: 0
     researchPointRequired: 50
+    accumulatedResearchPoint: 0
 --- !u!114 &1465330427609650536
 MonoBehaviour:
   m_ObjectHideFlags: 0

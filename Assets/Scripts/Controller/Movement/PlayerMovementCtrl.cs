@@ -1,6 +1,7 @@
 using System.Collections;
 using Controller.Stats;
 using Model.Stats;
+using Presenter.Sound;
 using UnityEngine;
 
 namespace Controller.Movement
@@ -13,7 +14,7 @@ namespace Controller.Movement
         [Header("Settings")] 
         public float gravity = 9.81f; // use for config gravity in game
         private bool _isDragToGroundActive; // use for turn on-off DragToGround() 
-        private MovementState movementState;
+        [SerializeField] private MovementState movementState;
         private MoveCockpitMode moveCockpitMode;
         private bool _isCanUseFuel; // for delay using fuel, solve frame looping using fuel so much in 1 second
 
@@ -62,6 +63,12 @@ namespace Controller.Movement
         public float airMultiplier;
         public int flyRequiredFuel;
         private bool isInputFlying;
+
+        [Header("Sound Effects")] 
+        public AudioManagerV2 audioManager;
+        public AudioClip walkSound;
+        public AudioClip flySound;
+        
         
 
         private void Start()
@@ -91,6 +98,7 @@ namespace Controller.Movement
             SpeedControl();
             DragCharacter();
             MoveCockpit();
+            
         }
 
         private void FixedUpdate()
@@ -121,7 +129,7 @@ namespace Controller.Movement
         private void GroundCheck()
         {
             //isGrounded = Physics.Raycast(groundCheck.position, Vector3.down,playerHeight * 0.5f + 0.5f, groundLayer);
-            isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+            isGrounded = Physics.CheckSphere(groundCheck.position, 1f, groundLayer);
         }
 
         private void MovementStateHandler()
@@ -133,22 +141,30 @@ namespace Controller.Movement
                 moveSpeed = sprintSpeed;
                 // StartCoroutine(UseFuel(sprintRequiredFuel));
                 robotInGameStatsCtrl.StartCoroutine(robotInGameStatsCtrl.UseFuel(sprintRequiredFuel));
+                //audioManager.PlayNextClip(walkSound);
             }
 
             // Mode - Walking
-            else if (isGrounded)
+            else if (isGrounded && rb.velocity != Vector3.zero)
             {
                 movementState = MovementState.Walking;
                 moveSpeed = walkSpeed;
-                
+                //walkingSoundAudioSource.PlayOneShot(walkingSound);
+                audioManager.PlayNextClip(walkSound, 0.1f);
             }
 
             // Mode - Air
-            else
+            else if (!isGrounded)
             {
                 movementState = MovementState.Air;
                 moveSpeed = walkSpeed * airMultiplier;
-                
+                audioManager.PlayNextClip(flySound, 0.3f);
+            }
+
+            else
+            {
+                movementState = MovementState.None;
+                audioManager.Stop();
             }
         }
 
@@ -291,6 +307,7 @@ namespace Controller.Movement
     } 
     public enum MovementState
     {
+        None,
         Walking,
         Sprinting,
         Air,

@@ -170,15 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e20b5aaeaebbb44bcb36c0fa3fd1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnparentOnAwake: 1
   gameData:
     Name: 
     playerData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       HealthPointMultiplier: 1
       ArmorMultiplier: 1
       FuelMultiplier: 1
@@ -187,11 +182,7 @@ MonoBehaviour:
       researchPointRequired: 50
       accumulatedResearchPoint: 0
     levelData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       currentLevel: 0
       highestLevel: 0
       checkpointLevel: 0
@@ -223,11 +214,7 @@ MonoBehaviour:
   currentGameData:
     Name: 
     playerData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       HealthPointMultiplier: 1
       ArmorMultiplier: 1
       FuelMultiplier: 1
@@ -236,11 +223,7 @@ MonoBehaviour:
       researchPointRequired: 50
       accumulatedResearchPoint: 0
     levelData:
-      <Id>k__BackingField:
-        Part1: 0
-        Part2: 0
-        Part3: 0
-        Part4: 0
+      <Id>k__BackingField: 
       currentLevel: 0
       highestLevel: 0
       checkpointLevel: 0
@@ -357,7 +340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2073171243573873100, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: m_Volume
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5149665217396255141, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -401,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.size
@@ -494,6 +477,14 @@ PrefabInstance:
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[10].Name
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[11].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 753bb80a91dcf3e4b8f8e6bcbf780629, type: 3}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[11].Name
+      value: AnnouncingCombatMode
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.data[0].Name
