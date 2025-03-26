@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3862703557976303426}
   - component: {fileID: 686121400822734911}
   - component: {fileID: 972874285885031495}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: desHouse01_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,8 +195,8 @@ Transform:
   m_GameObject: {fileID: 3592206709619744356}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.38782644, y: 32.194996, z: 0.45762527}
-  m_LocalScale: {x: 46.24597, y: 66.36121, z: 46.407974}
+  m_LocalPosition: {x: -0.2954, y: 32.194996, z: -0.5341}
+  m_LocalScale: {x: 49.69189, y: 66.36121, z: 48.3896}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2849529033185088700}
