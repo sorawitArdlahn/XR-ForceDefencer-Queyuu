@@ -3,6 +3,7 @@ using System.Collections;
 using Model;
 using UnityEngine;
 using Model.Stats;
+using Audio;
 
 namespace Controller.Stats
 {
@@ -46,9 +47,12 @@ namespace Controller.Stats
         public void TakeDamage(int damage)
         {
             if (CurrentHealth <= 0) {
-                Debug.Log("Robot is already dead");
-            return;
-            
+            Debug.Log("Robot is already dead");
+            return;}
+
+            if (gameObject.CompareTag("Player"))
+            {
+                AudioManagerController.Instance.PlaySFX("PlayerDamage");
             }
 
             int damageTaken = damage;
@@ -80,7 +84,7 @@ namespace Controller.Stats
                     if (!gameObject.CompareTag("Player"))
                     {
                         Destroy(effect, 1f);
-                        Destroy(gameObject,5f);
+                        Destroy(gameObject,5f);   
                     }
                 }
             }

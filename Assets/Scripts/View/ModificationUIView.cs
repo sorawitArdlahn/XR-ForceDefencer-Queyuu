@@ -8,6 +8,8 @@ using UnityEngine.UI;
 namespace View.Preparation {
     public class ModificationUIView : MonoBehaviour
 {
+    [Header("==== Other UI Screen ====")]
+    [SerializeField] StatShowUIView statShowScreen;
     [Header("==== This UI Buttons ====")]
     [SerializeField] Button CloseButton;
     [SerializeField] Button BuyModificationButton;
@@ -136,6 +138,7 @@ namespace View.Preparation {
         }
 
         UpdateResearchPoint();
+        statShowScreen.UpdateText();
     }
 
 

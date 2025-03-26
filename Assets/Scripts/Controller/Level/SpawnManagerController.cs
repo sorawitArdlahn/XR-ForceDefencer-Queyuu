@@ -5,6 +5,7 @@ using UnityEngine;
 using EventListener;
 using System;
 using Model.Level;
+using Audio;
 
 
 namespace Controller.Level {
@@ -245,6 +246,7 @@ public class SpawnerManagerController : MonoBehaviour
 
         if (state != SpawnState.SPAWNING && nextWave < waves.Length) {
             StartCoroutine(SpawnWave(waves[nextWave]));
+            AudioManagerController.Instance.PlaySFX("EnemySpawn");
             Debug.Log("Initiating new wave...");
         }
     }

@@ -38,6 +38,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     [Header("==== UI ====")]
     [SerializeField] FinishExplorationUIView finishExplorationScreen;
     [SerializeField] GameOverUIView gameOverScreen;
+    [SerializeField] GameObject CrossHairHUD;
 
     [Header("==== Button Link to Other Screen ====")]
     public Button FinishExplorationButton;
@@ -143,6 +144,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
         if (GameStateManager.Instance != null) 
         {
+            CrossHairHUD.SetActive(true);
             StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());
         }
         AudioManagerController.Instance.PlaySFX("AnnouncingCombatMode");
@@ -152,6 +154,11 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     {
         setCurrentLevel(getCurrentLevel() + 1);
         SetLevelDetailBasedOnCurrentLevel();
+        StartCoroutine(WaitForFrames(300, callOnStartLevel));
+    }
+
+    void callOnStartLevel()
+    {
         OnStartLevel?.Raise(this);
     }
 
@@ -172,7 +179,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     //LEVEL COMPLETE
     public void LevelCompleted()
     {
-        AudioManagerController.Instance.PlaySFX("LevelComplete");
+        CrossHairHUD.SetActive(false);
+        AudioManagerController.Instance.PlaySFX("LevelCompleted");
         finishExplorationScreen.animationController.SetTrigger("FinishExplorationOpen");
         StartCoroutine(WaitForFrames(1500, LevelCompleteAnimationFinished));
     }
@@ -195,8 +203,10 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     //GAME OVER
     public void OnPlayerDeath() {
+        CrossHairHUD.SetActive(false);
         AudioManagerController.Instance.PlaySFX("GameOver");
         gameOverScreen.animationController.SetTrigger("GameOverOpen");
+        StartCoroutine(WaitForFrames(250, GameOverAnimationFinished));
         Debug.LogWarning("Game Over!");
     }
 

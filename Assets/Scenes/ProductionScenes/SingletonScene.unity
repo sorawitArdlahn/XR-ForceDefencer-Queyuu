@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -449,7 +449,7 @@ PrefabInstance:
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[7].Clip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 5ed65b47d614c2c4c97dc2cde63b677c, type: 3}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[7].Name
       value: EnemySpawn
@@ -457,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[8].Clip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 4f9a4755659f560418d618923144121b, type: 3}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[8].Name
       value: PlayerDamage
