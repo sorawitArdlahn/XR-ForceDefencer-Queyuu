@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239225173}
   - component: {fileID: 239225172}
+  - component: {fileID: 239225174}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -300,6 +301,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &239225174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239225171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &312031053
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cockpit_beta
       objectReference: {fileID: 0}
+    - target: {fileID: 8388033887436805992, guid: b7f857c77d46d4f40883daead94a9ea3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c44e48aa8841eb45a41e6c64157970c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -904,7 +932,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: AM_Keyboard
+  m_DefaultActionMap: c902e73e-e3fa-4f4f-a036-42c9ef629e8d
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!4 &1636550130
@@ -1044,6 +1072,26 @@ PrefabInstance:
       propertyPath: playerInputReceiver
       value: 
       objectReference: {fileID: 1636550128}
+    - target: {fileID: 3441065890079341576, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441065890079341576, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441065890079341576, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441065890079341576, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441065890079341576, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3489401524981623517, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1139,6 +1187,14 @@ PrefabInstance:
     - target: {fileID: 8714863176131992267, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073088034073054503, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073088034073054503, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 104
       objectReference: {fileID: 0}
     - target: {fileID: 1747017634197650493, guid: e4ed78a5c04b1da4fa4bb6b4f62e7d63, type: 3}
       propertyPath: m_Alpha
