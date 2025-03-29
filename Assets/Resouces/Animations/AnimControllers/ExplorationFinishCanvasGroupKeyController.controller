@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: FinishExploration
-  triggerTime: 1
+  triggerTime: 0.897
 --- !u!1107 &-3789093084525992712
 AnimatorStateMachine:
   serializedVersion: 6

@@ -16,7 +16,7 @@ namespace Presenter.Stats
         public Rigidbody rigidbody;
         public MonoBehaviour scriptAIBehavior;
 
-        private void Start()
+        private void Awake()
         {
             robotInGameStatsCtrl.OnDeath += FallingAnimation;
         }

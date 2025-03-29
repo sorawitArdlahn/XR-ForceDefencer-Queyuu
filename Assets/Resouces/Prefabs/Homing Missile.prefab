@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8eddfe392322c4d4fb5011a4b49f982e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4985,9 +4985,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e187e826879374191c61f55a90afb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diaviatedPrediction: {fileID: 0}
+  deviatedPrediction: {x: 0, y: 0, z: 0}
   speed: 10
   destroyEffect: {fileID: 341153739360897419}
+  target: {fileID: 0}
+  _maxDistancePredict: 10
+  _minDistancePredict: 5
+  _maxTimePrediction: 5
+  _deviationAmount: 1
+  _deviationSpeed: 1
 --- !u!54 &4707490111473308410
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class DeathRagdollPresenter : MonoBehaviour
 
     public AIBrain_Crusher aiBrainCrusher;
 
-    private void Start()
+    private void Awake()
     {
         robotInGameStatsCtrl.OnDeath += EnabledRagdoll;
         foreach (var ragdollCollider in ragdollColliders)
