@@ -27,6 +27,10 @@ namespace Controller.Combat
 
         private Vector3 _standardPrediction;
 
+        [Header("Sound")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip _homingMissileSound;
+
 
         void Start()
         {
@@ -38,10 +42,12 @@ namespace Controller.Combat
 
         void OnTriggerEnter(Collider other)
         {
+            
             destroyEffect.PlayParticles();
-            Destroy(gameObject,0.2f);
-            if (other.TryGetComponent(out IDamageable damageable))
+            Destroy(gameObject,0.5f);
+            if (!other.gameObject.CompareTag("Player") && other.TryGetComponent(out IDamageable damageable))
             {
+                audioSource.PlayOneShot(_homingMissileSound);
                 // other.GetComponent<Rigidbody>().AddForce(-other.transform.forward * 50f, ForceMode.Impulse);
                 damageable.TakeDamage(50);  
             }
@@ -52,8 +58,9 @@ namespace Controller.Combat
         {
             if (!other.gameObject.CompareTag("Player"))
             {
+                audioSource.PlayOneShot(_homingMissileSound);
                 destroyEffect.PlayParticles();
-                Destroy(gameObject,0.2f);
+                Destroy(gameObject,0.5f);
             }
         }
 
@@ -69,7 +76,8 @@ namespace Controller.Combat
         public void AssignTarget(GameObject target)
         {
             this.target = target;
-            deviatedPrediction = target.transform.position;
+            if (target) deviatedPrediction = target.transform.position;
+            else deviatedPrediction = transform.forward * 50f;
         }
 
         private void RotateHead()

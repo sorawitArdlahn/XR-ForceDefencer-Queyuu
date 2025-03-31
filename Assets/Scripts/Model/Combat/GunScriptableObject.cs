@@ -1,10 +1,17 @@
 using System.Collections;
+using Model.Stats;
 using UnityEngine;
 
 namespace Model.Combat
 {
     public class GunScriptableObject : MonoBehaviour
     {
+        [Header("Applier")]
+        public GunUser gunUser;
+
+        public RobotInGameStats robotInGameStats = null;
+        
+        [Header("Guns Config")]
         public GunType Type;
         public string name;
         // public GameObject modelPrefab;
@@ -143,9 +150,14 @@ namespace Model.Combat
                 GameObject effect = Instantiate(surfaceEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 effect.gameObject.GetComponent<ParticleManager>().PlayParticles();
                 Destroy(effect, 1f);
-                if (hit.collider.TryGetComponent(out IDamageable damageable))
+                if (hit.collider.TryGetComponent(out IDamageable damageable1) && gunUser == GunUser.Player)
                 {
-                    damageable.TakeDamage(damageConfig.GetDamage());  
+                    damageable1.TakeDamage(damageConfig.GetDamage() * (int)robotInGameStats.data.DamageMultiplier);  
+                }
+                
+                else if (hit.collider.TryGetComponent(out IDamageable damageable2) && gunUser == GunUser.AI)
+                {
+                    damageable2.TakeDamage(damageConfig.GetDamage());  
                 }
             }
             
@@ -163,5 +175,11 @@ namespace Model.Combat
     {
         Kinetic,
         Energy
+    }
+
+    public enum GunUser
+    {
+        Player,
+        AI
     }
 }

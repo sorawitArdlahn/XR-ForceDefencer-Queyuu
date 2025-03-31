@@ -20,7 +20,7 @@ namespace Controller.Stats
 
         public event IDamageable.TakeDamageEvent OnTakeDamage;
         public event IDamageable.DeathEvent OnDeath;
-        
+
         private bool isCanRefuel = true;
         private bool isRefueling = false; // Used to check if fuel is being refueled.
 
@@ -33,22 +33,14 @@ namespace Controller.Stats
             {
                 StartCoroutine(Refuel(1, 0.1f));
             }
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                TakeDamage(10);
-            }
-            
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                StartCoroutine(UseFuel(10));
-            }
         }
 
         public void TakeDamage(int damage)
         {
             if (CurrentHealth <= 0) {
-            Debug.Log("Robot is already dead");
-            return;}
+                Debug.Log("Robot is already dead");
+                return;
+            }
 
             if (gameObject.CompareTag("Player"))
             {
