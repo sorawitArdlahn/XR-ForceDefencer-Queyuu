@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using AI.Basic_Node;
 using AI.Basic_Node.Control_Node;
-using Model;
+
 using UnityEngine;
 
 public class AIBrain_GunnerAlpha : MonoBehaviour

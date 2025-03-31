@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerInputReceiver : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerInputReceiver : MonoBehaviour
     private bool _isSprinting;
     private bool _isDriving = false;
     private bool _isLockOn = false;
+    private bool _isMissile = false;
 
     private void OnMovement(InputValue value)
     {
@@ -57,6 +59,11 @@ public class PlayerInputReceiver : MonoBehaviour
     private void OnLockOn(InputValue value)
     {
         _isLockOn = !_isLockOn;
+    }
+
+    private void OnMissile(InputValue value)
+    {
+        _isMissile = value.isPressed;
     }
 
     public Vector3 Movement
@@ -111,5 +118,11 @@ public class PlayerInputReceiver : MonoBehaviour
     {
         get => _isLockOn;
         set => _isLockOn = value;
+    }
+
+    public bool IsMissile
+    {
+        get => _isMissile;
+        set => _isMissile = value;
     }
 }

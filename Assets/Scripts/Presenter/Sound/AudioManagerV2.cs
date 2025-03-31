@@ -38,6 +38,14 @@ namespace Presenter.Sound
             // เปลี่ยนเสียงโดยใช้ Fade
             StartCoroutine(FadeToNewSound(nextClip, volume));
         }
+
+        public void PlayOneShot(AudioClip clip, float volume = 1.0f)
+        {
+            if (!isCanPlaying) return;
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+            StartCoroutine(FadeToNewSound(clip, volume));
+        }
         
         public void Stop()
         {
@@ -87,6 +95,8 @@ namespace Presenter.Sound
             yield return new WaitForSeconds(3);
             isCanPlaying = true;
         }
+        
+        
     }
 }
 

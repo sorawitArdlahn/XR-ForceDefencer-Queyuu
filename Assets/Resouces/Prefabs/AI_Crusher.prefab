@@ -775,7 +775,7 @@ MonoBehaviour:
     HealthPointMultiplier: 1
     ArmorMultiplier: 1
     FuelMultiplier: 1
-    MovementSpeedMultiplier: 1
+    DamageMultiplier: 1
     currentResearchPoint: 0
     researchPointRequired: 50
     accumulatedResearchPoint: 0
@@ -1065,6 +1065,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 85eddb1cd52928d45b8184318da13abb, type: 2}
   - {fileID: 2100000, guid: d7dfb88e4d68ddf429ede9ac43de5904, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -2579,8 +2580,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000015164378, y: -0.0000000011932572, z: -5.820755e-11, w: 1}
   m_LocalPosition: {x: 0.000000007897615, y: 2.9802336e-10, z: 0.0000000017136333}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6478722758279050887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

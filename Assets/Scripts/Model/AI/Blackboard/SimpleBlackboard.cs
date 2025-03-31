@@ -10,9 +10,9 @@ public class SimpleBlackboard:MonoBehaviour
 {
     [Header("AI Components")]
     public Transform SelfTransform;
-    public Animator SelfAnimator;
+    public Animator SelfAnimator = null;
     public NavMeshAgent SelfNavMeshAgent;
-    public AnimationEventReceiver SelfAnimationEventReceiver;
+    public AnimationEventReceiver SelfAnimationEventReceiver = null;
     public Rigidbody SelfRigidbody;
     public PlayerGunSelector SelfGunSelector = null;
 
