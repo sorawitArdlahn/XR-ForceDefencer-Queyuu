@@ -661,7 +661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: enemiesList.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: FinishExplorationButton
@@ -686,9 +686,21 @@ PrefabInstance:
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: enemiesList.Array.data[1]
       value: 
-      objectReference: {fileID: 2906941267733275642, guid: dcb31da74d5d98e4aaa53a25d7d657a6, type: 3}
+      objectReference: {fileID: 1380102373405167140, guid: 2e4555d694de02b4d9f0c889ef154f64, type: 3}
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: enemiesList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1380102373405167140, guid: 348ea1abf88bde84fb2dbb1f800ecba1, type: 3}
+    - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
+      propertyPath: enemiesList.Array.data[3]
+      value: 
+      objectReference: {fileID: 2906941267733275642, guid: dcb31da74d5d98e4aaa53a25d7d657a6, type: 3}
+    - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
+      propertyPath: enemiesList.Array.data[4]
+      value: 
+      objectReference: {fileID: 8109127488257677946, guid: 484207b4da52a694a854ea9d3820fd17, type: 3}
+    - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
+      propertyPath: enemiesList.Array.data[5]
       value: 
       objectReference: {fileID: 8109127488257677946, guid: 484207b4da52a694a854ea9d3820fd17, type: 3}
     m_RemovedComponents: []
@@ -914,6 +926,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 851113069763632116, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: fadeDuration
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: m_Volume
       value: 0.5
