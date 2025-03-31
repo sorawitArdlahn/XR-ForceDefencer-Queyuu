@@ -1814,6 +1814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: spinning_text
       objectReference: {fileID: 0}
+    - target: {fileID: 7259571301250669692, guid: 8df7dc5e8e2a601488f0b3fe4ef5ba70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d9db28f938c7d249ac9383e588d9e95, type: 2}
     - target: {fileID: 9094468124360297893, guid: 8df7dc5e8e2a601488f0b3fe4ef5ba70, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3966,6 +3970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1979984858}
   - component: {fileID: 1979984857}
+  - component: {fileID: 1979984859}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4050,6 +4055,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1979984859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979984856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1983517111
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,6 +4626,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: cc0a4b147a59afd4891456c6f835a599, type: 2}
+    - target: {fileID: 7816966604630135373, guid: c298aa922018ba541975a681c818fc16, type: 3}
+      propertyPath: damageIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: ec87cc8601adb51459205b63f9af7156, type: 3}
     - target: {fileID: 8665579014828363434, guid: c298aa922018ba541975a681c818fc16, type: 3}
       propertyPath: eventSystem
       value: 

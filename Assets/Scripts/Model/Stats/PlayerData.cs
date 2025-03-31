@@ -12,7 +12,7 @@ namespace Model.Stats {
         public float HealthPointMultiplier = 1;
         public float ArmorMultiplier = 1;
         public float FuelMultiplier = 1;
-        public float MovementSpeedMultiplier = 1;
+        public float DamageMultiplier = 1;
 
         public int currentResearchPoint = 0;
         public int researchPointRequired = 50;

@@ -10,7 +10,7 @@ namespace Controller.StatMod
         HealthPoint,
         Armor,
         Fuel,
-        MovementSpeed
+        Damage
     }
     public class PlayerStatModifierController : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace Controller.StatMod
         [SerializeField] private Sprite healthPointIcon;
         [SerializeField] private Sprite armorIcon;
         [SerializeField] private Sprite fuelIcon;
-        [SerializeField] private Sprite movementSpeedIcon;
+        [SerializeField] private Sprite damageIcon;
 
         private Dictionary<PlayerUpgradable, Sprite> statIcons;
 
@@ -36,7 +36,7 @@ namespace Controller.StatMod
             { PlayerUpgradable.HealthPoint, healthPointIcon },
             { PlayerUpgradable.Armor, armorIcon },
             { PlayerUpgradable.Fuel, fuelIcon },
-            { PlayerUpgradable.MovementSpeed, movementSpeedIcon }
+            { PlayerUpgradable.Damage, damageIcon }
             };
         }
 
@@ -52,8 +52,8 @@ namespace Controller.StatMod
                 case PlayerUpgradable.Fuel:
                     playerInfo.FuelMultiplier += playerStatModifier.Multiplier;
                     break;
-                case PlayerUpgradable.MovementSpeed:
-                    playerInfo.MovementSpeedMultiplier += playerStatModifier.Multiplier;
+                case PlayerUpgradable.Damage:
+                    playerInfo.DamageMultiplier += playerStatModifier.Multiplier;
                     break;
             }
 

@@ -44,7 +44,7 @@ namespace Model.Stats
             this.data.HealthPointMultiplier = data.HealthPointMultiplier;
             this.data.ArmorMultiplier = data.ArmorMultiplier;
             this.data.FuelMultiplier = data.FuelMultiplier;
-            this.data.MovementSpeedMultiplier = data.MovementSpeedMultiplier;
+            this.data.DamageMultiplier = data.DamageMultiplier;
 
             //ResearchPoint
             this.data.currentResearchPoint = data.currentResearchPoint;
@@ -58,7 +58,7 @@ namespace Model.Stats
             maxHP = (int)(PlayerBaseStats.baseHP * data.HealthPointMultiplier);
             maxArmor = (int)(PlayerBaseStats.basedArmor * data.ArmorMultiplier);
             maxFuel = (int)(PlayerBaseStats.baseFuel * data.FuelMultiplier);
-            speed = PlayerBaseStats.baseSpeed * data.MovementSpeedMultiplier;
+            speed = PlayerBaseStats.baseSpeed * data.DamageMultiplier;
 
             currentHP = maxHP;
             currentArmor = maxArmor;

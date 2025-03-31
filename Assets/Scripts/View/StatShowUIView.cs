@@ -22,7 +22,7 @@ namespace View.Preparation {
 
     public void UpdateText() {
         HPMultiplierText.text = playerStats.data.HealthPointMultiplier.ToString("F2");
-        DamageMultiplierText.text = playerStats.data.MovementSpeedMultiplier.ToString("F2");
+        DamageMultiplierText.text = playerStats.data.DamageMultiplier.ToString("F2");
         ArmorMultiplierText.text = playerStats.data.ArmorMultiplier.ToString("F2");
         FuelMultiplierText.text = playerStats.data.FuelMultiplier.ToString("F2");
     }
