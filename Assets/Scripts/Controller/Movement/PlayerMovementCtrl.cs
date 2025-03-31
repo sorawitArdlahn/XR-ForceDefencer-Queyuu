@@ -159,7 +159,7 @@ namespace Controller.Movement
             {
                 movementState = MovementState.Air;
                 moveSpeed = walkSpeed * airMultiplier;
-                audioManager.PlayNextClip(flySound, 0.3f);
+                audioManager.PlayNextClip(flySound, 0.15f);
             }
 
             else
