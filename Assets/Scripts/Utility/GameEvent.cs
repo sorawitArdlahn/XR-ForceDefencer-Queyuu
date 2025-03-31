@@ -4,7 +4,7 @@ using UnityEngine;
 namespace EventListener {
 [CreateAssetMenu(fileName = "GameEvent")]
 [System.Serializable]
-public class GameEvent : RuntimeScriptableObject
+public class GameEvent : ScriptableObject
 {
     // Start is called before the first frame update
     public List<GameEventListener> listeners = new List<GameEventListener>();
@@ -33,7 +33,7 @@ public class GameEvent : RuntimeScriptableObject
         }
     }
 
-    protected override void OnReset()
+    protected void OnReset()
     {
         listeners.Clear();
     }

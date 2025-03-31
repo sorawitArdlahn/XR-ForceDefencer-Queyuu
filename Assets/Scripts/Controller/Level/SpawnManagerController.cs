@@ -41,6 +41,15 @@ public class SpawnerManagerController : MonoBehaviour
     private SpawnState state = SpawnState.COUNTING;
 
     void Start() {
+        if (allEnemiesDead == null)
+        {
+            Debug.Log("--------------------------> allEnemiesDead is null");
+        }
+        
+        if (researchPointEarned == null)
+        {
+            Debug.Log("--------------------------> researchPointEarned is null");
+        }
         mapGenerator = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGeneratorController>();        
     }
 

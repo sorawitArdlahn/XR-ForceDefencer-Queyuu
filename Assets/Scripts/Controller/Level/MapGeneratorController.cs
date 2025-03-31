@@ -77,6 +77,10 @@ public class MapGeneratorController : MonoBehaviour
     }
 
     public void Awake() {
+        if (mapGenerated == null)
+        {
+            Debug.Log("--------------------------> mapGenerated is null");
+        }
 
         gridComponent = new List<CellV2>();
 

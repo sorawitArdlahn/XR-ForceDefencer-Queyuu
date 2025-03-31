@@ -65,6 +65,11 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     void Awake()
     {
+        if (OnStartLevel == null)
+        {
+            Debug.Log("--------------------------> OnStartLevel is null");
+        }
+        
         if(_persistentId == null)
             _persistentId = gameObject.AddComponent<PersistentId>();
     }
