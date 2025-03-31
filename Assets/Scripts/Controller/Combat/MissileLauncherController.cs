@@ -38,7 +38,7 @@ namespace Controller.Combat
             {
                 var missile = Instantiate(missilePrefab, point.position, point.rotation);
                 missile.GetComponent<HomingMissileController>().AssignTarget(target);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.25f);
             }
         }
     }
