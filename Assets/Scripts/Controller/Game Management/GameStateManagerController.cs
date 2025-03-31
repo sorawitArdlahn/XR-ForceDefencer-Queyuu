@@ -73,16 +73,21 @@ namespace GameController
             {
                 case GameState.MainMenu:
                     //TODO : Load MainMenu
+                    AudioManagerController.Instance.StopMusic();
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.MainMenu));
 
                     break;
                 case GameState.BattlePreparation:
+                    AudioManagerController.Instance.StopMusic();
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.BattlePreparation));
+                    AudioManagerController.Instance.PlayMusic("PreparationMusic");
 
                     break;
                 case GameState.InBattle:
                     //TODO : Check if scene is loaded, if not Load InBattleScene
+                    AudioManagerController.Instance.StopMusic();
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.InBattle));
+
                     //TODO : MAKE A LOADING SCREEN TO WAIT FOR MAP AND SPAWNER TO FINISH INITIALIZING
                     //TODO : Unload PreparationScene
                     break;

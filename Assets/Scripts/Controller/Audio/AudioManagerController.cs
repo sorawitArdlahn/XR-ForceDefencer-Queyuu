@@ -50,6 +50,11 @@ public class AudioManagerController : MonoBehaviour
         }
     }
 
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+
 }
 
 

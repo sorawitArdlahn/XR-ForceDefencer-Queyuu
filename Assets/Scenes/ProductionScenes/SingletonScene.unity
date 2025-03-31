@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2073171243573873100, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: m_Volume
-      value: 0.1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5149665217396255141, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: musicSound.Array.data[0].Name
       value: BattleMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: musicSound.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 316903a0b72da0943aac46077b821133, type: 3}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.data[1].Name
       value: PreparationMusic
