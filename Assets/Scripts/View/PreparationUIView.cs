@@ -43,7 +43,7 @@ namespace View.Preparation {
         private void OnInBattleButtonClicked()
         {
             GameManager.Instance?.SaveGame();
-            AudioManagerController.Instance.PlaySFX("TransitionScreenOut");
+            AudioManagerController.Instance.PlaySFX("ButtonPressed");
             GameStateManager.Instance.SetNextPhase(GameState.InBattle);
             Debug.Log("In Battle Button Pressed.");
         }
@@ -71,7 +71,7 @@ namespace View.Preparation {
         private void OnMainMenuButtonClicked()
         {
             GameManager.Instance?.SaveGame();
-            AudioManagerController.Instance.PlaySFX("TransitionScreenOut");
+            AudioManagerController.Instance.PlaySFX("ButtonPressed");
             GameStateManager.Instance.SetNextPhase(GameState.MainMenu);
             Debug.Log("Main Menu Button Pressed.");
         }
