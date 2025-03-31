@@ -106,7 +106,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         // Dynamically Increase Enemy Amount over time
         int enemyCount = Mathf.Min(
             getCurrentLevel() + baseEnemy,
-            (int)(mapGenerator.getMapSize() * 0.75)
+            (int)(mapGenerator.getMapSize() * 1.25)
         );
         spawnerManager?.SetEnemies(enemiesList, enemyCount);
     }
