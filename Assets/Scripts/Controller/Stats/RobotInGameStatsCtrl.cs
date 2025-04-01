@@ -26,6 +26,9 @@ namespace Controller.Stats
 
         private bool isCanUseFuel = true;
         private int activeFuelUsageCount = 0; // Variable counts the number of times UseFuel is called.
+        
+        public AudioSource audioSource;
+        public AudioClip hitSound;
 
         private void Update()
         {
@@ -81,6 +84,7 @@ namespace Controller.Stats
                     }
                 }
             }
+            if (gameObject.CompareTag("Enemy")) audioSource.PlayOneShot(hitSound);
 
         }
 

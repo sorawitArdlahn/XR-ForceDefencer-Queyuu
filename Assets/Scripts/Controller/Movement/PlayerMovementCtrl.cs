@@ -151,7 +151,7 @@ namespace Controller.Movement
                 movementState = MovementState.Walking;
                 moveSpeed = walkSpeed;
                 //walkingSoundAudioSource.PlayOneShot(walkingSound);
-                audioManager.PlayNextClip(walkSound, 0.1f);
+                audioManager.PlayNextClip(walkSound, 0.05f);
             }
 
             // Mode - Air
@@ -159,7 +159,7 @@ namespace Controller.Movement
             {
                 movementState = MovementState.Air;
                 moveSpeed = walkSpeed * airMultiplier;
-                audioManager.PlayNextClip(flySound, 0.15f);
+                audioManager.PlayNextClip(flySound, 0.05f);
             }
 
             else

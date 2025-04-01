@@ -928,11 +928,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 851113069763632116, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: fadeDuration
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1551049077165076870, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740325264617555888, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2067274316098107147, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: m_Name
@@ -942,6 +946,10 @@ PrefabInstance:
       propertyPath: playerInputReceiver
       value: 
       objectReference: {fileID: 1636550128}
+    - target: {fileID: 3826079280926089077, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: jumpForce
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3826079280926089077, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: playerInputReceiver
       value: 
@@ -1006,6 +1014,10 @@ PrefabInstance:
       propertyPath: worldSpaceCanvas
       value: 
       objectReference: {fileID: 941761322}
+    - target: {fileID: 9038978703180178946, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
