@@ -12,7 +12,7 @@ namespace GameController
         MainMenu,
         BattlePreparation,
         InBattle,
-        ContinueBattle
+        Tutorial
     }
 
     public enum SceneIndexes
@@ -21,7 +21,7 @@ namespace GameController
         MainMenu=1,
         BattlePreparation=2,
         InBattle=3,
-        Victory=4,
+        Tutorial=4,
         GameCleared=5,
         GameOver=6
     }
@@ -65,7 +65,7 @@ namespace GameController
             StartCoroutine(TransitionScreen.TransitionScreenFadeOut());
             yield return new WaitForSeconds(TransitionScreen.getTransitionWait());
             
-
+            AudioManagerController.Instance.StopMusic();
 
             
 
@@ -73,26 +73,29 @@ namespace GameController
             {
                 case GameState.MainMenu:
                     //TODO : Load MainMenu
-                    AudioManagerController.Instance.StopMusic();
+                    
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.MainMenu));
 
                     break;
                 case GameState.BattlePreparation:
-                    AudioManagerController.Instance.StopMusic();
+                    
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.BattlePreparation));
                     AudioManagerController.Instance.PlayMusic("PreparationMusic");
 
                     break;
                 case GameState.InBattle:
                     //TODO : Check if scene is loaded, if not Load InBattleScene
-                    AudioManagerController.Instance.StopMusic();
+
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.InBattle));
 
                     //TODO : MAKE A LOADING SCREEN TO WAIT FOR MAP AND SPAWNER TO FINISH INITIALIZING
                     //TODO : Unload PreparationScene
                     break;
-                case GameState.ContinueBattle:
+                case GameState.Tutorial:
                     //TODO : Unload VictoryScene
+                    //TODO : Load TutorialScene
+                    StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.Tutorial));
+                    AudioManagerController.Instance.PlayMusic("PreparationMusic");
                     break;
             }
         }

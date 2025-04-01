@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProductionScenes/InBattleScene.unity
     guid: e5c2367800f3a5c41bfc79795e1ac513
+  - enabled: 1
+    path: Assets/Scenes/ProductionScenes/TutorialScene.unity
+    guid: 4e2d4b12f71afd04ebba92ac42c37ad2
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 16a0cc6cdec14474ba939675ee81f494, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: fb7d6a09f3207e545984c956b828d9b7, type: 2}

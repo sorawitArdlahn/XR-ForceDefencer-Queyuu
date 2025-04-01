@@ -9,6 +9,7 @@ TagManager:
   - LowGround
   - Enemy
   - MapGenerator
+  - EventSystem
   layers:
   - Default
   - TransparentFX

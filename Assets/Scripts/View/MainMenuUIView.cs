@@ -8,12 +8,13 @@ namespace View.MainMenu
 {   
 public class MainMenuUIView : MonoBehaviour
 {
-    [Header("Buttons")]
+    [Header("==== Buttons ====")]
     public Button NewGameButton;
     public Button LoadGameButton;
+    public Button TutorialButton;
     public Button QuitGameButton;
 
-    [Header("Save/Load Scripts")]
+    [Header("==== Save/Load Scripts ====")]
     public  GameManager gameManager = null;
 
     public void Start()
@@ -21,6 +22,7 @@ public class MainMenuUIView : MonoBehaviour
         gameManager = GameManager.Instance;
         NewGameButton.onClick.AddListener(OnNewGameButtonClicked);
         LoadGameButton.onClick.AddListener(OnLoadGameButtonClicked);
+        TutorialButton.onClick.AddListener(OnTutorialButtonClicked);
         QuitGameButton.onClick.AddListener(OnQuitGameButtonClicked);
     }
 
@@ -44,6 +46,13 @@ public class MainMenuUIView : MonoBehaviour
             gameManager.newGame();
             Debug.LogWarning($"Save not found.");
         }
+    }
+
+    private void OnTutorialButtonClicked()
+    {
+        AudioManagerController.Instance.PlaySFX("ButtonPressed");
+        GameStateManager.Instance.SetNextPhase(GameState.Tutorial);
+        Debug.Log("Tutorial Button Pressed.");
     }
 
     private void OnQuitGameButtonClicked()
