@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.size
@@ -513,6 +513,14 @@ PrefabInstance:
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.data[11].Name
       value: AnnouncingCombatMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[12].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ecce93aac3f298e4887c834c2839e521, type: 3}
+    - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
+      propertyPath: sfxSound.Array.data[12].Name
+      value: EnemyDown
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.data[0].Name

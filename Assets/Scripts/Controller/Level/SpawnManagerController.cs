@@ -252,6 +252,7 @@ public class SpawnerManagerController : MonoBehaviour
             StageCleared();
         }
         else if (numEnemiesInWaveRemaining <= 0) NewWave();
+        else AudioManagerController.Instance.PlaySFX("EnemyDown");
     }
 
     public void NewWave() {
