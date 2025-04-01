@@ -6,6 +6,7 @@ using EventListener;
 using System;
 using Model.Level;
 using Audio;
+using TMPro;
 
 
 namespace Controller.Level {
@@ -33,10 +34,16 @@ public class SpawnerManagerController : MonoBehaviour
     public float timeBetweenWaves = 5f;
     float waveCountDown;
 
-    [Header("Events")]
+    [Header("==== Events ====")]
 
     [SerializeField] GameEvent allEnemiesDead;
     [SerializeField] GameEvent researchPointEarned;
+
+    [Header("==== UI ====")]
+    [SerializeField] TextMeshProUGUI waveText;
+
+    [Header("==== Animation Controller ====")]
+    [SerializeField] Animator animationController;
 
     private SpawnState state = SpawnState.COUNTING;
 
@@ -118,7 +125,7 @@ public class SpawnerManagerController : MonoBehaviour
     {
         GameObject playerPos = GameObject.FindGameObjectWithTag("Player");
         bool validPosition = false;
-        float minDistanceFromPlayer = 25f;
+        float minDistanceFromPlayer = 40f;
         float checkRadius = 1f;
         Vector3 spawnPosition = Vector3.zero;
 
@@ -255,8 +262,17 @@ public class SpawnerManagerController : MonoBehaviour
 
         if (state != SpawnState.SPAWNING && nextWave < waves.Length) {
             StartCoroutine(SpawnWave(waves[nextWave]));
+
+            //if final wave, text is "Final Wave"
+            if (nextWave == waves.Length - 1) {
+                waveText.text = "Final Wave";
+            } else {
+                waveText.text = "Wave " + (nextWave + 1) + "/" + waves.Length;
+            }
+
             if (nextWave > 0) {
             AudioManagerController.Instance.PlaySFX("EnemySpawn");
+            animationController.SetTrigger("NewWaveOpen");
             }
             
             Debug.Log("Initiating new wave...");
