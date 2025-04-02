@@ -63,6 +63,7 @@ public class FinishExplorationUIView : MonoBehaviour
         UnPauseGame();
         AudioManagerController.Instance.PlaySFX("ButtonPressed");
         OnFinishExploration.Raise(this);
+        GameManager.Instance.SaveGame();
         GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
     }
 
