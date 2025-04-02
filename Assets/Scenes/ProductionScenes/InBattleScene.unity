@@ -755,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 2019349719}
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: forceDebug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5421614883767171524, guid: 95eae1845f872e1428076724d7614382, type: 3}
       propertyPath: eventSystem

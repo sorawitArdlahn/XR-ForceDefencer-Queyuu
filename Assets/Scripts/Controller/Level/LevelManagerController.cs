@@ -99,6 +99,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         {
             
             NewStage();
+            AudioManagerController.Instance.PlayMusic("BattleMusic");
         }
     }
 
@@ -142,6 +143,7 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
             StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());
         }
         AudioManagerController.Instance.PlaySFX("AnnouncingCombatMode");
+        AudioManagerController.Instance.PlayMusic("BattleMusic");
     }
 
     public void NewStage()
@@ -173,6 +175,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     //LEVEL COMPLETE
     public void LevelCompleted()
     {
+        AudioManagerController.Instance.StopMusic();
+
         if (GameStateManager.Instance.GetCurrentGameState() == GameState.GameOver) return;
 
         GameStateManager.Instance.SetNextPhase(GameState.GameCleared);
@@ -195,6 +199,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     //GAME OVER
     public void OnPlayerDeath() {
+
+        AudioManagerController.Instance.StopMusic();
 
         if (GameStateManager.Instance.GetCurrentGameState() == GameState.GameCleared) return;
 

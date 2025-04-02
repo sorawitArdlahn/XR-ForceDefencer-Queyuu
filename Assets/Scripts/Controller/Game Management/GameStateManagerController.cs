@@ -71,12 +71,13 @@ namespace GameController
             switch (currentGameState)
             {
                 case GameState.MainMenu:   
-                    AudioManagerController.Instance.StopMusic();         
+                     
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.MainMenu));
+                    AudioManagerController.Instance.PlayMusic("PreparationMusic");
 
                     break;
                 case GameState.BattlePreparation:
-                    AudioManagerController.Instance.StopMusic();
+
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.BattlePreparation));
                     AudioManagerController.Instance.PlayMusic("PreparationMusic");
 
@@ -86,9 +87,7 @@ namespace GameController
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.InBattle));
                     break;
                 case GameState.Tutorial:
-                    AudioManagerController.Instance.StopMusic();
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.Tutorial));
-                    AudioManagerController.Instance.PlayMusic("PreparationMusic");
                     break;
                 case GameState.GameOver:
                     //StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.GameOver));

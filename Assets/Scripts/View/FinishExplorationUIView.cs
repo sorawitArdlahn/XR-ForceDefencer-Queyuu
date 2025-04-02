@@ -56,6 +56,7 @@ public class FinishExplorationUIView : MonoBehaviour
         else { Debug.Log("GameStateManager is null"); }
 
         OnContinueExploration.Raise(this);
+        AudioManagerController.Instance.PlayMusic("BattleMusic");
     }
 
     private void OnFinishExplorationButtonClicked()
