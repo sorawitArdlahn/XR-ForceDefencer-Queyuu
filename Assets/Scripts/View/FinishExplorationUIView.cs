@@ -40,7 +40,7 @@ public class FinishExplorationUIView : MonoBehaviour
     }
 
     public void UpdateText() {
-        CurrentLevelText.text = levelData.getCurrentLevel().ToString();
+        CurrentLevelText.text = (levelData.getCurrentLevel() + 1).ToString();
         EnemyDefeatedText.text = levelData.getTotalEnemies().ToString();
         ResearchPointText.text = (levelData.getTotalEnemies() * 75).ToString();
     }
@@ -52,7 +52,9 @@ public class FinishExplorationUIView : MonoBehaviour
         animationController.SetTrigger("FinishExplorationClose");
 
         if (GameStateManager.Instance != null) 
-        {StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeOut());}
+        {GameStateManager.Instance.SetNextPhase(GameState.InBattle);}
+        else { Debug.Log("GameStateManager is null"); }
+
         OnContinueExploration.Raise(this);
     }
 
@@ -69,6 +71,7 @@ public class FinishExplorationUIView : MonoBehaviour
     }
 
     public void AnimationFinishExplorationOpenFinish(){
+        eventSystem.enabled = true;
         eventSystem.SetSelectedGameObject(ContinueExplorationButton.gameObject);
         PauseGame();
     }

@@ -173,6 +173,11 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     //LEVEL COMPLETE
     public void LevelCompleted()
     {
+        if (GameStateManager.Instance.GetCurrentGameState() == GameState.GameOver) return;
+
+        GameStateManager.Instance.SetNextPhase(GameState.GameCleared);
+
+        finishExplorationScreen.UpdateText();
         CrossHairHUD.SetActive(false);
         AudioManagerController.Instance.PlaySFX("LevelCompleted");
         finishExplorationScreen.animationController.SetTrigger("FinishExplorationOpen");
@@ -190,6 +195,11 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
     //GAME OVER
     public void OnPlayerDeath() {
+
+        if (GameStateManager.Instance.GetCurrentGameState() == GameState.GameCleared) return;
+
+        GameStateManager.Instance.SetNextPhase(GameState.GameOver);
+
         CrossHairHUD.SetActive(false);
         AudioManagerController.Instance.PlaySFX("GameOver");
         gameOverScreen.UpdateText();
@@ -225,23 +235,5 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
     {
         data.currentLevel = level;
     }
-
-    private float GetAnimationLength(Animator animator, string animationName)
-{
-    // Wait for the next frame to ensure the animation state is updated
-    animator.Update(0);
-
-    // Get the current animator state info
-    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-    // Check if the current animation state matches the specified animation name
-    if (stateInfo.IsName(animationName))
-    {
-        return stateInfo.length;
-    }
-
-    // If the animation state does not match, return a default value (e.g., 0)
-    return 0f;
-}
 }
 }

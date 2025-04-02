@@ -12,7 +12,9 @@ namespace GameController
         MainMenu,
         BattlePreparation,
         InBattle,
-        Tutorial
+        Tutorial,
+        GameCleared,
+        GameOver
     }
 
     public enum SceneIndexes
@@ -56,56 +58,56 @@ namespace GameController
         public void SetNextPhase(GameState nextState)
         {
             currentGameState = nextState;
-            StartCoroutine(SwitchGameState());
+            SwitchGameState();
         }
 
-        IEnumerator SwitchGameState()
+        void SwitchGameState()
         {
-
-            StartCoroutine(TransitionScreen.TransitionScreenFadeOut());
-            yield return new WaitForSeconds(TransitionScreen.getTransitionWait());
             
-            AudioManagerController.Instance.StopMusic();
+            
 
             
 
             switch (currentGameState)
             {
-                case GameState.MainMenu:
-                    //TODO : Load MainMenu
-                    
+                case GameState.MainMenu:   
+                    AudioManagerController.Instance.StopMusic();         
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.MainMenu));
 
                     break;
                 case GameState.BattlePreparation:
-                    
+                    AudioManagerController.Instance.StopMusic();
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.BattlePreparation));
                     AudioManagerController.Instance.PlayMusic("PreparationMusic");
 
                     break;
                 case GameState.InBattle:
-                    //TODO : Check if scene is loaded, if not Load InBattleScene
-
+                    AudioManagerController.Instance.StopMusic();
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.InBattle));
-
-                    //TODO : MAKE A LOADING SCREEN TO WAIT FOR MAP AND SPAWNER TO FINISH INITIALIZING
-                    //TODO : Unload PreparationScene
                     break;
                 case GameState.Tutorial:
-                    //TODO : Unload VictoryScene
-                    //TODO : Load TutorialScene
+                    AudioManagerController.Instance.StopMusic();
                     StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.Tutorial));
                     AudioManagerController.Instance.PlayMusic("PreparationMusic");
+                    break;
+                case GameState.GameOver:
+                    //StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.GameOver));
+                    break;
+                case GameState.GameCleared:
+                    //StartCoroutine(LoadSceneCoroutine((int)SceneIndexes.GameCleared));
                     break;
             }
         }
 
         private IEnumerator LoadSceneCoroutine(int sceneNumber) {
-            if(!SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded) {
-            yield return SceneManager.LoadSceneAsync(sceneNumber);
+            StartCoroutine(TransitionScreen.TransitionScreenFadeOut());
+            yield return new WaitForSeconds(TransitionScreen.getTransitionWait());
+            
+            if (!SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded) {
+                yield return SceneManager.LoadSceneAsync(sceneNumber);
             }
 
-            if (Instance.GetCurrentGameState() != GameState.InBattle)
+            if (Instance.GetCurrentGameState() != GameState.InBattle && Instance.GetCurrentGameState() != GameState.GameCleared)
             {
                 AudioManagerController.Instance.PlaySFX("TransitionScreenIn");
                 yield return TransitionScreen.TransitionScreenFadeIn();

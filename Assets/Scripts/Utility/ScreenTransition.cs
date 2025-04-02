@@ -51,7 +51,7 @@ public class ScreenTransition : MonoBehaviour
         {
             eventSystem.enabled = wasEventSystemEnabled;
 
-            Debug.Log("EventSystem disabled: " + eventSystem.enabled);
+            Debug.Log("EventSystem Enabled : " + eventSystem.enabled);
         }
     }
 
