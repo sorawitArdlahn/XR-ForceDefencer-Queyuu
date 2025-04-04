@@ -5370,6 +5370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_StatShow
       objectReference: {fileID: 0}
+    - target: {fileID: 9116421311479427732, guid: 612dd0a2492eb0042a9462d021fdf465, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: b44a434dc44066e4f91e139a87a6683a, type: 2}
     m_RemovedComponents:
     - {fileID: 4860890852254873360, guid: 612dd0a2492eb0042a9462d021fdf465, type: 3}
     m_RemovedGameObjects: []
@@ -5557,6 +5561,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.r
       value: 0.91764706
       objectReference: {fileID: 0}
+    - target: {fileID: 5521424285150001565, guid: c298aa922018ba541975a681c818fc16, type: 3}
+      propertyPath: m_Name
+      value: Hologram
+      objectReference: {fileID: 0}
     - target: {fileID: 6808181709325216419, guid: c298aa922018ba541975a681c818fc16, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.825
@@ -5600,7 +5608,7 @@ PrefabInstance:
     - target: {fileID: 7254752704822639734, guid: c298aa922018ba541975a681c818fc16, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2100000, guid: cc0a4b147a59afd4891456c6f835a599, type: 2}
+      objectReference: {fileID: 2100000, guid: 5c634abd6c2fa6e4a97df36d173fed45, type: 2}
     - target: {fileID: 7816966604630135373, guid: c298aa922018ba541975a681c818fc16, type: 3}
       propertyPath: damageIcon
       value: 

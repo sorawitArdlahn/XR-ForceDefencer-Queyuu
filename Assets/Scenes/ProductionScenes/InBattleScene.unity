@@ -1285,6 +1285,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 91384348476500057, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Name
+      value: Hologram
+      objectReference: {fileID: 0}
     - target: {fileID: 851113069763632116, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: fadeDuration
       value: 1
@@ -1309,6 +1313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ==PLAYER==
       objectReference: {fileID: 0}
+    - target: {fileID: 2207049007708709527, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d0f2127b9bd13945b1e816aa1842755, type: 2}
     - target: {fileID: 3218207811540796259, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: playerInputReceiver
       value: 
@@ -1341,6 +1349,10 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6133603193311411030, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: c39847853c4e75a4abc15d40118ed454, type: 2}
     - target: {fileID: 6339128756130835842, guid: 240f119f84550524fa8a847bc8672f19, type: 3}
       propertyPath: field of view
       value: 90
