@@ -74,10 +74,7 @@ namespace Utils.Persistence {
             }
 
             
-            if (GameStateManager.Instance.GetCurrentGameState() == GameState.BattlePreparation 
-            || GameStateManager.Instance.GetCurrentGameState() == GameState.InBattle
-            //|| GameStateManager.Instance.GetCurrentGameState() == GameState.MainMenu
-            ) 
+            if (GameStateManager.Instance.GetCurrentGameState() == GameState.InBattle) 
             {
             Bind<RobotInGameStats, PlayerData>(GameManager.Instance.currentGameData.playerData);  
             Bind<LevelManagerController, LevelData>(GameManager.Instance.currentGameData.levelData); 

@@ -28,6 +28,11 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
         this.data = data;
         this.data.Id = Id;
         this.data.currentLevel = data.checkpointLevel;
+
+        if (GameStateManager.Instance.GetCurrentGameState() == GameState.InBattle)
+        {
+            NewStage();
+        }
     }
 
     [Header("==== Map & Spawn Manager ====")]
@@ -95,11 +100,9 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
             }
         }
 
-        if (GameStateManager.Instance?.GetCurrentGameState() == GameState.InBattle || forceDebug)
+        if (forceDebug)
         {
-            
             NewStage();
-            AudioManagerController.Instance.PlayMusic("BattleMusic");
         }
     }
 
