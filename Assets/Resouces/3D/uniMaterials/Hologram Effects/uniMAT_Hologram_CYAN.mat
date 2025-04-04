@@ -58,7 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Holo_Transparency: 1
+    - _Holo_Transparency: 0.38
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scroll_Speed: 0.03
