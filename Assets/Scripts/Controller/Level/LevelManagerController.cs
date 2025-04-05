@@ -142,8 +142,8 @@ public class LevelManagerController : MonoBehaviour, IBind<LevelData>
 
         if (GameStateManager.Instance != null) 
         {
-            CrossHairHUD.SetActive(true);
             StartCoroutine(GameStateManager.Instance.TransitionScreen.TransitionScreenFadeIn());
+            CrossHairHUD.SetActive(true);
         }
         AudioManagerController.Instance.PlaySFX("AnnouncingCombatMode");
         AudioManagerController.Instance.PlayMusic("BattleMusic");

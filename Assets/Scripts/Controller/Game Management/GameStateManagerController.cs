@@ -34,9 +34,7 @@ namespace GameController
         public static GameStateManager Instance = null;
         GameState currentGameState = GameState.Singleton;
 
-        [Header("Scene Transition GameObject")]
-        [SerializeField] GameObject TransitionScreenObject;
-        [NonSerialized] public ScreenTransition TransitionScreen;
+        [NonSerialized] public TransitionScreenVR TransitionScreen;
 
         void Awake()
         {
@@ -44,9 +42,6 @@ namespace GameController
 
         if (Instance == null) { Instance = this; }     
         else { Destroy(gameObject); }
-
-        TransitionScreenObject = Instantiate(TransitionScreenObject, transform);
-        TransitionScreen = TransitionScreenObject.GetComponent<ScreenTransition>();
 
         }
 
@@ -99,17 +94,29 @@ namespace GameController
         }
 
         private IEnumerator LoadSceneCoroutine(int sceneNumber) {
-            StartCoroutine(TransitionScreen.TransitionScreenFadeOut());
-            yield return new WaitForSeconds(TransitionScreen.getTransitionWait());
+            if (TransitionScreen != null) {
+                StartCoroutine(TransitionScreen.TransitionScreenFadeOut());
+                yield return new WaitForSeconds(TransitionScreen.getTransitionWait());
+            }
             
             if (!SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded) {
-                yield return SceneManager.LoadSceneAsync(sceneNumber);
+                //yield return SceneManager.LoadSceneAsync(sceneNumber);
+                AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneNumber);
+                asyncLoad.allowSceneActivation = false; // Prevent the scene from activating immediately
+                while (!asyncLoad.isDone) {
+                    if (asyncLoad.progress >= 0.9f) {
+                        asyncLoad.allowSceneActivation = true; // Activate the scene when loading is complete
+                    }
+                    yield return null; // Wait for the next frame
+                }
             }
+
+            TransitionScreen = GameObject.FindGameObjectWithTag("TransitionScreen").GetComponent<TransitionScreenVR>();
 
             if (Instance.GetCurrentGameState() != GameState.InBattle && Instance.GetCurrentGameState() != GameState.GameCleared)
             {
-                AudioManagerController.Instance.PlaySFX("TransitionScreenIn");
                 yield return TransitionScreen.TransitionScreenFadeIn();
+                AudioManagerController.Instance.PlaySFX("TransitionScreenIn");
             }
         }
   
