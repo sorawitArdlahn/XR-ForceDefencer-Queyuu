@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - MapGenerator
   - EventSystem
+  - TransitionScreen
   layers:
   - Default
   - TransparentFX

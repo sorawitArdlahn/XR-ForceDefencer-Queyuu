@@ -39,13 +39,13 @@ public class MainMenuUIView : MonoBehaviour
         AudioManagerController.Instance.PlaySFX("ButtonPressed");
         try {
             gameManager.LoadGame();
-            GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
             Debug.Log("Save Loaded.");
         }
         catch (ArgumentException) {
             gameManager.newGame();
             Debug.LogWarning($"Save not found.");
         }
+        GameStateManager.Instance.SetNextPhase(GameState.BattlePreparation);
     }
 
     private void OnTutorialButtonClicked()

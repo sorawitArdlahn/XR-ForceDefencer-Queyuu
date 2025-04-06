@@ -3,9 +3,13 @@ using UnityEngine;
 using GameController;
 using UnityEngine.EventSystems;
 using Audio;
+using TMPro;
 
 namespace View.Preparation {
     public class PreparationUIView : MonoBehaviour {
+        [Header("==== Text ====")]
+        public TextMeshProUGUI HighestLevelText;
+        public TextMeshProUGUI CheckpointLevelText;
         [Header("Buttons")]
         public Button InBattleButton;
         public Button ModificationButton;
@@ -36,6 +40,9 @@ namespace View.Preparation {
             InBattleButton.onClick.AddListener(OnInBattleButtonClicked);
             ModificationButton.onClick.AddListener(OnModificationButtonClicked);
             MainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
+
+            HighestLevelText.text = GameManager.Instance?.currentGameData.levelData.highestLevel.ToString();
+            CheckpointLevelText.text = GameManager.Instance?.currentGameData.levelData.checkpointLevel.ToString();
 
             eventSystem.SetSelectedGameObject(FirstButton.gameObject);
         }

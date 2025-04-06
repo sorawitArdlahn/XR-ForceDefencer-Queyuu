@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameController;
+using Model.Level;
 using Model.Stats;
 using TMPro;
 using UnityEngine;
@@ -13,18 +15,18 @@ namespace View.Preparation {
     [SerializeField] TextMeshProUGUI ArmorMultiplierText;
     [SerializeField] TextMeshProUGUI FuelMultiplierText;
 
-    RobotInGameStats playerStats;
+    PlayerData playerStats;
 
     void Start()
     {
-        playerStats = gameObject.GetComponent<RobotInGameStats>();         
+        playerStats = GameManager.Instance?.currentGameData.playerData;         
     }
 
     public void UpdateText() {
-        HPMultiplierText.text = playerStats.data.HealthPointMultiplier.ToString("F2");
-        DamageMultiplierText.text = playerStats.data.DamageMultiplier.ToString("F2");
-        ArmorMultiplierText.text = playerStats.data.ArmorMultiplier.ToString("F2");
-        FuelMultiplierText.text = playerStats.data.FuelMultiplier.ToString("F2");
+        HPMultiplierText.text = playerStats.HealthPointMultiplier.ToString("F2");
+        DamageMultiplierText.text = playerStats.DamageMultiplier.ToString("F2");
+        ArmorMultiplierText.text = playerStats.ArmorMultiplier.ToString("F2");
+        FuelMultiplierText.text = playerStats.FuelMultiplier.ToString("F2");
     }
 
 }
