@@ -5728,6 +5728,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 5c634abd6c2fa6e4a97df36d173fed45, type: 2}
+    - target: {fileID: 7385406574795172227, guid: c298aa922018ba541975a681c818fc16, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7816966604630135373, guid: c298aa922018ba541975a681c818fc16, type: 3}
       propertyPath: damageIcon
       value: 

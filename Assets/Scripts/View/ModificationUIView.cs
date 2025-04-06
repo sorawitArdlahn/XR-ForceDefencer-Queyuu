@@ -58,6 +58,9 @@ namespace View.Preparation {
     [Header("==== UI Mask ====")]
     public Sprite UIMask;
 
+    private Navigation originalNavigationBuy;
+    private Navigation originalNavigationClose;
+
     void Start()
     {
 
@@ -66,6 +69,9 @@ namespace View.Preparation {
         ModificationButton03.onClick.AddListener(OnModificationButton03Clicked);
         BuyModificationButton.onClick.AddListener(OnBuyModificationButtonClicked);
         CloseButton.onClick.AddListener(OnCloseButtonClicked);
+
+        originalNavigationBuy = BuyModificationButton.navigation;
+        originalNavigationClose = CloseButton.navigation;
 
         ResetModificationButtons();
     }
@@ -100,6 +106,11 @@ namespace View.Preparation {
         ModificationText02.text = ((int)(Modification02.Multiplier * 100)).ToString() + "%";
         ModificationText03.text = ((int)(Modification03.Multiplier * 100)).ToString() + "%";
 
+        Navigation closeNavigation = originalNavigationClose;
+        closeNavigation.selectOnLeft = null;
+        CloseButton.navigation = closeNavigation;
+
+
         AudioManagerController.Instance.PlaySFX("ModificationRandom");
         eventSystem.SetSelectedGameObject(
             ModificationButton01.gameObject
@@ -124,14 +135,16 @@ namespace View.Preparation {
 
         BuyModificationButton.interactable = false;
 
+
         if (modificationCanvasGroup.interactable) {
             statShowScreen.UpdateText();
             if (BuyModificationButton.interactable == false) {
             eventSystem.SetSelectedGameObject(
-            CloseButton.gameObject
+                CloseButton.gameObject
             );
-            }
-            else {
+
+        }
+        else {
             eventSystem.SetSelectedGameObject(
             BuyModificationButton.gameObject
             );
@@ -174,10 +187,19 @@ namespace View.Preparation {
         playerStatModifierController.getResearchPointRequired())
         {
             BuyModificationButton.interactable = false;
+
+            //Dont allow to switch to other button
+            Navigation closeNavigation = originalNavigationClose;
+            closeNavigation.selectOnLeft = null;
+            closeNavigation.selectOnUp = null;
+            CloseButton.navigation = closeNavigation;
         }
         else
         {
             BuyModificationButton.interactable = true;
+            Navigation closeNavigation = originalNavigationClose;
+            closeNavigation.selectOnUp = null;
+            CloseButton.navigation = closeNavigation;
         }
     }
 
