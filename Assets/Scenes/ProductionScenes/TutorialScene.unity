@@ -465,8 +465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.0200195, y: 28.119972}
-  m_SizeDelta: {x: 572.63995, y: 44.56006}
+  m_AnchoredPosition: {x: -0.55000305, y: 37.119972}
+  m_SizeDelta: {x: 563.69995, y: 62.56006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &43171513
 MonoBehaviour:
@@ -1506,8 +1506,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.8, y: 12.3}
-  m_SizeDelta: {x: 111.5, y: 48.7}
+  m_AnchoredPosition: {x: -6.1, y: 15.17}
+  m_SizeDelta: {x: 117.52, y: 53.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276698435
 MonoBehaviour:
@@ -3274,7 +3274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.86, y: 0.00001001358}
+  m_AnchoredPosition: {x: -11.09, y: -1.32}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &936216300
@@ -4520,7 +4520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.86, y: 0.00001001358}
+  m_AnchoredPosition: {x: -9.8, y: 2.83}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1252574221
@@ -4659,10 +4659,10 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0
   m_Url: 
   m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
+  m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
@@ -4709,8 +4709,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.86, y: 0.00001001358}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchoredPosition: {x: -9.73, y: -2.1}
+  m_SizeDelta: {x: 104.36, y: 60.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1268993615
 CanvasGroup:
@@ -6735,7 +6735,7 @@ Transform:
   m_GameObject: {fileID: 1457902726}
   serializedVersion: 2
   m_LocalRotation: {x: 5.820766e-11, y: -0, z: 1.8189894e-12, w: 1}
-  m_LocalPosition: {x: 0, y: -7.0856113, z: 1.8676097}
+  m_LocalPosition: {x: -0.04, y: -7.0856113, z: 1.8676097}
   m_LocalScale: {x: 0.009999999, y: 0.009999998, z: 0.010000002}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8282,7 +8282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -13.1}
+  m_AnchoredPosition: {x: 3.17, y: -7.12}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1764494991
@@ -8402,8 +8402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.0200195, y: 28.119972}
-  m_SizeDelta: {x: 572.63995, y: 44.56006}
+  m_AnchoredPosition: {x: -5.0200195, y: 35.119972}
+  m_SizeDelta: {x: 572.63995, y: 58.56006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773357287
 MonoBehaviour:
@@ -8591,10 +8591,10 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0
   m_Url: 
   m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
+  m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
@@ -9057,8 +9057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.38, y: 0.43}
-  m_SizeDelta: {x: 125.45, y: 73}
+  m_AnchoredPosition: {x: -1.4, y: 4.89}
+  m_SizeDelta: {x: 128.7, y: 77.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1918752003
 MonoBehaviour:
@@ -9263,8 +9263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.38, y: 0.43}
-  m_SizeDelta: {x: 125.45, y: 73}
+  m_AnchoredPosition: {x: -6.89, y: 0.43}
+  m_SizeDelta: {x: 126.06, y: 84.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981310743
 MonoBehaviour:
