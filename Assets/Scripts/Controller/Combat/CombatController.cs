@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Model.Combat;
 using Controller.Movement;
@@ -8,6 +9,7 @@ namespace Controller.Combat
 {
    public class CombatController : MonoBehaviour
    {
+      [SerializeField] private Animator _animator;
       [SerializeField] private PlayerGunSelector gunSelector;
       
       [SerializeField] private PlayerInputReceiver playerInputReceiver;
@@ -20,6 +22,17 @@ namespace Controller.Combat
       private float nextUseTime = 0;
       public TMPro.TMP_Text cooldownText;
       
+      [Header("Melee Config")]
+      public AnimationEventReceiver animationEventReceiver;
+      public string endEventName;
+      public AudioSource audioSource;
+      public AudioClip meleeSound;
+      private bool isCanMelee = true;
+
+      private void Start()
+      {
+         RegisterEndAttackAnimationEvent();
+      }
 
       private void Update()
       {
@@ -38,6 +51,13 @@ namespace Controller.Combat
             gunSelector.guns[0].Shoot();
             gunSelector.guns[1].Shoot();
          }
+
+         if (Input.GetKeyDown(KeyCode.Mouse1) && isCanMelee)
+         {
+            isCanMelee = false;
+            _animator.SetTrigger("Punch");
+            audioSource.PlayOneShot(meleeSound);
+         }
       
       
          if (playerInputReceiver.IsMissile)
@@ -49,6 +69,17 @@ namespace Controller.Combat
             }
          }
          
+      }
+
+      private void RegisterEndAttackAnimationEvent(){
+         AnimationEvent animationEvent = new AnimationEvent();
+         animationEvent.eventName = endEventName;
+         animationEvent.OnAnimationEvent += WaitForNextMelee;
+         animationEventReceiver.AddAnimationEvent(animationEvent);
+      }
+      
+      private void WaitForNextMelee(){
+         isCanMelee = true;
       }
    }  
 }
