@@ -6,6 +6,7 @@ using Audio;
 using Controller.Level;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 namespace View.Exploration
 {
@@ -47,6 +48,10 @@ public class FinishExplorationUIView : MonoBehaviour
 
     private void OnContinueExplorationButtonClicked()
     {
+        StartCoroutine(ContinueExploration());      
+    }
+
+    private IEnumerator ContinueExploration() {
         UnPauseGame();
         AudioManagerController.Instance.PlaySFX("ButtonPressed");
         animationController.SetTrigger("FinishExplorationClose");
@@ -55,8 +60,11 @@ public class FinishExplorationUIView : MonoBehaviour
         {GameStateManager.Instance.SetNextPhase(GameState.InBattle);}
         else { Debug.Log("GameStateManager is null"); }
 
+        yield return new WaitForSeconds(GameStateManager.Instance.TransitionScreen.getTransitionWait());
+    
         OnContinueExploration.Raise(this);
         AudioManagerController.Instance.PlayMusic("BattleMusic");
+
     }
 
     private void OnFinishExplorationButtonClicked()

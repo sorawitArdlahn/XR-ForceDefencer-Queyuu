@@ -57,7 +57,8 @@ namespace View.Exploration {
     }
 
     public void GameOverUIAnimationFinish() {
-        EventSystem.current.SetSelectedGameObject(MainMenuButton.gameObject);
+        eventSystem.enabled = true;
+        eventSystem.SetSelectedGameObject(MainMenuButton.gameObject);
         PauseGame();
     }
 
