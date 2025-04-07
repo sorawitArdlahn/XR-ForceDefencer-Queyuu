@@ -88,6 +88,7 @@ namespace Controller.Movement
                 }
                 
                 MoveToClosetEnemy();
+                ScaleAimIcon();
             }
         
             if (target && target.GetComponent<RobotInGameStats>().currentHP <= 0)
@@ -201,6 +202,25 @@ namespace Controller.Movement
                 //ClearDeathEnemy();
             }
 
+        }
+
+        private void ScaleAimIcon()
+        {
+            if (targetDistance >= 300)
+            {
+                aimImage.transform.localScale = new Vector3(5, 5, 5);
+            }
+            else if (targetDistance >= 100)
+            {
+                aimImage.transform.localScale = new Vector3(3, 3, 3);
+            }else if (targetDistance >= 50)
+            {
+                aimImage.transform.localScale = new Vector3(1, 1, 1);
+            }else 
+            {
+                aimImage.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+            
         }
 
         public Vector3 GetNewAngles(float cockpitRotation)
