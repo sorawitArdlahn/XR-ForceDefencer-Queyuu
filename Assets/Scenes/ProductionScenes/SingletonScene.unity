@@ -198,7 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbc4052e29f62640bd2ba39e18e41f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransitionScreenObject: {fileID: 3563301518510473686, guid: 5ae43c262b14804448274a20e1aaf280, type: 3}
 --- !u!114 &658306851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7577043544675115554, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: sfxSound.Array.size
@@ -580,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.data[0].Volume
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9192407614459506018, guid: 880189ab999de374fbf7d6e7dba7cb9c, type: 3}
       propertyPath: musicSound.Array.data[1].Volume

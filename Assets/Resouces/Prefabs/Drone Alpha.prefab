@@ -5106,7 +5106,7 @@ MonoBehaviour:
   name: Sci-Fi-Gun
   damageConfig: {fileID: 11400000, guid: ab209926c84bd31418bc23a615bc64e0, type: 2}
   shootConfig: {fileID: 11400000, guid: 927954ccf9cfc3648a8beb37786465aa, type: 2}
-  trailConfig: {fileID: 11400000, guid: fb2319cb2276691489c38b9ef2bce961, type: 2}
+  trailConfig: {fileID: 11400000, guid: 8909e2615b6ff074687b12191b8a0b86, type: 2}
   audioConfig: {fileID: 11400000, guid: e2883af641cb7a749a50b185749f9783, type: 2}
   surfaceEffectPrefab: {fileID: 3510688921982660790, guid: e13af0a4880e2324aa08ba0da8287f59, type: 3}
 --- !u!82 &6850635894005042405
