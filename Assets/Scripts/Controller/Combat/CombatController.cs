@@ -52,7 +52,7 @@ namespace Controller.Combat
             gunSelector.guns[1].Shoot();
          }
 
-         if (Input.GetKeyDown(KeyCode.Mouse1) && isCanMelee)
+         if (playerInputReceiver.IsMelee && isCanMelee)
          {
             isCanMelee = false;
             _animator.SetTrigger("Punch");

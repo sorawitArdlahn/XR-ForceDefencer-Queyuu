@@ -275,7 +275,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: AM_Keyboard
+  m_DefaultActionMap: AM_VR
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &463784215
