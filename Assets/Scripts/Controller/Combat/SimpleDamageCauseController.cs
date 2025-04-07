@@ -8,11 +8,10 @@ public class SimpleDamageCauseController : MonoBehaviour
     public AnimationEventReceiver animationEventReceiver;
     public string beginEventName;
     public string endEventName;
-    public ParticleManager particleManager;
+    public ParticleManager particleManager = null;
 
     private Collider collider;
-    private bool isCollisionActive = false;
-    
+    private bool isCanAttack = true;
     void Start()
     {
         collider = GetComponent<Collider>();
@@ -31,7 +30,11 @@ public class SimpleDamageCauseController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(tag) && other.TryGetComponent(out IDamageable damageable)){
-            particleManager.PlayParticles();
+            if (particleManager != null)
+            {
+                particleManager.PlayParticles();
+            }
+            
             damageable.TakeDamage(20);
             collider.enabled = false;
         }

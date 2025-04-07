@@ -345,7 +345,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drive",
+                    "name": "Melee",
                     "type": "Button",
                     "id": "6107e274-640d-448e-84f4-45b56d65ac64",
                     "expectedControlType": "Button",
@@ -488,11 +488,22 @@
                 {
                     "name": "",
                     "id": "5a1a6dbb-b193-41eb-917e-95a3fd92548b",
-                    "path": "<XInputController>/leftStickPress",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Drive",
+                    "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2f02bf6-1330-4f23-ad91-5987ab8ebb4f",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Melee",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -597,8 +608,8 @@
                 },
                 {
                     "name": "",
-                    "id": "b55258f1-c8e1-4352-bec3-78b32db86a42",
-                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "id": "6ac2a11a-ae15-4afd-ab6a-0f8d161f3832",
+                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
@@ -608,8 +619,8 @@
                 },
                 {
                     "name": "",
-                    "id": "99ef2827-e432-450a-a8fa-36cfdfae17ce",
-                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "id": "aeccbe57-4b4b-4be2-a048-d372a6ec5b96",
+                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
                     "interactions": "Press(behavior=1)",
                     "processors": "Invert",
                     "groups": "",

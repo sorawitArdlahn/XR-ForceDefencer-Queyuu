@@ -14,6 +14,7 @@ public class PlayerInputReceiver : MonoBehaviour
     private bool _isDriving = false;
     private bool _isLockOn = false;
     private bool _isMissile = false;
+    private bool _isMelee = false;
 
     private void OnMovement(InputValue value)
     {
@@ -50,11 +51,6 @@ public class PlayerInputReceiver : MonoBehaviour
     {
         _isSprinting = value.isPressed;
     }
-
-    private void OnDrive(InputValue value)
-    {
-        _isDriving = !_isDriving;
-    }
     
     private void OnLockOn(InputValue value)
     {
@@ -64,6 +60,11 @@ public class PlayerInputReceiver : MonoBehaviour
     private void OnMissile(InputValue value)
     {
         _isMissile = value.isPressed;
+    }
+
+    private void OnMelee(InputValue value)
+    {
+        _isMelee = value.isPressed;
     }
 
     public Vector3 Movement
@@ -124,5 +125,11 @@ public class PlayerInputReceiver : MonoBehaviour
     {
         get => _isMissile;
         set => _isMissile = value;
+    }
+
+    public bool IsMelee
+    {
+        get => _isMelee;
+        set => _isMelee = value;
     }
 }

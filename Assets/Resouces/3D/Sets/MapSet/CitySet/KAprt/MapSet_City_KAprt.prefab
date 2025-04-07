@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6477417097763556056
 Transform:
@@ -50,7 +50,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4106595810707511336
 Transform:
@@ -204,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8425116737310508417, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7956230519995999828, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_Layer
@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7956230519995999828, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6517175138649442206, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_Layer
@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6517175138649442206, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_Name
@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3740134940520513983, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_Layer
@@ -240,7 +240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3740134940520513983, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 57e07fba868d1094e8298a5b2a0e524a, type: 3}
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
